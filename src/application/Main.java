@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 
 public class Main extends Application {
 	private Stage primaryStage;
@@ -38,7 +37,6 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Login");
 		primaryStage.show();
-		primaryStage.close();
 	}
 
 	public static void main(String[] args) {

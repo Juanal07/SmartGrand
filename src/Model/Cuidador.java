@@ -1,0 +1,80 @@
+package Model;
+
+public class Cuidador {
+	private String nombre;
+	private String apellido;
+	private String direccion;
+	private String correoElectronico;
+	private String usuario;
+	private String contreasena;
+	private int telefono;
+
+	public Cuidador(String nombre, String apellido, String direccion, String corElectronico, String usuario,
+			String contreasena, int telefono) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.direccion = direccion;
+		this.correoElectronico = corElectronico;
+		this.usuario = usuario;
+		this.contreasena = contreasena;
+		this.telefono = telefono;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getCorreoElectronico() {
+		return correoElectronico;
+	}
+
+	public void setCorreoElectronico(String correoElectronico) {
+		this.correoElectronico = correoElectronico;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getContreasena() {
+		return contreasena;
+	}
+
+	public void setContreasena(String contreasena) {
+		this.contreasena = contreasena;
+	}
+
+	public int getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
+
+}

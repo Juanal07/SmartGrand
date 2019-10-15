@@ -2,10 +2,7 @@ package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import application.Main;
 import javafx.event.ActionEvent;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,13 +38,22 @@ public class LoginControler implements Initializable {
 
 	@FXML
 	public void registroContinuo(ActionEvent actionEvent) {
-		System.out.println("registro continuo.");
+		// esta line es para cerrar la ventana anterior
+	    Stage stage = (Stage) btnRegistrarse.getScene().getWindow();
+		stage.close();
+		// creamos la ventana
+		String vistaRegContinuo = "/View/RegistroContinuo.fxml";
+		String tituloVista = "RegistroContinuo";
+		crearVentana(vistaRegContinuo, tituloVista);
+	}
+
+	public void crearVentana(String vista, String titulo) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(this.getClass().getResource("/View/RegistroContinuo.fxml"));
+			loader.setLocation(this.getClass().getResource(vista));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage sendStage = new Stage();
-			sendStage.setTitle("RegistroContinuo");
+			sendStage.setTitle(titulo);
 			Scene scene = new Scene(page);
 			sendStage.setScene(scene);
 			sendStage.show();
@@ -58,7 +64,6 @@ public class LoginControler implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
 
 	}
 

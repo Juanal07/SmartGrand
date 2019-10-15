@@ -95,7 +95,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXButton fx:id="btnClinico" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #142d4c #142d4c; -fx-background-radius: 15;" text="Clínico" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                        <JFXButton fx:id="btnClinico" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color:#142d4c; -fx-background-radius: 15;" text="Clínico" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.rowIndex="1">
                            <font>
                               <Font size="36.0" />
                            </font>
