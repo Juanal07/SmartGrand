@@ -29,15 +29,16 @@ public class Main extends Application {
 	private void mainWindow() throws IOException {
 		// primero cargamos la vista fxml en el FXMLLoader.
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("/View/Login.fxml"));
+		loader.setLocation(this.getClass().getResource("/View/Login.fxml"));
 		loader.setRoot(content);
 		// ahora sobre el panel mypane cargamos la vista que dejamos en el FXMLLoader
 		Parent root = loader.load();
-		Scene scene = new Scene(root, 650, 500);
+		Scene scene = new Scene(root, 800, 500);
 		// añade la escena al stage y la titula
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Login");
 		primaryStage.show();
+		primaryStage.close();
 	}
 
 	public static void main(String[] args) {
