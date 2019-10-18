@@ -71,15 +71,7 @@ public class RegistroContinuoControler implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		/*
-		 * btnUsuario = new Button(); btnUsuario.setOnAction(new
-		 * EventHandler<ActionEvent>() {
-		 * 
-		 * @Override public void handle(ActionEvent event) { Alert alert = new
-		 * Alert(AlertType.INFORMATION); alert.setTitle("informacion");
-		 * alert.setHeaderText("Hola mundo"); alert.showAndWait(); } });
-		 */
-
+		
 	}
 
 }

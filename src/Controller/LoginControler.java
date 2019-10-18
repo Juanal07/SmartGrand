@@ -34,6 +34,7 @@ public class LoginControler implements Initializable {
 		String usuario = jfxtUsuario.getText();
 		String contrasena = jfxtPassword.getText();
 		System.out.println("Usuario: " + usuario + " -> Contraseña: " + contrasena);
+		jfxtUsuario.setText("Hola mundo java fx");
 	}
 
 	@FXML
@@ -60,6 +61,16 @@ public class LoginControler implements Initializable {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public boolean pedirSoloCadena(String cadena) {
+		try {
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return false;
 	}
 
 	@Override

@@ -123,7 +123,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
-                  <JFXButton contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Finalizar registro" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Finalizar registro" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
                      <font>
                         <Font size="15.0" />
                      </font>

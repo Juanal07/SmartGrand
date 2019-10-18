@@ -42,6 +42,21 @@ public class UsuarioRegistroControler implements Initializable {
 		}
 	}
 
+	public boolean esSoloLetras(String cadena) {
+		// cogemos la cadena y la comparamos con su valor ASCII
+		for (int i = 0; i < cadena.length(); i++) {
+			char caracter = cadena.toUpperCase().charAt(i);
+			int valorASCII = (int) caracter;
+			System.out.println("Letra: " + caracter + " -> Valor ascii: " + valorASCII);
+			if (valorASCII != 209 && (valorASCII < 65 || valorASCII > 90) && valorASCII != 193 && valorASCII != 201
+					&& valorASCII != 205 && valorASCII != 211 && valorASCII != 218) {
+				System.out.println("ERROR: se ha encontrado un caracter que no es letra.");
+				return false; // Se ha encontrado un caracter que no es letra
+			}
+		}
+		return true;
+	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 

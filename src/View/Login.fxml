@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginControler">
+<AnchorPane prefHeight="450.0" prefWidth="650.0" styleClass="rootPane" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginControler">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -33,9 +33,9 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9fd3c7 #9fd3c7;" GridPane.columnSpan="4" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #385170 #385170;" GridPane.columnSpan="4" GridPane.rowIndex="1" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #142d4c #142d4c;" GridPane.columnSpan="4" GridPane.rowIndex="2" />
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" GridPane.columnSpan="4" />
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" GridPane.columnSpan="4" GridPane.rowIndex="1" />
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" GridPane.columnSpan="4" GridPane.rowIndex="2" />
             <Pane opacity="0.2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowSpan="3" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowSpan="3">
                <children>
