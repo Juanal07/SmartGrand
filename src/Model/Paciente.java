@@ -9,7 +9,7 @@ public class Paciente {
 	private String foto;
 	private String usuario;
 	private String password;
-	//hola mundo
+	//hola mundo p
 
 	public Paciente() {
 
