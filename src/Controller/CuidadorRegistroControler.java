@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class CuidadorRegistroControler implements Initializable{
+public class CuidadorRegistroControler implements Initializable {
 
 	@FXML
 	public TextField txFieldNombre;
@@ -27,30 +27,30 @@ public class CuidadorRegistroControler implements Initializable{
 	public TextField txFieldCorreoElectronico;
 	@FXML
 	public TextField txFieldTelefono;
-	
 
 	@FXML
 	public Button btnAtras;
 	@FXML
 	public Button btnFinalizarRegistro;
-	
+
 	@FXML
 	public void atrasRegistroContinuo() {
 		// esta line es para cerrar la ventana anterior
-	    Stage stage = (Stage) btnAtras.getScene().getWindow();
+		Stage stage = (Stage) btnAtras.getScene().getWindow();
 		stage.close();
 		// creamos la ventana
 		String vistaRegContinuo = "/View/RegistroContinuo.fxml";
 		String tituloVista = "RegistroContinuo";
 		Stage stageRegistroContinuo = new Stage();
 		crearVentana(vistaRegContinuo, tituloVista, stageRegistroContinuo);
-		
+
 	}
-	
+
 	public void crearVentana(String vista, String titulo, Stage stage) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			//AnchorPane root = (AnchorPane) loader.load(getClass().getResource(vista).openStream());
+			// AnchorPane root = (AnchorPane)
+			// loader.load(getClass().getResource(vista).openStream());
 			loader.setLocation(this.getClass().getResource(vista));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage sendStage = new Stage();
@@ -66,7 +66,7 @@ public class CuidadorRegistroControler implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
