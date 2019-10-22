@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CuidadorRegistroControler">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -52,7 +52,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="txFieldCorreoElectronico" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <JFXTextField fx:id="txFieldUsuario" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" top="10.0" />
                      </VBox.margin>
@@ -65,7 +65,7 @@
                         <Insets left="20.0" right="20.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <JFXTextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <JFXTextField fx:id="txFieldPassword" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" top="10.0" />
                      </VBox.margin>
@@ -78,7 +78,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <JFXTextField fx:id="txFieldCorreoElectronico" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" top="10.0" />
                      </VBox.margin>
@@ -91,7 +91,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <JFXTextField fx:id="txFieldTelefono" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" top="10.0" />
                      </VBox.margin>
@@ -115,7 +115,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Atras" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton fx:id="btnAtras" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#atrasRegistroContinuo" text="Atras" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -123,7 +123,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
-                  <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Finalizar registro" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+                  <JFXButton fx:id="btnFinalizarRegistro" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Finalizar registro" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
                      <font>
                         <Font size="15.0" />
                      </font>

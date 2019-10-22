@@ -32,13 +32,13 @@ public class RegistroContinuoControler implements Initializable {
 	}
 	
 	@FXML
-	public void cuidadorRegistro(ActionEvent actionEvent) {
+	public void CuidadorRegistro(ActionEvent actionEvent) {
 		// cerramos ventana
 		Stage stage = (Stage) btnCuidador.getScene().getWindow();
 		stage.close();
 		// creamos la nueva
-		String vistaRegContinuo = "/View/UsuarioRegistro.fxml";
-		String tituloVista = "Registro para usuarios";
+		String vistaRegContinuo = "/View/CuidadorRegistro.fxml";
+		String tituloVista = "Registro para cuidadores";
 		crearVentana(vistaRegContinuo, tituloVista);
 	}
 	

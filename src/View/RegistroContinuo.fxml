@@ -66,7 +66,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXButton fx:id="btnCuidador" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #9fd3c7 #9fd3c7; -fx-background-radius: 15;" text="Cuidador" textFill="WHITE" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                        <JFXButton fx:id="btnCuidador" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#CuidadorRegistro" style="-fx-background-color: #9fd3c7 #9fd3c7; -fx-background-radius: 15;" text="Cuidador" textFill="WHITE" GridPane.columnSpan="3" GridPane.rowIndex="1">
                            <font>
                               <Font size="36.0" />
                            </font>
