@@ -31,6 +31,11 @@ public class LoginControler implements Initializable {
 
 	@FXML
 	public void iniciarSesion(ActionEvent actionEvent) {
+		if (jfxtUsuario.getText().equals("") || jfxtPassword.getText().equals("")) {
+			System.out.println("ERROR:Vuleva a introducir los datos.");
+			//jfxtUsuario;
+		}
+		
 		String usuario = jfxtUsuario.getText();
 		String contrasena = jfxtPassword.getText();
 		System.out.println("Usuario: " + usuario + " -> Contraseña: " + contrasena);
@@ -45,12 +50,14 @@ public class LoginControler implements Initializable {
 		// creamos la ventana
 		String vistaRegContinuo = "/View/RegistroContinuo.fxml";
 		String tituloVista = "RegistroContinuo";
-		crearVentana(vistaRegContinuo, tituloVista);
+		Stage stageRegistroContinuo = new Stage();
+		crearVentana(vistaRegContinuo, tituloVista, stageRegistroContinuo);
 	}
 
-	public void crearVentana(String vista, String titulo) {
+	public void crearVentana(String vista, String titulo, Stage stage) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
+			//AnchorPane root = (AnchorPane) loader.load(getClass().getResource(vista).openStream());
 			loader.setLocation(this.getClass().getResource(vista));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage sendStage = new Stage();
@@ -75,7 +82,7 @@ public class LoginControler implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		System.out.println("Cargando pantalla login...");
 	}
 
 }

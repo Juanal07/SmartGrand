@@ -8,14 +8,14 @@ public class Paciente {
 	private String direccion;
 	private String foto;
 	private String usuario;
-	private String contraseña;
+	private String password;
 
 	public Paciente() {
 
 	}
 
 	public Paciente(String nombre, String apellidos, String dNI, String localidad, String direccion, String foto,
-			String usuario, String contraseña) {
+			String usuario, String password) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -24,7 +24,7 @@ public class Paciente {
 		this.direccion = direccion;
 		this.foto = foto;
 		this.usuario = usuario;
-		this.contraseña = contraseña;
+		this.password = password;
 	}
 
 	public String getNombre() {
@@ -83,12 +83,12 @@ public class Paciente {
 		this.usuario = usuario;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
