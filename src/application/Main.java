@@ -20,7 +20,7 @@ public class Main extends Application {
 		try {
 			mainWindow();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch blockk
 			e.printStackTrace();
 		}
 	}
