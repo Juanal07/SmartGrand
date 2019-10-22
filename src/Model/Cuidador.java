@@ -6,19 +6,23 @@ public class Cuidador {
 	private String direccion;
 	private String correoElectronico;
 	private String usuario;
-	private String contreasena;
+	private String password;
 	private int telefono;
 
-	public Cuidador(String nombre, String apellido, String direccion, String corElectronico, String usuario,
-			String contreasena, int telefono) {
+	public Cuidador(String nombre, String apellido, String direccion, String correoElectronico, String usuario,
+			String password, int telefono) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.direccion = direccion;
-		this.correoElectronico = corElectronico;
+		this.correoElectronico = correoElectronico;
 		this.usuario = usuario;
-		this.contreasena = contreasena;
+		this.password = password;
 		this.telefono = telefono;
+	}
+
+	public Cuidador() {
+		super();
 	}
 
 	public String getNombre() {
@@ -61,12 +65,12 @@ public class Cuidador {
 		this.usuario = usuario;
 	}
 
-	public String getContreasena() {
-		return contreasena;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setContreasena(String contreasena) {
-		this.contreasena = contreasena;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public int getTelefono() {
@@ -76,5 +80,4 @@ public class Cuidador {
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
-
 }
