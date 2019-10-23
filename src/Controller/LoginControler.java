@@ -2,6 +2,8 @@ package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,27 +21,28 @@ public class LoginControler implements Initializable {
 	@FXML
 	public ImageView imgLogo;
 	@FXML
-	public TextField jfxtUsuario;
+	public TextField jfxtUsuario = new TextField();
 	@FXML
-	public PasswordField jfxtPassword;
+	public PasswordField jfxtPassword = new PasswordField();
 	@FXML
-	public Button btnIniciarSesion;
+	public Button btnIniciarSesion = new Button();
 	@FXML
-	public Button btnRegistrarse;
+	public Button btnRegistrarse = new Button();
 	@FXML
 	public Label labelPregunta;
 
 	@FXML
 	public void iniciarSesion(ActionEvent actionEvent) {
-		if (jfxtUsuario.getText().equals("") || jfxtPassword.getText().equals("")) {
+		/*if (jfxtUsuario.getText().equals("") || jfxtPassword.getText().equals("")) {
 			System.out.println("ERROR:Vuleva a introducir los datos.");
 			//jfxtUsuario;
 		}
-		
+		*/
 		String usuario = jfxtUsuario.getText();
 		String contrasena = jfxtPassword.getText();
 		System.out.println("Usuario: " + usuario + " -> Contraseña: " + contrasena);
 		jfxtUsuario.setText("Hola mundo java fx");
+		validation(usuario);
 	}
 
 	@FXML
@@ -70,6 +73,14 @@ public class LoginControler implements Initializable {
 		}
 	}
 	
+	public void validation(String cadena) {
+		if (cadena.trim().equals("")) {
+			System.out.println("No existe cadena");
+		} else {
+			System.out.println("Si existe cadena");
+		}
+	}
+
 	public boolean pedirSoloCadena(String cadena) {
 		try {
 			
@@ -83,6 +94,12 @@ public class LoginControler implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("Cargando pantalla login...");
+		//jfxtUsuario = new TextField();
+		//jfxtPassword = new PasswordField();
+		//btnIniciarSesion = new Button();
+		//btnRegistrarse = new Button();
+		
+		
 	}
 
 }

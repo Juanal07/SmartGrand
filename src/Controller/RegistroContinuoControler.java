@@ -30,7 +30,18 @@ public class RegistroContinuoControler implements Initializable {
 		String tituloVista = "Registro para usuarios";
 		crearVentana(vistaRegContinuo, tituloVista);
 	}
-	
+
+	@FXML
+	public void atrasLogin(ActionEvent actionEvent) {
+		// cerramos ventana
+		Stage stage = (Stage) btnUsuario.getScene().getWindow();
+		stage.close();
+		// creamos la nueva
+		String vistaRegContinuo = "/View/Login.fxml";
+		String tituloVista = "Login";
+		crearVentana(vistaRegContinuo, tituloVista);
+	}
+
 	@FXML
 	public void CuidadorRegistro(ActionEvent actionEvent) {
 		// cerramos ventana
@@ -41,7 +52,7 @@ public class RegistroContinuoControler implements Initializable {
 		String tituloVista = "Registro para cuidadores";
 		crearVentana(vistaRegContinuo, tituloVista);
 	}
-	
+
 	@FXML
 	public void clinicoRegistro(ActionEvent actionEvent) {
 		// cerramos ventana
@@ -52,7 +63,6 @@ public class RegistroContinuoControler implements Initializable {
 		String tituloVista = "Registro para usuarios";
 		crearVentana(vistaRegContinuo, tituloVista);
 	}
-
 
 	public void crearVentana(String vista, String titulo) {
 		try {
@@ -71,7 +81,7 @@ public class RegistroContinuoControler implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 	}
 
 }
