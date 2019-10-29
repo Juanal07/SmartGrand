@@ -3,6 +3,7 @@ package Controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,7 +35,7 @@ public class CuidadorRegistroControler implements Initializable {
 	public Button btnFinalizarRegistro;
 
 	@FXML
-	public void atrasRegistroContinuo() {
+	public void atrasRegistroContinuo(ActionEvent actionEvent) {
 		// esta line es para cerrar la ventana anterior
 		Stage stage = (Stage) btnAtras.getScene().getWindow();
 		stage.close();

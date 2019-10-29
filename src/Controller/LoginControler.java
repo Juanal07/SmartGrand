@@ -94,10 +94,7 @@ public class LoginControler implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("Cargando pantalla login...");
-		//jfxtUsuario = new TextField();
-		//jfxtPassword = new PasswordField();
-		//btnIniciarSesion = new Button();
-		//btnRegistrarse = new Button();
+
 		
 		
 	}

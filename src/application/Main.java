@@ -30,7 +30,7 @@ public class Main extends Application {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(this.getClass().getResource("/View/Login.fxml"));
 		loader.getClass().getResource("/View/Style.css");
-		//scene.getStylesheets().addAll(Main.class.getResource("style.css").toExternalForm());
+
 		loader.setRoot(content);
 		// ahora sobre el panel mypane cargamos la vista que dejamos en el FXMLLoader
 		Parent root = loader.load();

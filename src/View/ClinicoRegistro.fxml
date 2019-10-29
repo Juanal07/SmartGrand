@@ -1,8 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml">
-	<!-- TODO Add Nodes -->
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnSpan="2" GridPane.rowSpan="2">
+               <children>
+                  <JFXTextField />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+                  <JFXTextField />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" />
+                  <JFXTextField />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Correo electronico" />
+                  <JFXTextField />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DNI" />
+                  <JFXTextField />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Especialidad" />
+                  <DatePicker />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de nacimiento" />
+                  <JFXTextField />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nacionalidad" />
+                  <JFXTextField />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Localidad" />
+                  <JFXTextField />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección" />
+               </children>
+            </VBox>
+            <GridPane GridPane.columnSpan="2" GridPane.rowIndex="2">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                  <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
 </AnchorPane>
-
