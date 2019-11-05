@@ -11,9 +11,6 @@
 }
 
 .rootPane{
-<<<<<<< HEAD
-	-fx-background-color: linear-gradient(#142d4c, #385170, #9fd3c7, #ececec);
-=======
 	-fx-background-color: linear-gradient(#ececec, #9fd3c7, #385170, #142d4c);
 }
 
@@ -55,5 +52,4 @@
 .caja{	
 	-fx-background-color: #ececec;
 	-fx-text-fill: #142d4c;
->>>>>>> branch 'master' of https://github.com/ProyectoInformatica/proyecto1-smart-grand.git
 }
