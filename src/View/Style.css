@@ -1,3 +1,59 @@
+/* PALETA DE COLORES: https://colorhunt.co/palette/142663
+ * #ececec blanco roto
+ * #9fd3c7 azulito
+ * #385170 azul oscuro
+ * #142d4c casi negro
+ */
+
+.parent{
+	-fx-background-color: #9FD3C7; /*azul*/
+	-fx-background-color: linear-gradient(#ececec, #9FD3C7);
+}
+
 .rootPane{
+<<<<<<< HEAD
 	-fx-background-color: linear-gradient(#142d4c, #385170, #9fd3c7, #ececec);
+=======
+	-fx-background-color: linear-gradient(#ececec, #9fd3c7, #385170, #142d4c);
+}
+
+
+.forgetBtn{
+	-fx-text-fill: #385170;
+}
+
+.forgetBtn:hover{
+	-fx-text-fill: #142d4c;
+	-fx-underline: true;
+
+}
+
+.mainButton{
+	-fx-background-color: #ececec;
+	-fx-text-fill: #142d4c;
+	-fx-background-radius: 5px;
+}
+.mainButton:hover{
+	-fx-background-color: transparent;
+-fx-text-fill: #142d4c;
+	-fx-background-radius: 5px;
+	-fx-border-color: #ececec;
+	-fx-border-width: 1px;
+	-fx-border-style: solid;
+	-fx-border-radius: 5px;
+}
+
+.primerTitulo{	
+	-fx-text-fill: #142d4c;
+	
+}
+
+.segundoTitulo{	
+	-fx-text-fill: #142d4c;
+}
+
+.caja{	
+	-fx-background-color: #ececec;
+	-fx-text-fill: #142d4c;
+>>>>>>> branch 'master' of https://github.com/ProyectoInformatica/proyecto1-smart-grand.git
 }
