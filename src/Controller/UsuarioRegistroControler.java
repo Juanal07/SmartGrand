@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -14,12 +15,15 @@ public class UsuarioRegistroControler {
 	@FXML
 	private JFXButton btnAtras, btnRegistrarse;
 	@FXML
-	public JFXTextField fNombre, tfApellidos, tfLocalidad, tfDireccion, tfDNI, tfUsuario, tfPassword;
+	public TextField fNombre = new TextField(), tfApellidos = new TextField(), tfLocalidad = new TextField(),
+			tfDireccion = new TextField(), tfDNI = new TextField(), tfUsuario = new TextField(),
+			tfPassword = new TextField();
 
 	@FXML
 	public void pacienteRegsitrado(ActionEvent actionEvent) {
 		System.out.println("Paciente registrado...");
-		
+		String nombre = fNombre.getText();
+		System.out.println(nombre);
 	}
 
 	@FXML
@@ -37,7 +41,7 @@ public class UsuarioRegistroControler {
 	public void verificarCampoVacio(String cadena) {
 		if (cadena.equals("")) {
 			System.out.println("campo vacion");
-		}else {
+		} else {
 			System.out.println("campo correcto");
 		}
 	}
