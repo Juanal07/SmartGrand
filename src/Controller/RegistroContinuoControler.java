@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class RegistroContinuoControler implements Initializable {
+public class RegistroContinuoControler {
 	@FXML
 	public Button btnUsuario;
 	@FXML
@@ -28,7 +28,8 @@ public class RegistroContinuoControler implements Initializable {
 		// creamos la nueva
 		String vistaRegContinuo = "/View/UsuarioRegistro.fxml";
 		String tituloVista = "Registro para usuarios";
-		crearVentana(vistaRegContinuo, tituloVista);
+		UsuarioRegistroControler usuarioRegistroControler = new UsuarioRegistroControler();
+		crearVentana(vistaRegContinuo, tituloVista, usuarioRegistroControler);
 	}
 
 	@FXML
@@ -39,7 +40,8 @@ public class RegistroContinuoControler implements Initializable {
 		// creamos la nueva
 		String vistaRegContinuo = "/View/Login.fxml";
 		String tituloVista = "Login";
-		crearVentana(vistaRegContinuo, tituloVista);
+		LoginControler loginControler = new LoginControler();
+		crearVentana(vistaRegContinuo, tituloVista, loginControler);
 	}
 
 	@FXML
@@ -50,7 +52,8 @@ public class RegistroContinuoControler implements Initializable {
 		// creamos la nueva
 		String vistaRegContinuo = "/View/CuidadorRegistro.fxml";
 		String tituloVista = "Registro para cuidadores";
-		crearVentana(vistaRegContinuo, tituloVista);
+		CuidadorRegistroControler cuidadorRegistroControler = new CuidadorRegistroControler();
+		crearVentana(vistaRegContinuo, tituloVista, cuidadorRegistroControler);
 	}
 
 	@FXML
@@ -59,15 +62,17 @@ public class RegistroContinuoControler implements Initializable {
 		Stage stage = (Stage) btnClinico.getScene().getWindow();
 		stage.close();
 		// creamos la nueva
-		String vistaRegContinuo = "/View/UsuarioRegistro.fxml";
-		String tituloVista = "Registro para usuarios";
-		crearVentana(vistaRegContinuo, tituloVista);
+		String vistaRegContinuo = "/View/ClinicoRegistro.fxml";
+		String tituloVista = "Registro para clinicos";
+		ClinicoRegistroControler clinicoRegistroControler = new ClinicoRegistroControler();
+		crearVentana(vistaRegContinuo, tituloVista, clinicoRegistroControler);
 	}
 
-	public void crearVentana(String vista, String titulo) {
+	public void crearVentana(String vista, String titulo, Object object) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(this.getClass().getResource(vista));
+			loader.setController(object);
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage sendStage = new Stage();
 			sendStage.setTitle(titulo);
@@ -77,11 +82,6 @@ public class RegistroContinuoControler implements Initializable {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-
 	}
 
 }

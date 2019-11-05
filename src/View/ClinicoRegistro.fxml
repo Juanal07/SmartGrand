@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -26,24 +25,24 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnSpan="2" GridPane.rowSpan="2">
                <children>
-                  <JFXTextField />
+                  <JFXTextField fx:id="tfNombre" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
-                  <JFXTextField />
+                  <JFXTextField fx:id="tfApellido" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" />
-                  <JFXTextField />
+                  <JFXTextField fx:id="tfCorreo" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Correo electronico" />
-                  <JFXTextField />
+                  <JFXTextField fx:id="tfDni" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DNI" />
-                  <JFXTextField />
+                  <JFXTextField fx:id="tfEspecialidad" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Especialidad" />
-                  <DatePicker />
+                  <DatePicker fx:id="dpFecha" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de nacimiento" />
-                  <JFXTextField />
+                  <JFXTextField fx:id="tfNacionalidad" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nacionalidad" />
-                  <JFXTextField />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Localidad" />
-                  <JFXTextField />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección" />
+                  <JFXTextField fx:id="tfCentroMedico" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Centro medico" />
+                  <JFXTextField fx:id="tfLicencia" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Número licencia" />
                </children>
             </VBox>
             <GridPane GridPane.columnSpan="2" GridPane.rowIndex="2">
@@ -55,8 +54,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
-                  <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
+                  <JFXButton fx:id="btnAtras" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#atrasRegistroContinuo" text="Atras" />
+                  <JFXButton fx:id="btnRegistrarse" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Registrarse" GridPane.columnIndex="1" />
                </children>
             </GridPane>
          </children>

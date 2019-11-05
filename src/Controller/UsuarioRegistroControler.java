@@ -1,20 +1,26 @@
 package Controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class UsuarioRegistroControler implements Initializable {
+public class UsuarioRegistroControler {
 	@FXML
-	public Button btnAtras;
+	private JFXButton btnAtras, btnRegistrarse;
+	@FXML
+	public JFXTextField fNombre, tfApellidos, tfLocalidad, tfDireccion, tfDNI, tfUsuario, tfPassword;
+
+	@FXML
+	public void pacienteRegsitrado(ActionEvent actionEvent) {
+		System.out.println("Paciente registrado...");
+		
+	}
 
 	@FXML
 	public void atrasRegContinuo(ActionEvent actionEvent) {
@@ -24,13 +30,23 @@ public class UsuarioRegistroControler implements Initializable {
 		// creamos la nueva
 		String vistaRegContinuo = "/View/RegistroContinuo.fxml";
 		String tituloVista = "Registro continuo";
-		crearVentana(vistaRegContinuo, tituloVista);
+		RegistroContinuoControler registroContinuoControler = new RegistroContinuoControler();
+		crearVentana(vistaRegContinuo, tituloVista, registroContinuoControler);
 	}
 
-	public void crearVentana(String vista, String titulo) {
+	public void verificarCampoVacio(String cadena) {
+		if (cadena.equals("")) {
+			System.out.println("campo vacion");
+		}else {
+			System.out.println("campo correcto");
+		}
+	}
+
+	public void crearVentana(String vista, String titulo, Object object) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(this.getClass().getResource(vista));
+			loader.setController(object);
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage sendStage = new Stage();
 			sendStage.setTitle(titulo);
@@ -55,11 +71,6 @@ public class UsuarioRegistroControler implements Initializable {
 			}
 		}
 		return true;
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-
 	}
 
 }

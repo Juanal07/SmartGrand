@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller.UsuarioRegistroControler">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -29,7 +29,7 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <JFXTextField>
+                        <JFXTextField fx:id="tfDNI">
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" top="30.0" />
                            </VBox.margin>
@@ -42,7 +42,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <JFXTextField>
+                        <JFXTextField fx:id="tfUsuario">
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" top="15.0" />
                            </VBox.margin>
@@ -55,7 +55,7 @@
                               <Insets left="20.0" right="20.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <JFXTextField>
+                        <JFXTextField fx:id="tfPassword">
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" top="15.0" />
                            </VBox.margin>
@@ -68,7 +68,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <JFXButton fx:id="btnRegistrarse" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Registrarse" textAlignment="CENTER">
+                        <JFXButton fx:id="btnRegistrarse" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#pacienteRegsitrado" text="Registrarse" textAlignment="CENTER">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -98,7 +98,7 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <JFXTextField labelFloat="true">
+                        <JFXTextField fx:id="tfNombre" labelFloat="true">
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" top="30.0" />
                            </VBox.margin>
@@ -114,7 +114,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <JFXTextField labelFloat="true">
+                        <JFXTextField fx:id="tfApellidos" labelFloat="true">
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" top="15.0" />
                            </VBox.margin>
@@ -130,7 +130,7 @@
                               <Insets left="20.0" right="20.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <JFXTextField labelFloat="true">
+                        <JFXTextField fx:id="tfLocalidad" labelFloat="true">
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" top="15.0" />
                            </VBox.margin>
@@ -146,7 +146,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <JFXTextField labelFloat="true">
+                        <JFXTextField fx:id="tfDireccion" labelFloat="true">
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" top="15.0" />
                            </VBox.margin>

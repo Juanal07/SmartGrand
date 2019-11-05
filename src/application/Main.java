@@ -1,6 +1,8 @@
 package application;
 
 import java.io.IOException;
+
+import Controller.LoginControler;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +32,8 @@ public class Main extends Application {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(this.getClass().getResource("/View/Login.fxml"));
 		loader.getClass().getResource("/View/Style.css");
-
+		LoginControler control = new LoginControler();
+		loader.setController(control);
 		loader.setRoot(content);
 		// ahora sobre el panel mypane cargamos la vista que dejamos en el FXMLLoader
 		Parent root = loader.load();

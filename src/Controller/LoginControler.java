@@ -17,7 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class LoginControler implements Initializable {
+public class LoginControler {
 	@FXML
 	public ImageView imgLogo;
 	@FXML
@@ -33,35 +33,30 @@ public class LoginControler implements Initializable {
 
 	@FXML
 	public void iniciarSesion(ActionEvent actionEvent) {
-		/*if (jfxtUsuario.getText().equals("") || jfxtPassword.getText().equals("")) {
-			System.out.println("ERROR:Vuleva a introducir los datos.");
-			//jfxtUsuario;
-		}
-		*/
 		String usuario = jfxtUsuario.getText();
 		String contrasena = jfxtPassword.getText();
 		System.out.println("Usuario: " + usuario + " -> Contraseña: " + contrasena);
-		jfxtUsuario.setText("Hola mundo java fx");
+		// jfxtUsuario.setText("Hola mundo java fx");
 		validation(usuario);
 	}
 
 	@FXML
 	public void registroContinuo(ActionEvent actionEvent) {
 		// esta line es para cerrar la ventana anterior
-	    Stage stage = (Stage) btnRegistrarse.getScene().getWindow();
+		Stage stage = (Stage) btnRegistrarse.getScene().getWindow();
 		stage.close();
 		// creamos la ventana
 		String vistaRegContinuo = "/View/RegistroContinuo.fxml";
 		String tituloVista = "RegistroContinuo";
-		Stage stageRegistroContinuo = new Stage();
-		crearVentana(vistaRegContinuo, tituloVista, stageRegistroContinuo);
+		RegistroContinuoControler registroContinuoControler = new RegistroContinuoControler();
+		crearVentana(vistaRegContinuo, tituloVista, registroContinuoControler);
 	}
 
-	public void crearVentana(String vista, String titulo, Stage stage) {
+	public void crearVentana(String vista, String titulo, Object object) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			//AnchorPane root = (AnchorPane) loader.load(getClass().getResource(vista).openStream());
 			loader.setLocation(this.getClass().getResource(vista));
+			loader.setController(object);
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage sendStage = new Stage();
 			sendStage.setTitle(titulo);
@@ -72,7 +67,7 @@ public class LoginControler implements Initializable {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void validation(String cadena) {
 		if (cadena.trim().equals("")) {
 			System.out.println("No existe cadena");
@@ -80,23 +75,4 @@ public class LoginControler implements Initializable {
 			System.out.println("Si existe cadena");
 		}
 	}
-
-	public boolean pedirSoloCadena(String cadena) {
-		try {
-			
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		
-		return false;
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("Cargando pantalla login...");
-
-		
-		
-	}
-
 }

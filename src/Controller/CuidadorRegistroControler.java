@@ -42,17 +42,16 @@ public class CuidadorRegistroControler implements Initializable {
 		// creamos la ventana
 		String vistaRegContinuo = "/View/RegistroContinuo.fxml";
 		String tituloVista = "RegistroContinuo";
-		Stage stageRegistroContinuo = new Stage();
-		crearVentana(vistaRegContinuo, tituloVista, stageRegistroContinuo);
+		RegistroContinuoControler registroContinuoControler = new RegistroContinuoControler();
+		crearVentana(vistaRegContinuo, tituloVista, registroContinuoControler);
 
 	}
 
-	public void crearVentana(String vista, String titulo, Stage stage) {
+	public void crearVentana(String vista, String titulo, Object object) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			// AnchorPane root = (AnchorPane)
-			// loader.load(getClass().getResource(vista).openStream());
 			loader.setLocation(this.getClass().getResource(vista));
+			loader.setController(object);
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage sendStage = new Stage();
 			sendStage.setTitle(titulo);
