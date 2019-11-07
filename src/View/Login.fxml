@@ -123,6 +123,11 @@
                               </HBox>
                            </children>
                         </VBox>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                           <image>
+                              <Image url="@../Image/logo%20sin%20fondo.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </GridPane>
                </children>
