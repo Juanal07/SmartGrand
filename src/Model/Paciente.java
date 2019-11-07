@@ -9,14 +9,10 @@ public class Paciente {
 	private String foto;
 	private String usuario;
 	private String password;
-	//hola mundo p
-
-	public Paciente() {
-
-	}
+	private String tipoUsuario;
 
 	public Paciente(String nombre, String apellidos, String dNI, String localidad, String direccion, String foto,
-			String usuario, String password) {
+			String usuario, String password, String tipoUsuario) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -26,6 +22,7 @@ public class Paciente {
 		this.foto = foto;
 		this.usuario = usuario;
 		this.password = password;
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	public String getNombre() {
@@ -90,6 +87,14 @@ public class Paciente {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 }

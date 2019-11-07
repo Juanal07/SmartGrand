@@ -7,7 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -15,15 +14,30 @@ public class UsuarioRegistroControler {
 	@FXML
 	private JFXButton btnAtras, btnRegistrarse;
 	@FXML
-	public TextField fNombre = new TextField(), tfApellidos = new TextField(), tfLocalidad = new TextField(),
-			tfDireccion = new TextField(), tfDNI = new TextField(), tfUsuario = new TextField(),
-			tfPassword = new TextField();
+	public JFXTextField tfNombre = new JFXTextField(), tfApellidos = new JFXTextField(),
+			tfLocalidad = new JFXTextField(), tfDireccion = new JFXTextField(), tfDNI = new JFXTextField(),
+			tfUsuario = new JFXTextField(), tfPassword = new JFXTextField();
 
 	@FXML
 	public void pacienteRegsitrado(ActionEvent actionEvent) {
 		System.out.println("Paciente registrado...");
-		String nombre = fNombre.getText();
-		System.out.println(nombre);
+		String nombre = tfNombre.getText();
+		String apellido = tfApellidos.getText();
+		String localidad = tfLocalidad.getText();
+		String direccion = tfDireccion.getText();
+		String dni = tfDNI.getText();
+		String usuario = tfUsuario.getText();
+		String password = tfPassword.getText();
+		System.out.println(
+				"Nombre: " + nombre + " -> apellido: " + apellido + " -> localidad: " + localidad + " -> direccion: "
+						+ direccion + " -> dni: " + dni + " -> usuario: " + usuario + " -> contraseña: " + password);
+		validation(nombre);
+		validation(nombre);
+		validation(nombre);
+		validation(nombre);
+		validation(nombre);
+		validation(nombre);
+		validation(nombre);
 	}
 
 	@FXML
@@ -75,6 +89,14 @@ public class UsuarioRegistroControler {
 			}
 		}
 		return true;
+	}
+
+	public void validation(String cadena) {
+		if (cadena.trim().equals("")) {
+			System.out.println("No existe cadena");
+		} else {
+			System.out.println("Si existe cadena");
+		}
 	}
 
 }
