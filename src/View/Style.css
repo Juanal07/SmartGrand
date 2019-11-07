@@ -16,11 +16,11 @@
 
 
 .forgetBtn{
-	-fx-text-fill: #385170;
+	-fx-text-fill: #ececec;
 }
 
 .forgetBtn:hover{
-	-fx-text-fill: #142d4c;
+	-fx-text-fill: #ececec;
 	-fx-underline: true;
 }
 
