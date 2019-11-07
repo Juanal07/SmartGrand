@@ -1,0 +1,17 @@
+[
+  {
+    "usuario": "Juan",
+    "password": "piramide",
+    "tipoUsuario": "paciente",
+  },
+  {
+    "usuario": "Fer",
+    "password": "piramide",
+    "tipoUsuario": "medico",
+  },
+  {
+    "usuario": "Sebas",
+    "password": "piramide",
+    "tipoUsuario": "cuidador",
+  }
+]
