@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="650.0" styleClass="rootPane" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="450.0" prefWidth="650.0" styleClass="rootPane" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -78,7 +78,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </JFXPasswordField>
-                              <JFXButton id="jfxtBtnIniciarSesion" fx:id="btnIniciarSesion" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#iniciarSesion" text="Iniciar sesion" textAlignment="CENTER" textFill="WHITE">
+                              <JFXButton id="jfxtBtnIniciarSesion" fx:id="btnIniciarSesion" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#iniciarSesion" styleClass="loginButton" text="Iniciar sesion" textAlignment="CENTER" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets left="30.0" right="30.0" top="30.0" />
                                  </VBox.margin>
