@@ -23,7 +23,7 @@ public class Main extends Application {
 			mainWindow();
 		} catch (IOException e) {
 			// TODO Auto-generated catch blockk
-			e.printStackTrace();
+			e.printStackTrace(); // hola que tal
 		}
 	}
 
