@@ -22,7 +22,6 @@
 .forgetBtn:hover{
 	-fx-text-fill: #142d4c;
 	-fx-underline: true;
-
 }
 
 .loginButton{
