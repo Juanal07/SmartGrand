@@ -1,17 +1,23 @@
 [
   {
-    "usuario": "Juan",
+    "usuario": "juancho",
     "password": "piramide",
+    "nombre": "Juan",
+    "apellido": Raya,
     "tipoUsuario": "paciente",
   },
   {
-    "usuario": "Fer",
-    "password": "piramide",
+    "usuario": "ferni",
+    "password": "123456",
+    "nombre": "Fernando",
+    "apellido": "Ribero",
     "tipoUsuario": "medico",
   },
   {
-    "usuario": "Sebas",
-    "password": "piramide",
-    "tipoUsuario": "cuidador",
+   "usuario": "pablito",
+    "password": "helado",
+    "nombre": "pablo",
+    "apellido": Garcia,
+    "tipoUsuario": "Cuidador",
   }
 ]
