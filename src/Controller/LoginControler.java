@@ -53,14 +53,22 @@ public class LoginControler {
 					// creamos la ventana
 					String vistaPaciente = "/View/VistaPaciente1.fxml";
 					String tituloVista = "vistaPaciente";
-					VistaPacientePrincipal registroContinuoControler = new VistaPacientePrincipal();
+					VistaPacientePrincipalController registroContinuoControler = new VistaPacientePrincipalController();
 					crearVentana(vistaPaciente, tituloVista, registroContinuoControler);
 					break;
 				case "medico":
-
+					// creamos la ventana
+					String vistaMedico = "/View/VistaMedico1.fxml";
+					String tituloVista2 = "vistaPaciente";
+					VistaMedicoPrincipalController vistaMedicoPrincipalController = new VistaMedicoPrincipalController();
+					crearVentana(vistaMedico, tituloVista2, vistaMedicoPrincipalController);
 					break;
 				case "cuidador":
-					
+					// creamos la ventana
+					String vistaCuidador = "/View/VistaCuidador1.fxml";
+					String tituloVista3 = "vistaPaciente";
+					VistaCuidadorPrincipalController vistaCuidadorPrincipalController = new VistaCuidadorPrincipalController();
+					crearVentana(vistaCuidador, tituloVista3, vistaCuidadorPrincipalController);
 					break;
 
 				default:
