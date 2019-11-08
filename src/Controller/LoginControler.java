@@ -4,6 +4,8 @@ import java.awt.List;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import Model.Persona;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -32,6 +34,8 @@ public class LoginControler {
 	public Button btnRegistrarse = new Button();
 	@FXML
 	public Label labelPregunta;
+	@FXML
+	public Label lbError = new Label();
 
 	@FXML
 	public void iniciarSesion(ActionEvent actionEvent) {
@@ -76,7 +80,9 @@ public class LoginControler {
 				}
 				break;
 			} else {
-				System.out.println("ERROR");
+				System.out.println("Error: Usuario o contraseña INCORRECTO.");
+				lbError.setText("Error: Usuario o contraseña INCORRECTO.");
+				//JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

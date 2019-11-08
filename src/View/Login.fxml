@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="650.0" styleClass="rootPane" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="450.0" prefWidth="650.0" styleClass="rootPane" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -52,9 +52,9 @@
                         <RowConstraints />
                     </rowConstraints>
                      <children>
-                        <ImageView fx:id="imgLogo" fitHeight="120.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                        <ImageView fx:id="imgLogo" fitHeight="109.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                            <image>
-                              <Image url="@../../../../Downloads/user.png" />
+                              <Image url="@../Image/logo%20sin%20fondo.png" />
                            </image>
                            <viewport>
                               <Rectangle2D />
@@ -89,6 +89,14 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </JFXButton>
+                              <Label fx:id="lbError" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER" textFill="#c62a2a">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Label>
                               <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                  <children>
                                     <Label fx:id="labelPregunta" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="forgetBtn" text="¿No tienes una cuenta?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
@@ -118,16 +126,11 @@
                                     </JFXButton>
                                  </children>
                                  <VBox.margin>
-                                    <Insets top="20.0" />
+                                    <Insets top="10.0" />
                                  </VBox.margin>
                               </HBox>
                            </children>
                         </VBox>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-                           <image>
-                              <Image url="@../Image/logo%20sin%20fondo.png" />
-                           </image>
-                        </ImageView>
                      </children>
                   </GridPane>
                </children>
