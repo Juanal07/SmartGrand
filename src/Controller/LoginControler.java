@@ -1,8 +1,10 @@
 package Controller;
 
+import java.awt.List;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Model.Persona;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,7 +39,38 @@ public class LoginControler {
 		String contrasena = jfxtPassword.getText();
 		System.out.println("Usuario: " + usuario + " -> Contraseña: " + contrasena);
 		GsonPersona gsonPersonas = new GsonPersona();
-		gsonPersonas.desserializarJsonAArray();
+		java.util.List<Persona> lista = GsonPersona.desserializarJsonAArray();
+		for (Persona p : lista) {
+			System.out.println("usuario json: " + p.getUsuario() + " -> password: " + p.getPassword());
+			if (usuario.equals(p.getUsuario()) && contrasena.equals(p.getPassword())) {
+				System.out.println("si esta el usuario");
+				String tUsu = p.getTipoUsuario();
+				// esta line es para cerrar la ventana anterior
+				Stage stage = (Stage) btnRegistrarse.getScene().getWindow();
+				stage.close();
+				switch (tUsu) {
+				case "paciente":
+					// creamos la ventana
+					String vistaPaciente = "/View/VistaPaciente1.fxml";
+					String tituloVista = "vistaPaciente";
+					VistaPacientePrincipal registroContinuoControler = new VistaPacientePrincipal();
+					crearVentana(vistaPaciente, tituloVista, registroContinuoControler);
+					break;
+				case "medico":
+
+					break;
+				case "cuidador":
+					
+					break;
+
+				default:
+					break;
+				}
+				break;
+			} else {
+				System.out.println("ERROR");
+			}
+		}
 	}
 
 	@FXML

@@ -14,20 +14,23 @@ import com.google.gson.reflect.TypeToken;
 import Model.Persona;
 
 public class GsonPersona {
-	public static void desserializarJsonAArray() {
-		
-		Gson gson = new Gson();
+	public static List<Persona> desserializarJsonAArray() {	
         String jsonInString = "usuarios.json";
-        try (Reader reader = new FileReader(jsonInString)) {	
+        List<Persona> listaPersonas = null;
+        try (Reader reader = new FileReader(jsonInString)) {
+        	Gson gson = new Gson();
         	Type tipoListaPersonas = new TypeToken<List<Persona>>(){}.getType();
         	List<Persona> personas = gson.fromJson(reader, tipoListaPersonas);
-        	for (int i = 0; i < personas.size(); i++) {
-				System.out.println("nombre: " + personas.get(i).getNombre() + " -> tipo usuario: " + personas.get(i).getTipoUsuario());
-			}
+        	
+        	listaPersonas = personas;
             
+        	/*for (int i = 0; i < listaPersonas.size(); i++) {
+				System.out.println("nombre: " + listaPersonas.get(i).getNombre() + " -> tipo usuario: " + listaPersonas.get(i).getTipoUsuario());
+			}
+			*/
         } catch (IOException e) {
             e.printStackTrace();
         }
-      
+		return listaPersonas;
 	}
 }
