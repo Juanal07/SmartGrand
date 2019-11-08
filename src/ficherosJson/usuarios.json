@@ -3,7 +3,7 @@
     "usuario": "juancho",
     "password": "piramide",
     "nombre": "Juan",
-    "apellido": Raya,
+    "apellido": "Raya",
     "tipoUsuario": "paciente",
   },
   {
@@ -17,7 +17,14 @@
    "usuario": "pablito",
     "password": "helado",
     "nombre": "Pablo",
-    "apellido": Garcia,
-    "tipoUsuario": "Cuidador",
+    "apellido": "Garcia",
+    "tipoUsuario": "cuidador",
+  },
+  {
+   "usuario": "pablito",
+    "password": "helado",
+    "nombre": "Pablo",
+    "apellido": "Garcia",
+    "tipoUsuario": "cuidador",
   }
 ]
