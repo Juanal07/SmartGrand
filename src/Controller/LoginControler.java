@@ -52,21 +52,21 @@ public class LoginControler {
 				case "paciente":
 					// creamos la ventana
 					String vistaPaciente = "/View/VistaPaciente1.fxml";
-					String tituloVista = "vistaPaciente";
+					String tituloVista = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 					VistaPacientePrincipalController registroContinuoControler = new VistaPacientePrincipalController();
 					crearVentana(vistaPaciente, tituloVista, registroContinuoControler);
 					break;
 				case "medico":
 					// creamos la ventana
 					String vistaMedico = "/View/VistaMedico1.fxml";
-					String tituloVista2 = "vistaPaciente";
+					String tituloVista2 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 					VistaMedicoPrincipalController vistaMedicoPrincipalController = new VistaMedicoPrincipalController();
 					crearVentana(vistaMedico, tituloVista2, vistaMedicoPrincipalController);
 					break;
 				case "cuidador":
 					// creamos la ventana
 					String vistaCuidador = "/View/VistaCuidador1.fxml";
-					String tituloVista3 = "vistaPaciente";
+					String tituloVista3 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 					VistaCuidadorPrincipalController vistaCuidadorPrincipalController = new VistaCuidadorPrincipalController();
 					crearVentana(vistaCuidador, tituloVista3, vistaCuidadorPrincipalController);
 					break;
