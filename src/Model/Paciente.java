@@ -1,44 +1,18 @@
 package Model;
 
-public class Paciente {
-	private String nombre;
-	private String apellidos;
+public class Paciente extends Persona {
 	private String DNI;
 	private String localidad;
 	private String direccion;
 	private String foto;
-	private String usuario;
-	private String password;
-	private String tipoUsuario;
 
-	public Paciente(String nombre, String apellidos, String dNI, String localidad, String direccion, String foto,
-			String usuario, String password, String tipoUsuario) {
-		super();
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.DNI = dNI;
+	public Paciente(String usuario, String password, String nombre, String apellido, String tipoUsuario, String dNI,
+			String localidad, String direccion, String foto) {
+		super(usuario, password, nombre, apellido, tipoUsuario);
+		DNI = dNI;
 		this.localidad = localidad;
 		this.direccion = direccion;
 		this.foto = foto;
-		this.usuario = usuario;
-		this.password = password;
-		this.tipoUsuario = tipoUsuario;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellidos() {
-		return apellidos;
-	}
-
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
 	}
 
 	public String getDNI() {
@@ -71,30 +45,6 @@ public class Paciente {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getTipoUsuario() {
-		return tipoUsuario;
-	}
-
-	public void setTipoUsuario(String tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
 	}
 
 }

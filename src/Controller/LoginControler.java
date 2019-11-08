@@ -36,8 +36,8 @@ public class LoginControler {
 		String usuario = jfxtUsuario.getText();
 		String contrasena = jfxtPassword.getText();
 		System.out.println("Usuario: " + usuario + " -> Contraseña: " + contrasena);
-		// jfxtUsuario.setText("Hola mundo java fx");
-		validation(usuario);
+		GsonPersona gsonPersonas = new GsonPersona();
+		gsonPersonas.desserializarJsonAArray();
 	}
 
 	@FXML

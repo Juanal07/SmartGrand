@@ -1,0 +1,23 @@
+[
+  {
+    "usuario": "juancho",
+    "password": "piramide",
+    "nombre": "Juan",
+    "apellido": "Raya",
+    "tipoUsuario": "paciente"
+  },
+  {
+    "usuario": "ferni",
+    "password": "123456",
+    "nombre": "Fernando",
+    "apellido": "Ribero",
+    "tipoUsuario": "medico"
+  },
+  {
+   "usuario": "pablito",
+    "password": "helado",
+    "nombre": "Pablo",
+    "apellido": "Garcia",
+    "tipoUsuario": "Cuidador"
+  }
+]
