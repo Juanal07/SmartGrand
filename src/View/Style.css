@@ -25,12 +25,14 @@
 }
 
 .loginButton{
+	-fx-font-size: 16pt;
 	-fx-background-color: #ececec;
 	-fx-text-fill: #142d4c;
 	-fx-background-radius: 5px;
 }
 
 .loginButton:hover{
+	-fx-font-size: 16pt;
 	-fx-background-color: transparent;
 	-fx-text-fill: #ececec;
 	-fx-background-radius: 5px;
@@ -41,12 +43,14 @@
 }
 
 .mainButton{
+	-fx-font-size: 16pt;
 	-fx-background-color: #ececec;
 	-fx-text-fill: #142d4c;
 	-fx-background-radius: 5px;
 }
 
 .mainButton:hover{
+	-fx-font-size: 16pt;
 	-fx-background-color: transparent;
 	-fx-text-fill: #142d4c;
 	-fx-background-radius: 5px;
@@ -57,10 +61,12 @@
 }
 
 .primerTitulo{	
+	-fx-font-size: 52pt;
 	-fx-text-fill: #142d4c;	
 }
 
 .segundoTitulo{	
+	-fx-font-size: 24pt;
 	-fx-text-fill: #142d4c;
 }
 

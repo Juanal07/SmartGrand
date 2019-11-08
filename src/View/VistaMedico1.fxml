@@ -6,16 +6,11 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="parent" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="314.0" layoutY="43.0" styleClass="primerTitulo" text="Médico">
+      <Label layoutX="286.0" layoutY="26.0" styleClass="primerTitulo" text="Médico">
          <font>
-            <Font size="52.0" />
+            <Font name="Candara" size="69.0" />
          </font>
       </Label>
       <Label fx:id="lbNombreMedico" layoutX="160.0" layoutY="118.0" />
-      <Label layoutX="64.0" layoutY="135.0" styleClass="primerTitulo" text="Bienvenido">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

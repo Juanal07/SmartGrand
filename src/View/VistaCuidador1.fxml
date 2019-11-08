@@ -12,10 +12,5 @@
          </font>
       </Label>
       <Label fx:id="lbNombreCuidador" layoutX="103.0" layoutY="123.0" />
-      <Label layoutX="68.0" layoutY="123.0" styleClass="primerTitulo" text="Bienvenido">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
