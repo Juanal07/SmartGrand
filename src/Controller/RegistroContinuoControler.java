@@ -14,28 +14,28 @@ import javafx.stage.Stage;
 
 public class RegistroContinuoControler {
 	@FXML
-	public Button btnUsuario;
+	public Button btnPaciente;
 	@FXML
 	public Button btnCuidador;
 	@FXML
 	public Button btnClinico;
 
 	@FXML
-	public void UsuarioRegistro(ActionEvent actionEvent) {
+	public void PacienteRegistro(ActionEvent actionEvent) {
 		// cerramos ventana
-		Stage stage = (Stage) btnUsuario.getScene().getWindow();
+		Stage stage = (Stage) btnPaciente.getScene().getWindow();
 		stage.close();
 		// creamos la nueva
-		String vistaRegContinuo = "/View/UsuarioRegistro.fxml";
+		String vistaRegContinuo = "/View/PacienteRegistro.fxml";
 		String tituloVista = "Registro para usuarios";
-		UsuarioRegistroControler usuarioRegistroControler = new UsuarioRegistroControler();
-		crearVentana(vistaRegContinuo, tituloVista, usuarioRegistroControler);
+		PacienteRegistroController PacienteRegistroController = new PacienteRegistroController();
+		crearVentana(vistaRegContinuo, tituloVista, PacienteRegistroController);
 	}
 
 	@FXML
 	public void atrasLogin(ActionEvent actionEvent) {
 		// cerramos ventana
-		Stage stage = (Stage) btnUsuario.getScene().getWindow();
+		Stage stage = (Stage) btnPaciente.getScene().getWindow();
 		stage.close();
 		// creamos la nueva
 		String vistaRegContinuo = "/View/Login.fxml";

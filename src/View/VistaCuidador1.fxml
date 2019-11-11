@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -12,5 +13,6 @@
          </font>
       </Label>
       <Label fx:id="lbNombreCuidador" layoutX="103.0" layoutY="123.0" />
+      <JFXButton layoutX="26.0" layoutY="66.0" styleClass="mainButton" stylesheets="@Style.css" text="Cerrar Sesion" />
    </children>
 </AnchorPane>

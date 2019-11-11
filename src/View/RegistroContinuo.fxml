@@ -37,7 +37,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXButton fx:id="btnUsuario" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#UsuarioRegistro" style="-fx-background-color: #385170 #385170; -fx-background-radius: 15;" text="Usuario" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                        <JFXButton fx:id="btnPaciente" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#PacienteRegistro" style="-fx-background-color: #385170 #385170; -fx-background-radius: 15;" text="Paciente" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.rowIndex="1">
                            <font>
                               <Font size="36.0" />
                            </font>
