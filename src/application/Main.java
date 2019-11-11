@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
 public class Main extends Application {
@@ -39,6 +40,8 @@ public class Main extends Application {
 		Parent root = loader.load();
 		Scene scene = new Scene(root, 800, 500);
 		// añade la escena al stage y la titula
+		Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
+		primaryStage.getIcons().add(icon);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Login");
 		primaryStage.show();

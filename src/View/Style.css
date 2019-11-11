@@ -5,22 +5,26 @@
  * #142d4c casi negro
  */
 
-.parent{
+.loginFondo{
+	-fx-background-color: linear-gradient(#ececec, #9fd3c7, #385170, #142d4c);
+}
+
+.fondo{
 	-fx-background-color: #9FD3C7; /*azul*/
 	-fx-background-color: linear-gradient(#ececec, #9FD3C7);
 }
 
-.rootPane{
-	-fx-background-color: linear-gradient(#ececec, #9fd3c7, #385170, #142d4c);
-}
-
-
-.forgetBtn{
+.retBtn{
+	-fx-font-family: System;
+	-fx-font-size: 15pt;
 	-fx-text-fill: #ececec;
 }
 
-.forgetBtn:hover{
+.retBtn:hover{
+	-fx-font-family: Systemf;
+	-fx-font-size: 15pt;
 	-fx-text-fill: #ececec;
+	-fx-font-weight: bold;
 	-fx-underline: true;
 }
 

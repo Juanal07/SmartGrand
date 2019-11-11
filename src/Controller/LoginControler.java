@@ -40,13 +40,13 @@ public class LoginControler {
 	@FXML
 	public void iniciarSesion(ActionEvent actionEvent) {
 		String usuario = jfxtUsuario.getText();
-		String contrasena = jfxtPassword.getText();
-		System.out.println("Usuario: " + usuario + " -> Contraseña: " + contrasena);
+		String password = jfxtPassword.getText();
+		System.out.println("Usuario: " + usuario + " -> password: " + password);
 		GsonPersona gsonPersonas = new GsonPersona();
 		java.util.List<Persona> lista = GsonPersona.desserializarJsonAArray();
 		for (Persona p : lista) {
 			System.out.println("usuario json: " + p.getUsuario() + " -> password: " + p.getPassword());
-			if (usuario.equals(p.getUsuario()) && contrasena.equals(p.getPassword())) {
+			if (usuario.equals(p.getUsuario()) && password.equals(p.getPassword())) {
 				System.out.println("si esta el usuario");
 				String tUsu = p.getTipoUsuario();
 				// esta line es para cerrar la ventana anterior
@@ -80,9 +80,8 @@ public class LoginControler {
 				}
 				break;
 			} else {
-				System.out.println("Error: Usuario o contraseña INCORRECTO.");
-				lbError.setText("Error: Usuario o contraseña INCORRECTO.");
-				//JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
+				System.out.println("Error: Usuario o password INCORRECTO.");
+				lbError.setText("Error: Usuario o password INCORRECTO.");
 			}
 		}
 	}
