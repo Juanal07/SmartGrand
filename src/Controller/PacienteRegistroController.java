@@ -25,10 +25,10 @@ public class PacienteRegistroController {
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido);
+		validation(usuario);
+		validation(password);
 		validation(nombre);
-		validation(nombre);
-		validation(nombre);
-		validation(nombre);
+		validation(apellido);
 		// cerramos ventana
 		Stage stage = (Stage) btnRegistrarse.getScene().getWindow();
 		stage.close();
