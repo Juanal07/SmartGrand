@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="fondo" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="271.0" layoutY="23.0" styleClass="primerTitulo" text="Paciente">
+      <Label layoutX="271.0" styleClass="primerTitulo" text="Paciente">
          <font>
             <Font size="52.0" />
          </font>
       </Label>
+      <JFXButton layoutX="65.0" layoutY="27.0" styleClass="mainButton" stylesheets="@Style.css" text="Cerrar Sesion" />
    </children>
 </AnchorPane>

@@ -96,5 +96,19 @@
     "nombre": "Fernando",
     "apellido": "Ribero",
     "tipoUsuario": "medico"
+  },
+  {
+    "usuario": "1234",
+    "password": "1234",
+    "nombre": "1234",
+    "apellido": "1234",
+    "tipoUsuario": "paciente"
+  },
+  {
+    "usuario": "0",
+    "password": "0",
+    "nombre": "0",
+    "apellido": "0",
+    "tipoUsuario": "paciente"
   }
 ]
