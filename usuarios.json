@@ -96,19 +96,5 @@
     "nombre": "Fernando",
     "apellido": "Ribero",
     "tipoUsuario": "medico"
-  },
-  {
-    "usuario": "juanito",
-    "password": "a",
-    "nombre": "aa",
-    "apellido": "a",
-    "tipoUsuario": "paciente"
-  },
-  {
-    "usuario": "2452fhi",
-    "password": "oyhuvgvgfh",
-    "nombre": "kjhv89uyfvhv",
-    "apellido": "uhvg689v",
-    "tipoUsuario": "paciente"
   }
 ]

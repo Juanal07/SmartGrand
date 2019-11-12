@@ -30,37 +30,30 @@ public class PacienteRegistroController {
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
-	    System.out.println("Paciente registrado...");
+	    System.out.println("Paciente registrado con exito");
 		String usuario = tfUsuario.getText();
 		String password = tfPassword.getText();
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String tipoUsuario = "paciente";
-		System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);
-		
-		Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario);
-		List<Persona> lista = GsonPersona.desserializarJsonAArray();		
-		lista.add(nuevo);
-		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+		//System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);		
+		Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario); //Creamos objeto persona con los datos introducidos
+		List<Persona> lista = GsonPersona.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
+		lista.add(nuevo); //añadimos el nuevo usuario a la lista
+		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
 		String representacionBonita = prettyGson.toJson(lista);
-		System.out.println(representacionBonita);
-		
-	    BufferedWriter bw;
+		//System.out.println(representacionBonita);		
+	    BufferedWriter bw; //Escribimos la info en el archivo json
 		bw = new BufferedWriter(new FileWriter("C:\\Users\\juana\\git\\proyecto1-smart-grand\\usuarios.json"));
         bw.write(representacionBonita);
-        bw.close();
-		
-		// cerramos ventana
-		Stage stage = (Stage) btnRegistrarse.getScene().getWindow();
-		stage.close();
-		// creamos la nueva
-		String vistaRegPac = "/View/Login.fxml";
+        bw.close();				
+		Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
+		stage.close();		
+		String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
 		String tituloVista = "Login";
 		LoginControler loginControler = new LoginControler();
 		crearVentana(vistaRegPac, tituloVista, loginControler);
 	}
-	
-
 
 	@FXML
 	public void atrasRegContinuo(ActionEvent actionEvent) {

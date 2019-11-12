@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
 public class Main extends Application {
+	
 	private Stage primaryStage;
 	@FXML
 	public AnchorPane content;
@@ -22,28 +23,23 @@ public class Main extends Application {
 		this.primaryStage = primaryStage;
 		try {
 			mainWindow();
-		} catch (IOException e) {
-			// TODO Auto-generated catch blockk
-			e.printStackTrace(); // hola que tal
+		} catch (IOException e) {			
+			e.printStackTrace(); 
 		}
 	}
 
-	private void mainWindow() throws IOException {
-		// primero cargamos la vista fxml en el FXMLLoader.
-		FXMLLoader loader = new FXMLLoader();
+	private void mainWindow() throws IOException {		
+		FXMLLoader loader = new FXMLLoader(); // primero cargamos la vista fxml en el FXMLLoader.
 		loader.setLocation(this.getClass().getResource("/View/Login.fxml"));
 		loader.getClass().getResource("/View/Style.css");
 		LoginControler control = new LoginControler();
 		loader.setController(control);
 		loader.setRoot(content);
-		// ahora sobre el panel mypane cargamos la vista que dejamos en el FXMLLoader
-		Parent root = loader.load();
-		Scene scene = new Scene(root, 800, 500);
-		// aÃ±ade la escena al stage y la titula
-		Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
-		primaryStage.getIcons().add(icon);
-		// añade icono a la app
-		primaryStage.setScene(scene);
+		Parent root = loader.load(); // ahora sobre el panel mypane cargamos la vista que dejamos en el FXMLLoader
+		Scene scene = new Scene(root, 800, 500); 		
+		Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // añade icono a la app	
+		primaryStage.getIcons().add(icon);		
+		primaryStage.setScene(scene); // aÃ±ade la escena al stage y la titula
 		primaryStage.setTitle("Login");
 		primaryStage.show();
 	}
