@@ -42,6 +42,7 @@ public class Main extends Application {
 		// aÃ±ade la escena al stage y la titula
 		Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 		primaryStage.getIcons().add(icon);
+		// añade icono a la app
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Login");
 		primaryStage.show();

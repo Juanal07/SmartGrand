@@ -110,7 +110,7 @@
                                           <Insets left="20.0" right="20.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <JFXButton id="jfxtBtnRegistrarse" fx:id="btnRegistrarse" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#registroContinuo" styleClass="retBtn" text="Regístrate" textAlignment="CENTER" textFill="WHITE">
+                                    <JFXButton id="jfxtBtnRegistrarse" fx:id="btnRegistrarse" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#registroContinuo" styleClass="retBtn" text="Regístrate" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font size="15.0" />
                                        </font>

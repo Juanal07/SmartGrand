@@ -18,6 +18,7 @@
 	-fx-font-family: System;
 	-fx-font-size: 15pt;
 	-fx-text-fill: #ececec;
+	-fx-font-weight: bold;
 }
 
 .retBtn:hover{

@@ -1,34 +1,56 @@
 package Controller;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import Controller.GsonPersona;
+import Model.Persona;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class PacienteRegistroController {
 	@FXML
-	private JFXButton btnAtras, btnRegistrarse;
+	private Button btnAtras, btnRegistrarse;
 	@FXML
-	public JFXTextField tfUsuario = new JFXTextField(), tfPassword = new JFXTextField(),
-			tfNombre = new JFXTextField(), tfApellido = new JFXTextField();
+	public TextField tfUsuario = new TextField(), tfPassword = new TextField(),
+			tfNombre = new TextField(), tfApellido = new TextField();
 
 	@FXML
-	public void pacienteRegistrado(ActionEvent actionEvent) {
-		System.out.println("Paciente registrado...");
+	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
+	    System.out.println("Paciente registrado...");
 		String usuario = tfUsuario.getText();
 		String password = tfPassword.getText();
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
-		System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido);
-		validation(usuario);
-		validation(password);
-		validation(nombre);
-		validation(apellido);
+		String tipoUsuario = "paciente";
+		System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);
+		
+		Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario);
+		List<Persona> lista = GsonPersona.desserializarJsonAArray();		
+		lista.add(nuevo);
+		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+		String representacionBonita = prettyGson.toJson(lista);
+		System.out.println(representacionBonita);
+		
+		/*String ruta = "/usuarios.json";
+	    BufferedWriter bw;
+		bw = new BufferedWriter(new FileWriter(ruta));
+        bw.write(representacionBonita);
+        bw.close();*/
+		
 		// cerramos ventana
 		Stage stage = (Stage) btnRegistrarse.getScene().getWindow();
 		stage.close();
@@ -38,6 +60,8 @@ public class PacienteRegistroController {
 		LoginControler loginControler = new LoginControler();
 		crearVentana(vistaRegPac, tituloVista, loginControler);
 	}
+	
+
 
 	@FXML
 	public void atrasRegContinuo(ActionEvent actionEvent) {
