@@ -96,12 +96,5 @@
     "nombre": "Ana",
     "apellido": "Pastor",
     "tipoUsuario": "medico"
-  },
-  {
-    "usuario": "bor",
-    "password": "1234",
-    "nombre": "Borja",
-    "apellido": "Perez",
-    "tipoUsuario": "medico"
   }
 ]
