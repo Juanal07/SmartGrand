@@ -45,11 +45,10 @@ public class PacienteRegistroController {
 		String representacionBonita = prettyGson.toJson(lista);
 		System.out.println(representacionBonita);
 		
-		/*String ruta = "/usuarios.json";
 	    BufferedWriter bw;
-		bw = new BufferedWriter(new FileWriter(ruta));
+		bw = new BufferedWriter(new FileWriter("C:\\Users\\juana\\git\\proyecto1-smart-grand\\usuarios.json"));
         bw.write(representacionBonita);
-        bw.close();*/
+        bw.close();
 		
 		// cerramos ventana
 		Stage stage = (Stage) btnRegistrarse.getScene().getWindow();
