@@ -41,13 +41,13 @@ public class LoginControler {
 	public void iniciarSesion(ActionEvent actionEvent) {
 		String usuario = jfxtUsuario.getText();
 		String password = jfxtPassword.getText();
-		System.out.println("Usuario: " + usuario + " -> password: " + password);
+		//System.out.println("Usuario: " + usuario + " -> password: " + password);
 		GsonPersona gsonPersonas = new GsonPersona();
 		java.util.List<Persona> lista = GsonPersona.desserializarJsonAArray();
 		for (Persona p : lista) {
-			System.out.println("usuario json: " + p.getUsuario() + " -> password: " + p.getPassword());
+			//System.out.println("usuario json: " + p.getUsuario() + " -> password: " + p.getPassword());
 			if (usuario.equals(p.getUsuario()) && password.equals(p.getPassword())) {
-				System.out.println("si esta el usuario");
+				//System.out.println("Si esta el usuario");
 				String tUsu = p.getTipoUsuario();
 				// esta line es para cerrar la ventana anterior
 				Stage stage = (Stage) btnRegistrarse.getScene().getWindow();
@@ -80,7 +80,7 @@ public class LoginControler {
 				}
 				break;
 			} else {
-				System.out.println("Error: Usuario o password INCORRECTO.");
+				//System.out.println("Error: Usuario o password INCORRECTO.");
 				lbError.setText("Error: Usuario o password INCORRECTO.");
 			}
 		}

@@ -16,99 +16,92 @@
   {
     "usuario": "cuidador3",
     "password": "1234",
-    "nombre": "Pablo",
-    "apellido": "Garcia",
+    "nombre": "Sebas",
+    "apellido": "Quiyanas",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "cuidador4",
-    "password": "perro",
-    "nombre": "Pablo",
-    "apellido": "Garcia",
+    "password": "1234",
+    "nombre": "Gonzalo",
+    "apellido": "Vizoso",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "cuidador5",
-    "password": "piramide",
-    "nombre": "Juan",
-    "apellido": "Raya",
+    "password": "1234",
+    "nombre": "Borja",
+    "apellido": "Garcia",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "cuidador6",
-    "password": "123456",
-    "nombre": "Fernando",
-    "apellido": "Ribero",
+    "password": "1234",
+    "nombre": "Sergio",
+    "apellido": "Garcia",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "cuidador7",
-    "password": "helado",
-    "nombre": "Pablo",
+    "password": "1234",
+    "nombre": "Juanpe",
     "apellido": "Garcia",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "cuidador8",
-    "password": "perro",
+    "password": "1234",
     "nombre": "Pablo",
-    "apellido": "Garcia",
+    "apellido": "Casado",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "paciente1",
     "password": "1234",
-    "nombre": "Juan",
-    "apellido": "Raya",
+    "nombre": "Pedro",
+    "apellido": "Sanchez",
     "tipoUsuario": "paciente"
   },
   {
     "usuario": "paciente2",
     "password": "1234",
-    "nombre": "Fernando",
-    "apellido": "Ribero",
+    "nombre": "Santiago",
+    "apellido": "Abascal",
     "tipoUsuario": "paciente"
   },
   {
     "usuario": "paciente3",
     "password": "1234",
-    "nombre": "Pablo",
-    "apellido": "Garcia",
+    "nombre": "Albert",
+    "apellido": "Rivera",
     "tipoUsuario": "paciente"
   },
   {
     "usuario": "paciente4",
-    "password": "perro",
+    "password": "1234",
     "nombre": "Pablo",
-    "apellido": "Garcia",
+    "apellido": "Iglesias",
     "tipoUsuario": "paciente"
   },
   {
     "usuario": "medico1",
-    "password": "piramide",
-    "nombre": "Juan",
-    "apellido": "Raya",
+    "password": "1234",
+    "nombre": "Irene",
+    "apellido": "Montero",
     "tipoUsuario": "medico"
   },
   {
     "usuario": "medico2",
-    "password": "123456",
-    "nombre": "Fernando",
-    "apellido": "Ribero",
+    "password": "1234",
+    "nombre": "Ana",
+    "apellido": "Pastor",
     "tipoUsuario": "medico"
   },
   {
-    "usuario": "1234",
+    "usuario": "bor",
     "password": "1234",
-    "nombre": "1234",
-    "apellido": "1234",
-    "tipoUsuario": "paciente"
-  },
-  {
-    "usuario": "0",
-    "password": "0",
-    "nombre": "0",
-    "apellido": "0",
-    "tipoUsuario": "paciente"
+    "nombre": "Borja",
+    "apellido": "Perez",
+    "tipoUsuario": "medico"
   }
 ]

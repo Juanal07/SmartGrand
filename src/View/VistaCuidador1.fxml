@@ -12,7 +12,6 @@
             <Font size="52.0" />
          </font>
       </Label>
-      <Label fx:id="lbNombreCuidador" layoutX="103.0" layoutY="123.0" />
       <JFXButton layoutX="57.0" layoutY="27.0" styleClass="mainButton" stylesheets="@Style.css" text="Cerrar Sesion" />
    </children>
 </AnchorPane>
