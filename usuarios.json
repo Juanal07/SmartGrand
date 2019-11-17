@@ -96,5 +96,26 @@
     "nombre": "Ana",
     "apellido": "Pastor",
     "tipoUsuario": "medico"
+  },
+  {
+    "usuario": "fer",
+    "password": "fer",
+    "nombre": "fer",
+    "apellido": "fer",
+    "tipoUsuario": "paciente"
+  },
+  {
+    "usuario": "",
+    "password": "",
+    "nombre": "",
+    "apellido": "",
+    "tipoUsuario": "paciente"
+  },
+  {
+    "usuario": "hola",
+    "password": "hola",
+    "nombre": "hola",
+    "apellido": "hola",
+    "tipoUsuario": "paciente"
   }
 ]
