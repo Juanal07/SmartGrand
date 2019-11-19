@@ -10,7 +10,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
-import Controller.GsonPersona;
+import Controller.GsonGeneral;
 import Model.Persona;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -67,7 +67,7 @@ public class ClinicoRegistroControler {
 		if(usuario != "" && password != "" && nombre != "" && apellido != "") {
 			//System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);		
 			Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario); //Creamos objeto persona con los datos introducidos
-			List<Persona> lista = GsonPersona.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
+			List<Persona> lista = GsonGeneral.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
 			lista.add(nuevo); //a�adimos el nuevo usuario a la lista
 			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
 			String representacionBonita = prettyGson.toJson(lista);
