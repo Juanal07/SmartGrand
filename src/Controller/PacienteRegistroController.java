@@ -19,11 +19,22 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class PacienteRegistroController {
+
 	@FXML
 	private Button btnAtras, btnRegistrarse;
+	@FXML
+	private Label lbErrorUsuario;
+	@FXML
+	private Label lbErrorPassword;
+	@FXML
+	private Label lbErrorNombre;
+	@FXML
+	private Label lbErrorApellido;
+	
 	@FXML
 	public TextField tfUsuario = new TextField(), tfPassword = new TextField(),
 			tfNombre = new TextField(), tfApellido = new TextField();
@@ -32,14 +43,23 @@ public class PacienteRegistroController {
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
 		String usuario = "", password= "", nombre = "", apellido = "", tipoUsuario = "";
 	    if(tfUsuario.getText().matches("^[a-zA-Z0-9._-]{3,}$")) {
+	    	lbErrorUsuario.setText("");
 	    	usuario = tfUsuario.getText().intern();
+	    }else{
+	    	lbErrorUsuario.setText("Error! Nombre de usuario incorrecto.");
 	    }
 	    if(tfNombre.getText().matches("^[a-zA-Z]{2,}$")) {
+	    	lbErrorNombre.setText("");
 	    	nombre = tfNombre.getText().intern();
+	    }else {
+	    	lbErrorNombre.setText("Error! Nombre incorrecto.");
 	    }
 	    
 	    if(tfApellido.getText().matches("^[a-zA-Z]{2,}$")) {
+	    	lbErrorApellido.setText("");
 	    	apellido = tfApellido.getText().intern();
+	    }else {
+	    	lbErrorApellido.setText("Error! Apellido incorrecto.");
 	    }
 
 		password = tfPassword.getText().intern();
