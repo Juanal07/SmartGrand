@@ -26,10 +26,6 @@ public class GsonPersona {
         	
         	listaPersonas = personas;
             
-        	/*for (int i = 0; i < listaPersonas.size(); i++) {
-				System.out.println("nombre: " + listaPersonas.get(i).getNombre() + " -> tipo usuario: " + listaPersonas.get(i).getTipoUsuario());
-			}
-			*/
         } catch (IOException e) {
             e.printStackTrace();
         }
