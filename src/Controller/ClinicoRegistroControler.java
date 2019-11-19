@@ -30,33 +30,49 @@ public class ClinicoRegistroControler {
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
-	    System.out.println("Medico registrado con exito");
-		String usuario = tfUsuario.getText();
-		String password = tfPassword.getText();
-		String nombre = tfNombre.getText();
-		String apellido = tfApellido.getText();
-		String tipoUsuario = "medico";
-		//System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);		
-		Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario); //Creamos objeto persona con los datos introducidos
-		List<Persona> lista = GsonPersona.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
-		lista.add(nuevo); //añadimos el nuevo usuario a la lista
-		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
-		String representacionBonita = prettyGson.toJson(lista);
-		//System.out.println(representacionBonita);		
-		try{
-			BufferedWriter bw; //Escribimos la info en el archivo json
-			bw = new BufferedWriter(new FileWriter("usuarios.json"));
-		    bw.write(representacionBonita);
-		    bw.close();				 
-		} catch (IOException ioe){
-		     ioe.printStackTrace();
-		  }
-		Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
-		stage.close();		
-		String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
-		String tituloVista = "Login";
-		LoginControler loginControler = new LoginControler();
-		crearVentana(vistaRegPac, tituloVista, loginControler);
+		String usuario = "", password= "", nombre = "", apellido = "", tipoUsuario = "";
+	    if(tfUsuario.getText().matches("^[a-zA-Z0-9._-]{3,}$")) {
+	    	usuario = tfUsuario.getText().intern();
+	    }
+	    if(tfNombre.getText().matches("^[a-zA-Z]{2,}$")) {
+	    	nombre = tfNombre.getText().intern();
+	    }
+	    
+	    if(tfApellido.getText().matches("^[a-zA-Z]{2,}$")) {
+	    	apellido = tfApellido.getText().intern();
+	    }
+
+		password = tfPassword.getText().intern();
+		
+		tipoUsuario = "clinico";
+		if(usuario != "" && password != "" && nombre != "" && apellido != "") {
+			//System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);		
+			Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario); //Creamos objeto persona con los datos introducidos
+			List<Persona> lista = GsonPersona.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
+			lista.add(nuevo); //aï¿½adimos el nuevo usuario a la lista
+			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
+			String representacionBonita = prettyGson.toJson(lista);
+			//System.out.println(representacionBonita);		
+			try{
+				BufferedWriter bw; //Escribimos la info en el archivo json
+				bw = new BufferedWriter(new FileWriter("usuarios.json"));
+			    bw.write(representacionBonita);
+			    bw.close();				 
+			} catch (IOException ioe){
+			     ioe.printStackTrace();
+			  }
+			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
+			stage.close();		
+			String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
+			String tituloVista = "Login";
+			LoginControler loginControler = new LoginControler();
+			crearVentana(vistaRegPac, tituloVista, loginControler);
+			//label indicando que se ha registrado con exito. en la ventana de iniciar sesion
+			System.out.println("Medico registrado con exito");
+		} else {
+			// mensaje de que falta algun campo
+		}
+		
 	}
 
 	@FXML

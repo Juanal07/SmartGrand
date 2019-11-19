@@ -117,5 +117,47 @@
     "nombre": "hola",
     "apellido": "hola",
     "tipoUsuario": "paciente"
+  },
+  {
+    "usuario": "fer",
+    "password": "fer",
+    "nombre": "fer",
+    "apellido": "fer",
+    "tipoUsuario": "paciente"
+  },
+  {
+    "usuario": "fer",
+    "password": "fer",
+    "nombre": "fer",
+    "apellido": "fer",
+    "tipoUsuario": "paciente"
+  },
+  {
+    "usuario": "ferrivero",
+    "password": "holaquetal",
+    "nombre": "fer",
+    "apellido": "rivero",
+    "tipoUsuario": "paciente"
+  },
+  {
+    "usuario": "kkk",
+    "password": "kkk",
+    "nombre": "hola",
+    "apellido": "hola",
+    "tipoUsuario": "paciente"
+  },
+  {
+    "usuario": "hola",
+    "password": "hola",
+    "nombre": "hola",
+    "apellido": "hola",
+    "tipoUsuario": "paciente"
+  },
+  {
+    "usuario": "fer",
+    "password": "fer",
+    "nombre": "fer",
+    "apellido": "fer",
+    "tipoUsuario": "cuidador"
   }
 ]
