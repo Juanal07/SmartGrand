@@ -27,5 +27,9 @@
             <Font size="15.0" />
          </font>
       </JFXButton>
+      <Label fx:id="lbErrorUsuario" layoutX="479.0" layoutY="133.0" textFill="RED" />
+      <Label fx:id="lbErrorPassword" layoutX="479.0" layoutY="211.0" textFill="RED" />
+      <Label fx:id="lbErrorNombre" layoutX="479.0" layoutY="289.0" textFill="RED" />
+      <Label fx:id="lbErrorApellido" layoutX="479.0" layoutY="368.0" textFill="RED" />
    </children>
 </AnchorPane>

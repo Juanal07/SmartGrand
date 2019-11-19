@@ -173,5 +173,40 @@
     "nombre": "fer",
     "apellido": "rivero",
     "tipoUsuario": "paciente"
+  },
+  {
+    "usuario": "CR7",
+    "password": "halamadrid",
+    "nombre": "Cristiano",
+    "apellido": "Ronaldo",
+    "tipoUsuario": "cuidador"
+  },
+  {
+    "usuario": "hola",
+    "password": "hola",
+    "nombre": "hola",
+    "apellido": "hola",
+    "tipoUsuario": "clinico"
+  },
+  {
+    "usuario": "kb9",
+    "password": "halamadrid",
+    "nombre": "karim",
+    "apellido": "benzema",
+    "tipoUsuario": "medico"
+  },
+  {
+    "usuario": "hola",
+    "password": "hola",
+    "nombre": "hola",
+    "apellido": "hola",
+    "tipoUsuario": "medico"
+  },
+  {
+    "usuario": "libo",
+    "password": "hola",
+    "nombre": "libo",
+    "apellido": "libo",
+    "tipoUsuario": "paciente"
   }
 ]
