@@ -159,5 +159,19 @@
     "nombre": "fer",
     "apellido": "fer",
     "tipoUsuario": "cuidador"
+  },
+  {
+    "usuario": "kkk",
+    "password": "hola",
+    "nombre": "fer",
+    "apellido": "rivero",
+    "tipoUsuario": "paciente"
+  },
+  {
+    "usuario": "fernando9",
+    "password": "hola",
+    "nombre": "fer",
+    "apellido": "rivero",
+    "tipoUsuario": "paciente"
   }
 ]

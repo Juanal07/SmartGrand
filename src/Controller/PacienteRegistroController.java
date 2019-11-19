@@ -43,17 +43,20 @@ public class PacienteRegistroController {
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
 		String usuario = "", password= "", nombre = "", apellido = "", tipoUsuario = "";
 	    if(tfUsuario.getText().matches("^[a-zA-Z0-9._-]{3,}$")) {
+	    	lbErrorUsuario.setText("");
 	    	usuario = tfUsuario.getText().intern();
 	    }else{
 	    	lbErrorUsuario.setText("Error! Nombre de usuario incorrecto.");
 	    }
 	    if(tfNombre.getText().matches("^[a-zA-Z]{2,}$")) {
+	    	lbErrorNombre.setText("");
 	    	nombre = tfNombre.getText().intern();
 	    }else {
 	    	lbErrorNombre.setText("Error! Nombre incorrecto.");
 	    }
 	    
 	    if(tfApellido.getText().matches("^[a-zA-Z]{2,}$")) {
+	    	lbErrorApellido.setText("");
 	    	apellido = tfApellido.getText().intern();
 	    }else {
 	    	lbErrorApellido.setText("Error! Apellido incorrecto.");
