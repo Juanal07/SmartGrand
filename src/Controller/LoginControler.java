@@ -55,10 +55,10 @@ public class LoginControler {
 				switch (tUsu) {
 				case "paciente":
 					// creamos la ventana
-					String vistaPaciente = "/View/VistaPaciente1.fxml";
+					String vistaPaciente = "/View/HomePaciente.fxml";
 					String tituloVista = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
-					VistaPacientePrincipalController registroContinuoControler = new VistaPacientePrincipalController();
-					crearVentana(vistaPaciente, tituloVista, registroContinuoControler);
+					ControllerHomePaciente controllerHomePaciente = new ControllerHomePaciente();
+					crearVentana(vistaPaciente, tituloVista, controllerHomePaciente);
 					break;
 				case "medico":
 					// creamos la ventana
