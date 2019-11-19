@@ -42,8 +42,8 @@ public class LoginControler {
 		String usuario = jfxtUsuario.getText();
 		String password = jfxtPassword.getText();
 		//System.out.println("Usuario: " + usuario + " -> password: " + password);
-		GsonPersona gsonPersonas = new GsonPersona();
-		java.util.List<Persona> lista = GsonPersona.desserializarJsonAArray();
+		GsonGeneral gsonPersonas = new GsonGeneral();
+		java.util.List<Persona> lista = GsonGeneral.desserializarJsonAArray();
 		for (Persona p : lista) {
 			//System.out.println("usuario json: " + p.getUsuario() + " -> password: " + p.getPassword());
 			if (usuario.equals(p.getUsuario()) && password.equals(p.getPassword())) {

@@ -4,15 +4,13 @@ public class Paciente extends Persona {
 	private String DNI;
 	private String localidad;
 	private String direccion;
-	private String foto;
 
 	public Paciente(String usuario, String password, String nombre, String apellido, String tipoUsuario, String dNI,
-			String localidad, String direccion, String foto) {
+			String localidad, String direccion) {
 		super(usuario, password, nombre, apellido, tipoUsuario);
-		DNI = dNI;
+		this.DNI = dNI;
 		this.localidad = localidad;
 		this.direccion = direccion;
-		this.foto = foto;
 	}
 
 	public String getDNI() {
@@ -37,14 +35,6 @@ public class Paciente extends Persona {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
 	}
 
 }

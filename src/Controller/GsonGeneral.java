@@ -14,8 +14,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 
 import Model.Persona;
+import Model.Tickets;
 
-public class GsonPersona {
+public class GsonGeneral {
 	public static List<Persona> desserializarJsonAArray() {	
         String jsonInString = "usuarios.json";
         List<Persona> listaPersonas = null;
@@ -30,6 +31,22 @@ public class GsonPersona {
             e.printStackTrace();
         }
 		return listaPersonas;
+	}
+
+	public static List<Tickets> desserializarJsonAArrayTicket() {	
+        String jsonInString = "jsonTickets.json";
+        List<Tickets> listaTickets = null;
+        try (Reader reader = new FileReader(jsonInString)) {
+        	Gson gson = new Gson();
+        	Type tipoListaPersonas = new TypeToken<List<Persona>>(){}.getType();
+        	List<Tickets> tickets = gson.fromJson(reader, tipoListaPersonas);
+        	
+        	listaTickets = tickets;
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return listaTickets;
 	}
 
 
