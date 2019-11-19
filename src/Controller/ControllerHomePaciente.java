@@ -20,7 +20,7 @@ public class ControllerHomePaciente {
 	
 
 	@FXML
-	public void enviarMSM() {
+	public void enviarMSM() { 
 		System.out.println(jfxTaPaciente.getText());
 		jfxTaPaciente.setText("");
 		
