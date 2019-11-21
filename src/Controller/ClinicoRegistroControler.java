@@ -69,7 +69,7 @@ public class ClinicoRegistroControler {
 	    	lbErrorDni.setText("");
 	    	apellido = tfDni.getText().intern();
 	    }else {
-	    	lbErrorDni.setText("Error! DNI incorrecto.");
+	    	lbErrorDni.setText("Error! DNI incorrecto."); //
 	    }
 
 		password = tfPassword.getText().intern();

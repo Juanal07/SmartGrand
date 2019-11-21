@@ -36,7 +36,7 @@ public class CuidadorRegistroControler {
     @FXML
     private TextField tfDni;
     @FXML
-    private Label lbErrorDni;
+    private Label lbErrorDni; //
     
 	@FXML
 	public TextField tfUsuario = new TextField(), tfPassword = new TextField(),

@@ -4,7 +4,7 @@ public class Cuidador extends Persona{
 
 	private String direccion;
 	private String correoElectronico;
-	private int telefono;
+	private int telefono; //
 	
 	
 	public Cuidador(String usuario, String password, String nombre, String apellido, String tipoUsuario,

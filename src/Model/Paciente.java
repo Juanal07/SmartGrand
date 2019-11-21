@@ -12,7 +12,7 @@ public class Paciente extends Persona {
 		
 	}
 
-	public String getLocalidad() {
+	public String getLocalidad() { //
 		return localidad;
 	}
 

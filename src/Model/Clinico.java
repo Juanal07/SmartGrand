@@ -20,7 +20,7 @@ public class Clinico extends Persona {
 		this.fechaNacimiento = fechaNacimiento;
 		this.nacionalidad = nacionalidad;
 		this.centroMedico = centroMedico;
-		this.numeroLicencia = numeroLicencia;
+		this.numeroLicencia = numeroLicencia; //
 	}
 
 	public String getCorreoElectronico() {
