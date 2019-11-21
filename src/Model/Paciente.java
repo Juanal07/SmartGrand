@@ -1,24 +1,15 @@
 package Model;
 
 public class Paciente extends Persona {
-	private String DNI;
 	private String localidad;
 	private String direccion;
 
 	public Paciente(String usuario, String password, String nombre, String apellido, String tipoUsuario, String dNI,
-			String localidad, String direccion) {
-		super(usuario, password, nombre, apellido, tipoUsuario);
-		this.DNI = dNI;
+			String localidad, String direccion, String dni) {
+		super(usuario, password, nombre, apellido, tipoUsuario, dni);
 		this.localidad = localidad;
 		this.direccion = direccion;
-	}
-
-	public String getDNI() {
-		return DNI;
-	}
-
-	public void setDNI(String dNI) {
-		DNI = dNI;
+		
 	}
 
 	public String getLocalidad() {
