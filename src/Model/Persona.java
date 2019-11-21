@@ -6,14 +6,16 @@ public class Persona {
 	private String nombre;
 	private String apellido;
 	private String tipoUsuario;
+	private String dni;	
 
-	public Persona(String usuario, String password, String nombre, String apellido, String tipoUsuario) {
+	public Persona(String usuario, String password, String nombre, String apellido, String tipoUsuario, String dni) {
 		super();
 		this.usuario = usuario;
 		this.password = password;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.tipoUsuario = tipoUsuario;
+		this.dni = dni;
 	}
 
 	public Persona() {
@@ -39,6 +41,11 @@ public class Persona {
 	public String getNombre() {
 		return nombre;
 	}
+	
+	public String getDni() {
+		return dni;
+	}
+
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -59,5 +66,10 @@ public class Persona {
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
+	
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
 
 }
