@@ -5,16 +5,13 @@ public class Tickets {
 	private String idClinico;
 	private String textoPaciente;
 	private String TextoClinico;
-	private boolean visiblePaciente;
 
-	public Tickets(String idPaciente, String idClinico, String textoPaciente, String textoClinico,
-			boolean visiblePaciente) {
+	public Tickets(String idPaciente, String idClinico, String textoPaciente, String textoClinico) {
 		super();
 		this.idPaciente = idPaciente;
 		this.idClinico = idClinico;
 		this.textoPaciente = textoPaciente;
 		this.TextoClinico = textoClinico;
-		this.visiblePaciente = visiblePaciente;
 	}
 
 	public String getIdPaciente() {
@@ -47,14 +44,6 @@ public class Tickets {
 
 	public void setTextoClinico(String textoClinico) {
 		TextoClinico = textoClinico;
-	}
-
-	public boolean isVisiblePaciente() {
-		return visiblePaciente;
-	}
-
-	public void setVisiblePaciente(boolean visiblePaciente) {
-		this.visiblePaciente = visiblePaciente;
 	}
 
 }
