@@ -33,6 +33,10 @@ public class CuidadorRegistroControler {
     private Label lbErrorNombre;
     @FXML
     private Label lbErrorApellido;
+    @FXML
+    private TextField tfDni;
+    @FXML
+    private Label lbErrorDni;
     
 	@FXML
 	public TextField tfUsuario = new TextField(), tfPassword = new TextField(),
@@ -40,7 +44,7 @@ public class CuidadorRegistroControler {
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
-		String usuario = "", password= "", nombre = "", apellido = "", tipoUsuario = "";
+		String usuario = "", password= "", nombre = "", apellido = "", tipoUsuario = "", dni =  "";
 	    if(tfUsuario.getText().matches("^[a-zA-Z0-9._-]{3,}$")) {
 	    	lbErrorUsuario.setText("");
 	    	usuario = tfUsuario.getText().intern();
@@ -60,13 +64,20 @@ public class CuidadorRegistroControler {
 	    }else {
 	    	lbErrorApellido.setText("Error! Apellido incorrecto.");
 	    }
+	    
+	    if(tfDni.getText().matches("^[a-zA-Z]{2,}$")) {
+	    	lbErrorDni.setText("");
+	    	apellido = tfDni.getText().intern();
+	    }else {
+	    	lbErrorDni.setText("Error! DNI incorrecto.");
+	    }
 
 		password = tfPassword.getText().intern();
 		
 		tipoUsuario = "cuidador";
-		if(usuario != "" && password != "" && nombre != "" && apellido != "") {
+		if(usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "") {
 			//System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);		
-			Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario); //Creamos objeto persona con los datos introducidos
+			Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario, dni); //Creamos objeto persona con los datos introducidos
 			List<Persona> lista = GsonGeneral.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
 			lista.add(nuevo); //a�adimos el nuevo usuario a la lista
 			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json

@@ -8,8 +8,8 @@ public class Cuidador extends Persona{
 	
 	
 	public Cuidador(String usuario, String password, String nombre, String apellido, String tipoUsuario,
-			String direccion, String correoElectronico, int telefono) {
-		super(usuario, password, nombre, apellido, tipoUsuario);
+			String direccion, String correoElectronico, int telefono, String dni) {
+		super(usuario, password, nombre, apellido, tipoUsuario, dni);
 		this.direccion = direccion;
 		this.correoElectronico = correoElectronico;
 		this.telefono = telefono;

@@ -13,7 +13,7 @@ public class Clinico extends Persona {
 	public Clinico(String usuario, String password, String nombre, String apellido, String tipoUsuario,
 			String correoElectronico, String dni, String especialidad, String fechaNacimiento, String nacionalidad,
 			String centroMedico, String numeroLicencia) {
-		super(usuario, password, nombre, apellido, tipoUsuario);
+		super(usuario, password, nombre, apellido, tipoUsuario, dni);
 		this.correoElectronico = correoElectronico;
 		this.dni = dni;
 		this.especialidad = especialidad;
