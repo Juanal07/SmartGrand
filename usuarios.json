@@ -96,5 +96,13 @@
     "nombre": "Ana",
     "apellido": "Pastor",
     "tipoUsuario": "medico"
+  },
+  {
+    "usuario": "asdf",
+    "password": "asdf",
+    "nombre": "asdf",
+    "apellido": "asdf",
+    "tipoUsuario": "paciente",
+    "dni": "asdf"
   }
 ]

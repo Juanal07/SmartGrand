@@ -43,45 +43,19 @@ public class ClinicoRegistroControler {
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
-		String usuario = "", password= "", nombre = "", apellido = "", tipoUsuario = "", dni = "";
-	    if(tfUsuario.getText().matches("^[a-zA-Z0-9._-]{3,}$")) {
-	    	lbErrorUsuario.setText("");
-	    	usuario = tfUsuario.getText().intern();
-	    }else {
-	    	lbErrorUsuario.setText("Error! Nombre de usuario incorrecto.");
-	    }
-	    if(tfNombre.getText().matches("^[a-zA-Z]{2,}$")) {
-	    	lbErrorNombre.setText("");
-	    	nombre = tfNombre.getText().intern();
-	    }else {
-	    	lbErrorNombre.setText("Error! Nombre incorrecto.");
-	    }
-	    
-	    if(tfApellido.getText().matches("^[a-zA-Z]{2,}$")) {
-	    	lbErrorApellido.setText("");
-	    	apellido = tfApellido.getText().intern();
-	    }else {
-	    	lbErrorApellido.setText("Error! Apellido incorrecto.");
-	    }
-	    
-	    if(tfDni.getText().matches("^[a-zA-Z]{2,}$")) {
-	    	lbErrorDni.setText("");
-	    	apellido = tfDni.getText().intern();
-	    }else {
-	    	lbErrorDni.setText("Error! DNI incorrecto."); //
-	    }
-
-		password = tfPassword.getText().intern();
-		
-		tipoUsuario = "medico";
-		if(usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "") {
-			//System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);		
-			Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario, dni); //Creamos objeto persona con los datos introducidos
-			List<Persona> lista = GsonGeneral.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
-			lista.add(nuevo); //a�adimos el nuevo usuario a la lista
-			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
-			String representacionBonita = prettyGson.toJson(lista);
-			//System.out.println(representacionBonita);		
+		String usuario = tfUsuario.getText();
+		String password = tfPassword.getText();
+		String nombre = tfNombre.getText();
+		String apellido = tfApellido.getText();
+		String dni = tfDni.getText();
+		String tipoUsuario = "medico";
+		//System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);		
+		Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario, dni); //Creamos objeto persona con los datos introducidos
+		List<Persona> lista = GsonGeneral.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
+		lista.add(nuevo); //añadimos el nuevo usuario a la lista
+		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
+		String representacionBonita = prettyGson.toJson(lista);
+		//System.out.println(representacionBonita);			
 			try{
 				BufferedWriter bw; //Escribimos la info en el archivo json
 				bw = new BufferedWriter(new FileWriter("usuarios.json"));
@@ -98,11 +72,10 @@ public class ClinicoRegistroControler {
 			crearVentana(vistaRegPac, tituloVista, loginControler);
 			//label indicando que se ha registrado con exito. en la ventana de iniciar sesion
 			System.out.println("Medico registrado con exito");
-		} else {
-			// mensaje de que falta algun campo
+
 		}
 		
-	}
+	
 
 	@FXML
 	public void atrasRegContinuo(ActionEvent actionEvent) {

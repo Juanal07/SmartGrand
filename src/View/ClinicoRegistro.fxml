@@ -33,11 +33,11 @@
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <Label fx:id="lbErrorUsuario" layoutX="452.0" layoutY="152.0" textFill="RED" />
-      <Label fx:id="lbErrorPassword" layoutX="452.0" layoutY="230.0" textFill="RED" />
-      <Label fx:id="lbErrorNombre" layoutX="452.0" layoutY="308.0" textFill="RED" />
-      <Label fx:id="lbErrorApellido" layoutX="452.0" layoutY="387.0" textFill="RED" />
-      <Label fx:id="lbErrorDni" layoutX="452.0" layoutY="144.0" textFill="RED" />
+      <Label fx:id="lbErrorUsuario" layoutX="520.0" layoutY="209.0" textFill="RED" />
+      <Label fx:id="lbErrorPassword" layoutX="520.0" layoutY="274.0" textFill="RED" />
+      <Label fx:id="lbErrorNombre" layoutX="520.0" layoutY="343.0" textFill="RED" />
+      <Label fx:id="lbErrorApellido" layoutX="520.0" layoutY="414.0" textFill="RED" />
+      <Label fx:id="lbErrorDni" layoutX="520.0" layoutY="144.0" textFill="RED" />
       <PasswordField fx:id="tfPassword" layoutX="299.0" layoutY="269.0" prefWidth="222.0" />
    </children>
 </AnchorPane>
