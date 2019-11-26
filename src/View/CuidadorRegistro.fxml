@@ -15,11 +15,11 @@
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="121.0" prefHeight="25.0" prefWidth="149.0" styleClass="tercerTitulo" text="DNI:" />
       <TextField fx:id="tfUsuario" layoutX="284.0" layoutY="192.0" prefWidth="222.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="190.0" prefHeight="25.0" prefWidth="149.0" styleClass="tercerTitulo" text="Usuario:" />
-      <Label alignment="CENTER" layoutX="135.0" layoutY="271.0" prefHeight="25.0" prefWidth="149.0" styleClass="tercerTitulo" text="Password:" />
-      <TextField fx:id="tfNombre" layoutX="284.0" layoutY="341.0" prefWidth="222.0" />
-      <Label alignment="CENTER" layoutX="135.0" layoutY="339.0" prefHeight="25.0" prefWidth="149.0" styleClass="tercerTitulo" text="Nombre:" />
-      <TextField fx:id="tfApellido" layoutX="284.0" layoutY="416.0" prefWidth="222.0" />
-      <Label alignment="CENTER" layoutX="135.0" layoutY="414.0" prefHeight="25.0" prefWidth="149.0" styleClass="tercerTitulo" text="Apellido:" />
+      <Label alignment="CENTER" layoutX="135.0" layoutY="257.0" prefHeight="25.0" prefWidth="149.0" styleClass="tercerTitulo" text="Password:" />
+      <TextField fx:id="tfNombre" layoutX="284.0" layoutY="327.0" prefWidth="222.0" />
+      <Label alignment="CENTER" layoutX="135.0" layoutY="325.0" prefHeight="25.0" prefWidth="149.0" styleClass="tercerTitulo" text="Nombre:" />
+      <TextField fx:id="tfApellido" layoutX="284.0" layoutY="402.0" prefWidth="222.0" />
+      <Label alignment="CENTER" layoutX="135.0" layoutY="400.0" prefHeight="25.0" prefWidth="149.0" styleClass="tercerTitulo" text="Apellido:" />
       <JFXButton fx:id="btnAtras" alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="27.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#atrasRegContinuo" styleClass="mainButton" stylesheets="@Style.css" text="Atras" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font size="15.0" />
@@ -28,7 +28,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btnRegistrarse" alignment="CENTER" contentDisplay="CENTER" layoutX="302.0" layoutY="496.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#pacienteRegistrado" styleClass="mainButton" stylesheets="@Style.css" text="Finalizar registro" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+      <JFXButton fx:id="btnRegistrarse" alignment="CENTER" contentDisplay="CENTER" layoutX="302.0" layoutY="472.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#pacienteRegistrado" styleClass="mainButton" stylesheets="@Style.css" text="Finalizar registro" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font size="15.0" />
          </font>
@@ -38,6 +38,6 @@
       <Label fx:id="lbErrorNombre" layoutX="479.0" layoutY="292.0" textFill="RED" />
       <Label fx:id="lbErrorApellido" layoutX="479.0" layoutY="368.0" textFill="RED" />
       <Label fx:id="lbErrorDni" layoutX="479.0" layoutY="121.0" textFill="RED" />
-      <PasswordField layoutX="284.0" layoutY="274.0" prefWidth="222.0" />
+      <PasswordField fx:id="tfPassword" layoutX="284.0" layoutY="260.0" prefWidth="222.0" />
    </children>
 </AnchorPane>

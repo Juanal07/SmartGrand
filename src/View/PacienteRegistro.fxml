@@ -38,6 +38,6 @@
       <Label fx:id="lbErrorNombre" layoutX="437.0" layoutY="305.0" textFill="RED" />
       <Label fx:id="lbErrorApellido" layoutX="437.0" layoutY="381.0" textFill="RED" />
       <Label fx:id="lbErrorDni" layoutX="437.0" layoutY="146.0" textFill="RED" />
-      <PasswordField layoutX="284.0" layoutY="280.0" prefWidth="222.0" />
+      <PasswordField fx:id="tfPassword" layoutX="284.0" layoutY="280.0" prefWidth="222.0" />
    </children>
 </AnchorPane>
