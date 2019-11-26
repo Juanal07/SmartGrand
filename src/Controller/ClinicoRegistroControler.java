@@ -20,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class ClinicoRegistroControler {
@@ -34,13 +35,11 @@ public class ClinicoRegistroControler {
     @FXML
     private Label lbErrorApellido;
     @FXML
-    private TextField tfDni;
-    @FXML
-    private Label lbErrorDni;
-    
+    private Label lbErrorDni;    
 	@FXML
-	public TextField tfUsuario = new TextField(), tfPassword = new TextField(),
-			tfNombre = new TextField(), tfApellido = new TextField();
+	public TextField tfUsuario = new TextField(), tfNombre = new TextField(), tfApellido = new TextField(), tfDni = new TextField();
+	@FXML
+	public PasswordField tfPassword = new PasswordField();
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {

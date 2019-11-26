@@ -36,12 +36,10 @@ public class CuidadorRegistroControler {
     @FXML
     private TextField tfDni;
     @FXML
-    private Label lbErrorDni; //
-    
+    private Label lbErrorDni; //    
 	@FXML
-	public TextField tfUsuario = new TextField(), tfPassword = new TextField(),
-			tfNombre = new TextField(), tfApellido = new TextField();
-
+	public TextField tfUsuario = new TextField(), tfPassword = new TextField(),	tfNombre = new TextField(), tfApellido = new TextField();
+	
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
 		String usuario = "", password= "", nombre = "", apellido = "", tipoUsuario = "", dni =  "";
