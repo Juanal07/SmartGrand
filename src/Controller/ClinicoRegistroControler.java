@@ -56,22 +56,22 @@ public class ClinicoRegistroControler {
 		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
 		String representacionBonita = prettyGson.toJson(lista);
 		//System.out.println(representacionBonita);			
-			try{
-				BufferedWriter bw; //Escribimos la info en el archivo json
-				bw = new BufferedWriter(new FileWriter("usuarios.json"));
-			    bw.write(representacionBonita);
-			    bw.close();				 
+		try{
+			BufferedWriter bw; //Escribimos la info en el archivo json
+			bw = new BufferedWriter(new FileWriter("usuarios.json"));
+		    bw.write(representacionBonita);
+			bw.close();				 
 			} catch (IOException ioe){
 			     ioe.printStackTrace();
-			  }
-			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
-			stage.close();		
-			String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
-			String tituloVista = "Login";
-			LoginControler loginControler = new LoginControler();
-			crearVentana(vistaRegPac, tituloVista, loginControler);
-			//label indicando que se ha registrado con exito. en la ventana de iniciar sesion
-			System.out.println("Medico registrado con exito");
+		}
+		Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
+		stage.close();		
+		String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
+		String tituloVista = "Login";
+		LoginControler loginControler = new LoginControler();
+		crearVentana(vistaRegPac, tituloVista, loginControler);
+		//label indicando que se ha registrado con exito. en la ventana de iniciar sesion
+		System.out.println("Medico registrado con exito");
 
 		}
 		
