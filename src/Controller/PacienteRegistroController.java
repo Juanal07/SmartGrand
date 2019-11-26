@@ -20,60 +20,60 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class PacienteRegistroController {
-
 	@FXML
 	private Button btnAtras, btnRegistrarse;
 	@FXML
-	private Label lbErrorUsuario;
+    private Label lbErrorUsuario;
+    @FXML
+    private Label lbErrorPassword;
+    @FXML
+    private Label lbErrorNombre;
+    @FXML
+    private Label lbErrorApellido;
+    @FXML
+    private Label lbErrorDni;    
 	@FXML
-	private Label lbErrorPassword;
+	public TextField tfUsuario = new TextField(), tfNombre = new TextField(), tfApellido = new TextField(), tfDni = new TextField();
 	@FXML
-	private Label lbErrorNombre;
-	@FXML
-	private Label lbErrorApellido;
-	@FXML
-    private TextField tfDni;
-	@FXML
-	private Label lbErrorDni;
-	
-	@FXML
-	public TextField tfUsuario = new TextField(), tfPassword = new TextField(),
-			tfNombre = new TextField(), tfApellido = new TextField();
+	public PasswordField tfPassword = new PasswordField();
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
-		String usuario = "", password= "", nombre = "", apellido = "", tipoUsuario = "", dni = "";
-	    validation(usuario, password, nombre, apellido, tipoUsuario, dni);
-	    
-		password = tfPassword.getText().intern();
-		tipoUsuario = "paciente";
-		
-		if(usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "") {
-			//System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);		
-			Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario, dni); //Creamos objeto persona con los datos introducidos
-			List<Persona> lista = GsonGeneral.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
-			lista.add(nuevo); //a�adimos el nuevo usuario a la lista
-			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
-			String representacionBonita = prettyGson.toJson(lista);
-			//System.out.println(representacionBonita);		
-			GsonGeneral gsonGeneral = new GsonGeneral();
-			gsonGeneral.EscribirJson(representacionBonita);
-			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
-			stage.close();		
-			String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
-			String tituloVista = "Login";
-			LoginControler loginControler = new LoginControler();
-			crearVentana(vistaRegPac, tituloVista, loginControler);
-			//label indicando que se ha registrado con exito. en la ventana de iniciar sesion
-			System.out.println("Paciente registrado con exito");
-		} else {
-			// mensaje de que falta algun campo
+		String usuario = tfUsuario.getText();
+		String password = tfPassword.getText();
+		String nombre = tfNombre.getText();
+		String apellido = tfApellido.getText();
+		String dni = tfDni.getText();
+		String tipoUsuario = "paciente";
+		//System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);		
+		Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario, dni); //Creamos objeto persona con los datos introducidos
+		List<Persona> lista = GsonGeneral.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
+		lista.add(nuevo); //añadimos el nuevo usuario a la lista
+		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
+		String representacionBonita = prettyGson.toJson(lista);
+		//System.out.println(representacionBonita);			
+		try{
+			BufferedWriter bw; //Escribimos la info en el archivo json
+			bw = new BufferedWriter(new FileWriter("usuarios.json"));
+		    bw.write(representacionBonita);
+			bw.close();				 
+			} catch (IOException ioe){
+			     ioe.printStackTrace();
+			}
+		Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
+		stage.close();		
+		String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
+		String tituloVista = "Login";
+		LoginControler loginControler = new LoginControler();
+		crearVentana(vistaRegPac, tituloVista, loginControler);
+		//label indicando que se ha registrado con exito. en la ventana de iniciar sesion
+		System.out.println("Paciente registrado con exito");
+
 		}
-		
-	}
 
 	@FXML
 	public void atrasRegContinuo(ActionEvent actionEvent) {

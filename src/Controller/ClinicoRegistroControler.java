@@ -63,7 +63,7 @@ public class ClinicoRegistroControler {
 			bw.close();				 
 			} catch (IOException ioe){
 			     ioe.printStackTrace();
-		}
+			}
 		Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
 		stage.close();		
 		String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
