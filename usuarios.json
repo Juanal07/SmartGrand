@@ -104,5 +104,13 @@
     "apellido": "asdf",
     "tipoUsuario": "paciente",
     "dni": "asdf"
+  },
+  {
+    "usuario": "qw",
+    "password": "qw",
+    "nombre": "qw",
+    "apellido": "qw",
+    "tipoUsuario": "medico",
+    "dni": "qw"
   }
 ]
