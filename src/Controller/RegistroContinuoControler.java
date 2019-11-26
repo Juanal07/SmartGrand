@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -77,6 +78,8 @@ public class RegistroContinuoControler {
 			Stage sendStage = new Stage();
 			sendStage.setTitle(titulo);
 			Scene scene = new Scene(page);
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // a�ade icono a la vista	
+			sendStage.getIcons().add(icon);
 			sendStage.setScene(scene);
 			sendStage.show();
 		} catch (Exception e) {

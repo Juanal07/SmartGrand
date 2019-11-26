@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -107,6 +108,8 @@ public class LoginControler {
 			Stage sendStage = new Stage();
 			sendStage.setTitle(titulo);
 			Scene scene = new Scene(page);
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // a�ade icono a la vista	
+			sendStage.getIcons().add(icon);
 			sendStage.setScene(scene);
 			sendStage.show();
 		} catch (Exception e) {
