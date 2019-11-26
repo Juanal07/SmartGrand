@@ -24,5 +24,6 @@ public class ControllerHomePaciente {
 		System.out.println(jfxTaPaciente.getText());
 		jfxTaPaciente.setText("");
 		
+		
 	}
 }

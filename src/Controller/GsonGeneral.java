@@ -1,5 +1,6 @@
 package Controller;
 
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -49,5 +50,14 @@ public class GsonGeneral {
 		return listaTickets;
 	}
 
-
+	public static void EscribirJson(String representacionBonita) {
+		try{
+			BufferedWriter bw; //Escribimos la info en el archivo json
+			bw = new BufferedWriter(new FileWriter("usuarios.json"));
+		    bw.write(representacionBonita);
+		    bw.close();				 
+		} catch (IOException ioe){
+		     ioe.printStackTrace();
+		  }
+	}
 }

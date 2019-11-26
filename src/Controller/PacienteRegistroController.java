@@ -46,36 +46,11 @@ public class PacienteRegistroController {
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
 		String usuario = "", password= "", nombre = "", apellido = "", tipoUsuario = "", dni = "";
-	    if(tfUsuario.getText().matches("^[a-zA-Z0-9._-]{3,}$")) {
-	    	lbErrorUsuario.setText("");
-	    	usuario = tfUsuario.getText().intern();
-	    }else{
-	    	lbErrorUsuario.setText("Error! Nombre de usuario incorrecto.");
-	    }
-	    if(tfNombre.getText().matches("^[a-zA-Z]{2,}$")) {
-	    	lbErrorNombre.setText("");
-	    	nombre = tfNombre.getText().intern();
-	    }else {
-	    	lbErrorNombre.setText("Error! Nombre incorrecto.");
-	    }
+	    validation(usuario, password, nombre, apellido, tipoUsuario, dni);
 	    
-	    if(tfApellido.getText().matches("^[a-zA-Z]{2,}$")) {
-	    	lbErrorApellido.setText("");
-	    	apellido = tfApellido.getText().intern();
-	    }else {
-	    	lbErrorApellido.setText("Error! Apellido incorrecto.");
-	    }
-	    
-	    if(tfDni.getText().matches("^[a-zA-Z]{2,}$")) {
-	    	lbErrorDni.setText("");
-	    	apellido = tfDni.getText().intern();
-	    }else {
-	    	lbErrorDni.setText("Error! DNI incorrecto."); //
-	    }
-
 		password = tfPassword.getText().intern();
-		
 		tipoUsuario = "paciente";
+		
 		if(usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "") {
 			//System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);		
 			Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario, dni); //Creamos objeto persona con los datos introducidos
@@ -84,14 +59,8 @@ public class PacienteRegistroController {
 			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
 			String representacionBonita = prettyGson.toJson(lista);
 			//System.out.println(representacionBonita);		
-			try{
-				BufferedWriter bw; //Escribimos la info en el archivo json
-				bw = new BufferedWriter(new FileWriter("usuarios.json"));
-			    bw.write(representacionBonita);
-			    bw.close();				 
-			} catch (IOException ioe){
-			     ioe.printStackTrace();
-			  }
+			GsonGeneral gsonGeneral = new GsonGeneral();
+			gsonGeneral.EscribirJson(representacionBonita);
 			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
 			stage.close();		
 			String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
@@ -142,27 +111,34 @@ public class PacienteRegistroController {
 		}
 	}
 
-	public boolean esSoloLetras(String cadena) {
-		// cogemos la cadena y la comparamos con su valor ASCII
-		for (int i = 0; i < cadena.length(); i++) {
-			char caracter = cadena.toUpperCase().charAt(i);
-			int valorASCII = (int) caracter;
-			System.out.println("Letra: " + caracter + " -> Valor ascii: " + valorASCII);
-			if (valorASCII != 209 && (valorASCII < 65 || valorASCII > 90) && valorASCII != 193 && valorASCII != 201
-					&& valorASCII != 205 && valorASCII != 211 && valorASCII != 218) {
-				System.out.println("ERROR: se ha encontrado un caracter que no es letra.");
-				return false; // Se ha encontrado un caracter que no es letra
-			}
-		}
-		return true;
-	}
 
-	public void validation(String cadena) {
-		if (cadena.trim().equals("")) {
-			System.out.println("No existe cadena");
-		} else {
-			System.out.println("Si existe cadena");
-		}
+	public void validation(String usuario, String password, String nombre, String apellido, String tipoUsuario, String dni) {
+		 if(tfUsuario.getText().matches("^[a-zA-Z0-9._-]{3,}$")) {
+		    	lbErrorUsuario.setText("");
+		    	usuario = tfUsuario.getText().intern();
+		    }else{
+		    	lbErrorUsuario.setText("Error! Nombre de usuario incorrecto.");
+		    }
+		    if(tfNombre.getText().matches("^[a-zA-Z]{2,}$")) {
+		    	lbErrorNombre.setText("");
+		    	nombre = tfNombre.getText().intern();
+		    }else {
+		    	lbErrorNombre.setText("Error! Nombre incorrecto.");
+		    }
+		    
+		    if(tfApellido.getText().matches("^[a-zA-Z]{2,}$")) {
+		    	lbErrorApellido.setText("");
+		    	apellido = tfApellido.getText().intern();
+		    }else {
+		    	lbErrorApellido.setText("Error! Apellido incorrecto.");
+		    }
+		    
+		    if(tfDni.getText().matches("^[a-zA-Z]{2,}$")) {
+		    	lbErrorDni.setText("");
+		    	apellido = tfDni.getText().intern();
+		    }else {
+		    	lbErrorDni.setText("Error! DNI incorrecto."); //
+		    }
 	}
 
 }
