@@ -1,9 +1,9 @@
 package Controller;
 
 import java.io.BufferedWriter;
-import java.math.BigInteger; 
-import java.security.MessageDigest; 
-import java.security.NoSuchAlgorithmException; 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -34,55 +34,52 @@ public class ClinicoRegistroControler {
 	@FXML
 	private Button btnAtras, btnRegistrarse;
 	@FXML
-    private Label lbErrorUsuario;
-    @FXML
-    private Label lbErrorPassword;
-    @FXML
-    private Label lbErrorNombre;
-    @FXML
-    private Label lbErrorApellido;
-    @FXML
-    private Label lbErrorDni;    
+	private Label lbErrorUsuario;
 	@FXML
-	public TextField tfUsuario = new TextField(), tfNombre = new TextField(), tfApellido = new TextField(), tfDni = new TextField();
+	private Label lbErrorPassword;
+	@FXML
+	private Label lbErrorNombre;
+	@FXML
+	private Label lbErrorApellido;
+	@FXML
+	private Label lbErrorDni;
+	@FXML
+	public TextField tfUsuario = new TextField(), tfNombre = new TextField(), tfApellido = new TextField(),
+			tfDni = new TextField();
 	@FXML
 	public PasswordField tfPassword = new PasswordField();
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
+		
 		String usuario = tfUsuario.getText();
 		String password = GsonGeneral.getMd5(tfPassword.getText());
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
 		String tipoUsuario = "medico";
-		//System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);		
-		Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario, dni); //Creamos objeto persona con los datos introducidos
-		List<Persona> lista = GsonGeneral.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
-		lista.add(nuevo); //añadimos el nuevo usuario a la lista
-		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
+
+		Persona nuevo = new Persona(usuario, password, nombre, apellido, tipoUsuario, dni); // Creamos objeto persona
+																							// con los datos
+																							// introducidos
+		List<Persona> lista = GsonGeneral.desserializarJsonAArray(); // Creamos lista de personas con la info del json
+		lista.add(nuevo); // añadimos el nuevo usuario a la lista
+		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
 		String representacionBonita = prettyGson.toJson(lista);
-		//System.out.println(representacionBonita);			
-		try{
-			BufferedWriter bw; //Escribimos la info en el archivo json
-			bw = new BufferedWriter(new FileWriter("usuarios.json"));
-		    bw.write(representacionBonita);
-			bw.close();				 
-			} catch (IOException ioe){
-			     ioe.printStackTrace();
-			}
+		String ruta = "usuarios.json";
+		GsonGeneral.EscribirJson(representacionBonita, ruta);
+
 		Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
-		stage.close();		
+		stage.close();
 		String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
 		String tituloVista = "Login";
 		LoginControler loginControler = new LoginControler();
 		crearVentana(vistaRegPac, tituloVista, loginControler);
-		//label indicando que se ha registrado con exito. en la ventana de iniciar sesion
+		// label indicando que se ha registrado con exito. en la ventana de iniciar
+		// sesion
 		System.out.println("Medico registrado con exito");
 
-		}
-		
-	
+	}
 
 	@FXML
 	public void atrasRegContinuo(ActionEvent actionEvent) {
@@ -94,14 +91,6 @@ public class ClinicoRegistroControler {
 		String tituloVista = "Registro continuo";
 		RegistroContinuoControler registroContinuoControler = new RegistroContinuoControler();
 		crearVentana(vistaRegContinuo, tituloVista, registroContinuoControler);
-	}
-
-	public void verificarCampoVacio(String cadena) {
-		if (cadena.equals("")) {
-			System.out.println("campo vacion");
-		} else {
-			System.out.println("campo correcto");
-		}
 	}
 
 	public void crearVentana(String vista, String titulo, Object object) {
@@ -136,15 +125,5 @@ public class ClinicoRegistroControler {
 		}
 		return true;
 	}
-
-	public void validation(String cadena) {
-		if (cadena.trim().equals("")) {
-			System.out.println("No existe cadena");
-		} else {
-			System.out.println("Si existe cadena");
-		}
-	}
-	
-
 
 }

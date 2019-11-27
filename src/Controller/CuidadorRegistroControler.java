@@ -50,26 +50,22 @@ public class CuidadorRegistroControler {
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
 		String tipoUsuario = "cuidador";
-		//System.out.println("Usuario: " + usuario + " -> Password: " + password + " -> Nombre: " + nombre + " -> Apellido: " + apellido + " -> tipoUsuario: " + tipoUsuario);		
+		
 		Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario, dni); //Creamos objeto persona con los datos introducidos
 		List<Persona> lista = GsonGeneral.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
 		lista.add(nuevo); //añadimos el nuevo usuario a la lista
 		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
 		String representacionBonita = prettyGson.toJson(lista);
-		//System.out.println(representacionBonita);			
-		try{
-			BufferedWriter bw; //Escribimos la info en el archivo json
-			bw = new BufferedWriter(new FileWriter("usuarios.json"));
-		    bw.write(representacionBonita);
-			bw.close();				 
-			} catch (IOException ioe){
-			     ioe.printStackTrace();
-			}
+		String ruta = "usuarios.json";
+		GsonGeneral.EscribirJson(representacionBonita, ruta);		
+		
 		Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
 		stage.close();		
+		
 		String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
 		String tituloVista = "Login";
 		LoginControler loginControler = new LoginControler();
+		
 		crearVentana(vistaRegPac, tituloVista, loginControler);
 		//label indicando que se ha registrado con exito. en la ventana de iniciar sesion
 		System.out.println("Cuidador registrado con exito");
@@ -86,14 +82,6 @@ public class CuidadorRegistroControler {
 		String tituloVista = "Registro continuo";
 		RegistroContinuoControler registroContinuoControler = new RegistroContinuoControler();
 		crearVentana(vistaRegContinuo, tituloVista, registroContinuoControler);
-	}
-
-	public void verificarCampoVacio(String cadena) {
-		if (cadena.equals("")) {
-			System.out.println("campo vacion");
-		} else {
-			System.out.println("campo correcto");
-		}
 	}
 
 	public void crearVentana(String vista, String titulo, Object object) {
@@ -127,14 +115,6 @@ public class CuidadorRegistroControler {
 			}
 		}
 		return true;
-	}
-
-	public void validation(String cadena) {
-		if (cadena.trim().equals("")) {
-			System.out.println("No existe cadena");
-		} else {
-			System.out.println("Si existe cadena");
-		}
 	}
 
 }

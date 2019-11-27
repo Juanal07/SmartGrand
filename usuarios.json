@@ -98,11 +98,11 @@
     "tipoUsuario": "medico"
   },
   {
-    "usuario": "hola",
-    "password": "4d186321c1a7f0f354b297e8914ab240",
-    "nombre": "hola",
-    "apellido": "hola",
-    "tipoUsuario": "cuidador",
-    "dni": "hola"
+    "usuario": "",
+    "password": "d41d8cd98f00b204e9800998ecf8427e",
+    "nombre": "",
+    "apellido": "",
+    "tipoUsuario": "paciente",
+    "dni": ""
   }
 ]

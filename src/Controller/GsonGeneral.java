@@ -53,10 +53,10 @@ public class GsonGeneral {
 		return listaTickets;
 	}
 
-	public static void EscribirJson(String representacionBonita) {
+	public static void EscribirJson(String representacionBonita, String ruta) {
 		try{
 			BufferedWriter bw; //Escribimos la info en el archivo json
-			bw = new BufferedWriter(new FileWriter("usuarios.json"));
+			bw = new BufferedWriter(new FileWriter(ruta));
 		    bw.write(representacionBonita);
 		    bw.close();				 
 		} catch (IOException ioe){
