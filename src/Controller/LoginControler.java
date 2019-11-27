@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+
 import Model.Persona;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -41,7 +42,7 @@ public class LoginControler {
 	@FXML
 	public void iniciarSesion(ActionEvent actionEvent) {
 		String usuario = jfxtUsuario.getText();
-		String password = jfxtPassword.getText();
+		String password = GsonGeneral.getMd5(jfxtPassword.getText());
 		//System.out.println("Usuario: " + usuario + " -> password: " + password);
 		GsonGeneral gsonPersonas = new GsonGeneral();
 		java.util.List<Persona> lista = GsonGeneral.desserializarJsonAArray();

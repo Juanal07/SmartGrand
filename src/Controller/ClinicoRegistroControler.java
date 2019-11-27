@@ -1,9 +1,15 @@
 package Controller;
 
 import java.io.BufferedWriter;
+import java.math.BigInteger; 
+import java.security.MessageDigest; 
+import java.security.NoSuchAlgorithmException; 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +51,7 @@ public class ClinicoRegistroControler {
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
 		String usuario = tfUsuario.getText();
-		String password = tfPassword.getText();
+		String password = GsonGeneral.getMd5(tfPassword.getText());
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
@@ -138,5 +144,7 @@ public class ClinicoRegistroControler {
 			System.out.println("Si existe cadena");
 		}
 	}
+	
+
 
 }

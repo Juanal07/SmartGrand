@@ -45,7 +45,7 @@ public class PacienteRegistroController {
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
 		String usuario = tfUsuario.getText();
-		String password = tfPassword.getText();
+		String password = GsonGeneral.getMd5(tfPassword.getText());
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
