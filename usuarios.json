@@ -96,5 +96,13 @@
     "nombre": "Ana",
     "apellido": "Pastor",
     "tipoUsuario": "medico"
+  },
+  {
+    "usuario": "cuidador0",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
+    "nombre": "Emilio",
+    "apellido": "Garcia",
+    "tipoUsuario": "cuidador",
+    "dni": "12345678A"
   }
 ]

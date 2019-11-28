@@ -7,6 +7,7 @@ public class VistaCuidadorPrincipalController {
 	
 	 @FXML
 	 private TextField myTextField;
+	 
 	 //Esta función actualiza la VISTA de la segunda ventana
 	 public void writeText(String mensaje) {		
 	     myTextField.setText(mensaje);

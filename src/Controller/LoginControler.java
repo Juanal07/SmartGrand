@@ -79,9 +79,9 @@ public class LoginControler {
 						VistaCuidadorPrincipalController vistaCuidadorPrincipalController = new VistaCuidadorPrincipalController();
 						loader.setController(vistaCuidadorPrincipalController);	
 						Parent root = loader.load();
-						vistaCuidadorPrincipalController.writeText("Hola");
+						vistaCuidadorPrincipalController.writeText(p.getDni());
 						Stage stage2 = new Stage();
-				        stage2.setTitle("Prueba");
+				        stage2.setTitle(tituloVista3);
 				        stage2.setScene(new Scene(root));
 				        stage2.show();
 

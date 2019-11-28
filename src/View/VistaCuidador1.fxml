@@ -14,6 +14,6 @@
          </font>
       </Label>
       <JFXButton layoutX="57.0" layoutY="27.0" styleClass="mainButton" stylesheets="@Style.css" text="Cerrar Sesion" />
-      <TextField fx:id="myTextField" layoutX="159.0" layoutY="176.0" />
+      <TextField fx:id="myTextField" layoutX="118.0" layoutY="246.0" styleClass="tercerTitulo" />
    </children>
 </AnchorPane>
