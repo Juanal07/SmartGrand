@@ -33,38 +33,35 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" GridPane.columnSpan="4" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" GridPane.columnSpan="4" GridPane.rowIndex="1" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" GridPane.columnSpan="4" GridPane.rowIndex="2" />
             <Pane opacity="0.2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowSpan="3" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowSpan="3">
                <children>
                   <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="2.0" prefWidth="2.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="10.0" prefWidth="320.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="0.0" prefWidth="0.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints maxHeight="208.0" minHeight="10.0" prefHeight="171.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="207.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="132.0" minHeight="10.0" prefHeight="128.0" vgrow="SOMETIMES" />
-                        <RowConstraints />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+                  <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fx:id="imgLogo" fitHeight="213.0" fitWidth="318.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <image>
-                              <Image url="@../Image/logo%20sin%20fondo.png" />
-                           </image>
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                        </ImageView>
-                        <VBox alignment="CENTER" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
+                        <VBox alignment="CENTER" GridPane.columnSpan="2" GridPane.rowIndex="1">
                            <children>
                               <JFXTextField id="JfxtUsuario" fx:id="jfxtUsuario" focusColor="WHITE" labelFloat="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Usuario" style="-fx-background-color: transparent;" unFocusColor="WHITE">
                                  <VBox.margin>
-                                    <Insets left="30.0" right="30.0" />
+                                    <Insets left="20.0" right="20.0" top="30.0" />
                                  </VBox.margin>
                                  <font>
                                     <Font size="15.0" />
@@ -72,7 +69,7 @@
                               </JFXTextField>
                               <JFXPasswordField id="jfxtContraseña" fx:id="jfxtPassword" focusColor="WHITE" labelFloat="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Contraseña" unFocusColor="WHITE">
                                  <VBox.margin>
-                                    <Insets left="30.0" right="30.0" top="50.0" />
+                                    <Insets left="20.0" right="20.0" top="30.0" />
                                  </VBox.margin>
                                  <font>
                                     <Font size="15.0" />
@@ -80,7 +77,7 @@
                               </JFXPasswordField>
                               <JFXButton id="jfxtBtnIniciarSesion" fx:id="btnIniciarSesion" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#iniciarSesion" styleClass="loginButton" text="Iniciar sesion" textAlignment="CENTER" textFill="WHITE">
                                  <VBox.margin>
-                                    <Insets left="30.0" right="30.0" top="30.0" />
+                                    <Insets left="20.0" right="20.0" top="40.0" />
                                  </VBox.margin>
                                  <font>
                                     <Font size="15.0" />
@@ -98,39 +95,45 @@
                                  </VBox.margin>
                               </Label>
                               <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                                 <children>
-                                    <Label fx:id="labelPregunta" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="¿No tienes una cuenta?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <JFXButton id="jfxtBtnRegistrarse" fx:id="btnRegistrarse" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#registroContinuo" styleClass="retBtn" text="Regístrate" textAlignment="CENTER" textFill="WHITE">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </JFXButton>
-                                 </children>
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
                               </HBox>
                            </children>
                         </VBox>
+                        <Label fx:id="labelPregunta" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="¿No tienes una cuenta?" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <JFXButton id="jfxtBtnRegistrarse" fx:id="btnRegistrarse" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#registroContinuo" styleClass="retBtn" text="Regístrate" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </GridPane.margin>
+                        </JFXButton>
+                        <ImageView fx:id="imgLogo" fitHeight="213.0" fitWidth="318.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../Image/logo%20sin%20fondo.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
                      </children>
                   </GridPane>
                </children>
