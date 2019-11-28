@@ -44,7 +44,6 @@ public class LoginControler {
 		String usuario = jfxtUsuario.getText();
 		String password = GsonGeneral.getMd5(jfxtPassword.getText());
 		//System.out.println("Usuario: " + usuario + " -> password: " + password);
-		GsonGeneral gsonPersonas = new GsonGeneral();
 		java.util.List<Persona> lista = GsonGeneral.desserializarJsonAArray();
 		for (Persona p : lista) {
 			//System.out.println("usuario json: " + p.getUsuario() + " -> password: " + p.getPassword());

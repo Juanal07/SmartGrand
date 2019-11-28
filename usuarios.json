@@ -1,98 +1,98 @@
 [
   {
     "usuario": "cuidador1",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Juan",
     "apellido": "Raya",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "cuidador2",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Fernando",
     "apellido": "Ribero",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "cuidador3",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Sebas",
     "apellido": "Quiyanas",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "cuidador4",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Gonzalo",
     "apellido": "Vizoso",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "cuidador5",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Borja",
     "apellido": "Garcia",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "cuidador6",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Sergio",
     "apellido": "Garcia",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "cuidador7",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Juanpe",
     "apellido": "Garcia",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "cuidador8",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Pablo",
     "apellido": "Casado",
     "tipoUsuario": "cuidador"
   },
   {
     "usuario": "paciente1",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Pedro",
     "apellido": "Sanchez",
     "tipoUsuario": "paciente"
   },
   {
     "usuario": "paciente2",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Santiago",
     "apellido": "Abascal",
     "tipoUsuario": "paciente"
   },
   {
     "usuario": "paciente3",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Albert",
     "apellido": "Rivera",
     "tipoUsuario": "paciente"
   },
   {
     "usuario": "paciente4",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Pablo",
     "apellido": "Iglesias",
     "tipoUsuario": "paciente"
   },
   {
     "usuario": "medico1",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Irene",
     "apellido": "Montero",
     "tipoUsuario": "medico"
   },
   {
     "usuario": "medico2",
-    "password": "1234",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Ana",
     "apellido": "Pastor",
     "tipoUsuario": "medico"
