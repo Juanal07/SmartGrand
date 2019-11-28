@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -72,8 +73,22 @@ public class LoginControler {
 					// creamos la ventana
 					String vistaCuidador = "/View/VistaCuidador1.fxml";
 					String tituloVista3 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
-					VistaCuidadorPrincipalController vistaCuidadorPrincipalController = new VistaCuidadorPrincipalController();
-					crearVentana(vistaCuidador, tituloVista3, vistaCuidadorPrincipalController);
+					
+					try {
+						FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaCuidador));
+						VistaCuidadorPrincipalController vistaCuidadorPrincipalController = new VistaCuidadorPrincipalController();
+						loader.setController(vistaCuidadorPrincipalController);	
+						Parent root = loader.load();
+						vistaCuidadorPrincipalController.writeText("Hola");
+						Stage stage2 = new Stage();
+				        stage2.setTitle("Prueba");
+				        stage2.setScene(new Scene(root));
+				        stage2.show();
+
+					
+					}catch(Exception e) {
+			   			e.printStackTrace();
+			   		}	
 					break;
 
 				default:

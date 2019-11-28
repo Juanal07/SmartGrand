@@ -37,7 +37,7 @@ public class Main extends Application {
 		loader.setRoot(content);
 		Parent root = loader.load(); // ahora sobre el panel mypane cargamos la vista que dejamos en el FXMLLoader
 		Scene scene = new Scene(root, 800, 600); 		
-		Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // a�ade icono a la vista	
+		Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la vista	
 		primaryStage.getIcons().add(icon);		
 		primaryStage.setScene(scene); // añade la escena al stage y la titula
 		primaryStage.setTitle("Login");
