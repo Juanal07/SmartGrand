@@ -45,13 +45,14 @@ public class CuidadorRegistroControler {
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
 		String usuario = tfUsuario.getText();
+		String password2 = tfPassword.getText();//password sin cifrar para hacer el validation
 		String password = GsonGeneral.getMd5(tfPassword.getText());
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
 		String tipoUsuario = "cuidador";
 
-		boolean valido = validation(usuario, password, nombre, apellido, tipoUsuario, dni);
+		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni);
 
 		if(usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && valido) {
 
@@ -151,7 +152,7 @@ public class CuidadorRegistroControler {
 			lbErrorPassword.setText("");
 			//apellido = tfApellido.getText().intern();
 		} else {
-			lbErrorPassword.setText("Error! Contraseña incorrecto.");
+			lbErrorPassword.setText("Error! Password incorrecto.");
 			valido = false;
 		}
 
