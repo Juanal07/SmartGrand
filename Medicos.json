@@ -1,6 +1,6 @@
 [
   {
-    "idPacientes": "00000001P, 0000002P",
+    "idPacientes": ["00000001P, 00000002P"],
     "idClinico": "00000001M"
   }
 ]

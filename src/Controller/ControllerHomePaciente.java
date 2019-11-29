@@ -19,7 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
-public class ControllerHomePaciente implements Initializable {
+public class ControllerHomePaciente{
 	@FXML
 	private JFXListView<Tickets> lvTicketsPaciente = new JFXListView<Tickets>();
 	@FXML
@@ -36,7 +36,7 @@ public class ControllerHomePaciente implements Initializable {
 		String textoPaciente = jfxTaPaciente.getText();
 		// cojo el dni
 		String dniPaciente = idPacienteLabel.getText();
-		java.util.List <Medico> listaMedicoRelacion = GsonGeneral.desserializarJsonAArrayMedico();
+		List <Medico> listaMedicoRelacion = GsonGeneral.desserializarJsonAArrayMedico();
 		for (Medico medico : listaMedicoRelacion) {
 			System.out.println("dni medico: " + medico.getIdMedico());
 			ArrayList<String> idPacientes = medico.getDniPacientes();
@@ -57,18 +57,7 @@ public class ControllerHomePaciente implements Initializable {
 		}
 	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		System.out.println("hola mundo");
-		/*
-		ArrayList<Tickets> tickets = new ArrayList<Tickets>();
-		tickets = (ArrayList<Tickets>) leerTickets();
-		for (Tickets tickets2 : tickets) {
-			System.out.println(tickets2.getIdPaciente());
-		}
-	*/
-	}
+
 
 	public List<Tickets> leerTickets() {
 		List<Tickets> listaTickets = GsonGeneral.desserializarJsonAArrayTicket();

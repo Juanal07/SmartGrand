@@ -57,9 +57,9 @@ public class GsonGeneral {
         try (Reader reader = new FileReader(jsonInString)) {
         	Gson gson = new Gson();
         	Type tipoListaPersonas = new TypeToken<List<Medico>>(){}.getType();
-        	List<Medico> mecdicos = gson.fromJson(reader, tipoListaPersonas);
+        	List<Medico> medicos = gson.fromJson(reader, tipoListaPersonas);
         	
-        	listaMedicos = mecdicos;
+        	listaMedicos = medicos;
             
         } catch (IOException e) {
             e.printStackTrace();
