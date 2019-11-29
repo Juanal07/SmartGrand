@@ -59,8 +59,23 @@ public class LoginControler {
 					// creamos la ventana
 					String vistaPaciente = "/View/HomePaciente.fxml";
 					String tituloVista = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
-					ControllerHomePaciente controllerHomePaciente = new ControllerHomePaciente();
-					crearVentana(vistaPaciente, tituloVista, controllerHomePaciente);
+					//ControllerHomePaciente controllerHomePaciente = new ControllerHomePaciente();
+					try {
+						FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaPaciente));
+						ControllerHomePaciente controllerHomePaciente = new ControllerHomePaciente();
+						loader.setController(controllerHomePaciente);	
+						Parent root2 = loader.load();
+						controllerHomePaciente.writeText(p);
+						Stage stage2 = new Stage();
+				        stage2.setTitle(tituloVista);
+				        stage2.setScene(new Scene(root2));
+				        stage2.show();
+
+					
+					}catch(Exception e) {
+			   			e.printStackTrace();
+			   		}	
+
 					break;
 				case "medico":
 					// creamos la ventana
@@ -78,11 +93,11 @@ public class LoginControler {
 						FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaCuidador));
 						VistaCuidadorPrincipalController vistaCuidadorPrincipalController = new VistaCuidadorPrincipalController();
 						loader.setController(vistaCuidadorPrincipalController);	
-						Parent root = loader.load();
-						vistaCuidadorPrincipalController.writeText(p.getDni());
+						Parent root2 = loader.load();
+						vistaCuidadorPrincipalController.writeText(p);
 						Stage stage2 = new Stage();
 				        stage2.setTitle(tituloVista3);
-				        stage2.setScene(new Scene(root));
+				        stage2.setScene(new Scene(root2));
 				        stage2.show();
 
 					

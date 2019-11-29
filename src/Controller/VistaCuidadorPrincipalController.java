@@ -1,21 +1,16 @@
 package Controller;
 
-import java.awt.Button;
-import java.awt.Label;
-
-import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
-
+import Model.Persona;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 
 public class VistaCuidadorPrincipalController {
-	
-	 @FXML
-	 private JFXTextField myTextField;
-	 
-	 //Esta funci�n actualiza la VISTA de la segunda ventana
-	 public void writeText(String mensaje) {		
-	     myTextField.setText(mensaje);
-	   }
+
+	@FXML
+	private Label idCuidadorLabel = new Label();
+
+	public void writeText(Persona p) {
+		idCuidadorLabel.setText("Bienvenido: " + p.getNombre());
+	}
+
 }
