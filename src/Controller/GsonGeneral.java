@@ -36,6 +36,7 @@ public class GsonGeneral {
 	}
 
 	public static List<Tickets> desserializarJsonAArrayTicket() {	
+
         String jsonInString = "jsonTickets.json";
         List<Tickets> listaTickets = null;
         try (Reader reader = new FileReader(jsonInString)) {
@@ -52,18 +53,22 @@ public class GsonGeneral {
 	}
 	
 	public static List<Medico> desserializarJsonAArrayMedico() {	
-        String jsonInString = "Medicos.json";
+        String jsonInString = "medicos.json";
         List<Medico> listaMedicos = null;
         try (Reader reader = new FileReader(jsonInString)) {
         	Gson gson = new Gson();
-        	Type tipoListaPersonas = new TypeToken<List<Medico>>(){}.getType();
-        	List<Medico> medicos = gson.fromJson(reader, tipoListaPersonas);
+        	Type tipoListaMedico = new TypeToken<List<Medico>>(){}.getType();
+        	//System.out.println("tipo de listas: " + tipoListaMedico.getClass().getTypeName());
+        	List<Medico> medicos = gson.fromJson(reader, tipoListaMedico);
         	
         	listaMedicos = medicos;
-            
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        for (Medico medico : listaMedicos) {
+			System.out.println("idMedico: " + medico.getIdMedico());
+		}
 		return listaMedicos;
 	}
 

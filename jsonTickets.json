@@ -1,7 +1,7 @@
 ﻿[
   {
-    "idPaciente": "81dc9bdb52d04dc20036dbd8313ed055",
-    "idClinico": "81dc9bdb52d04dc20036dbd8313ed055",
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
     "textoPaciente": "tengo el colesterol muy alto, ¿que tengo que tomar?",
     "textoClinico": "tiene que hacer ejercicio y evitar comer fritos.",
     "visiblePaciente": "true"
