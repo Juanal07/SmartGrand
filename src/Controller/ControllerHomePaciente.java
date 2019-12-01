@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 
 public class ControllerHomePaciente implements Initializable {
 	@FXML
-	private JFXListView<String> lvTicketsPaciente = new JFXListView<String>();
+	private JFXListView<Tickets> lvTicketsPaciente = new JFXListView<Tickets>();
 	@FXML
 	private JFXButton fxmBtnEnviarTicket = new JFXButton();
 	@FXML
@@ -61,9 +61,12 @@ public class ControllerHomePaciente implements Initializable {
 		}
 	}
 
-	public List<Tickets> leerTickets() {
+	public List<Tickets> leerTickets(ObservableList<Tickets> ticketsObservableList2) {
 		List<Tickets> listaTickets = GsonGeneral.desserializarJsonAArrayTicket();
-		return listaTickets;
+		for (Tickets tickets : listaTickets) {
+			ticketsObservableList2.add(tickets);
+		}
+		return ticketsObservableList2;
 	}
 
 	public void writeText(Persona p) {
@@ -75,7 +78,8 @@ public class ControllerHomePaciente implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		ObservableList<String> ticketsObservableList = FXCollections.observableArrayList("hola","que","tal");
+		ObservableList<Tickets> ticketsObservableList = FXCollections.observableArrayList();
+		ticketsObservableList = (ObservableList<Tickets>) leerTickets(ticketsObservableList);
 		lvTicketsPaciente.setItems(ticketsObservableList);
 	}
 }
