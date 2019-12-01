@@ -118,5 +118,29 @@
     "apellido": "Garcia",
     "tipoUsuario": "cuidador",
     "dni": "12345678A"
+  },
+  {
+    "usuario": "gonzalo",
+    "password": "cf1023b94cd07a210860bdf4f03a7126",
+    "nombre": "gonzalo",
+    "apellido": "gonzalo",
+    "tipoUsuario": "cuidador",
+    "dni": "bhgjbkb"
+  },
+  {
+    "usuario": "gonzalo",
+    "password": "cf1023b94cd07a210860bdf4f03a7126",
+    "nombre": "gonzalo",
+    "apellido": "gonzalo",
+    "tipoUsuario": "cuidador",
+    "dni": "crhebv"
+  },
+  {
+    "usuario": "Aldara29",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
+    "nombre": "Aldara",
+    "apellido": "Fernandez",
+    "tipoUsuario": "medico",
+    "dni": "rvneiovnrv"
   }
 ]
