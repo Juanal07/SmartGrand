@@ -5,7 +5,7 @@
     "nombre": "Juan",
     "apellido": "Raya",
     "tipoUsuario": "cuidador",
-    "dni": "12345678A"
+    "dni": "00000001C"
   },
   {
     "usuario": "cuidador2",
@@ -13,7 +13,7 @@
     "nombre": "Fernando",
     "apellido": "Ribero",
     "tipoUsuario": "cuidador",
-    "dni": "12345678A"
+    "dni": "00000002C"
   },
   {
     "usuario": "cuidador3",
@@ -21,7 +21,7 @@
     "nombre": "Sebas",
     "apellido": "Quiyanas",
     "tipoUsuario": "cuidador",
-    "dni": "12345678A"
+    "dni": "00000003C"
   },
   {
     "usuario": "cuidador4",
@@ -29,7 +29,7 @@
     "nombre": "Gonzalo",
     "apellido": "Vizoso",
     "tipoUsuario": "cuidador",
-    "dni": "12345678A"
+    "dni": "00000004C"
   },
   {
     "usuario": "cuidador5",
@@ -37,7 +37,7 @@
     "nombre": "Borja",
     "apellido": "Garcia",
     "tipoUsuario": "cuidador",
-    "dni": "12345678A"
+    "dni": "00000005C"
   },
   {
     "usuario": "cuidador6",
@@ -45,7 +45,7 @@
     "nombre": "Sergio",
     "apellido": "Garcia",
     "tipoUsuario": "cuidador",
-    "dni": "12345678A"
+    "dni": "00000006C"
   },
   {
     "usuario": "cuidador7",
@@ -53,7 +53,7 @@
     "nombre": "Juanpe",
     "apellido": "Garcia",
     "tipoUsuario": "cuidador",
-    "dni": "12345678A"
+    "dni": "00000007C"
   },
   {
     "usuario": "cuidador8",
@@ -61,7 +61,7 @@
     "nombre": "Pablo",
     "apellido": "Casado",
     "tipoUsuario": "cuidador",
-    "dni": "12345678A"
+    "dni": "00000008C"
   },
   {
     "usuario": "paciente1",
@@ -110,37 +110,5 @@
     "apellido": "Pastor",
     "tipoUsuario": "medico",
     "dni": "00000002M"
-  },
-  {
-    "usuario": "cuidador0",
-    "password": "81dc9bdb52d04dc20036dbd8313ed055",
-    "nombre": "Emilio",
-    "apellido": "Garcia",
-    "tipoUsuario": "cuidador",
-    "dni": "12345678A"
-  },
-  {
-    "usuario": "gonzalo",
-    "password": "cf1023b94cd07a210860bdf4f03a7126",
-    "nombre": "gonzalo",
-    "apellido": "gonzalo",
-    "tipoUsuario": "cuidador",
-    "dni": "bhgjbkb"
-  },
-  {
-    "usuario": "gonzalo",
-    "password": "cf1023b94cd07a210860bdf4f03a7126",
-    "nombre": "gonzalo",
-    "apellido": "gonzalo",
-    "tipoUsuario": "cuidador",
-    "dni": "crhebv"
-  },
-  {
-    "usuario": "Aldara29",
-    "password": "81dc9bdb52d04dc20036dbd8313ed055",
-    "nombre": "Aldara",
-    "apellido": "Fernandez",
-    "tipoUsuario": "medico",
-    "dni": "rvneiovnrv"
   }
 ]
