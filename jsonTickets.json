@@ -10,5 +10,17 @@
     "idClinico": "00000001M",
     "textoPaciente": "sdf",
     "textoClinico": "prueba"
+  },
+  {
+    "idPaciente": "00000004P",
+    "idClinico": "00000002M",
+    "textoPaciente": "hola doctor me duele un pie",
+    "textoClinico": "prueba"
+  },
+  {
+    "idPaciente": "00000004P",
+    "idClinico": "00000002M",
+    "textoPaciente": "me duele la cabeza",
+    "textoClinico": ""
   }
 ]

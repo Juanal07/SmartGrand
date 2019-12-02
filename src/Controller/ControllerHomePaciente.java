@@ -70,7 +70,7 @@ public class ControllerHomePaciente {
 			}
 		}
 
-		Tickets nuevo = new Tickets(dniPaciente, dniMedico, textoPaciente, "prueba");
+		Tickets nuevo = new Tickets(dniPaciente, dniMedico, textoPaciente, "");
 		System.out.println(dniPaciente + dniMedico + textoPaciente);
 		String ruta = "jsonTickets.json";
 		List<Tickets> tiquets = GsonGeneral.desserializarJsonAArrayTicket(); 
