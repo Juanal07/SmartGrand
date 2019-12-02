@@ -1,6 +1,10 @@
 [
   {
     "idMedico": "00000001M",
-	"dniPacientes": ["00000001P", "00000002P"]
+	"dniPacientes": ["00000001P", "00000002P", "00000003P"]
+  },
+    {
+    "idMedico": "00000002M",
+	"dniPacientes": ["00000004P"]
   }
 ]

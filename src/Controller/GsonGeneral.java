@@ -24,8 +24,7 @@ public class GsonGeneral {
 		List<Persona> listaPersonas = null;
 		try (Reader reader = new FileReader(jsonInString)) {
 			Gson gson = new Gson();
-			Type tipoListaPersonas = new TypeToken<List<Persona>>() {
-			}.getType();
+			Type tipoListaPersonas = new TypeToken<List<Persona>>() {}.getType();
 			List<Persona> personas = gson.fromJson(reader, tipoListaPersonas);
 
 			listaPersonas = personas;
@@ -41,9 +40,8 @@ public class GsonGeneral {
 		List<Tickets> listaTickets = null;
 		try (Reader reader = new FileReader(jsonInString)) {
 			Gson gson3 = new Gson();
-			Type tipoListaTickte = new TypeToken<List<Tickets>>() {
-			}.getType();
-			List<Tickets> tickets = gson3.fromJson(reader, tipoListaTickte);
+			Type tipoListaTicket = new TypeToken<List<Tickets>>() {}.getType();
+			List<Tickets> tickets = gson3.fromJson(reader, tipoListaTicket);
 
 			listaTickets = tickets;
 		} catch (IOException e) {
