@@ -1,5 +1,8 @@
 ﻿[
   {
-   
+    "idPaciente" : "00000001P",
+    "idClinico" : "00000001M",
+    "textoPaciente" : "tengo el colesterol muy alto, ¿que tengo que tomar?",
+    "textoClinico" : "tiene que hacer ejercicio y evitar comer fritos."
   }
 ]

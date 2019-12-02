@@ -7,15 +7,15 @@ public class Tickets {
 	private String idClinico;
 	private String textoPaciente;
 	private String textoClinico;
-	private LocalDate date;
+	//private LocalDate date;
 
-	public Tickets(String idPaciente, String idClinico, String textoPaciente, String textoClinico, LocalDate date) {
+	public Tickets(String idPaciente, String idClinico, String textoPaciente, String textoClinico) {
 		super();
 		this.idPaciente = idPaciente;
 		this.idClinico = idClinico;
 		this.textoPaciente = textoPaciente;
 		this.textoClinico = textoClinico;
-		this.date = date;
+		//this.date = date;
 	}
 
 	public String getIdPaciente() {
@@ -50,12 +50,12 @@ public class Tickets {
 		this.textoClinico = textoClinico;
 	}
 
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
+//	public LocalDate getDate() {
+//		return date;
+//	}
+//
+//	public void setDate(LocalDate date) {
+//		this.date = date;
+//	}
 
 }

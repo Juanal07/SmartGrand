@@ -54,20 +54,17 @@ public class ControllerHomePaciente implements Initializable {
 			ArrayList<String> idPacientes = medico.getDniPacientes();
 			int sizeArray = idPacientes.size();
 			int i = 0;
-
 			while (i < sizeArray) {
-
 				if (dniPaciente.equals(idPacientes.get(i))) {
 					System.out.println("Dni Paciente Encontrado: " + idPacientes.get(i));
 					dniMedico = idPacientes.get(i);
 					i = i + sizeArray;
 				}
-
 				i++;
 			}
 		}
 
-		Tickets ticket = new Tickets(dniPaciente, dniMedico, textoPaciente, "", date);
+		Tickets ticket = new Tickets(dniPaciente, dniMedico, textoPaciente, "");
 		EnviarTicket(ticket);
 	}
 
