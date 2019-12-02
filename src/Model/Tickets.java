@@ -1,17 +1,21 @@
 package Model;
 
+import java.time.LocalDate;
+
 public class Tickets {
 	private String idPaciente;
 	private String idClinico;
 	private String textoPaciente;
-	private String TextoClinico;
+	private String textoClinico;
+	private LocalDate date;
 
-	public Tickets(String idPaciente, String idClinico, String textoPaciente, String textoClinico) {
+	public Tickets(String idPaciente, String idClinico, String textoPaciente, String textoClinico, LocalDate date) {
 		super();
 		this.idPaciente = idPaciente;
 		this.idClinico = idClinico;
 		this.textoPaciente = textoPaciente;
-		this.TextoClinico = textoClinico;
+		this.textoClinico = textoClinico;
+		this.date = date;
 	}
 
 	public String getIdPaciente() {
@@ -39,11 +43,19 @@ public class Tickets {
 	}
 
 	public String getTextoClinico() {
-		return TextoClinico;
+		return textoClinico;
 	}
 
 	public void setTextoClinico(String textoClinico) {
-		TextoClinico = textoClinico;
+		this.textoClinico = textoClinico;
+	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
 
 }

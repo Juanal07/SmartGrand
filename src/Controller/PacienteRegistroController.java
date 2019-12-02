@@ -45,40 +45,44 @@ public class PacienteRegistroController {
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
-		
+
 		String usuario = tfUsuario.getText();
-		String password2 = tfPassword.getText();//password sin cifrar para hacer el validation
+		String password2 = tfPassword.getText();// password sin cifrar para hacer el validation
 		String password = GsonGeneral.getMd5(tfPassword.getText());
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
 		String tipoUsuario = "paciente";
-		
-		//String usuario = "", password= "", nombre = "", apellido = "", tipoUsuario = "", dni = "";
-		
-		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni);
-		
-		if(usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && valido) {
 
-		Persona nuevo = new Persona(usuario, password, nombre, apellido, tipoUsuario, dni); // Creamos objeto persona																		// con los datos
-																							// introducidos
-		List<Persona> lista = GsonGeneral.desserializarJsonAArray(); // Creamos lista de personas con la info del json
-		lista.add(nuevo); // añadimos el nuevo usuario a la lista
-		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
-		String representacionBonita = prettyGson.toJson(lista);
-		String ruta = "usuarios.json";
-		GsonGeneral.EscribirJson(representacionBonita, ruta);
-		
-		Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
-		stage.close();
-		String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
-		String tituloVista = "Login";
-		LoginControler loginControler = new LoginControler();
-		crearVentana(vistaRegPac, tituloVista, loginControler);
-		// label indicando que se ha registrado con exito. en la ventana de iniciar
-		// sesion
-		System.out.println("Paciente registrado con exito");
-		
+		// String usuario = "", password= "", nombre = "", apellido = "", tipoUsuario =
+		// "", dni = "";
+
+		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni);
+
+		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && valido) {
+
+			Persona nuevo = new Persona(usuario, password, nombre, apellido, tipoUsuario, dni); // Creamos objeto
+																								// persona // con los
+																								// datos
+																								// introducidos
+			List<Persona> lista = GsonGeneral.desserializarJsonAArray(); // Creamos lista de personas con la info del
+																			// json
+			lista.add(nuevo); // añadimos el nuevo usuario a la lista
+			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
+			String representacionBonita = prettyGson.toJson(lista);
+			String ruta = "usuarios.json";
+			GsonGeneral.EscribirJson(representacionBonita, ruta);
+
+			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
+			stage.close();
+			String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
+			String tituloVista = "Login";
+			LoginControler loginControler = new LoginControler();
+			crearVentana(vistaRegPac, tituloVista, loginControler);
+			// label indicando que se ha registrado con exito. en la ventana de iniciar
+			// sesion
+			System.out.println("Paciente registrado con exito");
+
 		}
 	}
 
@@ -111,6 +115,7 @@ public class PacienteRegistroController {
 			System.out.println(e.getMessage());
 		}
 	}
+
 	// revisar
 	public boolean validation(String usuario, String password, String nombre, String apellido, String tipoUsuario,
 			String dni) {
@@ -123,7 +128,7 @@ public class PacienteRegistroController {
 		}
 		if (nombre.matches("^[a-zA-Z]{2,}$")) {
 			lbErrorNombre.setText("");
-			//nombre = tfNombre.getText().intern();
+			// nombre = tfNombre.getText().intern();
 		} else {
 			lbErrorNombre.setText("Error! Nombre incorrecto.");
 			valido = false;
@@ -131,23 +136,23 @@ public class PacienteRegistroController {
 
 		if (apellido.matches("^[a-zA-Z]{2,}$")) {
 			lbErrorApellido.setText("");
-			//apellido = tfApellido.getText().intern();
+			// apellido = tfApellido.getText().intern();
 		} else {
 			lbErrorApellido.setText("Error! Apellido incorrecto.");
 			valido = false;
 		}
-		
+
 		if (password.matches("^[a-zA-Z0-9._-]{3,}$")) {
 			lbErrorPassword.setText("");
-			//apellido = tfApellido.getText().intern();
+			// apellido = tfApellido.getText().intern();
 		} else {
 			lbErrorPassword.setText("Error! Password incorrecto.");
 			valido = false;
 		}
 
-		if (dni.matches("^[a-zA-Z]{2,}$")) { //^(([A-Z]\\d{8})|(\\d{8}[A-Z]))$
+		if (dni.matches("^[a-zA-Z]{2,}$")) { // ^(([A-Z]\\d{8})|(\\d{8}[A-Z]))$
 			lbErrorDni.setText("");
-			//apellido = tfDni.getText().intern();
+			// apellido = tfDni.getText().intern();
 		} else {
 			lbErrorDni.setText("Error! DNI incorrecto.");
 			valido = false;
