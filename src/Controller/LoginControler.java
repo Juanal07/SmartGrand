@@ -68,6 +68,8 @@ public class LoginControler {
 						controllerHomePaciente.writeText(p);
 						Stage stage2 = new Stage();
 				        stage2.setTitle(tituloVista);
+				        Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la vista	
+						stage2.getIcons().add(icon);
 				        stage2.setScene(new Scene(root2));
 				        stage2.show();
 
@@ -97,6 +99,8 @@ public class LoginControler {
 						vistaCuidadorPrincipalController.writeText(p);
 						Stage stage2 = new Stage();
 				        stage2.setTitle(tituloVista3);
+				        Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la vista	
+						stage2.getIcons().add(icon);
 				        stage2.setScene(new Scene(root2));
 				        stage2.show();
 
