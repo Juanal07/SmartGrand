@@ -77,7 +77,6 @@ public class ControllerHomePaciente implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ObservableList<String> ticketsObservableList = FXCollections.observableArrayList();
-		// ticketsObservableList = (ObservableList<Tickets>)
 		leerTickets(ticketsObservableList);
 		lvTicketsPaciente.setItems(ticketsObservableList);
 	}
@@ -86,7 +85,7 @@ public class ControllerHomePaciente implements Initializable {
 		List<Tickets> tiquets = GsonGeneral.desserializarJsonAArrayTicket();
 		for (Tickets tickets : tiquets) {
 			if (!tickets.getTextoClinico().equals("")) {
-				String ticket = "Paciente: " + tickets.getTextoPaciente() + "\n \n" + "Medico: " + tickets.getTextoClinico(); 
+				String ticket = "Paciente: " + tickets.getTextoPaciente() + "\n" + "Medico: " + tickets.getTextoClinico(); 
 				System.out.println(" ****************************** ");
 				ticketsObservableList2.add(ticket);
 				System.out.println(ticket);
