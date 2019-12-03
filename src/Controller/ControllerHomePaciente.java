@@ -85,7 +85,7 @@ public class ControllerHomePaciente implements Initializable {
 		List<Tickets> tiquets = GsonGeneral.desserializarJsonAArrayTicket();
 		for (Tickets tickets : tiquets) {
 			if (!tickets.getTextoClinico().equals("")) {
-				String ticket = "Paciente: " + tickets.getTextoPaciente() + "Medico: " + tickets.getTextoClinico(); 
+				String ticket = "Paciente: " + tickets.getTextoPaciente() + "	Medico: " + tickets.getTextoClinico(); 
 				System.out.println(" ****************************** ");
 				ticketsObservableList2.add(ticket);
 				System.out.println(ticket);
