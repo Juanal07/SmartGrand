@@ -22,5 +22,23 @@
     "idClinico": "00000002M",
     "textoPaciente": "me duele la cabeza",
     "textoClinico": ""
+  },
+  {
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
+    "textoPaciente": "qwe",
+    "textoClinico": ""
+  },
+  {
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
+    "textoPaciente": "hola uq etal",
+    "textoClinico": ""
+  },
+  {
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
+    "textoPaciente": "ppppp",
+    "textoClinico": ""
   }
 ]
