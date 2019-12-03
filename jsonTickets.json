@@ -9,13 +9,13 @@
     "idPaciente": "00000001P",
     "idClinico": "00000001M",
     "textoPaciente": "sdf",
-    "textoClinico": "prueba"
+    "textoClinico": "prueba1"
   },
   {
     "idPaciente": "00000004P",
     "idClinico": "00000002M",
     "textoPaciente": "hola doctor me duele un pie",
-    "textoClinico": "prueba"
+    "textoClinico": "prueba2"
   },
   {
     "idPaciente": "00000004P",
