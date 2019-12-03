@@ -158,14 +158,15 @@ public class CuidadorRegistroControler {
 			valido = false;
 		}
 
-		if (dni.matches("^[a-zA-Z]{2,}$")) { //^(([A-Z]\\d{8})|(\\d{8}[A-Z]))$
-			lbErrorDni.setText("");
-			//apellido = tfDni.getText().intern();
-		} else {
+		if (dni.length() != 9) { 
 			lbErrorDni.setText("Error! DNI incorrecto.");
 			valido = false;
+			//apellido = tfDni.getText().intern();
+		} else {
+			lbErrorDni.setText("");
 		}
 		return valido;
 	}
 
+	
 }

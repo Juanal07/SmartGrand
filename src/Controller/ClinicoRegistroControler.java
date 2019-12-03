@@ -16,6 +16,8 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.jfoenix.controls.JFXTextField;
+
 import Controller.GsonGeneral;
 import Model.Persona;
 import javafx.event.ActionEvent;
@@ -44,8 +46,8 @@ public class ClinicoRegistroControler {
 	@FXML
 	private Label lbErrorDni;
 	@FXML
-	public TextField tfUsuario = new TextField(), tfNombre = new TextField(), tfApellido = new TextField(),
-	tfDni = new TextField();
+	public TextField tfUsuario = new JFXTextField(), tfNombre = new JFXTextField(), tfApellido = new JFXTextField(),
+	tfDni = new JFXTextField();
 	@FXML
 	public PasswordField tfPassword = new PasswordField();
 
@@ -164,12 +166,12 @@ public class ClinicoRegistroControler {
 			valido = false;
 		}
 
-		if (dni.matches("^[a-zA-Z]{2,}$")) { //^(([A-Z]\\d{8})|(\\d{8}[A-Z]))$
-			lbErrorDni.setText("");
-			//apellido = tfDni.getText().intern();
-		} else {
+		if (dni.length() != 9) { 
 			lbErrorDni.setText("Error! DNI incorrecto.");
 			valido = false;
+			//apellido = tfDni.getText().intern();
+		} else {
+			lbErrorDni.setText("");
 		}
 		return valido;
 	}
