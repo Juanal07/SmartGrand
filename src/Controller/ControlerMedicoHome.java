@@ -1,5 +1,6 @@
 package Controller;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -39,8 +40,13 @@ public class ControlerMedicoHome implements Initializable{
 
 			@Override
 			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
 				System.out.println("clicked on " + listaTicketsSinResponder.getSelectionModel().getSelectedItem());
+				String textoPaciente = listaTicketsSinResponder.getSelectionModel().getSelectedItem();
+				System.out.println(textoPaciente.compareToIgnoreCase(""));
+//				String[] textoPaciente = listaTicketsSinResponder.getSelectionModel().getSelectedItem().split("Paciente:", limit);
+//				for (String string : ticketsObservableList) {
+//					System.out.println("cadena: " + string);
+//				}
 			}
 		} );
 	}
