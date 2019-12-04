@@ -106,7 +106,7 @@ public class LoginControler {
 					
 					try {
 						FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaCuidador));
-						VistaCuidadorPrincipalController vistaCuidadorPrincipalController = new VistaCuidadorPrincipalController();
+						VistaCuidador1Controller vistaCuidadorPrincipalController = new VistaCuidador1Controller();
 						loader.setController(vistaCuidadorPrincipalController);	
 						Parent root2 = loader.load();
 						vistaCuidadorPrincipalController.writeText(p);

@@ -1,0 +1,10 @@
+[
+  {
+    "idCuidador": "00000001C",
+	"dniPacientes": ["00000001P", "00000002P", "00000003P"]
+  },
+    {
+    "idCuidador": "00000002C",
+	"dniPacientes": ["00000004P"]
+  }
+]
