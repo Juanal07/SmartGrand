@@ -3,6 +3,7 @@ package Controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 
+import Model.Tickets;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -18,8 +19,8 @@ public class ResponderTicketMedicoControler {
 		String txtMedico = txAreaMedico.getText();
 	}
 	
-	public void writeText(String textoPaciente) {
-		lbTextoPaciente.setText(textoPaciente);
+	public void writeText(Tickets ticket) {
+		lbTextoPaciente.setText(ticket.getTextoPaciente());
 		
 	}
 	

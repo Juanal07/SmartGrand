@@ -6,7 +6,7 @@ public class Persona {
 	private String nombre;
 	private String apellido;
 	private String tipoUsuario;
-	private String dni;	
+	private String dni;
 
 	public Persona(String usuario, String password, String nombre, String apellido, String tipoUsuario, String dni) {
 		super();
@@ -41,11 +41,10 @@ public class Persona {
 	public String getNombre() {
 		return nombre;
 	}
-	
+
 	public String getDni() {
 		return dni;
 	}
-
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -66,10 +65,14 @@ public class Persona {
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-	
+
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
 
+	@Override
+	public String toString() {
+		return usuario + "\t" + nombre + "\t" + apellido + "\t" + tipoUsuario + "\t" + dni;
+	}
 
 }

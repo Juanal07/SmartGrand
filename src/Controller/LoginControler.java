@@ -1,22 +1,14 @@
 package Controller;
 
-
-import java.util.ResourceBundle;
-
-import javax.swing.JOptionPane;
-
 import com.jfoenix.controls.JFXMasonryPane;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import Model.Persona;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -46,6 +38,7 @@ public class LoginControler {
 
 	@FXML
 	public void iniciarSesion(ActionEvent actionEvent) {
+		
 		String usuario = jfxtUsuario.getText();
 		String password = GsonGeneral.getMd5(jfxtPassword.getText());
 		//System.out.println("Usuario: " + usuario + " -> password: " + password);
@@ -91,13 +84,14 @@ public class LoginControler {
 						ControlerMedicoHome controlerMedicoHome = new ControlerMedicoHome();
 						loader.setController(controlerMedicoHome);	
 						Parent root1 = loader.load();
-						controlerMedicoHome.writeText(p);
 						Stage stage2 = new Stage();
 				        stage2.setTitle(tituloVista2);
 				        Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la vista	
 						stage2.getIcons().add(icon);
 				        stage2.setScene(new Scene(root1));
 				        stage2.show();
+				        controlerMedicoHome.cargarListViewPacientes(p);
+				        controlerMedicoHome.cargarListViewTickets(p);
 					}catch(Exception e) {
 			   			e.printStackTrace();
 			   		}	

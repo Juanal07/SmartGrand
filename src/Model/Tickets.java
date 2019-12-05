@@ -50,12 +50,9 @@ public class Tickets {
 		this.textoClinico = textoClinico;
 	}
 
-//	public LocalDate getDate() {
-//		return date;
-//	}
-//
-//	public void setDate(LocalDate date) {
-//		this.date = date;
-//	}
-
+	@Override
+	public String toString() {
+		return "Tickets [idPaciente=" + idPaciente + ", idClinico=" + idClinico + ", textoPaciente=" + textoPaciente
+				+ ", textoClinico=" + textoClinico + "]";
+	}
 }
