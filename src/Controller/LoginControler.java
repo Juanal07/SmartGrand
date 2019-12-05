@@ -1,11 +1,15 @@
 package Controller;
 
-import java.awt.List;
-import java.net.URL;
+
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+import com.jfoenix.controls.JFXMasonryPane;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import Model.Persona;
 import javafx.beans.binding.Bindings;
@@ -45,7 +49,7 @@ public class LoginControler {
 		String usuario = jfxtUsuario.getText();
 		String password = GsonGeneral.getMd5(jfxtPassword.getText());
 		//System.out.println("Usuario: " + usuario + " -> password: " + password);
-		java.util.List<Persona> lista = GsonGeneral.desserializarJsonAArray();
+		List<Persona> lista = GsonGeneral.desserializarJsonAArray();
 		for (Persona p : lista) {
 			//System.out.println("usuario json: " + p.getUsuario() + " -> password: " + p.getPassword());
 			if (usuario.equals(p.getUsuario()) && password.equals(p.getPassword())) {
@@ -71,9 +75,8 @@ public class LoginControler {
 				        Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la vista	
 						stage2.getIcons().add(icon);
 				        stage2.setScene(new Scene(root2));
-				        stage2.show();
-
-					
+				        stage2.show();		
+				        
 					}catch(Exception e) {
 			   			e.printStackTrace();
 			   		}	
@@ -105,17 +108,33 @@ public class LoginControler {
 					String tituloVista3 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 					
 					try {
-						FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaCuidador));
-						VistaCuidador1Controller vistaCuidadorPrincipalController = new VistaCuidador1Controller();
-						loader.setController(vistaCuidadorPrincipalController);	
-						Parent root2 = loader.load();
-						vistaCuidadorPrincipalController.writeText(p);
-						Stage stage2 = new Stage();
-				        stage2.setTitle(tituloVista3);
-				        Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la vista	
-						stage2.getIcons().add(icon);
-				        stage2.setScene(new Scene(root2));
-				        stage2.show();
+//						FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaCuidador));
+//						VistaCuidador1Controller vistaCuidadorPrincipalController = new VistaCuidador1Controller();
+//						loader.setController(vistaCuidadorPrincipalController);	
+//						Parent root2 = loader.load();
+//						vistaCuidadorPrincipalController.writeText(p);
+//						Stage stage2 = new Stage();
+//				        stage2.setTitle(tituloVista3);
+//				        Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la vista	
+//						stage2.getIcons().add(icon);
+//				        stage2.setScene(new Scene(root2));
+//				        stage2.show();
+				        
+				        Random r = new Random();
+						JFXMasonryPane root = new JFXMasonryPane();
+						for (int i = 0; i < 100; i++) {
+							Label lbl = new Label();
+							lbl.setPrefSize(r.nextInt(200), r.nextInt(200));
+							lbl.setStyle("-fx-background-color:rgb(" + r.nextInt(255) + "," + r.nextInt(255) + "," + r.nextInt(255)+ ");");
+							root.getChildren().add(lbl);						
+							
+						}
+						
+						Scene scene = new Scene(root, 800, 600);
+						stage.setTitle(tituloVista3);
+						stage.setScene(scene);
+						stage.show();
+
 
 					
 					}catch(Exception e) {
