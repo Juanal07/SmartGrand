@@ -21,7 +21,7 @@
     "idPaciente": "00000004P",
     "idClinico": "00000002M",
     "textoPaciente": "me duele la cabeza",
-    "textoClinico": ""
+    "textoClinico": "hola"
   },
   {
     "idPaciente": "00000001P",
@@ -39,7 +39,7 @@
     "idPaciente": "00000001P",
     "idClinico": "00000001M",
     "textoPaciente": "ppppp",
-    "textoClinico": ""
+    "textoClinico": "qqqq"
   },
   {
     "idPaciente": "00000001P",

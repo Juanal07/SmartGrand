@@ -52,7 +52,7 @@ public class Tickets {
 
 	@Override
 	public String toString() {
-		return "Tickets [idPaciente=" + idPaciente + ", idClinico=" + idClinico + ", textoPaciente=" + textoPaciente
-				+ ", textoClinico=" + textoClinico + "]";
+		return "idPaciente=" + idPaciente + ", idClinico=" + idClinico + ", textoPaciente=" + textoPaciente
+				+ ", textoClinico=" + textoClinico;
 	}
 }

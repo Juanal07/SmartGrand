@@ -38,8 +38,6 @@ public class ControllerHomePaciente implements Initializable {
 		String textoPaciente = jfxTaPaciente.getText();
 		String dniPaciente = idPacienteLabel.getText();
 		String dniMedico = "";
-//		LocalDate date = LocalDate.now();
-//		System.out.println(date);
 		List<Medico> listaMedicoRelacion = GsonGeneral.desserializarJsonAArrayMedico();
 		for (Medico medico : listaMedicoRelacion) {
 			ArrayList<String> idPacientes = medico.getDniPacientes();

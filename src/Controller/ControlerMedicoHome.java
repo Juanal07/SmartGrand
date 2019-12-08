@@ -1,26 +1,19 @@
 package Controller;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXListView;
 
 import Model.Medico;
 import Model.Persona;
 import Model.Tickets;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -120,7 +113,7 @@ public class ControlerMedicoHome {
 		ObservableList<Tickets> ticketsObservableList = FXCollections.observableArrayList();
 		leerTickets(ticketsObservableList);
 		listaTicketsSinResponder.setItems(ticketsObservableList);
-		
+
 		listaTicketsSinResponder.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			@Override
