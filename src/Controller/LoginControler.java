@@ -53,45 +53,13 @@ public class LoginControler {
 					// creamos la ventana
 					String vistaPaciente = "/View/HomePaciente.fxml";
 					String tituloVista = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
-					
-					try {
-						FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaPaciente));
-						ControllerHomePaciente controllerHomePaciente = new ControllerHomePaciente();
-						loader.setController(controllerHomePaciente);
-						Parent root2 = loader.load();
-						controllerHomePaciente.writeText(p);
-						Stage stage2 = new Stage();
-						stage2.setTitle(tituloVista);
-						Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
-						stage2.getIcons().add(icon);
-						stage2.setScene(new Scene(root2));
-						stage2.show();
-
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-
+					pacienteHome(vistaPaciente, tituloVista, p);
 					break;
 				case "medico":
 					// creamos la ventana
 					String vistaMedico = "/View/MedicoHome.fxml";
 					String tituloVista2 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
-					try {
-						FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaMedico));
-						ControlerMedicoHome controlerMedicoHome = new ControlerMedicoHome();
-						loader.setController(controlerMedicoHome);
-						Parent root1 = loader.load();
-						Stage stage2 = new Stage();
-						stage2.setTitle(tituloVista2);
-						Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
-						stage2.getIcons().add(icon);
-						stage2.setScene(new Scene(root1));
-						stage2.show();
-						controlerMedicoHome.cargarListViewPacientes(p);
-						controlerMedicoHome.cargarListViewTickets(p);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+					medicoHome(vistaMedico, tituloVista2, p);
 					break;
 				case "cuidador":
 					// creamos la ventana
@@ -142,6 +110,45 @@ public class LoginControler {
 		}
 	}
 
+	public void pacienteHome(String vistaPaciente, String tituloVista, Persona p) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaPaciente));
+			ControllerHomePaciente controllerHomePaciente = new ControllerHomePaciente();
+			loader.setController(controllerHomePaciente);
+			Parent root2 = loader.load();
+			controllerHomePaciente.writeText(p);
+			Stage stage2 = new Stage();
+			stage2.setTitle(tituloVista);
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
+			stage2.getIcons().add(icon);
+			stage2.setScene(new Scene(root2));
+			stage2.show();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void medicoHome(String vistaMedico, String tituloVista2, Persona p) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaMedico));
+			ControlerMedicoHome controlerMedicoHome = new ControlerMedicoHome();
+			loader.setController(controlerMedicoHome);
+			Parent root1 = loader.load();
+			Stage stage2 = new Stage();
+			stage2.setTitle(tituloVista2);
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
+			stage2.getIcons().add(icon);
+			stage2.setScene(new Scene(root1));
+			stage2.show();
+			controlerMedicoHome.cargarListViewPacientes(p);
+			controlerMedicoHome.cargarListViewTickets(p);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	@FXML
 	public void registroContinuo(ActionEvent actionEvent) {
 		// esta line es para cerrar la ventana anterior
@@ -163,8 +170,7 @@ public class LoginControler {
 			Stage sendStage = new Stage();
 			sendStage.setTitle(titulo);
 			Scene scene = new Scene(page);
-			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // a�ade icono a la
-																									// vista
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
 			sendStage.setScene(scene);
 			sendStage.show();

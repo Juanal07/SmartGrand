@@ -2,19 +2,20 @@ package Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import com.jfoenix.controls.JFXListView;
 
 import Model.Medico;
 import Model.Persona;
 import Model.Tickets;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ControlerMedicoHome {
@@ -22,10 +23,6 @@ public class ControlerMedicoHome {
 	private JFXListView<Persona> listaPacientesMedico = new JFXListView<Persona>();
 	@FXML
 	private JFXListView<Tickets> listaTicketsSinResponder = new JFXListView<Tickets>();
-
-	private ObservableList<Persona> pacientesObservableList;
-
-	private ObservableList<Tickets> ticketsObservableList;
 
 	public void leerPersonas(ObservableList<Persona> pacientesObservableList2, Persona p) {
 		ArrayList<String> listaMisPacientes;
@@ -98,15 +95,14 @@ public class ControlerMedicoHome {
 		leerPersonas(personasObservableList, p);
 		listaPacientesMedico.setItems(personasObservableList);
 
-		listaPacientesMedico.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		listaPacientesMedico.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Persona>() {
 
 			@Override
-			public void handle(MouseEvent event) {
-				System.out.println("hola huele bicho XD");
+			public void changed(ObservableValue<? extends Persona> observable, Persona oldValue, Persona newValue) {
+				Persona persona = listaPacientesMedico.getSelectionModel().getSelectedItem();
+				System.out.println(persona);
 			}
-
 		});
-
 	}
 
 	public void cargarListViewTickets(Persona p) {
@@ -114,16 +110,14 @@ public class ControlerMedicoHome {
 		leerTickets(ticketsObservableList);
 		listaTicketsSinResponder.setItems(ticketsObservableList);
 
-		listaTicketsSinResponder.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		listaTicketsSinResponder.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tickets>() {
 
 			@Override
-			public void handle(MouseEvent event) {
+			public void changed(ObservableValue<? extends Tickets> observable, Tickets oldValue, Tickets newValue) {
 				Tickets ticket = listaTicketsSinResponder.getSelectionModel().getSelectedItem();
 				enviarVentana(ticket);
+
 			}
-
 		});
-
 	}
-
 }

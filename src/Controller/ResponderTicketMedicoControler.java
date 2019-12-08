@@ -23,11 +23,14 @@ public class ResponderTicketMedicoControler {
 	public void enviarRespuesta() {
 		String txPaciente = lbTextoPaciente.getText();
 		String txtMedico = txAreaMedico.getText();
-		String idPaciente = lbOculto.getText().substring(lbOculto.getText().lastIndexOf("idPaciente"), lbOculto.getText().indexOf(","));
+		String idPaciente;
 		String idClinico;
-		String[] cadenas = lbOculto.getText().trim().split(",");
-		idPaciente = cadenas[0].substring(cadenas[0].indexOf("=")+1, cadenas[0].length());
-		idClinico = cadenas[1].substring(cadenas[1].indexOf("=")+1, cadenas[1].length());
+		String[] cadenas = lbOculto.getText().trim().split("\t");
+		for (String string : cadenas) {
+			System.out.println(string);
+		}
+		idPaciente = cadenas[0];
+		idClinico = cadenas[1];
 		leerTickets(idPaciente, idClinico, txPaciente, txtMedico);
 		
 	}
@@ -68,7 +71,6 @@ public class ResponderTicketMedicoControler {
 	public void writeText(Tickets ticket) {
 		lbTextoPaciente.setText(ticket.getTextoPaciente());
 		lbOculto.setText(ticket.toString());
-
 	}
 
 }
