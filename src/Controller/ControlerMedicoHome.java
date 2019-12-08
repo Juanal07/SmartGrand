@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class ControlerMedicoHome {
@@ -23,6 +24,7 @@ public class ControlerMedicoHome {
 	private JFXListView<Persona> listaPacientesMedico = new JFXListView<Persona>();
 	@FXML
 	private JFXListView<Tickets> listaTicketsSinResponder = new JFXListView<Tickets>();
+	private Label lbOculto = new Label();
 
 	public void leerPersonas(ObservableList<Persona> pacientesObservableList2, Persona p) {
 		ArrayList<String> listaMisPacientes;
@@ -62,7 +64,7 @@ public class ControlerMedicoHome {
 	public void enviarVentana(Tickets ticket) {
 		String vistaPaciente = "/View/ResponderTicketMedico.fxml";
 		String tituloVista = "responder tiquet.";
-
+		String persona = lbOculto.getText();
 		Stage stage = (Stage) listaTicketsSinResponder.getScene().getWindow();
 		stage.close();
 
@@ -71,7 +73,7 @@ public class ControlerMedicoHome {
 			ResponderTicketMedicoControler responderTicketMedicoControler = new ResponderTicketMedicoControler();
 			loader.setController(responderTicketMedicoControler);
 			Parent root2 = loader.load();
-			responderTicketMedicoControler.writeText(ticket);
+			responderTicketMedicoControler.writeText(ticket, persona);
 			Stage stage2 = new Stage();
 			stage2.setTitle(tituloVista);
 			stage2.setScene(new Scene(root2));
@@ -91,6 +93,7 @@ public class ControlerMedicoHome {
 	}
 
 	public void cargarListViewPacientes(Persona p) {
+		lbOculto.setText(p.toString());
 		ObservableList<Persona> personasObservableList = FXCollections.observableArrayList();
 		leerPersonas(personasObservableList, p);
 		listaPacientesMedico.setItems(personasObservableList);

@@ -7,9 +7,15 @@ import com.google.gson.GsonBuilder;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 
+import Model.Persona;
 import Model.Tickets;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 public class ResponderTicketMedicoControler {
 	@FXML
@@ -19,6 +25,7 @@ public class ResponderTicketMedicoControler {
 	@FXML
 	private Label lbTextoPaciente = new Label();
 	private Label lbOculto = new Label();
+	private Label lbOculto2 = new Label();
 
 	public void enviarRespuesta() {
 		String txPaciente = lbTextoPaciente.getText();
@@ -26,9 +33,6 @@ public class ResponderTicketMedicoControler {
 		String idPaciente;
 		String idClinico;
 		String[] cadenas = lbOculto.getText().trim().split("\t");
-		for (String string : cadenas) {
-			System.out.println(string);
-		}
 		idPaciente = cadenas[0];
 		idClinico = cadenas[1];
 		leerTickets(idPaciente, idClinico, txPaciente, txtMedico);
@@ -58,19 +62,46 @@ public class ResponderTicketMedicoControler {
 		String ruta = "jsonTickets.json";
 		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
 		String representacionBonita = prettyGson.toJson(tiquets);
-		System.out.println(representacionBonita);
 		GsonGeneral.EscribirJson(representacionBonita, ruta);
 		ventanaHomeMedico();
 	}
 
 	public void ventanaHomeMedico() {
+		Stage stage = (Stage) lbTextoPaciente.getScene().getWindow();
+		stage.close();
 		
-		
+		String[] cadenaPersona = lbOculto2.getText().split("\t");
+		String usu = cadenaPersona[0];
+		String pass = cadenaPersona[1];
+		String nom = cadenaPersona[2];
+		String apell = cadenaPersona[3];
+		String tp = cadenaPersona[4];
+		String dni = cadenaPersona[5];
+		Persona p = new Persona(usu, pass, nom, apell, tp, dni);
+		try {
+			String vistaMedico = "/View/MedicoHome.fxml";
+			String tituloVista2 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaMedico));
+			ControlerMedicoHome controlerMedicoHome = new ControlerMedicoHome();
+			loader.setController(controlerMedicoHome);
+			Parent root1 = loader.load();
+			Stage stage2 = new Stage();
+			stage2.setTitle(tituloVista2);
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
+			stage2.getIcons().add(icon);
+			stage2.setScene(new Scene(root1));
+			stage2.show();
+			controlerMedicoHome.cargarListViewPacientes(p);
+			controlerMedicoHome.cargarListViewTickets(p);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void writeText(Tickets ticket) {
+	public void writeText(Tickets ticket, String persona) {
 		lbTextoPaciente.setText(ticket.getTextoPaciente());
 		lbOculto.setText(ticket.toString());
+		lbOculto2.setText(persona);
 	}
 
 }

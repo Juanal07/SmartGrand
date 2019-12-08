@@ -9,31 +9,31 @@
     "idPaciente": "00000001P",
     "idClinico": "00000001M",
     "textoPaciente": "sdf",
-    "textoClinico": "prueba1"
+    "textoClinico": "asd"
   },
   {
     "idPaciente": "00000004P",
     "idClinico": "00000002M",
     "textoPaciente": "hola doctor me duele un pie",
-    "textoClinico": "prueba2"
+    "textoClinico": ""
   },
   {
     "idPaciente": "00000004P",
     "idClinico": "00000002M",
     "textoPaciente": "me duele la cabeza",
-    "textoClinico": "hola"
+    "textoClinico": ""
   },
   {
     "idPaciente": "00000001P",
     "idClinico": "00000001M",
     "textoPaciente": "qwe",
-    "textoClinico": "r"
+    "textoClinico": "qwerrtt"
   },
   {
     "idPaciente": "00000001P",
     "idClinico": "00000001M",
     "textoPaciente": "hola uq etal",
-    "textoClinico": ""
+    "textoClinico": "hola buenas noches muy bien gracias"
   },
   {
     "idPaciente": "00000001P",

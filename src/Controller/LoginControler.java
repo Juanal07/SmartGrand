@@ -50,16 +50,10 @@ public class LoginControler {
 				stage.close();
 				switch (tUsu) {
 				case "paciente":
-					// creamos la ventana
-					String vistaPaciente = "/View/HomePaciente.fxml";
-					String tituloVista = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
-					pacienteHome(vistaPaciente, tituloVista, p);
+					pacienteHome(p);
 					break;
 				case "medico":
-					// creamos la ventana
-					String vistaMedico = "/View/MedicoHome.fxml";
-					String tituloVista2 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
-					medicoHome(vistaMedico, tituloVista2, p);
+					medicoHome(p);
 					break;
 				case "cuidador":
 					// creamos la ventana
@@ -110,8 +104,10 @@ public class LoginControler {
 		}
 	}
 
-	public void pacienteHome(String vistaPaciente, String tituloVista, Persona p) {
+	public void pacienteHome(Persona p) {
 		try {
+			String vistaPaciente = "/View/HomePaciente.fxml";
+			String tituloVista = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaPaciente));
 			ControllerHomePaciente controllerHomePaciente = new ControllerHomePaciente();
 			loader.setController(controllerHomePaciente);
@@ -130,8 +126,10 @@ public class LoginControler {
 
 	}
 
-	public void medicoHome(String vistaMedico, String tituloVista2, Persona p) {
+	public void medicoHome(Persona p) {
 		try {
+			String vistaMedico = "/View/MedicoHome.fxml";
+			String tituloVista2 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaMedico));
 			ControlerMedicoHome controlerMedicoHome = new ControlerMedicoHome();
 			loader.setController(controlerMedicoHome);

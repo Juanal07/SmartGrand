@@ -72,7 +72,7 @@ public class Persona {
 
 	@Override
 	public String toString() {
-		return usuario + "\t" + nombre + "\t" + apellido + "\t" + tipoUsuario + "\t" + dni;
+		return usuario + "\t" + password +"\t" + nombre + "\t" + apellido + "\t" + tipoUsuario + "\t" + dni;
 	}
 
 }
