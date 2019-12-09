@@ -103,9 +103,39 @@ public class ControlerMedicoHome {
 			@Override
 			public void changed(ObservableValue<? extends Persona> observable, Persona oldValue, Persona newValue) {
 				Persona persona = listaPacientesMedico.getSelectionModel().getSelectedItem();
-				System.out.println(persona);
+				String[] prMedico = lbOculto.getText().split("\t");
+				String usu, pass, nom, apell, tpU, dni;
+				usu = prMedico[0];
+				pass = prMedico[1];
+				nom = prMedico[2];
+				apell = prMedico[3];
+				tpU = prMedico[4];
+				dni = prMedico[5];
+				Persona yo = new Persona(usu, pass, nom, apell, tpU, dni);
+				ventanaDatosPaciente(persona, yo);
 			}
 		});
+	}
+	
+	public void ventanaDatosPaciente(Persona persona, Persona yo) {
+		String vistaDatosPaciente = "/View/MedicoPacienteLectura.fxml";
+		String tituloVista = "Datos Paciente.";
+		Stage stage = (Stage) listaTicketsSinResponder.getScene().getWindow();
+		stage.close();
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaDatosPaciente));
+			MedicoDatosPaciente medicoDatosPaciente = new MedicoDatosPaciente();
+			loader.setController(medicoDatosPaciente);
+			Parent root = loader.load();
+			medicoDatosPaciente.writeText(persona, yo);
+			Stage stage2 = new Stage();
+			stage2.setTitle(tituloVista);
+			stage2.setScene(new Scene(root));
+			stage2.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void cargarListViewTickets(Persona p) {
