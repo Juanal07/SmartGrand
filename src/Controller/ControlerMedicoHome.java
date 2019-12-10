@@ -93,6 +93,7 @@ public class ControlerMedicoHome {
 	}
 
 	public void cargarListViewPacientes(Persona p) {
+		
 		lbOculto.setText(p.toString());
 		ObservableList<Persona> personasObservableList = FXCollections.observableArrayList();
 		leerPersonas(personasObservableList, p);
