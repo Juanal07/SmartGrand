@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class VistaCuidador2Controller {
 	
 	@FXML
-	public Button btnCerrarSesion;
+	public Button atras;
 
 	@FXML
 	private Label idCuidadorLabel = new Label();
@@ -24,15 +24,15 @@ public class VistaCuidador2Controller {
 	}
 	
 	@FXML
-	public void cerrarSesion(ActionEvent actionEvent) {
+	public void atras(ActionEvent actionEvent) {
 		// cerramos ventana
-		Stage stage = (Stage) btnCerrarSesion.getScene().getWindow();
+		Stage stage = (Stage) atras.getScene().getWindow();
 		stage.close();
 		// creamos la nueva
-		String vistaRegContinuo = "/View/Login.fxml";
-		String tituloVista = "Login";
-		LoginControler loginControler = new LoginControler();
-		crearVentana(vistaRegContinuo, tituloVista, loginControler);
+		String vistaCuidadorMain = "/View/VistaCuidador1.fxml";
+		String tituloVista = "Cuidador";
+		VistaCuidador1Controller cuidadorController = new VistaCuidador1Controller();
+		crearVentana(vistaCuidadorMain, tituloVista, cuidadorController);
 	}
 	
 	public void crearVentana(String vista, String titulo, Object object) {

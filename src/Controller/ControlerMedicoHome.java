@@ -42,7 +42,6 @@ public class ControlerMedicoHome {
 				}
 				j++;
 			}
-			i++;
 		}
 	}
 

@@ -24,7 +24,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="btnCerrarSesion" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#cerrarSesion" prefHeight="47.0" prefWidth="141.0" styleClass="mainButton" text="Cerrar sesión" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <JFXButton fx:id="atras" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#atras" prefHeight="47.0" prefWidth="190.0" styleClass="mainButton" text="Volver" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="50.0" left="20.0" right="20.0" top="50.0" />
                </GridPane.margin>
@@ -34,7 +34,7 @@
                   <Font size="42.0" />
                </font>
             </Label>
-            <Label fx:id="idCuidadorLabel" alignment="TOP_CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="400.0" styleClass="segundoTitulo" textAlignment="CENTER" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Label text="Esto es una prueba de como seria la grafica" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>
