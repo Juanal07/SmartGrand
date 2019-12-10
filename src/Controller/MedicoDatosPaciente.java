@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MedicoDatosPaciente {
@@ -38,6 +39,24 @@ public class MedicoDatosPaciente {
 		lbApeliido.setText("Apellidos: " + persona.getApellido());
 		lbUsuario.setText("Usuario: " + persona.getUsuario());
 		lbDni.setText("Dni: " + persona.getDni());
+	}
+	
+	public void enviarSensor1() {
+		try {
+			ControllerSensor1Presion controlLineChart = new ControllerSensor1Presion();
+			FXMLLoader root2 =  new FXMLLoader();
+			root2.setLocation(this.getClass().getResource("/View/sensor1Presion.fxml"));
+			root2.setController(controlLineChart);
+			AnchorPane page = (AnchorPane) root2.load();
+			Stage sendStage = new Stage();
+			sendStage.setTitle("Sensor Presión");
+			Scene scene = new Scene(page);
+			sendStage.setScene(scene);
+			sendStage.show();
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void ventanaAtras() {

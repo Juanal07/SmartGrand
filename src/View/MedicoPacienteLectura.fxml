@@ -26,7 +26,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="btnSensor1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Sensor1" GridPane.columnIndex="1">
+            <JFXButton fx:id="btnSensor1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enviarSensor1" text="Sensor1" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
                </GridPane.margin></JFXButton>
