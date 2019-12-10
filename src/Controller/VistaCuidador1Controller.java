@@ -51,7 +51,7 @@ public class VistaCuidador1Controller {
 	private Label idCuidadorLabel = new Label();
 
 	public void writeText(Persona p) {
-		idCuidadorLabel.setText("Bienvenido " + p.getNombre() + " elije uno de tus pacientes para ver su estado");
+		idCuidadorLabel.setText("Bienvenido " + p.getNombre() + " elije uno de tus pacientes para ver su sensor");
 	}
 	
 	//dado un cuidador p ponemos en un observableList sus pacientes
@@ -133,37 +133,30 @@ public class VistaCuidador1Controller {
 
 			@Override
 			public void changed(ObservableValue<? extends Persona> observable, Persona oldValue, Persona newValue) {
-				Persona persona = tablaPacientesCuidador.getSelectionModel().getSelectedItem();
-				//Aqui habria que insertar el crear ventana de sensores	
-				ventanaDatosPaciente(p);
+				enviarSensor1();
 			}				
 		});	
 	}
 	
-	public void ventanaDatosPaciente(Persona persona) {
-		String vistaDatosPaciente = "/View/VistaCuidador2.fxml";
-		String tituloVista = "Datos Paciente";
-		Stage stage = (Stage) tablaPacientesCuidador.getScene().getWindow();
-		stage.close();
+	public void enviarSensor1() {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaDatosPaciente));
-			VistaCuidador2Controller controller2 = new VistaCuidador2Controller();
-			loader.setController(controller2);
-			Parent root = loader.load();
-			Stage stage2 = new Stage();
-			stage2.setTitle(tituloVista);
-			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
-			stage2.getIcons().add(icon);
-			stage2.setScene(new Scene(root));
-			stage2.show();
-		} catch (Exception e) {
+			ControllerSensor1Presion controlLineChart = new ControllerSensor1Presion();
+			FXMLLoader root2 =  new FXMLLoader();
+			root2.setLocation(this.getClass().getResource("/View/sensor1Presion.fxml"));
+			root2.setController(controlLineChart);
+			AnchorPane page = (AnchorPane) root2.load();
+			Stage sendStage = new Stage();
+			sendStage.setTitle("Sensor Presión");
+			Scene scene = new Scene(page);
+			sendStage.setScene(scene);
+			sendStage.show();
+		
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 }
-	
 	
 
 
