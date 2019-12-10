@@ -14,6 +14,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import Model.Cuidador;
 import Model.Medico;
 import Model.Persona;
 import Model.Tickets;
@@ -62,6 +63,20 @@ public class GsonGeneral {
 			e.printStackTrace();
 		}
 		return listaMedicos;
+	}
+	
+	public static List<Cuidador> desserializarJsonAArrayCuidador() {
+		String jsonInString = "cuidadores.json";
+		List<Cuidador> listaCuidadores = null;
+		try (Reader reader = new FileReader(jsonInString)) {
+			Gson gson = new Gson();
+			Type tipoListaCuidador = new TypeToken<List<Cuidador>>() {}.getType();
+			List<Cuidador> cuidadores = gson.fromJson(reader, tipoListaCuidador);
+			listaCuidadores = cuidadores;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return listaCuidadores;
 	}
 
 	public static void EscribirJson(String representacionBonita, String ruta) {

@@ -1,12 +1,28 @@
 package Controller;
 
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import Model.Cuidador;
+import Model.Medico;
 import Model.Persona;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -14,14 +30,65 @@ import javafx.stage.Stage;
 public class VistaCuidador1Controller {
 	
 	@FXML
+	private TableView<Persona> tablaPacientesCuidador;
+	@FXML
+	private TableColumn<Persona, String> colDNI;
+	@FXML
+	private TableColumn<Persona, String> colNombre;
+	@FXML
+	private TableColumn<Persona, String> colApellidos;
+	@FXML
+	private TableColumn<Persona, String> colTiposuario;
+	
+	
+	@FXML
 	public Button btnCerrarSesion;
 
 	@FXML
 	private Label idCuidadorLabel = new Label();
+	
+
+
 
 	public void writeText(Persona p) {
 		idCuidadorLabel.setText("Bienvenido " + p.getNombre() + " elije uno de tus pacientes para ver su estado");
 	}
+	
+	//dado un cuidador p ponemos en un observableList sus pacientes
+	public void leerPersonas(ObservableList<Persona> listaPersonas, Persona p) {
+		ArrayList<String> listaMisPacientes;
+		listaMisPacientes = listaPacientes(p);
+		List<Persona> lista = GsonGeneral.desserializarJsonAArray();
+		int lenthArray = listaMisPacientes.size();
+		// recorremos personas
+		for (int i = 0; i < lista.size(); i++) {
+			int j = 0;
+			// recorremos mis pacientes
+			while (j < lenthArray) {
+				if (lista.get(i).getDni().equals(listaMisPacientes.get(j))) {
+					listaPersonas.add(lista.get(i));
+					j = j + lenthArray;
+				}
+				j++;
+			}
+		}
+	}
+	
+	//dado un cuidador p obtengo un arrayList con los dnis de sus pacientes
+	public ArrayList<String> listaPacientes(Persona p) { 
+		ArrayList<String> idsPacientes = new ArrayList<String>();
+		List<Cuidador> listaCuidadorRelacion = GsonGeneral.desserializarJsonAArrayCuidador();
+		int sizeArray = listaCuidadorRelacion.size();
+		int i = 0;
+		while(i < sizeArray) {
+			if (p.getDni().equals(listaCuidadorRelacion.get(i).getIdCuidador())) {
+				idsPacientes = listaCuidadorRelacion.get(i).getDniPacientes();
+				i = i + sizeArray;
+			}
+			i++;	
+		}	
+		return idsPacientes;
+	}		
 	
 	@FXML
 	public void cerrarSesion(ActionEvent actionEvent) {
@@ -51,6 +118,17 @@ public class VistaCuidador1Controller {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+
+
+	public void cargarTableview (Persona p) {
+		ObservableList<Persona> listaPersonas = FXCollections.observableArrayList();
+		leerPersonas(listaPersonas, p);
+		tablaPacientesCuidador.setItems(listaPersonas);
+		colDNI.setCellValueFactory(new PropertyValueFactory<Persona, String>("dni"));
+		colNombre.setCellValueFactory(new PropertyValueFactory<Persona, String>("nombre"));
+		colApellidos.setCellValueFactory(new PropertyValueFactory<Persona, String>("apellido"));		
+//		colTiposuario.setCellValueFactory(new PropertyValueFactory<Persona, String>("tipoUsuario"));
 	}
 
 }
