@@ -42,7 +42,7 @@
                   <TableColumn fx:id="colDNI" prefWidth="234.0" text="DNI" />
                 <TableColumn fx:id="colNombre" prefWidth="197.0" text="Nombre" />
                 <TableColumn fx:id="colApellidos" prefWidth="260.0" text="Apellidos" />
-                  <TableColumn fx:id="colTipousuario" prefWidth="148.0" text="Tipo de usuario" />
+                  <TableColumn fx:id="tipoUsuario" prefWidth="148.0" text="Tipo de usuario" />
               </columns>
                <GridPane.margin>
                   <Insets left="30.0" right="30.0" />
