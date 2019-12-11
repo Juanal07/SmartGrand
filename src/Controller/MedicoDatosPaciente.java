@@ -43,17 +43,17 @@ public class MedicoDatosPaciente {
 	
 	public void enviarSensor1() {
 		try {
-			ControllerSensor1Presion controlLineChart = new ControllerSensor1Presion();
+			ControllerSensor1Presion controlBarChart = new ControllerSensor1Presion();
 			FXMLLoader root2 =  new FXMLLoader();
 			root2.setLocation(this.getClass().getResource("/View/sensor1Presion.fxml"));
-			root2.setController(controlLineChart);
+			root2.setController(controlBarChart);
 			AnchorPane page = (AnchorPane) root2.load();
 			Stage sendStage = new Stage();
 			sendStage.setTitle("Sensor Presion");
 			Scene scene = new Scene(page);
 			sendStage.setScene(scene);
 			sendStage.show();
-			controlLineChart.escibirDniPaciente(lbDni.getText());
+			controlBarChart.escibirDniPaciente(lbDni.getText());
 		
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -28,11 +28,16 @@ public class ControllerSensor1Presion implements Initializable {
 		ArrayList<Sensor1Presion> reposoData = GsonGeneral.desserializarJsonAArraySensor1();
 		ArrayList<Sensor1Presion> misSensores = new ArrayList<Sensor1Presion>();
 		int aux = 0;
-		int tamañoreposoData = reposoData.size();
-		while (aux <  tamañoreposoData) {
+		int tamanoreposoData = reposoData.size();
+		System.out.println(lbOculto.getText()+ "hola");
+		while (aux <  tamanoreposoData) {
+			System.out.println();
 			if (reposoData.get(aux).getDniPaciente().equals(lbOculto.getText())) {
+				misSensores.add(reposoData.get(aux));
+				aux = aux + tamanoreposoData;
 				
 			}
+			aux++;
 		}
 		
 		XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
@@ -40,11 +45,11 @@ public class ControllerSensor1Presion implements Initializable {
 		series.setName("numero de veces");
 		minuteSeries.setName("numero de horas");
 
-		for (int i = 0; i < reposoData.size(); i++) {
-			String fecha = reposoData.get(i).getFecha();
+		for (int i = 0; i < misSensores.size(); i++) {
+			String fecha = misSensores.get(i).getFecha();
 
-			int valor = reposoData.get(i).getValor();
-			double descansos = reposoData.get(i).getSumIntervalos();
+			int valor = misSensores.get(i).getValor();
+			double descansos = misSensores.get(i).getSumIntervalos();
 
 			minuteSeries.getData().add(new XYChart.Data<String, Number>(fecha, descansos));
 			series.getData().add(new XYChart.Data<String, Number>(fecha, valor));
