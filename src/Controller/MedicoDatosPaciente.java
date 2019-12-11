@@ -49,10 +49,11 @@ public class MedicoDatosPaciente {
 			root2.setController(controlLineChart);
 			AnchorPane page = (AnchorPane) root2.load();
 			Stage sendStage = new Stage();
-			sendStage.setTitle("Sensor Presión");
+			sendStage.setTitle("Sensor Presion");
 			Scene scene = new Scene(page);
 			sendStage.setScene(scene);
 			sendStage.show();
+			controlLineChart.escibirDniPaciente(lbDni.getText());
 		
 		} catch(Exception e) {
 			e.printStackTrace();
