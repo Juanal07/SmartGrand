@@ -42,6 +42,7 @@ public class MedicoDatosPaciente {
 	}
 	
 	public void enviarSensor1() {
+		String dniPaciente = lbDni.getText();
 		try {
 			ControllerSensor1Presion controlBarChart = new ControllerSensor1Presion();
 			FXMLLoader root2 =  new FXMLLoader();
@@ -53,7 +54,8 @@ public class MedicoDatosPaciente {
 			Scene scene = new Scene(page);
 			sendStage.setScene(scene);
 			sendStage.show();
-			controlBarChart.escibirDniPaciente(lbDni.getText());
+			controlBarChart.escibirDniPaciente(dniPaciente);
+			controlBarChart.cargarGrafica();
 		
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -91,5 +93,7 @@ public class MedicoDatosPaciente {
 			e.printStackTrace();
 		}
 	}
+
+
 
 }

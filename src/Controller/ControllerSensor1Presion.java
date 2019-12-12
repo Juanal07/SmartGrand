@@ -1,45 +1,35 @@
 package Controller;
 
-
-import java.net.URL;
 import java.util.ArrayList;
-
-import java.util.ResourceBundle;
-
-
-
-
 import Model.Sensor1Presion;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 
-
-public class ControllerSensor1Presion implements Initializable {
+public class ControllerSensor1Presion {
 	@FXML
 	BarChart<String, Number> graf;
 	private Label lbOculto = new Label();
 
-	@Override
-
-	public void initialize(URL url, ResourceBundle rb) {
+	public void cargarGrafica() {
 		ArrayList<Sensor1Presion> reposoData = GsonGeneral.desserializarJsonAArraySensor1();
 		ArrayList<Sensor1Presion> misSensores = new ArrayList<Sensor1Presion>();
-		int aux = 0;
-		int tamanoreposoData = reposoData.size();
-		System.out.println(lbOculto.getText()+ "hola");
-		while (aux <  tamanoreposoData) {
-			System.out.println();
-			if (reposoData.get(aux).getDniPaciente().equals(lbOculto.getText())) {
-				misSensores.add(reposoData.get(aux));
-				aux = aux + tamanoreposoData;
-				
+
+		String dniP = lbOculto.getText().substring(lbOculto.getText().indexOf(" ")+1, lbOculto.getText().length());
+		
+		for (int i = 0; i < reposoData.size(); i++) {
+			if (reposoData.get(i).getDniPaciente().equals(dniP)) {
+				misSensores.add(reposoData.get(i));
 			}
-			aux++;
 		}
 		
+		System.out.println("tamaño misSensores: " + misSensores.size());
+		for (Sensor1Presion sensor1Presion : misSensores) {
+			System.out.println(sensor1Presion.getDniPaciente() + "  valor:  " + sensor1Presion.getValor());
+		}
+
 		XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
 		XYChart.Series<String, Number> minuteSeries = new XYChart.Series<String, Number>();
 		series.setName("numero de veces");
@@ -61,8 +51,6 @@ public class ControllerSensor1Presion implements Initializable {
 
 	public void escibirDniPaciente(String text) {
 		lbOculto.setText(text);
-		
 	}
-
 
 }
