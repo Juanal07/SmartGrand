@@ -24,11 +24,6 @@ public class ControllerSensor1Presion {
 				misSensores.add(reposoData.get(i));
 			}
 		}
-		
-		System.out.println("tamaño misSensores: " + misSensores.size());
-		for (Sensor1Presion sensor1Presion : misSensores) {
-			System.out.println(sensor1Presion.getDniPaciente() + "  valor:  " + sensor1Presion.getValor());
-		}
 
 		XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
 		XYChart.Series<String, Number> minuteSeries = new XYChart.Series<String, Number>();
