@@ -30,11 +30,10 @@ public class ControllerSensor1Presion {
 		series.setName("numero de veces");
 		minuteSeries.setName("numero de horas");
 
-		for (int i = 0; i < misSensores.size(); i++) {
-			String fecha = misSensores.get(i).getFecha();
-
-			int valor = misSensores.get(i).getValor();
-			double descansos = misSensores.get(i).getSumIntervalos();
+		for (int i = 0; i < reposoData .size(); i++) {
+			String fecha = reposoData .get(i).getFecha();
+			int valor = reposoData .get(i).getValor();
+			double descansos = reposoData .get(i).getSumIntervalos();
 
 			minuteSeries.getData().add(new XYChart.Data<String, Number>(fecha, descansos));
 			series.getData().add(new XYChart.Data<String, Number>(fecha, valor));
