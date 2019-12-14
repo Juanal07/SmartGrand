@@ -19,21 +19,22 @@ public class ControllerSensor1Presion {
 
 		String dniP = lbOculto.getText().substring(lbOculto.getText().indexOf(" ")+1, lbOculto.getText().length());
 		
+		XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
+		XYChart.Series<String, Number> minuteSeries = new XYChart.Series<String, Number>();
+		series.setName("numero de veces");
+		minuteSeries.setName("numero de horas");
+		
 		for (int i = 0; i < reposoData.size(); i++) {
 			if (reposoData.get(i).getDniPaciente().equals(dniP)) {
 				misSensores.add(reposoData.get(i));
 			}
 		}
 
-		XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
-		XYChart.Series<String, Number> minuteSeries = new XYChart.Series<String, Number>();
-		series.setName("numero de veces");
-		minuteSeries.setName("numero de horas");
 
-		for (int i = 0; i < reposoData .size(); i++) {
-			String fecha = reposoData .get(i).getFecha();
-			int valor = reposoData .get(i).getValor();
-			double descansos = reposoData .get(i).getSumIntervalos();
+		for (int i = 0; i < misSensores .size(); i++) {
+			String fecha = misSensores .get(i).getFecha();
+			int valor = misSensores .get(i).getValor();
+			double descansos = misSensores .get(i).getSumIntervalos();
 
 			minuteSeries.getData().add(new XYChart.Data<String, Number>(fecha, descansos));
 			series.getData().add(new XYChart.Data<String, Number>(fecha, valor));

@@ -40,9 +40,8 @@ public class VistaCuidador1Controller {
 	private TableColumn<Persona, String> colNombre;
 	@FXML
 	private TableColumn<Persona, String> colApellidos;
-//	@FXML
-//	private TableColumn<Persona, String> colTiposuario;
-	
+	@FXML
+	private TableColumn<Persona, String> colTiposuario;
 	
 	@FXML
 	public Button btnCerrarSesion;
