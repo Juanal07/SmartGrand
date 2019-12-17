@@ -20,8 +20,13 @@ import Controller.GsonGeneral;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class ControllerHomePaciente implements Initializable {
 	@FXML
@@ -34,16 +39,15 @@ public class ControllerHomePaciente implements Initializable {
 	private JFXTextArea jfxTaPaciente = new JFXTextArea();
 	@FXML
 	private Label lbError = new Label();
+	private Label lbOculto = new Label();
 	@FXML
 	private ObservableList<String> ticketsObservableList;
-	@FXML
-	private Label idPacienteLabel = new Label();
 	@FXML
 	private JFXScrollPane scroll = new JFXScrollPane();
 
 	public void enviarMSM() {
 		String textoPaciente = jfxTaPaciente.getText();
-		String dniPaciente = idPacienteLabel.getText();
+		String dniPaciente = lbOculto.getText();
 		String dniMedico = "";
 		if (!textoPaciente.equals("")) {
 			List<Medico> listaMedicoRelacion = GsonGeneral.desserializarJsonAArrayMedico();
@@ -63,7 +67,7 @@ public class ControllerHomePaciente implements Initializable {
 			EnviarTicket(nuevo);
 			jfxTaPaciente.setText("");
 		} else {
-			// lbError sea responsive
+			// envuelve el label
 			lbError.setWrapText(true);
 			lbError.setText("ERROR: No puede enviar un tiquet vacio.");
 		}
@@ -80,7 +84,7 @@ public class ControllerHomePaciente implements Initializable {
 	}
 
 	public void writeText(Persona p) {
-		idPacienteLabel.setText(p.getDni());
+		lbOculto.setText(p.getDni());
 	}
 
 	@Override
@@ -100,7 +104,33 @@ public class ControllerHomePaciente implements Initializable {
 			}
 		}
 	}
+
 	public void cerrarSesion() {
-		
+		// cerramos ventana
+		Stage stage = (Stage) btnCerrarSesion.getScene().getWindow();
+		stage.close();
+		// creamos la nueva
+		String vistaRegContinuo = "/View/Login.fxml";
+		String tituloVista = "Login";
+		LoginControler loginControler = new LoginControler();
+		crearVentana(vistaRegContinuo, tituloVista, loginControler);
+	}
+
+	public void crearVentana(String vista, String titulo, Object object) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(this.getClass().getResource(vista));
+			loader.setController(object);
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage sendStage = new Stage();
+			sendStage.setTitle(titulo);
+			Scene scene = new Scene(page);
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
+			sendStage.getIcons().add(icon);
+			sendStage.setScene(scene);
+			sendStage.show();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }

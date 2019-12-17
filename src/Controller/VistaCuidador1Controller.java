@@ -31,7 +31,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class VistaCuidador1Controller {
-	
+
 	@FXML
 	private TableView<Persona> tablaPacientesCuidador;
 	@FXML
@@ -42,18 +42,17 @@ public class VistaCuidador1Controller {
 	private TableColumn<Persona, String> colApellidos;
 	@FXML
 	private TableColumn<Persona, String> colTiposuario;
-	
 	@FXML
 	public Button btnCerrarSesion;
-
 	@FXML
 	private Label idCuidadorLabel = new Label();
 
+	
 	public void writeText(Persona p) {
 		idCuidadorLabel.setText("Bienvenido " + p.getNombre() + " elije uno de tus pacientes para ver su sensor");
 	}
-	
-	//dado un cuidador p ponemos en un observableList sus pacientes
+
+	// dado un cuidador p ponemos en un observableList sus pacientes
 	public void leerPersonas(ObservableList<Persona> listaPersonas, Persona p) {
 		ArrayList<String> listaMisPacientes;
 		listaMisPacientes = listaPacientes(p);
@@ -72,23 +71,23 @@ public class VistaCuidador1Controller {
 			}
 		}
 	}
-	
-	//dado un cuidador p obtengo un arrayList con los dnis de sus pacientes
-	public ArrayList<String> listaPacientes(Persona p) { 
+
+	// dado un cuidador p obtengo un arrayList con los dnis de sus pacientes
+	public ArrayList<String> listaPacientes(Persona p) {
 		ArrayList<String> idsPacientes = new ArrayList<String>();
 		List<Cuidador> listaCuidadorRelacion = GsonGeneral.desserializarJsonAArrayCuidador();
 		int sizeArray = listaCuidadorRelacion.size();
 		int i = 0;
-		while(i < sizeArray) {
+		while (i < sizeArray) {
 			if (p.getDni().equals(listaCuidadorRelacion.get(i).getIdCuidador())) {
 				idsPacientes = listaCuidadorRelacion.get(i).getDniPacientes();
 				i = i + sizeArray;
 			}
-			i++;	
-		}	
+			i++;
+		}
 		return idsPacientes;
-	}		
-	
+	}
+
 	@FXML
 	public void cerrarSesion(ActionEvent actionEvent) {
 		// cerramos ventana
@@ -100,7 +99,7 @@ public class VistaCuidador1Controller {
 		LoginControler loginControler = new LoginControler();
 		crearVentana(vistaRegContinuo, tituloVista, loginControler);
 	}
-	
+
 	public void crearVentana(String vista, String titulo, Object object) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -110,7 +109,8 @@ public class VistaCuidador1Controller {
 			Stage sendStage = new Stage();
 			sendStage.setTitle(titulo);
 			Scene scene = new Scene(page);
-			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // a�ade icono a la vista	
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // a�ade icono a la
+																									// vista
 			sendStage.getIcons().add(icon);
 			sendStage.setScene(scene);
 			sendStage.show();
@@ -119,29 +119,28 @@ public class VistaCuidador1Controller {
 		}
 	}
 
-
-	public void cargarTableview (Persona p) {
+	public void cargarTableview(Persona p) {
 		ObservableList<Persona> listaPersonas = FXCollections.observableArrayList();
 		leerPersonas(listaPersonas, p);
 		tablaPacientesCuidador.setItems(listaPersonas);
 		colDNI.setCellValueFactory(new PropertyValueFactory<Persona, String>("dni"));
 		colNombre.setCellValueFactory(new PropertyValueFactory<Persona, String>("nombre"));
-		colApellidos.setCellValueFactory(new PropertyValueFactory<Persona, String>("apellido"));	
-		
+		colApellidos.setCellValueFactory(new PropertyValueFactory<Persona, String>("apellido"));
+
 		tablaPacientesCuidador.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Persona>() {
 
 			@Override
 			public void changed(ObservableValue<? extends Persona> observable, Persona oldValue, Persona newValue) {
 				enviarSensor1();
-			}				
-		});	
+			}
+		});
 	}
-	
+
 	public void enviarSensor1() {
 		String dniPaciente = colDNI.getText();
 		try {
 			ControllerSensor1Presion controlBarChart = new ControllerSensor1Presion();
-			FXMLLoader root2 =  new FXMLLoader();
+			FXMLLoader root2 = new FXMLLoader();
 			root2.setLocation(this.getClass().getResource("/View/sensor1Presion.fxml"));
 			root2.setController(controlBarChart);
 			AnchorPane page = (AnchorPane) root2.load();
@@ -152,14 +151,10 @@ public class VistaCuidador1Controller {
 			sendStage.show();
 			controlBarChart.escibirDniPaciente(dniPaciente);
 			controlBarChart.cargarGrafica();
-		
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 }
-	
-
-
