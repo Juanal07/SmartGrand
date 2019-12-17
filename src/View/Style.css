@@ -4,7 +4,12 @@
  * #385170 azul oscuro
  * #142d4c casi negro
  */
-
+.fondoPacienteHome{
+	-fx-background-color: #142d4c;
+}
+.btnPaciente{
+	-fx-background-color: #385170;
+}
 .loginFondo{
 	-fx-background-color: linear-gradient(#ececec, #9fd3c7, #385170, #142d4c);
 }
