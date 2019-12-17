@@ -6,5 +6,29 @@
     {
     "idCuidador": "00000002C",
 	"dniPacientes": ["00000004P"]
-  }
+  },
+  {
+    "idCuidador": "00000003C",
+	"dniPacientes": []
+  },
+  {
+    "idCuidador": "00000004C",
+	"dniPacientes": []
+  },
+  {
+    "idCuidador": "00000005C",
+	"dniPacientes": []
+  },
+  {
+    "idCuidador": "00000006C",
+	"dniPacientes": []
+  },
+  {
+    "idCuidador": "00000007C",
+	"dniPacientes": []
+  },
+  {
+    "idCuidador": "00000008C",
+	"dniPacientes": []
+  }  
 ]

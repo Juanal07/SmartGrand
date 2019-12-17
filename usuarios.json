@@ -110,21 +110,5 @@
     "apellido": "Pastor",
     "tipoUsuario": "medico",
     "dni": "00000002M"
-  },
-  {
-    "usuario": "Jose9",
-    "password": "81dc9bdb52d04dc20036dbd8313ed055",
-    "nombre": "Jose",
-    "apellido": "Vizoso",
-    "tipoUsuario": "paciente",
-    "dni": "765664864"
-  },
-  {
-    "usuario": "Gonzalo",
-    "password": "81dc9bdb52d04dc20036dbd8313ed055",
-    "nombre": "Gonzalo",
-    "apellido": "Vizoso",
-    "tipoUsuario": "paciente",
-    "dni": "54153310V"
   }
 ]
