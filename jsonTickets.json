@@ -21,7 +21,7 @@
     "idPaciente": "00000004P",
     "idClinico": "00000002M",
     "textoPaciente": "me duele la cabeza",
-    "textoClinico": ""
+    "textoClinico": "tomate una pastilla"
   },
   {
     "idPaciente": "00000001P",
@@ -46,5 +46,17 @@
     "idClinico": "00000001M",
     "textoPaciente": "hola soy gonzalo",
     "textoClinico": "hola Gonzalo"
+  },
+  {
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
+    "textoPaciente": "hola guapoooo",
+    "textoClinico": "holaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
+    "textoPaciente": " \"Love not me for comely grace,\\n\" +\n    \"For my pleasing eye or face,\\n\" +\n    \"Nor for any outward part,\\n\" +\n    \"No, nor for my constant heart,\\n\" +\n    \"For these may fail, or turn to ill.\\n\" +\n    \"So thou and I must sever.\\n\" +\n    \"Keep therefore a true woman’s eye,\\n\" +\n    \"And love me still, but know not why,\\n\" +\n    \"So hast thou the same reason still\\n\" +\n    \"To doat upon me ever.\";",
+    "textoClinico": " \"Love not me for comely grace,\\n\" +\n    \"For my pleasing eye or face,\\n\""
   }
 ]

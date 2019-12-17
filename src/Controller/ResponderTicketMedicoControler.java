@@ -99,6 +99,7 @@ public class ResponderTicketMedicoControler {
 	}
 
 	public void writeText(Tickets ticket, String persona) {
+		lbTextoPaciente.setWrapText(true);
 		lbTextoPaciente.setText(ticket.getTextoPaciente());
 		lbOculto.setText(ticket.toString());
 		lbOculto2.setText(persona);
