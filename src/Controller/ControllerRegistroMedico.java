@@ -161,7 +161,7 @@ public class ControllerRegistroMedico {
 			if (GsonGeneral.validarNIF(dni)) {
 				lbErrorDni.setText("");	
 			}else {
-				lbErrorDni.setText("El DNI no existe");
+				lbErrorDni.setText("El DNI no es real");
 				valido = false;		
 			}
 		}else {
