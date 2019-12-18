@@ -1,34 +1,40 @@
 [
   {
     "idCuidador": "00000001C",
-	"dniPacientes": ["00000001P", "00000002P", "00000003P"]
+    "dniPacientes": [
+      "00000001P",
+      "00000002P",
+      "00000003P"
+    ]
   },
-    {
+  {
     "idCuidador": "00000002C",
-	"dniPacientes": ["00000004P"]
+    "dniPacientes": [
+      "00000004P"
+    ]
   },
   {
     "idCuidador": "00000003C",
-	"dniPacientes": []
+    "dniPacientes": []
   },
   {
     "idCuidador": "00000004C",
-	"dniPacientes": []
+    "dniPacientes": []
   },
   {
     "idCuidador": "00000005C",
-	"dniPacientes": []
+    "dniPacientes": []
   },
   {
     "idCuidador": "00000006C",
-	"dniPacientes": []
+    "dniPacientes": []
   },
   {
     "idCuidador": "00000007C",
-	"dniPacientes": []
+    "dniPacientes": []
   },
   {
     "idCuidador": "00000008C",
-	"dniPacientes": []
-  }  
+    "dniPacientes": []
+  }
 ]

@@ -34,7 +34,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 
-public class PacienteRegistroController {
+public class ControllerRegistroPaciente {
 	@FXML
 	private Button btnAtras, btnRegistrarse;
 	@FXML
@@ -64,70 +64,67 @@ public class PacienteRegistroController {
 	
 	@FXML
 	public void initialize() {
-		cuidadoresDisponiblesList.addAll(listaCuidadoresDisponiblesNombre(listaCuidadoresDisponibles()));
+		for (Persona p : listaCuidadoresDisponibles()) {
+			cuidadoresDisponiblesList.add(p.getNombre() + " " + p.getApellido());
+		}
 		cuidadoresDisponiblesBox.setValue("Elige cuidador");
-		cuidadoresDisponiblesBox.setItems(cuidadoresDisponiblesList);	
-		medicosDisponiblesList.addAll(listaMedicosDisponiblesNombre(listaMedicosDisponibles()));
+		cuidadoresDisponiblesBox.setItems(cuidadoresDisponiblesList);
+		for (Persona p : listaMedicosDisponibles()) {
+			medicosDisponiblesList.add(p.getNombre() + " " + p.getApellido());
+		}
 		medicosDisponiblesBox.setValue("Elige medico");
 		medicosDisponiblesBox.setItems(medicosDisponiblesList);
 	}
-	//devuelve los dnis de los cuidadores disponibles
-	public ArrayList<String> listaCuidadoresDisponibles() {
-		ArrayList<String> listaCuidadoresDisponibles = new ArrayList<String>();
+	//devuelve los cuidadores disponibles
+	public ArrayList<Persona> listaCuidadoresDisponibles() {
+		ArrayList<String> listaCuidadoresDisponiblesDni = new ArrayList<String>();
 		List<Cuidador> listaCuidadorTotal = GsonGeneral.desserializarJsonAArrayCuidador();
 		for (Cuidador cuidador : listaCuidadorTotal) {
 			if (cuidador.getDniPacientes().size() < 4) { //si el cuidador tiene menos de 4 pacientes lo denominamos "disponible"
-				listaCuidadoresDisponibles.add(cuidador.getIdCuidador());
+				listaCuidadoresDisponiblesDni.add(cuidador.getIdCuidador());
 			}				
-		}		
-		return listaCuidadoresDisponibles; //devuelve los dnis		
-	}
-	//dados unos dnis de cuidadores devuelve los nombres
-	public ArrayList<String> listaCuidadoresDisponiblesNombre(ArrayList<String> a){
-		ArrayList<String> listaCuidadoresDisponiblesNombre = new ArrayList<String>();
+		}	
+		ArrayList<Persona> listaCuidadoresDisponiblesPersona = new ArrayList<Persona>();
 		List<Persona> listaCuidadorTotalNombre = GsonGeneral.desserializarJsonAArray();
 		for (Persona p : listaCuidadorTotalNombre) {
-			int sizeArray = a.size();
+			int sizeArray = listaCuidadoresDisponiblesDni.size();
 			int i = 0;
 			while(i < sizeArray) {
-				if (p.getDni().equals(a.get(i))) {
-					listaCuidadoresDisponiblesNombre.add(p.getNombre() + " " +p.getApellido());
+				if (p.getDni().equals(listaCuidadoresDisponiblesDni.get(i))) {
+					listaCuidadoresDisponiblesPersona.add(p);
 					i = i + sizeArray;
 				}
 				i++;	
 			}	
 		}		
-		return listaCuidadoresDisponiblesNombre;
+		return listaCuidadoresDisponiblesPersona; 
 	}
+	
 	//devuelve los dnis de los medicos disponibles
-	public ArrayList<String> listaMedicosDisponibles() {
+	public ArrayList<Persona> listaMedicosDisponibles() {
 		ArrayList<String> listaMedicosDisponibles = new ArrayList<String>();
 		List<Medico> listaMedicoTotal = GsonGeneral.desserializarJsonAArrayMedico();
 		for (Medico medico : listaMedicoTotal) {
 			if (medico.getDniPacientes().size() < 4) { //si el Medico tiene menos de 4 pacientes lo denominamos "disponible"
 				listaMedicosDisponibles.add(medico.getIdMedico());
 			}				
-		}		
-		return listaMedicosDisponibles; //devuelve los dnis		
-	}
-	//dados unos dnis de Medicos devuelve los nombres
-	public ArrayList<String> listaMedicosDisponiblesNombre(ArrayList<String> a){
-		ArrayList<String> listaMedicosDisponiblesNombre = new ArrayList<String>();
+		}	
+		ArrayList<Persona> listaMedicosDisponiblesPersona = new ArrayList<Persona>();
 		List<Persona> listaMedicoTotalNombre = GsonGeneral.desserializarJsonAArray();
 		for (Persona p : listaMedicoTotalNombre) {
-			int sizeArray = a.size();
+			int sizeArray = listaMedicosDisponibles.size();
 			int i = 0;
 			while(i < sizeArray) {
-				if (p.getDni().equals(a.get(i))) {
-					listaMedicosDisponiblesNombre.add(p.getNombre() + " " +p.getApellido());
+				if (p.getDni().equals(listaMedicosDisponibles.get(i))) {
+					listaMedicosDisponiblesPersona.add(p);
 					i = i + sizeArray;
 				}
 				i++;	
 			}	
-		}		
-		return listaMedicosDisponiblesNombre;
+		}	
+		return listaMedicosDisponiblesPersona; //devuelve los dnis		
 	}
-	
+
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {		
 		

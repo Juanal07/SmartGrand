@@ -1,9 +1,15 @@
 package Controller;
 
 import java.io.BufferedWriter;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +19,7 @@ import com.google.gson.JsonElement;
 import com.jfoenix.controls.JFXTextField;
 
 import Controller.GsonGeneral;
+import Model.Medico;
 import Model.Persona;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +33,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 
-public class CuidadorRegistroControler {
+public class ControllerRegistroMedico {
 	@FXML
 	private Button btnAtras, btnRegistrarse;
 	@FXML
@@ -38,46 +45,60 @@ public class CuidadorRegistroControler {
 	@FXML
 	private Label lbErrorApellido;
 	@FXML
-	private Label lbErrorDni;    
+	private Label lbErrorDni;
 	@FXML
-	public TextField tfUsuario = new JFXTextField(), tfNombre = new JFXTextField(), tfApellido = new JFXTextField(), tfDni = new JFXTextField();
+	public TextField tfUsuario = new JFXTextField(), tfNombre = new JFXTextField(), tfApellido = new JFXTextField(),
+	tfDni = new JFXTextField();
 	@FXML
 	public PasswordField tfPassword = new PasswordField();
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
+
 		String usuario = tfUsuario.getText();
 		String password2 = tfPassword.getText();//password sin cifrar para hacer el validation
 		String password = GsonGeneral.getMd5(tfPassword.getText());
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
-		String tipoUsuario = "cuidador";
+		String tipoUsuario = "medico";
 
 		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni);
 
 		if(usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && valido) {
 
-			Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario, dni); //Creamos objeto persona con los datos introducidos
-			List<Persona> lista = GsonGeneral.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
-			lista.add(nuevo); //añadimos el nuevo usuario a la lista
-			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
+			Persona nuevo = new Persona(usuario, password, nombre, apellido, tipoUsuario, dni); // Creamos objeto persona
+			// con los datos
+			// introducidos
+			List<Persona> lista = GsonGeneral.desserializarJsonAArray(); // Creamos lista de personas con la info del json
+			lista.add(nuevo); // añadimos el nuevo usuario a la lista
+			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
 			String representacionBonita = prettyGson.toJson(lista);
 			String ruta = "usuarios.json";
-			GsonGeneral.EscribirJson(representacionBonita, ruta);		
+			GsonGeneral.EscribirJson(representacionBonita, ruta);
 
 			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
-			stage.close();		
-
+			stage.close();
 			String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
 			String tituloVista = "Login";
 			LoginControler loginControler = new LoginControler();
-
 			crearVentana(vistaRegPac, tituloVista, loginControler);
-			//label indicando que se ha registrado con exito. en la ventana de iniciar sesion
-			System.out.println("Cuidador registrado con exito");
+			// label indicando que se ha registrado con exito. en la ventana de iniciar
+			// sesion
+			System.out.println("Medico registrado con exito");
+			incluirEnJsonMedico(nuevo);
 		}
-
+	}
+	
+	public void incluirEnJsonMedico(Persona p) {
+		List<Medico> m = GsonGeneral.desserializarJsonAArrayMedico();
+		ArrayList<String> pacientesVacios = new ArrayList<String>();
+		Medico nuevo = new Medico(p.getDni(), pacientesVacios);
+		m.add(nuevo);		
+		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
+		String representacionBonita = prettyGson.toJson(m);
+		String ruta = "medicos.json";
+		GsonGeneral.EscribirJson(representacionBonita, ruta);
 	}
 
 	@FXML
@@ -168,5 +189,4 @@ public class CuidadorRegistroControler {
 		return valido;
 	}
 
-	
 }

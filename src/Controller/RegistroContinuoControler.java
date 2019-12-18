@@ -29,7 +29,7 @@ public class RegistroContinuoControler {
 		// creamos la nueva
 		String vistaRegContinuo = "/View/PacienteRegistro.fxml";
 		String tituloVista = "Registro para usuarios";
-		PacienteRegistroController PacienteRegistroController = new PacienteRegistroController();
+		ControllerRegistroPaciente PacienteRegistroController = new ControllerRegistroPaciente();
 		crearVentana(vistaRegContinuo, tituloVista, PacienteRegistroController);
 	}
 
@@ -53,7 +53,7 @@ public class RegistroContinuoControler {
 		// creamos la nueva
 		String vistaRegContinuo = "/View/CuidadorRegistro.fxml";
 		String tituloVista = "Registro para cuidadores";
-		CuidadorRegistroControler cuidadorRegistroControler = new CuidadorRegistroControler();
+		ControllerRegistroCuidador cuidadorRegistroControler = new ControllerRegistroCuidador();
 		crearVentana(vistaRegContinuo, tituloVista, cuidadorRegistroControler);
 	}
 
@@ -65,7 +65,7 @@ public class RegistroContinuoControler {
 		// creamos la nueva
 		String vistaRegContinuo = "/View/ClinicoRegistro.fxml";
 		String tituloVista = "Registro para clinicos";
-		ClinicoRegistroControler clinicoRegistroControler = new ClinicoRegistroControler();
+		ControllerRegistroMedico clinicoRegistroControler = new ControllerRegistroMedico();
 		crearVentana(vistaRegContinuo, tituloVista, clinicoRegistroControler);
 	}
 
