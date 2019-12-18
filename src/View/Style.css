@@ -4,7 +4,20 @@
  * #385170 azul oscuro
  * #142d4c casi negro
  */
- 
+.listViewMedico{
+	-fx-background-color: #385170;
+	-fx-background-radius: 15px;
+	-fx-border-radius: 15px; 
+}
+.btnMedico{
+	-fx-font-size: 16pt;
+	-fx-background-color: #142d4c;
+	-fx-text-fill: #ececec;
+	-fx-background-radius: 15px;
+}
+.fondoMedicoHome{
+	-fx-background-color: #9fd3c7;
+}
 .tableView{
 	-fx-border-radius: 15px; 
 	-fx-background-radius: 15px;

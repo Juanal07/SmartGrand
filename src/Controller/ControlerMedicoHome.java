@@ -3,6 +3,7 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 
 import Model.Medico;
@@ -12,11 +13,14 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class ControlerMedicoHome {
@@ -24,7 +28,39 @@ public class ControlerMedicoHome {
 	private JFXListView<Persona> listaPacientesMedico = new JFXListView<Persona>();
 	@FXML
 	private JFXListView<Tickets> listaTicketsSinResponder = new JFXListView<Tickets>();
+	@FXML
+	private JFXButton btnCerrarSesion = new JFXButton();
 	private Label lbOculto = new Label();
+	
+	@FXML
+	public void cerrarSesion(ActionEvent actionEvent) {
+		// cerramos ventana
+		Stage stage = (Stage) btnCerrarSesion.getScene().getWindow();
+		stage.close();
+		// creamos la nueva
+		String vistaRegContinuo = "/View/Login.fxml";
+		String tituloVista = "Login";
+		LoginControler loginControler = new LoginControler();
+		crearVentana(vistaRegContinuo, tituloVista, loginControler);
+	}
+
+	private void crearVentana(String vista, String titulo, Object object) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(this.getClass().getResource(vista));
+			loader.setController(object);
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage sendStage = new Stage();
+			sendStage.setTitle(titulo);
+			Scene scene = new Scene(page);
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
+			sendStage.getIcons().add(icon);
+			sendStage.setScene(scene);
+			sendStage.show();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 
 	public void leerPersonas(ObservableList<Persona> pacientesObservableList2, Persona p) {
 		ArrayList<String> listaMisPacientes;
@@ -92,7 +128,7 @@ public class ControlerMedicoHome {
 	}
 
 	public void cargarListViewPacientes(Persona p) {
-		
+
 		lbOculto.setText(p.toString());
 		ObservableList<Persona> personasObservableList = FXCollections.observableArrayList();
 		leerPersonas(personasObservableList, p);
@@ -116,7 +152,7 @@ public class ControlerMedicoHome {
 			}
 		});
 	}
-	
+
 	public void ventanaDatosPaciente(Persona persona, Persona yo) {
 		String vistaDatosPaciente = "/View/MedicoPacienteLectura.fxml";
 		String tituloVista = "Datos Paciente.";
@@ -135,7 +171,7 @@ public class ControlerMedicoHome {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void cargarListViewTickets(Persona p) {
