@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" styleClass="fondoMedicoPaciente" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -26,23 +26,23 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="btnSensor1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enviarSensor1" text="Sensor1" GridPane.columnIndex="1">
+            <JFXButton fx:id="btnSensor1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enviarSensor1" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor1" GridPane.columnIndex="1" GridPane.rowSpan="2">
                <GridPane.margin>
                   <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
                </GridPane.margin></JFXButton>
-            <JFXButton fx:id="btnSensor2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Sensor2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <JFXButton fx:id="btnSensor2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor2" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </GridPane.margin></JFXButton>
+            <JFXButton fx:id="btnSensor3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor3" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </GridPane.margin></JFXButton>
+            <JFXButton fx:id="btnAtras" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#ventanaAtras" styleClass="btnMedico" stylesheets="@Style.css" text="Atras" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
                </GridPane.margin></JFXButton>
-            <JFXButton fx:id="btnSensor3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Sensor3" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
-               </GridPane.margin></JFXButton>
-            <JFXButton fx:id="btnAtras" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#ventanaAtras" text="Atras" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
-               </GridPane.margin></JFXButton>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" GridPane.rowSpan="7">
+            <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" GridPane.halignment="CENTER" GridPane.rowSpan="7" GridPane.valignment="CENTER">
                <children>
                   <Label fx:id="lbNombre" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
                      <VBox.margin>
@@ -65,6 +65,9 @@
                      </VBox.margin>
                   </Label>
                </children>
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </GridPane.margin>
             </VBox>
          </children>
       </GridPane>

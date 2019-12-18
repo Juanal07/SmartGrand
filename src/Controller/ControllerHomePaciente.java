@@ -44,7 +44,10 @@ public class ControllerHomePaciente implements Initializable {
 	private ObservableList<String> ticketsObservableList;
 	@FXML
 	private JFXScrollPane scroll = new JFXScrollPane();
-
+	
+	public void vaciarTXError() {
+		lbError.setText("");
+	}
 	public void enviarMSM() {
 		String textoPaciente = jfxTaPaciente.getText();
 		String dniPaciente = lbOculto.getText();
@@ -66,6 +69,8 @@ public class ControllerHomePaciente implements Initializable {
 			Tickets nuevo = new Tickets(dniPaciente, dniMedico, textoPaciente, "");
 			EnviarTicket(nuevo);
 			jfxTaPaciente.setText("");
+			lbError.setWrapText(true);
+			lbError.setText("Ticket enviado con exito.");
 		} else {
 			// envuelve el label
 			lbError.setWrapText(true);

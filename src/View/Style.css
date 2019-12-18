@@ -4,6 +4,10 @@
  * #385170 azul oscuro
  * #142d4c casi negro
  */
+
+.fondoMedicoPaciente{
+	-fx-background-color: #9fd3c7;
+}
 .listViewMedico{
 	-fx-background-color: #385170;
 	-fx-background-radius: 15px;
@@ -42,6 +46,10 @@
 .fondoPacienteHome{
 	-fx-background-color: #142d4c;
 }
+.lbErrorPaciente{
+	-fx-font-size: 16pt;
+	-fx-text-fill: #ececec;
+}
 .btnPaciente{
 	-fx-font-size: 16pt;
 	-fx-background-color: #385170;
@@ -53,7 +61,7 @@
 	-fx-background-color: #ececec;
 	-fx-border-radius: 15px; 
 	-fx-background-radius: 15px;
-	-fx-text-fill: #000000;
+	-fx-text-fill: #ffffff;
 }
 .litaPacienteHome{
 	-fx-background-color: #9fd3c7;
