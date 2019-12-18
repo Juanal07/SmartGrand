@@ -4,7 +4,42 @@
  * #385170 azul oscuro
  * #142d4c casi negro
  */
- .fondoPacienteHome{
+.listViewMedico{
+	-fx-background-color: #385170;
+	-fx-background-radius: 15px;
+	-fx-border-radius: 15px; 
+}
+.btnMedico{
+	-fx-font-size: 16pt;
+	-fx-background-color: #142d4c;
+	-fx-text-fill: #ececec;
+	-fx-background-radius: 15px;
+}
+.fondoMedicoHome{
+	-fx-background-color: #9fd3c7;
+}
+.tableView{
+	-fx-border-radius: 15px; 
+	-fx-background-radius: 15px;
+	-fx-border-color: #9fd3c7;
+	-fx-background-color: #ececec;
+	-fx-font-size: 13pt; 
+	-fx-text-fill: #000000;
+}
+.titloCuidador{
+	-fx-font-size: 40pt;
+	-fx-text-fill: #9fd3c7;	
+}
+.btnCuidador{
+	-fx-font-size: 16pt;
+	-fx-background-color: #9fd3c7;
+	-fx-text-fill: #142d4c;
+	-fx-background-radius: 15px;
+}
+.fonfoCuidadorHome{
+	-fx-background-color: #385170;
+}
+.fondoPacienteHome{
 	-fx-background-color: #142d4c;
 }
 .btnPaciente{
