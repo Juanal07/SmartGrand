@@ -4,11 +4,27 @@
  * #385170 azul oscuro
  * #142d4c casi negro
  */
-.fondoPacienteHome{
+ .fondoPacienteHome{
 	-fx-background-color: #142d4c;
 }
 .btnPaciente{
+	-fx-font-size: 16pt;
 	-fx-background-color: #385170;
+	-fx-text-fill: #ececec;
+	-fx-background-radius: 15px;
+}
+.textAreaPaciente{
+	-fx-font-size: 16pt; 
+	-fx-background-color: #ececec;
+	-fx-border-radius: 15px; 
+	-fx-background-radius: 15px;
+	-fx-text-fill: #000000;
+}
+.litaPacienteHome{
+	-fx-background-color: #9fd3c7;
+	-fx-background-radius: 15px;
+	-fx-border-radius: 15px; 
+	-fx-text-fill: #ececec;
 }
 .loginFondo{
 	-fx-background-color: linear-gradient(#ececec, #9fd3c7, #385170, #142d4c);

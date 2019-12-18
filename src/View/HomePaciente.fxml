@@ -4,16 +4,18 @@
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="fondoPacienteHome" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane style="-fx-background-color: #142d4c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -37,7 +39,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="lbError" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="CENTER" GridPane.columnSpan="3">
+                  <Label fx:id="lbError" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" wrapText="true" GridPane.columnSpan="3">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -45,10 +47,16 @@
                         <Insets left="20.0" right="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <JFXButton fx:id="fxmBtnEnviarTicket" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enviarMSM" style="-fx-background-color: #9fd3c7; -fx-border-radius: 20; -fx-background-radius: 15;" text="Enviar" textOverrun="CLIP" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                  <JFXButton fx:id="fxmBtnEnviarTicket" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enviarMSM" styleClass="btnPaciente" stylesheets="@Style.css" text="Enviar" textOverrun="CLIP" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="2">
                      <GridPane.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
                      </GridPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
                   </JFXButton>
                </children>
             </GridPane>
@@ -60,10 +68,13 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXTextArea fx:id="jfxTaPaciente" focusColor="#0040ff" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <JFXTextArea fx:id="jfxTaPaciente" focusColor="#9fd3c7" labelFloat="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Escriba aqui." styleClass="textAreaPaciente" stylesheets="@Style.css" unFocusColor="WHITE" wrapText="true">
                      <GridPane.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </GridPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </JFXTextArea>
                </children>
             </GridPane>
@@ -75,17 +86,23 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXListView fx:id="lvTicketsPaciente" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #9fd3c7; -fx-border-radius: 20; -fx-background-radius: 20;">
+                  <JFXListView fx:id="lvTicketsPaciente" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-radius: 15px;" styleClass="litaPacienteHome" stylesheets="@Style.css">
                      <GridPane.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </GridPane.margin>
                   </JFXListView>
                </children>
             </GridPane>
-            <JFXButton fx:id="btnCerrarSesion" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#cerrarSesion" style="-fx-border-radius: 20; -fx-background-color: #9fd3c7; -fx-background-radius: 20;" text="Cerrar sesion">
+            <JFXButton fx:id="btnCerrarSesion" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#cerrarSesion" styleClass="btnPaciente" stylesheets="@Style.css" text="Cerrar sesion">
                <GridPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </GridPane.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Glow />
+               </effect>
             </JFXButton>
          </children>
       </GridPane>
