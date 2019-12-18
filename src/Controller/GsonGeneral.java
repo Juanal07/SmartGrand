@@ -11,6 +11,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -124,5 +126,75 @@ public class GsonGeneral {
 			e.printStackTrace();
 		}
 		return (ArrayList<Sensor1Presion>) listaSensorPresion;
+	}
+
+	public static boolean seRepiteDni (String dni) {
+		Boolean seRepite = false;
+		List<Persona> lista = desserializarJsonAArray();
+		int sizeArray = lista.size();
+		int i = 0;
+		while(i < sizeArray) {
+			if (lista.get(i).getDni().equals(dni)) {
+				seRepite=true;
+				i = i + sizeArray;
+			}
+			i++;	
+		}
+		return seRepite;
+	}
+	public static boolean seRepiteUsuario (String user) {
+		Boolean seRepite = false;
+		List<Persona> lista = desserializarJsonAArray();
+		int sizeArray = lista.size();
+		int i = 0;
+		while(i < sizeArray) {
+			if (lista.get(i).getUsuario().equals(user)) {
+				seRepite=true;
+				i = i + sizeArray;
+			}
+			i++;	
+		}
+		return seRepite;
+	}
+	public static boolean validarNIF(String nif) {
+
+	    boolean correcto = false;
+
+	    Pattern pattern = Pattern.compile("(\\d{1,8})([TRWAGMYFPDXBNJZSQVHLCKEtrwagmyfpdxbnjzsqvhlcke])");
+
+	    Matcher matcher = pattern.matcher(nif);
+
+	    if (matcher.matches()) {
+
+	        String letra = matcher.group(2);
+
+	        String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+	        int index = Integer.parseInt(matcher.group(1));
+
+	        index = index % 23;
+
+	        String reference = letras.substring(index, index + 1);
+
+
+
+	        if (reference.equalsIgnoreCase(letra)) {
+
+	            correcto = true;
+
+	        } else {
+
+	            correcto = false;
+
+	        }
+
+	    } else {
+
+	        correcto = false;
+
+	    }
+
+	    return correcto;
+
 	}
 }

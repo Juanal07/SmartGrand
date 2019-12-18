@@ -112,6 +112,8 @@
                         </JFXButton>
                         <ComboBox fx:id="cuidadoresDisponiblesBox" layoutX="14.0" layoutY="38.0" prefWidth="150.0" promptText="Elige un cuidador" />
                         <ComboBox fx:id="medicosDisponiblesBox" layoutX="436.0" layoutY="38.0" prefWidth="150.0" promptText="Elige un medico" />
+                        <Label fx:id="lbErrorCuidador" layoutX="14.0" layoutY="79.0" textFill="RED" />
+                        <Label fx:id="lbErrorMedico" layoutX="436.0" layoutY="79.0" textFill="RED" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" top="5.0" />

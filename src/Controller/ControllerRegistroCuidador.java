@@ -143,43 +143,61 @@ public class ControllerRegistroCuidador {
 	public boolean validation(String usuario, String password, String nombre, String apellido, String tipoUsuario,
 			String dni) {
 		boolean valido = true;
+		
+		if ((dni.matches("\\d{8}[A-HJ-NP-TV-Z]"))) {
+			lbErrorDni.setText("");	
+			if (!GsonGeneral.seRepiteDni(dni)) {
+				lbErrorDni.setText("");	
+			}else {
+				lbErrorDni.setText("El DNI ya esta registrado");
+				valido = false;		
+			}
+			if (GsonGeneral.validarNIF(dni)) {
+				lbErrorDni.setText("");	
+			}else {
+				lbErrorDni.setText("El DNI no existe");
+				valido = false;		
+			}
+		}else {
+			lbErrorDni.setText("El DNI debe llevar 8 numeros y una letra mayuscula");
+			valido = false;		
+		}	
+
 		if (usuario.matches("^[a-zA-Z0-9._-]{3,}$")) {
 			lbErrorUsuario.setText("");
+			if (!GsonGeneral.seRepiteUsuario(usuario)) {
+				lbErrorUsuario.setText("");	
+			}else {
+				lbErrorUsuario.setText("El Usuario ya esta registrado");
+				valido = false;
+			}
 		} else {
-			lbErrorUsuario.setText("Error! Nombre de usuario incorrecto.");
+			lbErrorUsuario.setText("El usuario debe ser de al menos 3 caracteres");
+			valido = false;
+		}
+		if (password.matches("^[a-zA-Z0-9._-]{8,}$")) {
+			lbErrorPassword.setText("");
+		} else {
+			lbErrorPassword.setText("La contraseña debe contener al menos 8 letras, numeros o caracteres");
 			valido = false;
 		}
 		if (nombre.matches("^[a-zA-Z]{2,}$")) {
 			lbErrorNombre.setText("");
-			//nombre = tfNombre.getText().intern();
 		} else {
-			lbErrorNombre.setText("Error! Nombre incorrecto.");
+			lbErrorNombre.setText("Tu nombre debe contener al menos 2 letras");
 			valido = false;
 		}
 
 		if (apellido.matches("^[a-zA-Z]{2,}$")) {
 			lbErrorApellido.setText("");
-			//apellido = tfApellido.getText().intern();
 		} else {
-			lbErrorApellido.setText("Error! Apellido incorrecto.");
-			valido = false;
-		}
-		
-		if (password.matches("^[a-zA-Z0-9._-]{3,}$")) {
-			lbErrorPassword.setText("");
-			//apellido = tfApellido.getText().intern();
-		} else {
-			lbErrorPassword.setText("Error! Password incorrecto.");
+			lbErrorApellido.setText("Tu apellido debe contener al menos 2 letras");
 			valido = false;
 		}
 
-		if (dni.length() != 9) { 
-			lbErrorDni.setText("Error! DNI incorrecto.");
-			valido = false;
-			//apellido = tfDni.getText().intern();
-		} else {
-			lbErrorDni.setText("");
-		}
+		
+
+		
 		return valido;
 	}
 
