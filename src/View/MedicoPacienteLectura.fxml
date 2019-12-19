@@ -2,7 +2,9 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -26,40 +28,64 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="btnSensor1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enviarSensor1" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor1" GridPane.columnIndex="1" GridPane.rowSpan="2">
+            <JFXButton fx:id="btnSensor1" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enviarSensor1" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor1" GridPane.columnIndex="1" GridPane.rowSpan="2">
                <GridPane.margin>
                   <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
-               </GridPane.margin></JFXButton>
+               </GridPane.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Glow />
+               </effect></JFXButton>
             <JFXButton fx:id="btnSensor2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor2" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2">
                <GridPane.margin>
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-               </GridPane.margin></JFXButton>
+               </GridPane.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Glow />
+               </effect></JFXButton>
             <JFXButton fx:id="btnSensor3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor3" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="2">
                <GridPane.margin>
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-               </GridPane.margin></JFXButton>
+               </GridPane.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Glow />
+               </effect></JFXButton>
             <JFXButton fx:id="btnAtras" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#ventanaAtras" styleClass="btnMedico" stylesheets="@Style.css" text="Atras" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
-               </GridPane.margin></JFXButton>
-            <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" GridPane.halignment="CENTER" GridPane.rowSpan="7" GridPane.valignment="CENTER">
+               </GridPane.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Glow />
+               </effect></JFXButton>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" GridPane.halignment="CENTER" GridPane.rowSpan="7" GridPane.valignment="CENTER">
                <children>
-                  <Label fx:id="lbNombre" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                  <Label fx:id="lbNombre" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lbMedicoPaciente" text="Label" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
                      <VBox.margin>
                         <Insets bottom="10.0" left="20.0" right="20.0" top="30.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="lbApeliido" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label">
+                  <Label fx:id="lbApeliido" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lbErrorMedico" text="Label">
                      <VBox.margin>
                         <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="lbUsuario" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label">
+                  <Label fx:id="lbUsuario" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lbMedicoPaciente" text="Label">
                      <VBox.margin>
                         <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="lbDni" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label">
+                  <Label fx:id="lbDni" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lbMedicoPaciente" text="Label">
                      <VBox.margin>
                         <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                      </VBox.margin>
