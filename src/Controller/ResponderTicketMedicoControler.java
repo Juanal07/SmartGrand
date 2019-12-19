@@ -24,19 +24,28 @@ public class ResponderTicketMedicoControler {
 	private JFXButton btnEnviar = new JFXButton();
 	@FXML
 	private Label lbTextoPaciente = new Label();
+	@FXML
+	private Label lbError = new Label();
 	private Label lbOculto = new Label();
 	private Label lbOculto2 = new Label();
 
 	public void enviarRespuesta() {
-		String txPaciente = lbTextoPaciente.getText();
-		String txtMedico = txAreaMedico.getText();
-		String idPaciente;
-		String idClinico;
-		String[] cadenas = lbOculto.getText().trim().split("\t");
-		idPaciente = cadenas[0];
-		idClinico = cadenas[1];
-		leerTickets(idPaciente, idClinico, txPaciente, txtMedico);
-		
+		if (txAreaMedico.getText().equals("")) {
+			lbError.setText("Error: No puede enviar un Ticket vacio.");
+		}else {
+			String txPaciente = lbTextoPaciente.getText();
+			String txtMedico = txAreaMedico.getText();
+			String idPaciente;
+			String idClinico;
+			String[] cadenas = lbOculto.getText().trim().split("\t");
+			idPaciente = cadenas[0];
+			idClinico = cadenas[1];
+			leerTickets(idPaciente, idClinico, txPaciente, txtMedico);
+		}
+	}
+	public void vaciarLb() {
+		lbError.setText("");
+		txAreaMedico.setText("");
 	}
 
 	public void leerTickets(String idPaciente, String idClinico, String txPaciente, String txtMedico) {

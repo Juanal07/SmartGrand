@@ -46,5 +46,11 @@
     "idClinico": "00000001M",
     "textoPaciente": "hola guapoooo",
     "textoClinico": "holaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
+    "textoPaciente": "hola que tal estas?",
+    "textoClinico": ""
   }
 ]
