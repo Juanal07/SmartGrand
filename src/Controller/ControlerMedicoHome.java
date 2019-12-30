@@ -1,5 +1,7 @@
 package Controller;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,6 +112,9 @@ public class ControlerMedicoHome {
 			Parent root2 = loader.load();
 			responderTicketMedicoControler.writeText(ticket, persona);
 			Stage stage2 = new Stage();
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			stage2.setWidth(screenSize.width);
+			stage2.setHeight(screenSize.height);
 			stage2.setTitle(tituloVista);
 			stage2.setScene(new Scene(root2));
 			stage2.show();

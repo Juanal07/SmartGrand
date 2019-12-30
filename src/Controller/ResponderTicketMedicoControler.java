@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXScrollPane;
 import com.jfoenix.controls.JFXTextArea;
 
 import Model.Persona;
@@ -23,16 +24,19 @@ public class ResponderTicketMedicoControler {
 	@FXML
 	private JFXButton btnEnviar = new JFXButton();
 	@FXML
+	private JFXScrollPane jfxScrollPane = new JFXScrollPane();
+	@FXML
 	private Label lbTextoPaciente = new Label();
 	@FXML
 	private Label lbError = new Label();
+
 	private Label lbOculto = new Label();
 	private Label lbOculto2 = new Label();
 
 	public void enviarRespuesta() {
 		if (txAreaMedico.getText().equals("")) {
 			lbError.setText("Error: No puede enviar un Ticket vacio.");
-		}else {
+		} else {
 			String txPaciente = lbTextoPaciente.getText();
 			String txtMedico = txAreaMedico.getText();
 			String idPaciente;
@@ -43,6 +47,7 @@ public class ResponderTicketMedicoControler {
 			leerTickets(idPaciente, idClinico, txPaciente, txtMedico);
 		}
 	}
+
 	public void vaciarLb() {
 		lbError.setText("");
 		txAreaMedico.setText("");
@@ -61,9 +66,9 @@ public class ResponderTicketMedicoControler {
 				t.setTextoClinico(txtMedico);
 				aux = aux + sizeTiquets;
 			}
-			aux ++;
+			aux++;
 		}
-		
+
 		reescibirTicket(tiquets);
 	}
 
@@ -78,7 +83,7 @@ public class ResponderTicketMedicoControler {
 	public void ventanaHomeMedico() {
 		Stage stage = (Stage) lbTextoPaciente.getScene().getWindow();
 		stage.close();
-		
+
 		String[] cadenaPersona = lbOculto2.getText().split("\t");
 		String usu = cadenaPersona[0];
 		String pass = cadenaPersona[1];
@@ -110,6 +115,8 @@ public class ResponderTicketMedicoControler {
 	public void writeText(Tickets ticket, String persona) {
 		lbTextoPaciente.setWrapText(true);
 		lbTextoPaciente.setText(ticket.getTextoPaciente());
+		jfxScrollPane.setContent(lbTextoPaciente);
+
 		lbOculto.setText(ticket.toString());
 		lbOculto2.setText(persona);
 	}

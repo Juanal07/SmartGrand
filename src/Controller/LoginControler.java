@@ -2,6 +2,8 @@ package Controller;
 
 import com.jfoenix.controls.JFXMasonryPane;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.List;
 import java.util.Random;
 
@@ -70,6 +72,7 @@ public class LoginControler {
 
 	public void pacienteHome(Persona p) {
 		try {
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			String vistaPaciente = "/View/HomePaciente.fxml";
 			String tituloVista = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaPaciente));
@@ -78,6 +81,8 @@ public class LoginControler {
 			Parent root2 = loader.load();
 			controllerHomePaciente.writeText(p);
 			Stage stage2 = new Stage();
+			stage2.setWidth(screenSize.width);
+			stage2.setHeight(screenSize.height);
 			stage2.setTitle(tituloVista);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			stage2.getIcons().add(icon);
@@ -99,6 +104,9 @@ public class LoginControler {
 			loader.setController(controlerMedicoHome);
 			Parent root1 = loader.load();
 			Stage stage2 = new Stage();
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			stage2.setWidth(screenSize.width);
+			stage2.setHeight(screenSize.height);
 			stage2.setTitle(tituloVista2);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			stage2.getIcons().add(icon);
@@ -121,6 +129,9 @@ public class LoginControler {
 			Parent root2 = loader.load();
 			vistaCuidadorPrincipalController.writeText(p);
 			Stage stage2 = new Stage();
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			stage2.setWidth(screenSize.width);
+			stage2.setHeight(screenSize.height);
 	        stage2.setTitle(tituloVista3);
 	        Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la vista	
 			stage2.getIcons().add(icon);
@@ -152,7 +163,8 @@ public class LoginControler {
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage sendStage = new Stage();
 			sendStage.setTitle(titulo);
-			Scene scene = new Scene(page);
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			Scene scene = new Scene(page, screenSize.width, screenSize.height);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
 			sendStage.setScene(scene);
