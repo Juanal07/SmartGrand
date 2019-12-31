@@ -1,12 +1,14 @@
-package Controller;
+package controller;
 
 import java.util.ArrayList;
-import Model.Sensor1Presion;
+
 import javafx.fxml.FXML;
 
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import model.GsonGeneral;
+import model.Sensor1Presion;
 
 public class ControllerSensor1Presion {
 	@FXML

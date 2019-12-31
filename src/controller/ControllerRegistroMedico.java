@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import java.io.BufferedWriter;
 import java.math.BigInteger;
@@ -18,15 +18,15 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.jfoenix.controls.JFXTextField;
 
-import Controller.GsonGeneral;
-import Model.Medico;
-import Model.Persona;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.GsonGeneral;
+import model.Medico;
+import model.Persona;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -81,7 +81,7 @@ public class ControllerRegistroMedico {
 			stage.close();
 			String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
 			String tituloVista = "Login";
-			LoginControler loginControler = new LoginControler();
+			ControllerLogin loginControler = new ControllerLogin();
 			crearVentana(vistaRegPac, tituloVista, loginControler);
 			// label indicando que se ha registrado con exito. en la ventana de iniciar
 			// sesion
@@ -109,7 +109,7 @@ public class ControllerRegistroMedico {
 		// creamos la nueva
 		String vistaRegContinuo = "/View/RegistroContinuo.fxml";
 		String tituloVista = "Registro continuo";
-		RegistroContinuoControler registroContinuoControler = new RegistroContinuoControler();
+		ControllerRegistroContinuo registroContinuoControler = new ControllerRegistroContinuo();
 		crearVentana(vistaRegContinuo, tituloVista, registroContinuoControler);
 	}
 

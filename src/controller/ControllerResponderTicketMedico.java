@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import java.util.List;
 
@@ -8,8 +8,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXScrollPane;
 import com.jfoenix.controls.JFXTextArea;
 
-import Model.Persona;
-import Model.Tickets;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,8 +15,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import model.GsonGeneral;
+import model.Persona;
+import model.Tickets;
 
-public class ResponderTicketMedicoControler {
+public class ControllerResponderTicketMedico {
 	@FXML
 	private JFXTextArea txAreaMedico = new JFXTextArea();
 	@FXML
@@ -96,7 +97,7 @@ public class ResponderTicketMedicoControler {
 			String vistaMedico = "/View/MedicoHome.fxml";
 			String tituloVista2 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaMedico));
-			ControlerMedicoHome controlerMedicoHome = new ControlerMedicoHome();
+			ControllerMedicoHome controlerMedicoHome = new ControllerMedicoHome();
 			loader.setController(controlerMedicoHome);
 			Parent root1 = loader.load();
 			Stage stage2 = new Stage();

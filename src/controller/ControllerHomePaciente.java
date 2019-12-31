@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -13,10 +13,6 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXScrollPane;
 import com.jfoenix.controls.JFXTextArea;
 
-import Model.Medico;
-import Model.Persona;
-import Model.Tickets;
-import Controller.GsonGeneral;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,6 +23,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.GsonGeneral;
+import model.Medico;
+import model.Persona;
+import model.Tickets;
 
 public class ControllerHomePaciente implements Initializable {
 	@FXML
@@ -117,7 +117,7 @@ public class ControllerHomePaciente implements Initializable {
 		// creamos la nueva
 		String vistaRegContinuo = "/View/Login.fxml";
 		String tituloVista = "Login";
-		LoginControler loginControler = new LoginControler();
+		ControllerLogin loginControler = new ControllerLogin();
 		crearVentana(vistaRegContinuo, tituloVista, loginControler);
 	}
 

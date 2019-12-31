@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import com.jfoenix.controls.JFXMasonryPane;
 
@@ -7,7 +7,6 @@ import java.awt.Toolkit;
 import java.util.List;
 import java.util.Random;
 
-import Model.Persona;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,8 +20,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.GsonGeneral;
+import model.Persona;
 
-public class LoginControler {
+public class ControllerLogin {
 	@FXML
 	public ImageView imgLogo;
 	@FXML
@@ -100,7 +101,7 @@ public class LoginControler {
 			String vistaMedico = "/View/MedicoHome.fxml";
 			String tituloVista2 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaMedico));
-			ControlerMedicoHome controlerMedicoHome = new ControlerMedicoHome();
+			ControllerMedicoHome controlerMedicoHome = new ControllerMedicoHome();
 			loader.setController(controlerMedicoHome);
 			Parent root1 = loader.load();
 			Stage stage2 = new Stage();
@@ -124,7 +125,7 @@ public class LoginControler {
 			String vistaCuidador = "/View/VistaCuidador1.fxml";
 			String tituloVista3 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();		
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaCuidador));
-			VistaCuidador1Controller vistaCuidadorPrincipalController = new VistaCuidador1Controller();
+			ControllerVistaCuidador vistaCuidadorPrincipalController = new ControllerVistaCuidador();
 			loader.setController(vistaCuidadorPrincipalController);	
 			Parent root2 = loader.load();
 			vistaCuidadorPrincipalController.writeText(p);
@@ -151,7 +152,7 @@ public class LoginControler {
 		// creamos la ventana
 		String vistaRegContinuo = "/View/RegistroContinuo.fxml";
 		String tituloVista = "RegistroContinuo";
-		RegistroContinuoControler registroContinuoControler = new RegistroContinuoControler();
+		ControllerRegistroContinuo registroContinuoControler = new ControllerRegistroContinuo();
 		crearVentana(vistaRegContinuo, tituloVista, registroContinuoControler);
 	}
 

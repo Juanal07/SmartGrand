@@ -1,4 +1,4 @@
-package Controller;
+package model;
 
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -16,12 +16,6 @@ import java.util.regex.Pattern;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import Model.Cuidador;
-import Model.Medico;
-import Model.Persona;
-import Model.Sensor1Presion;
-import Model.Tickets;
 
 public class GsonGeneral {
 	public static List<Persona> desserializarJsonAArray() {
@@ -117,7 +111,7 @@ public class GsonGeneral {
 
 	public static ArrayList<Sensor1Presion> desserializarJsonAArraySensor1() {
 		List<Sensor1Presion> listaSensorPresion = null;
-		try (Reader reader = new FileReader("Sensor1.json")) {
+		try (Reader reader = new FileReader("Sensor1presion.json")) {
 			Gson gson = new Gson();
 			Type tipoListasSensor = new TypeToken<List<Sensor1Presion>>() {}.getType();
 			ArrayList<Sensor1Presion> sensor1 = gson.fromJson(reader, tipoListasSensor);
@@ -126,6 +120,19 @@ public class GsonGeneral {
 			e.printStackTrace();
 		}
 		return (ArrayList<Sensor1Presion>) listaSensorPresion;
+	}
+	
+	public static ArrayList<Sensor2puerta> desserializarJsonAArraySensor2() {
+		List<Sensor2puerta> listaSensorPuerta = null;
+		try (Reader reader = new FileReader("Sensor2puerta.json")) {
+			Gson gson = new Gson();
+			Type tipoListasSensor2 = new TypeToken<List<Sensor2puerta>>() {}.getType();
+			ArrayList<Sensor2puerta> sensor2 = gson.fromJson(reader, tipoListasSensor2);
+			listaSensorPuerta =  sensor2;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return (ArrayList<Sensor2puerta>) listaSensorPuerta;
 	}
 
 	public static boolean seRepiteDni (String dni) {

@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -8,9 +8,6 @@ import java.util.List;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 
-import Model.Medico;
-import Model.Persona;
-import Model.Tickets;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -24,8 +21,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.GsonGeneral;
+import model.Medico;
+import model.Persona;
+import model.Tickets;
 
-public class ControlerMedicoHome {
+public class ControllerMedicoHome {
 	@FXML
 	private JFXListView<Persona> listaPacientesMedico = new JFXListView<Persona>();
 	@FXML
@@ -42,7 +43,7 @@ public class ControlerMedicoHome {
 		// creamos la nueva
 		String vistaRegContinuo = "/View/Login.fxml";
 		String tituloVista = "Login";
-		LoginControler loginControler = new LoginControler();
+		ControllerLogin loginControler = new ControllerLogin();
 		crearVentana(vistaRegContinuo, tituloVista, loginControler);
 	}
 
@@ -107,7 +108,7 @@ public class ControlerMedicoHome {
 
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaPaciente));
-			ResponderTicketMedicoControler responderTicketMedicoControler = new ResponderTicketMedicoControler();
+			ControllerResponderTicketMedico responderTicketMedicoControler = new ControllerResponderTicketMedico();
 			loader.setController(responderTicketMedicoControler);
 			Parent root2 = loader.load();
 			responderTicketMedicoControler.writeText(ticket, persona);
@@ -165,7 +166,7 @@ public class ControlerMedicoHome {
 		stage.close();
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaDatosPaciente));
-			MedicoDatosPaciente medicoDatosPaciente = new MedicoDatosPaciente();
+			ControllerMedicoDatosPaciente medicoDatosPaciente = new ControllerMedicoDatosPaciente();
 			loader.setController(medicoDatosPaciente);
 			Parent root = loader.load();
 			medicoDatosPaciente.writeText(persona, yo);

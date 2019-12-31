@@ -1,8 +1,7 @@
-package Controller;
+package controller;
 
 import com.jfoenix.controls.JFXButton;
 
-import Model.Persona;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,8 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Persona;
 
-public class MedicoDatosPaciente {
+public class ControllerMedicoDatosPaciente {
 	@FXML
 	private Label lbNombre = new Label();
 	@FXML
@@ -78,7 +78,7 @@ public class MedicoDatosPaciente {
 			String vistaMedico = "/View/MedicoHome.fxml";
 			String tituloVista2 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaMedico));
-			ControlerMedicoHome controlerMedicoHome = new ControlerMedicoHome();
+			ControllerMedicoHome controlerMedicoHome = new ControllerMedicoHome();
 			loader.setController(controlerMedicoHome);
 			Parent root1 = loader.load();
 			Stage stage2 = new Stage();

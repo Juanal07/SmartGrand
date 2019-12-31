@@ -1,11 +1,9 @@
-package Controller;
+package controller;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import Model.Cuidador;
-import Model.Medico;
-import Model.Persona;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -27,7 +25,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-public class VistaCuidador1Controller {
+import model.Cuidador;
+import model.GsonGeneral;
+import model.Medico;
+import model.Persona;
+public class ControllerVistaCuidador {
 	@FXML
 	private TableView<Persona> tablaPacientesCuidador;
 	@FXML
@@ -90,7 +92,7 @@ public class VistaCuidador1Controller {
 		// creamos la nueva
 		String vistaRegContinuo = "/View/Login.fxml";
 		String tituloVista = "Login";
-		LoginControler loginControler = new LoginControler();
+		ControllerLogin loginControler = new ControllerLogin();
 		crearVentana(vistaRegContinuo, tituloVista, loginControler);
 	}
 	public void crearVentana(String vista, String titulo, Object object) {

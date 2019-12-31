@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class RegistroContinuoControler {
+public class ControllerRegistroContinuo {
 	@FXML
 	public Button btnPaciente;
 	@FXML
@@ -41,7 +41,7 @@ public class RegistroContinuoControler {
 		// creamos la nueva
 		String vistaRegContinuo = "/View/Login.fxml";
 		String tituloVista = "Login";
-		LoginControler loginControler = new LoginControler();
+		ControllerLogin loginControler = new ControllerLogin();
 		crearVentana(vistaRegContinuo, tituloVista, loginControler);
 	}
 
