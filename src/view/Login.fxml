@@ -29,6 +29,10 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
         </rowConstraints>
          <children>
             <VBox opacity="0.1" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowSpan="6" />
@@ -58,7 +62,7 @@
                         <Font size="15.0" />
                      </font>
                   </JFXPasswordField>
-                  <JFXButton id="jfxtBtnIniciarSesion" fx:id="btnIniciarSesion" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#iniciarSesion" styleClass="loginButton" text="Iniciar sesion" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton id="jfxtBtnIniciarSesion" fx:id="btnIniciarSesion" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#iniciarSesion" styleClass="loginButton" text="Iniciar sesion" textAlignment="CENTER" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="30.0" right="30.0" top="30.0" />
                      </VBox.margin>

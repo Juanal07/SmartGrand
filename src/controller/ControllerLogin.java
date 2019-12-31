@@ -18,6 +18,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.GsonGeneral;
@@ -40,7 +41,7 @@ public class ControllerLogin {
 	public Label lbError = new Label();
 
 	@FXML
-	public void iniciarSesion(ActionEvent actionEvent) {
+	public void iniciarSesion() {
 
 		String usuario = jfxtUsuario.getText();
 		String password = GsonGeneral.getMd5(jfxtPassword.getText());
@@ -182,4 +183,5 @@ public class ControllerLogin {
 			System.out.println("Si existe cadena");
 		}
 	}
+
 }
