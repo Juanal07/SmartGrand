@@ -3,7 +3,7 @@ package model;
 
 import java.util.stream.IntStream;
 
-public class Sensor1Presion {
+public class Sensor1presion {
 	private String dniPaciente;
 	private String fecha;
 	private int valor;
@@ -11,7 +11,7 @@ public class Sensor1Presion {
 
 
 
-	public Sensor1Presion(String dniPaciente, String fecha, int valor, int[] intervalos) {
+	public Sensor1presion(String dniPaciente, String fecha, int valor, int[] intervalos) {
 		super();
 		this.dniPaciente = dniPaciente;
 		this.fecha = fecha;

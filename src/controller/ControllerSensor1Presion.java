@@ -8,7 +8,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import model.GsonGeneral;
-import model.Sensor1Presion;
+import model.Sensor1presion;
 
 public class ControllerSensor1Presion {
 	@FXML
@@ -16,8 +16,8 @@ public class ControllerSensor1Presion {
 	private Label lbOculto = new Label();
 
 	public void cargarGrafica() {
-		ArrayList<Sensor1Presion> reposoData = GsonGeneral.desserializarJsonAArraySensor1();
-		ArrayList<Sensor1Presion> misSensores = new ArrayList<Sensor1Presion>();
+		ArrayList<Sensor1presion> reposoData = GsonGeneral.desserializarJsonAArraySensor1();
+		ArrayList<Sensor1presion> misSensores = new ArrayList<Sensor1presion>();
 
 		String dniP = lbOculto.getText().substring(lbOculto.getText().indexOf(" ")+1, lbOculto.getText().length());
 		

@@ -109,17 +109,17 @@ public class GsonGeneral {
 		}
 	}
 
-	public static ArrayList<Sensor1Presion> desserializarJsonAArraySensor1() {
-		List<Sensor1Presion> listaSensorPresion = null;
+	public static ArrayList<Sensor1presion> desserializarJsonAArraySensor1() {
+		List<Sensor1presion> listaSensorPresion = null;
 		try (Reader reader = new FileReader("Sensor1presion.json")) {
 			Gson gson = new Gson();
-			Type tipoListasSensor = new TypeToken<List<Sensor1Presion>>() {}.getType();
-			ArrayList<Sensor1Presion> sensor1 = gson.fromJson(reader, tipoListasSensor);
+			Type tipoListasSensor = new TypeToken<List<Sensor1presion>>() {}.getType();
+			ArrayList<Sensor1presion> sensor1 = gson.fromJson(reader, tipoListasSensor);
 			listaSensorPresion =  sensor1;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return (ArrayList<Sensor1Presion>) listaSensorPresion;
+		return (ArrayList<Sensor1presion>) listaSensorPresion;
 	}
 	
 	public static ArrayList<Sensor2puerta> desserializarJsonAArraySensor2() {
@@ -164,44 +164,23 @@ public class GsonGeneral {
 		return seRepite;
 	}
 	public static boolean validarNIF(String nif) {
-
 	    boolean correcto = false;
-
 	    Pattern pattern = Pattern.compile("(\\d{1,8})([TRWAGMYFPDXBNJZSQVHLCKEtrwagmyfpdxbnjzsqvhlcke])");
-
 	    Matcher matcher = pattern.matcher(nif);
-
 	    if (matcher.matches()) {
-
 	        String letra = matcher.group(2);
-
 	        String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
-
 	        int index = Integer.parseInt(matcher.group(1));
-
 	        index = index % 23;
-
 	        String reference = letras.substring(index, index + 1);
-
-
-
 	        if (reference.equalsIgnoreCase(letra)) {
-
 	            correcto = true;
-
 	        } else {
-
 	            correcto = false;
-
 	        }
-
 	    } else {
-
 	        correcto = false;
-
 	    }
-
 	    return correcto;
-
 	}
 }
