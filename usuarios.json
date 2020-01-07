@@ -96,6 +96,46 @@
     "dni": "00000004P"
   },
   {
+    "usuario": "paciente5",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
+    "nombre": "Leonardo",
+    "apellido": "Dicaprio",
+    "tipoUsuario": "paciente",
+    "dni": "00000005P"
+  },
+  {
+    "usuario": "paciente6",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
+    "nombre": "Brad",
+    "apellido": "Pitt",
+    "tipoUsuario": "paciente",
+    "dni": "00000006P"
+  },
+  {
+    "usuario": "paciente7",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
+    "nombre": "Pablo",
+    "apellido": "Marmol",
+    "tipoUsuario": "paciente",
+    "dni": "00000007P"
+  },
+  {
+    "usuario": "paciente8",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
+    "nombre": "Pedro",
+    "apellido": "Pica",
+    "tipoUsuario": "paciente",
+    "dni": "00000008P"
+  },
+  {
+    "usuario": "paciente9",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
+    "nombre": "Arturo",
+    "apellido": "Perez",
+    "tipoUsuario": "paciente",
+    "dni": "00000009P"
+  },
+  {
     "usuario": "medico1",
     "password": "81dc9bdb52d04dc20036dbd8313ed055",
     "nombre": "Irene",
