@@ -29,8 +29,6 @@ public class Main extends Application {
 	}
 
 	private void mainWindow() throws IOException {
-		// tamano de pantalla
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(this.getClass().getResource("/View/Login.fxml"));
 		loader.getClass().getResource("/View/Style.css");
@@ -38,9 +36,10 @@ public class Main extends Application {
 		loader.setController(control);
 		loader.setRoot(content);
 		Parent root = loader.load();
-		Scene scene = new Scene(root, screenSize.width, screenSize.height);
+		Scene scene = new Scene(root);
 		Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
-		primaryStage.getIcons().add(icon);		
+		primaryStage.getIcons().add(icon);	
+		primaryStage.setMaximized(true);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Login");
 		primaryStage.show();
