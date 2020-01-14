@@ -125,9 +125,29 @@ public class ControllerVistaCuidador {
 			@Override
 			public void changed(ObservableValue<? extends Persona> observable, Persona oldValue, Persona newValue) {
 				Persona persona = tablaPacientesCuidador.getSelectionModel().getSelectedItem();
-				enviarSensor1(persona.getDni());
+//				enviarSensor1(persona.getDni());
+				enviarSensor2(persona);				
 			}				
 		});	
+	}
+	public void enviarSensor2(Persona p) {
+		try {
+			String vistaCuidador = "/View/Sensor2puerta.fxml";
+			String tituloVista3 = "Sensor puerta";		
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaCuidador));
+			ControllerSensor2Puerta c = new ControllerSensor2Puerta();
+			loader.setController(c);	
+			Parent root2 = loader.load();
+			c.writeText(p);
+			Stage stage2 = new Stage();
+	        stage2.setTitle(tituloVista3);
+	        Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la vista	
+			stage2.getIcons().add(icon);
+	        stage2.setScene(new Scene(root2));
+	        stage2.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	public void enviarSensor1(String dni) {
 		String dniPaciente = dni;

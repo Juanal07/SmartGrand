@@ -21,6 +21,16 @@ public class Sensor2puerta {
 	}
 	public void setEstadoPuerta(boolean[] estadoPuerta) {
 		this.estadoPuerta = estadoPuerta;
-	}	
+	}
+	
+	public static String comoEsta(String dni) {
+		String palabra = null;
+		palabra = "abierta";
+		
+		
+		return palabra;
+		
+		
+	}
 
 }
