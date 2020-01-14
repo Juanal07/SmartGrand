@@ -237,6 +237,7 @@ public class ControllerRegistroPaciente {
 			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
+			sendStage.setMaximized(true);
 			sendStage.setScene(scene);
 			sendStage.show();
 		} catch (Exception e) {
@@ -283,7 +284,7 @@ public class ControllerRegistroPaciente {
 		if (password.matches("^[a-zA-Z0-9._-]{8,}$")) {
 			lbErrorPassword.setText("");
 		} else {
-			lbErrorPassword.setText("La contraseña debe contener al menos 8 letras, numeros o caracteres");
+			lbErrorPassword.setText("La contraseña debe contener al menos 8 caracteres");
 			valido = false;
 		}
 		if (nombre.matches("^[a-zA-Z]{2,}$")) {

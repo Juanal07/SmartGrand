@@ -46,8 +46,9 @@ public class ControllerVistaCuidador {
 	public Button btnCerrarSesion;
 	@FXML
 	private Label idCuidadorLabel = new Label();
+	
 	public void writeText(Persona p) {
-		idCuidadorLabel.setText("Bienvenido " + p.getNombre() + " elije uno de tus pacientes para ver su sensor");
+		idCuidadorLabel.setText("Cuidador: Bienvenido " + p.getNombre() + "\nelije uno de tus pacientes para ver su sensor de presion");
 		lbOculto.setText(p.getDni());
 	}
 	//dado un cuidador p ponemos en un observableList sus pacientes
@@ -130,7 +131,6 @@ public class ControllerVistaCuidador {
 	}
 	public void enviarSensor1(String dni) {
 		String dniPaciente = dni;
-		System.out.println(dniPaciente);
 		try {
 			ControllerSensor1Presion controlBarChart = new ControllerSensor1Presion();
 			FXMLLoader root2 =  new FXMLLoader();
@@ -138,6 +138,8 @@ public class ControllerVistaCuidador {
 			root2.setController(controlBarChart);
 			AnchorPane page = (AnchorPane) root2.load();
 			Stage sendStage = new Stage();
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
+			sendStage.getIcons().add(icon);
 			sendStage.setTitle("Sensor Presion");
 			Scene scene = new Scene(page);
 			sendStage.setMaximized(true);			
