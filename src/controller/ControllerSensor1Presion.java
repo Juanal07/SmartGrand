@@ -33,17 +33,17 @@ public class ControllerSensor1Presion {
 		}
 
 
-		for (int i = 0; i < misSensores .size(); i++) {
-			String fecha = misSensores .get(i).getFecha();
-			int valor = misSensores .get(i).getValor();
-			double descansos = misSensores .get(i).getSumIntervalos();
-
+		for (int i = 0; i < misSensores.size(); i++) {
+			String fecha = misSensores.get(i).getFecha();
+			int valor = misSensores.get(i).getValor();
+			double descansos = misSensores.get(i).getSumIntervalos();
 			minuteSeries.getData().add(new XYChart.Data<String, Number>(fecha, descansos));
 			series.getData().add(new XYChart.Data<String, Number>(fecha, valor));
-		}
 
+		}
 		graf.getData().add(series);
 		graf.getData().add(minuteSeries);
+		
 	}
 
 	public void escibirDniPaciente(String text) {

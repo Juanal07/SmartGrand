@@ -140,6 +140,7 @@ public class ControllerVistaCuidador {
 			Stage sendStage = new Stage();
 			sendStage.setTitle("Sensor Presion");
 			Scene scene = new Scene(page);
+			sendStage.setMaximized(true);			
 			sendStage.setScene(scene);
 			sendStage.show();
 			controlBarChart.escibirDniPaciente(dniPaciente);

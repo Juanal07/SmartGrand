@@ -25,10 +25,10 @@
                <children>
                   <BarChart fx:id="graf" prefHeight="320.0" prefWidth="383.0" title="SENSOR DEL SOFA" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <xAxis>
-                      <CategoryAxis label="DIA DEL MES" side="BOTTOM" tickLabelFill="#d60a0a" />
+                      <CategoryAxis label="DIA DEL MES" prefHeight="50.0" prefWidth="526.0" side="BOTTOM" tickLabelFill="#d60a0a" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis label="HORAS=ROJO / VECES SENTADO=NARANJA" side="TOP" tickLabelFill="#d60a0a" tickLabelGap="5.0" upperBound="11.0" />
+                      <NumberAxis label="HORAS=NARANJA / VECES SENTADO=ROJO" side="TOP" tickLabelFill="#d60a0a" tickLabelGap="5.0" upperBound="11.0" />
                     </yAxis>
                   </BarChart>
                </children>
