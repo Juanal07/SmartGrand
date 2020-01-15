@@ -97,7 +97,7 @@ public class ControllerLogin {
 			String vistaMedico = "/View/MedicoHome.fxml";
 			String tituloVista2 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaMedico));
-			ControllerMedicoHome controlerMedicoHome = new ControllerMedicoHome();
+			ControllerHomeMedico controlerMedicoHome = new ControllerHomeMedico();
 			loader.setController(controlerMedicoHome);
 			Parent root1 = loader.load();
 			Stage stage2 = new Stage();
@@ -119,7 +119,7 @@ public class ControllerLogin {
 			String vistaCuidador = "/View/VistaCuidador1.fxml";
 			String tituloVista3 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();		
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaCuidador));
-			ControllerVistaCuidador vistaCuidadorPrincipalController = new ControllerVistaCuidador();
+			ControllerHomeCuidador vistaCuidadorPrincipalController = new ControllerHomeCuidador();
 			loader.setController(vistaCuidadorPrincipalController);	
 			Parent root2 = loader.load();
 			vistaCuidadorPrincipalController.writeText(p);

@@ -97,7 +97,7 @@ public class ControllerResponderTicketMedico {
 			String vistaMedico = "/View/MedicoHome.fxml";
 			String tituloVista2 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaMedico));
-			ControllerMedicoHome controlerMedicoHome = new ControllerMedicoHome();
+			ControllerHomeMedico controlerMedicoHome = new ControllerHomeMedico();
 			loader.setController(controlerMedicoHome);
 			Parent root1 = loader.load();
 			Stage stage2 = new Stage();

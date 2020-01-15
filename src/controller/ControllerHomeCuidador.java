@@ -29,7 +29,7 @@ import model.Cuidador;
 import model.GsonGeneral;
 import model.Medico;
 import model.Persona;
-public class ControllerVistaCuidador {
+public class ControllerHomeCuidador {
 	@FXML
 	private TableView<Persona> tablaPacientesCuidador;
 	@FXML

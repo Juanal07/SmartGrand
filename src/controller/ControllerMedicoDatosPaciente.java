@@ -52,6 +52,9 @@ public class ControllerMedicoDatosPaciente {
 			Stage sendStage = new Stage();
 			sendStage.setTitle("Sensor Presion");
 			Scene scene = new Scene(page);
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
+			sendStage.getIcons().add(icon);
+			sendStage.setMaximized(true);
 			sendStage.setScene(scene);
 			sendStage.show();
 			controlBarChart.escibirDniPaciente(dniPaciente);
@@ -78,13 +81,14 @@ public class ControllerMedicoDatosPaciente {
 			String vistaMedico = "/View/MedicoHome.fxml";
 			String tituloVista2 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaMedico));
-			ControllerMedicoHome controlerMedicoHome = new ControllerMedicoHome();
+			ControllerHomeMedico controlerMedicoHome = new ControllerHomeMedico();
 			loader.setController(controlerMedicoHome);
 			Parent root1 = loader.load();
 			Stage stage2 = new Stage();
 			stage2.setTitle(tituloVista2);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			stage2.getIcons().add(icon);
+			stage2.setMaximized(true);
 			stage2.setScene(new Scene(root1));
 			stage2.show();
 			controlerMedicoHome.cargarListViewPacientes(p);

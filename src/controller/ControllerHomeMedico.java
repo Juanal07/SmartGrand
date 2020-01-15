@@ -26,7 +26,7 @@ import model.Medico;
 import model.Persona;
 import model.Tickets;
 
-public class ControllerMedicoHome {
+public class ControllerHomeMedico {
 	@FXML
 	private JFXListView<Persona> listaPacientesMedico = new JFXListView<Persona>();
 	@FXML
@@ -58,6 +58,7 @@ public class ControllerMedicoHome {
 			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
+			sendStage.setMaximized(true);
 			sendStage.setScene(scene);
 			sendStage.show();
 		} catch (Exception e) {
@@ -113,9 +114,9 @@ public class ControllerMedicoHome {
 			Parent root2 = loader.load();
 			responderTicketMedicoControler.writeText(ticket, persona);
 			Stage stage2 = new Stage();
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			stage2.setWidth(screenSize.width);
-			stage2.setHeight(screenSize.height);
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
+			stage2.getIcons().add(icon);
+			stage2.setMaximized(true);
 			stage2.setTitle(tituloVista);
 			stage2.setScene(new Scene(root2));
 			stage2.show();
@@ -171,6 +172,9 @@ public class ControllerMedicoHome {
 			Parent root = loader.load();
 			medicoDatosPaciente.writeText(persona, yo);
 			Stage stage2 = new Stage();
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
+			stage2.getIcons().add(icon);
+			stage2.setMaximized(true);
 			stage2.setTitle(tituloVista);
 			stage2.setScene(new Scene(root));
 			stage2.show();
