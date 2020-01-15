@@ -84,6 +84,7 @@ public class ControllerLogin {
 			stage2.getIcons().add(icon);
 			stage2.setScene(new Scene(root2));
 			stage2.show();
+			controllerHomePaciente.cargarListaTickets(p);
 
 		} catch (Exception e) {
 			e.printStackTrace();
