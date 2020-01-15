@@ -1,11 +1,8 @@
 package controller;
 
-import com.jfoenix.controls.JFXMasonryPane;
-
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.List;
-import java.util.Random;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +15,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.GsonGeneral;

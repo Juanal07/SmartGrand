@@ -177,7 +177,6 @@ public class ControllerMedicoHome {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public void cargarListViewTickets(Persona p) {
