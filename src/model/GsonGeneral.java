@@ -134,6 +134,18 @@ public class GsonGeneral {
 		}
 		return (ArrayList<Sensor2puerta>) listaSensorPuerta;
 	}
+	public static ArrayList<Sensor3caidas> desserializarJsonAArraySensor3() {
+		List<Sensor3caidas> listaSensorCaidas = null;
+		try (Reader reader = new FileReader("Sensor3caidas.json")) {
+			Gson gson = new Gson();
+			Type tipoListasSensor3 = new TypeToken<List<Sensor3caidas>>() {}.getType();
+			ArrayList<Sensor3caidas> sensor3 = gson.fromJson(reader, tipoListasSensor3);
+			listaSensorCaidas =  sensor3;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return (ArrayList<Sensor3caidas>) listaSensorCaidas;
+	}
 
 	public static boolean seRepiteDni (String dni) {
 		Boolean seRepite = false;

@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.IOException;
+
 import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
@@ -9,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Persona;
 
@@ -40,13 +43,61 @@ public class ControllerMedicoDatosPaciente {
 		lbUsuario.setText("Usuario: " + persona.getUsuario());
 		lbDni.setText("Dni: " + persona.getDni());
 	}
+	public void enviarSensor3() {
+		String dniPaciente = lbDni.getText();
+		try {
+			ControllerSensor3Caidas controlBarChart = new ControllerSensor3Caidas();
+			FXMLLoader root2 =  new FXMLLoader();
+			root2.setLocation(this.getClass().getResource("/View/Sensor3caidas.fxml"));
+			root2.setController(controlBarChart);
+			AnchorPane page = (AnchorPane) root2.load();
+			Stage sendStage = new Stage();
+			sendStage.setTitle("Sensor Caidas");
+			Scene scene = new Scene(page);
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
+			sendStage.getIcons().add(icon);
+			sendStage.setMaximized(true);
+			sendStage.setScene(scene);
+			sendStage.show();
+			controlBarChart.escibirDniPaciente(dniPaciente);
+			controlBarChart.cargarGrafica();
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void enviarSensor2() {
+		String dniPaciente = lbDni.getText();
+		try {
+			ControllerSensor2Puerta controlBarChart = new ControllerSensor2Puerta();
+			FXMLLoader root2 =  new FXMLLoader();
+			root2.setLocation(this.getClass().getResource("/View/Sensor2puerta.fxml"));
+			root2.setController(controlBarChart);
+			AnchorPane page = (AnchorPane) root2.load();
+			Stage sendStage = new Stage();
+			sendStage.setTitle("Sensor Puerta");
+			Scene scene = new Scene(page);
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
+			sendStage.getIcons().add(icon);
+			sendStage.setMaximized(true);
+			sendStage.setScene(scene);
+			sendStage.show();
+			controlBarChart.escibirDniPaciente(dniPaciente);
+			controlBarChart.cargarGrafica();
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	
 	public void enviarSensor1() {
 		String dniPaciente = lbDni.getText();
 		try {
 			ControllerSensor1Presion controlBarChart = new ControllerSensor1Presion();
 			FXMLLoader root2 =  new FXMLLoader();
-			root2.setLocation(this.getClass().getResource("/View/sensor1Presion.fxml"));
+			root2.setLocation(this.getClass().getResource("/View/Sensor1Presion.fxml"));
 			root2.setController(controlBarChart);
 			AnchorPane page = (AnchorPane) root2.load();
 			Stage sendStage = new Stage();

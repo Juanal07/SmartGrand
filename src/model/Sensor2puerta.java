@@ -3,9 +3,9 @@ package model;
 public class Sensor2puerta {
 	
 	private String idPaciente;
-	private boolean[] estadoPuerta; //cada 10 min checkea el estado de la puerta para visualizar lo que ha pasado las ultimas 24 horas abria que consultar las ultimas 144 posiciones del array
+	private int[] estadoPuerta; //cada hora checkea el estado de la puerta para visualizar lo que ha pasado las ultimas 24 horas 
 	
-	public Sensor2puerta(String idPaciente, boolean[] estadoPuerta) {
+	public Sensor2puerta(String idPaciente, int[] estadoPuerta) {
 		super();
 		this.idPaciente = idPaciente;
 		this.estadoPuerta = estadoPuerta;
@@ -16,10 +16,10 @@ public class Sensor2puerta {
 	public void setIdPaciente(String idPaciente) {
 		this.idPaciente = idPaciente;
 	}
-	public boolean[] getEstadoPuerta() {
+	public int[] getEstadoPuerta() {
 		return estadoPuerta;
 	}
-	public void setEstadoPuerta(boolean[] estadoPuerta) {
+	public void setEstadoPuerta(int[] estadoPuerta) {
 		this.estadoPuerta = estadoPuerta;
 	}
 	

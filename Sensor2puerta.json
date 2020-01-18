@@ -1,6 +1,10 @@
 [	
 	{
 		"idPaciente": "00000001P",
-		"estadoPuerta": [TRUE, FALSE, FALSE]
+		"estadoPuerta": [1, 0, 1,0,0,0,0,0,0,1,1,0,0,0,0,0]
+	},
+	{
+		"idPaciente": "00000002P",
+		"estadoPuerta": [1, 0, 0]
 	}
 ]

@@ -38,7 +38,7 @@
                <effect>
                   <Glow />
                </effect></JFXButton>
-            <JFXButton fx:id="btnSensor2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor2" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2">
+            <JFXButton fx:id="btnSensor2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enviarSensor2" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor2" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2">
                <GridPane.margin>
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                </GridPane.margin>
@@ -48,7 +48,7 @@
                <effect>
                   <Glow />
                </effect></JFXButton>
-            <JFXButton fx:id="btnSensor3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor3" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="2">
+            <JFXButton fx:id="btnSensor3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enviarSensor3" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor3" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="2">
                <GridPane.margin>
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                </GridPane.margin>
