@@ -34,6 +34,8 @@ public class ControllerHomeMedico {
 	@FXML
 	private JFXButton btnCerrarSesion = new JFXButton();
 	private Label lbOculto = new Label();
+	@FXML
+	private Label labelMedico = new Label();
 	
 	@FXML
 	public void cerrarSesion(ActionEvent actionEvent) {
@@ -45,6 +47,11 @@ public class ControllerHomeMedico {
 		String tituloVista = "Login";
 		ControllerLogin loginControler = new ControllerLogin();
 		crearVentana(vistaRegContinuo, tituloVista, loginControler);
+	}
+	
+	public void writeText(Persona p) {
+		labelMedico.setText("Medico: Bienvenido/a " + p.getNombre());
+		lbOculto.setText(p.getDni());
 	}
 
 	private void crearVentana(String vista, String titulo, Object object) {
@@ -104,8 +111,8 @@ public class ControllerHomeMedico {
 		String vistaPaciente = "/View/ResponderTicketMedico.fxml";
 		String tituloVista = "responder tiquet.";
 		String persona = lbOculto.getText();
-		Stage stage = (Stage) listaTicketsSinResponder.getScene().getWindow();
-		stage.close();
+//		Stage stage = (Stage) listaTicketsSinResponder.getScene().getWindow();
+//		stage.close();
 
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaPaciente));
@@ -148,6 +155,7 @@ public class ControllerHomeMedico {
 				Persona persona = listaPacientesMedico.getSelectionModel().getSelectedItem();
 				String[] prMedico = lbOculto.getText().split("\t");
 				String usu, pass, nom, apell, tpU, dni;
+				
 				usu = prMedico[0];
 				pass = prMedico[1];
 				nom = prMedico[2];

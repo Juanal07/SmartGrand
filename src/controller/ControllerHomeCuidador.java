@@ -48,7 +48,7 @@ public class ControllerHomeCuidador {
 	private Label idCuidadorLabel = new Label();
 	
 	public void writeText(Persona p) {
-		idCuidadorLabel.setText("Cuidador: Bienvenido " + p.getNombre() + "\nelije uno de tus pacientes para ver su sensor de presion");
+		idCuidadorLabel.setText("Cuidador: Bienvenido/a " + p.getNombre() + "\nelije uno de tus pacientes\n para ver su sensor de presion");
 		lbOculto.setText(p.getDni());
 	}
 	//dado un cuidador p ponemos en un observableList sus pacientes

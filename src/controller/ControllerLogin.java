@@ -98,8 +98,9 @@ public class ControllerLogin {
 			String tituloVista2 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaMedico));
 			ControllerHomeMedico controlerMedicoHome = new ControllerHomeMedico();
-			loader.setController(controlerMedicoHome);
+			loader.setController(controlerMedicoHome);			
 			Parent root1 = loader.load();
+			controlerMedicoHome.writeText(p);
 			Stage stage2 = new Stage();
 			stage2.setMaximized(true);
 			stage2.setTitle(tituloVista2);

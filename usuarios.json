@@ -150,5 +150,21 @@
     "apellido": "Pastor",
     "tipoUsuario": "medico",
     "dni": "00000002M"
+  },
+  {
+    "usuario": "medico3",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
+    "nombre": "Libre",
+    "apellido": "Rodriguez",
+    "tipoUsuario": "medico",
+    "dni": "00000003M"
+  },
+  {
+    "usuario": "medico4",
+    "password": "81dc9bdb52d04dc20036dbd8313ed055",
+    "nombre": "Libertad",
+    "apellido": "Garcia",
+    "tipoUsuario": "medico",
+    "dni": "00000004M"
   }
 ]

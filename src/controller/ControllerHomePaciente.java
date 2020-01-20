@@ -45,6 +45,8 @@ public class ControllerHomePaciente  {
 	private ObservableList<String> ticketsObservableList;
 	@FXML
 	private JFXScrollPane scroll = new JFXScrollPane();
+	@FXML
+	private Label labelPaciente = new Label();
 	
 	public void vaciarTXError() {
 		lbError.setText("");
@@ -92,6 +94,7 @@ public class ControllerHomePaciente  {
 	public void writeText(Persona p) {
 		lbOculto.setText(p.getDni());
 		lbOcultoObjetoYo.setText(p.toString());
+		labelPaciente.setText("Paciente: Bienvenido/a " + p.getNombre() +" \naqui puedes ver tu lista de tickets");
 	}
 
 	
@@ -121,8 +124,8 @@ public class ControllerHomePaciente  {
 	private void ventanaDatosTicket(Persona persona, Tickets tickets) {
 		String vistaDatosPaciente = "/View/TicketsCompletoPaciente.fxml";
 		String tituloVista = "Datos Ticket.";
-		Stage stage = (Stage) jfxTaPaciente.getScene().getWindow();
-		stage.close();
+//		Stage stage = (Stage) jfxTaPaciente.getScene().getWindow();
+//		stage.close();
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaDatosPaciente));
 			ControllerVistaTicketPaciente vistaTicketPaciente = new ControllerVistaTicketPaciente();

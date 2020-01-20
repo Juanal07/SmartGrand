@@ -16,26 +16,40 @@
   },
   {
     "idCuidador": "00000003C",
-    "dniPacientes": []
+    "dniPacientes": [
+      "00000005P",
+      "00000002P"
+    ]
   },
   {
     "idCuidador": "00000004C",
-    "dniPacientes": []
+    "dniPacientes": [
+      "00000006P"
+    ]
   },
   {
     "idCuidador": "00000005C",
-    "dniPacientes": []
+    "dniPacientes": [
+      "00000007P",
+      "00000004P"
+    ]
   },
   {
     "idCuidador": "00000006C",
-    "dniPacientes": []
+    "dniPacientes": [
+      "00000008P"
+    ]
   },
   {
     "idCuidador": "00000007C",
-    "dniPacientes": []
+    "dniPacientes": [
+      "00000009P"
+    ]
   },
   {
     "idCuidador": "00000008C",
-    "dniPacientes": []
+    "dniPacientes": [
+      "00000001P"
+    ]
   }
 ]
