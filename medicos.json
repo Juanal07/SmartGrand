@@ -15,17 +15,15 @@
       "00000006P",
       "00000007P",
       "00000005P",
-      "00000008P"      
+      "00000008P"
     ]
   },
   {
     "idMedico": "00000003M",
-    "dniPacientes": [    
-    ]
+    "dniPacientes": []
   },
   {
     "idMedico": "00000004M",
-    "dniPacientes": [   
-    ]
+    "dniPacientes": []
   }
 ]

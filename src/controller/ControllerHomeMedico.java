@@ -111,8 +111,8 @@ public class ControllerHomeMedico {
 		String vistaPaciente = "/View/ResponderTicketMedico.fxml";
 		String tituloVista = "responder tiquet.";
 		String persona = lbOculto.getText();
-//		Stage stage = (Stage) listaTicketsSinResponder.getScene().getWindow();
-//		stage.close();
+		Stage stage = (Stage) listaTicketsSinResponder.getScene().getWindow();
+		stage.close();
 
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaPaciente));
@@ -132,13 +132,14 @@ public class ControllerHomeMedico {
 		}
 	}
 
-	private void leerTickets(ObservableList<Tickets> ticketsObservableList2) {
+	private void leerTickets2(ObservableList<Tickets> ticketsObservableList2, Persona p) {
 		List<Tickets> tiquets = GsonGeneral.desserializarJsonAArrayTicket();
 		for (Tickets tickets : tiquets) {
-			if (tickets.getTextoClinico().equals("")) {
-				ticketsObservableList2.add(tickets);
-			}
-		}
+			if (tickets.getIdClinico().equals(p.getDni())) {
+				if (tickets.getTextoClinico().equals("")) {
+					ticketsObservableList2.add(tickets);
+				}
+		}}
 	}
 
 	public void cargarListViewPacientes(Persona p) {
@@ -193,7 +194,7 @@ public class ControllerHomeMedico {
 
 	public void cargarListViewTickets(Persona p) {
 		ObservableList<Tickets> ticketsObservableList = FXCollections.observableArrayList();
-		leerTickets(ticketsObservableList);
+		leerTickets2(ticketsObservableList, p);
 		listaTicketsSinResponder.setItems(ticketsObservableList);
 
 		listaTicketsSinResponder.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tickets>() {

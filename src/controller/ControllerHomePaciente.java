@@ -94,7 +94,7 @@ public class ControllerHomePaciente  {
 	public void writeText(Persona p) {
 		lbOculto.setText(p.getDni());
 		lbOcultoObjetoYo.setText(p.toString());
-		labelPaciente.setText("Paciente: Bienvenido/a " + p.getNombre() +" \naqui puedes ver tu lista de tickets");
+		labelPaciente.setText("Paciente: Bienvenido/a " + p.getNombre() +" \naqui puedes ver tu lista de tickets respondidos");
 	}
 
 	
@@ -148,10 +148,13 @@ public class ControllerHomePaciente  {
 		List<Tickets> tiquets = GsonGeneral.desserializarJsonAArrayTicket();
 		for (Tickets tickets : tiquets) {
 			if (tickets.getIdPaciente().equals(p.getDni())) {
+				System.out.println(tickets.getIdPaciente()+"y"+p.getDni());
+
 				if (!tickets.getTextoClinico().equals("")) {
+
 					ticketsObservableList2.add(tickets);
-					System.out.println("lo encontre...");
-					System.out.println(tickets.getTextoPaciente());
+//					System.out.println("lo encontre...");
+//					System.out.println(tickets.getTextoPaciente());
 				}
 			}
 		}
