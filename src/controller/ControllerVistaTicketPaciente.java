@@ -8,13 +8,13 @@ import model.Tickets;
 
 public class ControllerVistaTicketPaciente {
 	@FXML // fx:id="jfxScrollPaneMedico"
-	private JFXScrollPane jfxScrollPaneMedico; // Value injected by FXMLLoader
+	private JFXScrollPane jfxScrollPaneMedico = new JFXScrollPane(); // Value injected by FXMLLoader
 
 	@FXML // fx:id="lbTextoPaciente"
 	private Label lbTextoPaciente; // Value injected by FXMLLoader
 
 	@FXML // fx:id="jfxScrollPanePaciente"
-	private JFXScrollPane jfxScrollPanePaciente; // Value injected by FXMLLoader
+	private JFXScrollPane jfxScrollPanePaciente = new JFXScrollPane(); // Value injected by FXMLLoader
 
 	@FXML // fx:id="lbTextoMedico"
 	private Label lbTextoMedico; // Value injected by FXMLLoader
@@ -26,6 +26,8 @@ public class ControllerVistaTicketPaciente {
 		lbOculto.setText(persona.toString());
 		lbTextoPaciente.setText("PACIENTE: " + tickets.getTextoPaciente());
 		lbTextoMedico.setText("MEDICO: " + tickets.getTextoClinico());
+		jfxScrollPanePaciente.setContent(lbTextoPaciente);
+		jfxScrollPaneMedico.setContent(lbTextoMedico);
 	}	
 
 }

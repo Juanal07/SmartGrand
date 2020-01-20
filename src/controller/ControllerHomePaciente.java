@@ -145,7 +145,11 @@ public class ControllerHomePaciente  {
 		List<Tickets> tiquets = GsonGeneral.desserializarJsonAArrayTicket();
 		for (Tickets tickets : tiquets) {
 			if (tickets.getIdPaciente().equals(p.getDni())) {
-				ticketsObservableList2.add(tickets);
+				if (!tickets.getTextoClinico().equals("")) {
+					ticketsObservableList2.add(tickets);
+					System.out.println("lo encontre...");
+					System.out.println(tickets.getTextoPaciente());
+				}
 			}
 		}
 	}
