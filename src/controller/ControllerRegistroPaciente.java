@@ -209,8 +209,8 @@ public class ControllerRegistroPaciente {
 		// label indicando que se ha registrado con exito. en la ventana de iniciar
 		// sesion
 		System.out.println("Paciente registrado con exito");
-		System.out.println(cuidadoresDisponiblesBox.getValue());
-		System.out.println(medicosDisponiblesBox.getValue());
+		System.out.println("Su cuidador: "+ cuidadoresDisponiblesBox.getValue());
+		System.out.println("Su medico: "+medicosDisponiblesBox.getValue());
 		}
 	}
 

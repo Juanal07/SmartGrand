@@ -135,8 +135,9 @@ public class ControllerMedicoDatosPaciente {
 			ControllerHomeMedico controlerMedicoHome = new ControllerHomeMedico();
 			loader.setController(controlerMedicoHome);
 			Parent root1 = loader.load();
+			controlerMedicoHome.writeText(p);
 			Stage stage2 = new Stage();
-			stage2.setTitle(tituloVista2);
+			stage2.setTitle(tituloVista2);			
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			stage2.getIcons().add(icon);
 			stage2.setMaximized(true);

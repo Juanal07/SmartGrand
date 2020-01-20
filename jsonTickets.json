@@ -4,5 +4,89 @@
     "idClinico": "00000001M",
     "textoPaciente": "primero",
     "textoClinico": "primero respuesta"
+  },
+  {
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
+    "textoPaciente": "segundo",
+    "textoClinico": "segundo respondido\n"
+  },
+  {
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
+    "textoPaciente": "tercer",
+    "textoClinico": "contesto el 3�"
+  },
+  {
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
+    "textoPaciente": "cuarto\t",
+    "textoClinico": "respondo cuarto"
+  },
+  {
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
+    "textoPaciente": "quinto",
+    "textoClinico": "respondo quinto"
+  },
+  {
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
+    "textoPaciente": "sexto",
+    "textoClinico": "respondo sexto"
+  },
+  {
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
+    "textoPaciente": "septimo",
+    "textoClinico": "contesto 7"
+  },
+  {
+    "idPaciente": "00000002P",
+    "idClinico": "00000002M",
+    "textoPaciente": "primero",
+    "textoClinico": "primero respuesta"
+  },
+  {
+    "idPaciente": "00000002P",
+    "idClinico": "00000002M",
+    "textoPaciente": "segundo",
+    "textoClinico": "segundo respondido\n"
+  },
+  {
+    "idPaciente": "00000002P",
+    "idClinico": "00000002M",
+    "textoPaciente": "tercer",
+    "textoClinico": "contesto el 3�"
+  },
+  {
+    "idPaciente": "00000002P",
+    "idClinico": "00000002M",
+    "textoPaciente": "cuarto\t",
+    "textoClinico": "respondo cuarto"
+  },
+  {
+    "idPaciente": "00000002P",
+    "idClinico": "00000002M",
+    "textoPaciente": "quinto",
+    "textoClinico": "respondo quinto"
+  },
+  {
+    "idPaciente": "00000002P",
+    "idClinico": "00000002M",
+    "textoPaciente": "sexto",
+    "textoClinico": "respondo sexto"
+  },
+  {
+    "idPaciente": "00000002P",
+    "idClinico": "00000002M",
+    "textoPaciente": "septimo",
+    "textoClinico": "contesto 7"
+  },
+  {
+    "idPaciente": "00000002P",
+    "idClinico": "00000002M",
+    "textoPaciente": "octavo paciente2",
+    "textoClinico": "contesto 8 medico2\t\n"
   }
 ]

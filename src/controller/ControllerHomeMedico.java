@@ -107,7 +107,7 @@ public class ControllerHomeMedico {
 		return idsPacientes;
 	}
 
-	public void enviarVentana(Tickets ticket) {
+	public void enviarVentana(Tickets ticket, Persona p) {
 		String vistaPaciente = "/View/ResponderTicketMedico.fxml";
 		String tituloVista = "responder tiquet.";
 		String persona = lbOculto.getText();
@@ -119,7 +119,7 @@ public class ControllerHomeMedico {
 			ControllerResponderTicketMedico responderTicketMedicoControler = new ControllerResponderTicketMedico();
 			loader.setController(responderTicketMedicoControler);
 			Parent root2 = loader.load();
-			responderTicketMedicoControler.writeText(ticket, persona);
+			responderTicketMedicoControler.writeText(ticket, p);
 			Stage stage2 = new Stage();
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			stage2.getIcons().add(icon);
@@ -202,7 +202,7 @@ public class ControllerHomeMedico {
 			@Override
 			public void changed(ObservableValue<? extends Tickets> observable, Tickets oldValue, Tickets newValue) {
 				Tickets ticket = listaTicketsSinResponder.getSelectionModel().getSelectedItem();
-				enviarVentana(ticket);
+				enviarVentana(ticket, p);
 
 			}
 		});

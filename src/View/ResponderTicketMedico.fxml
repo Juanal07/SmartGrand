@@ -64,7 +64,18 @@
                   <Glow />
                </effect>
             </JFXButton>
-            <Label fx:id="lbError" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lbErrorMedico" wrapText="true" GridPane.rowIndex="5" />
+            <Label fx:id="lbError" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lbErrorMedico" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <JFXButton fx:id="btnAtras" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#ventanaAtras" onMouseClicked="#enviarRespuesta" styleClass="btnMedico" text="Atras" GridPane.rowIndex="5" GridPane.rowSpan="2">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Glow />
+               </effect>
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="15.0" right="30.0" />
+               </GridPane.margin>
+            </JFXButton>
          </children>
       </GridPane>
    </children>

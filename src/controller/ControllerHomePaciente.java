@@ -148,7 +148,7 @@ public class ControllerHomePaciente  {
 		List<Tickets> tiquets = GsonGeneral.desserializarJsonAArrayTicket();
 		for (Tickets tickets : tiquets) {
 			if (tickets.getIdPaciente().equals(p.getDni())) {
-				System.out.println(tickets.getIdPaciente()+"y"+p.getDni());
+//				System.out.println(tickets.getIdPaciente()+"y"+p.getDni());
 
 				if (!tickets.getTextoClinico().equals("")) {
 
