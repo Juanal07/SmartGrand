@@ -7,7 +7,14 @@
  
 .default-color0.chart-bar { -fx-bar-fill: #9fd3c7 }
 
-
+.tituloListasMedicoHome{	
+	-fx-font-size: 24pt;
+	-fx-text-fill: #142d4c;
+}
+.tituloTiquetPaciente{	
+	-fx-font-size: 24pt;
+	-fx-text-fill: #ececec;
+}
 .lbErrorMedico{
 	-fx-font-size: 16pt;
 	-fx-text-fill: #000000;

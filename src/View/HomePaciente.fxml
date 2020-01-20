@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane styleClass="fondoPacienteHome" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -78,7 +78,7 @@
                   </JFXTextArea>
                </children>
             </GridPane>
-            <GridPane GridPane.columnIndex="1" GridPane.rowSpan="4">
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="4">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -86,7 +86,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXListView fx:id="lvTicketsPaciente" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-radius: 15px;" styleClass="litaPacienteHome" stylesheets="@Style.css">
+                  <JFXListView fx:id="lvTicketsPaciente" cellHorizontalMargin="1.0" cellVerticalMargin="6.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-radius: 15px;" styleClass="litaPacienteHome" stylesheets="@Style.css">
                      <GridPane.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </GridPane.margin>
@@ -104,6 +104,7 @@
                   <Glow />
                </effect>
             </JFXButton>
+            <Label fx:id="lbTiquets" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="tituloTiquetPaciente" text="Lista de tiquets" textFill="WHITE" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>
