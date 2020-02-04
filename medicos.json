@@ -20,7 +20,9 @@
   },
   {
     "idMedico": "00000003M",
-    "dniPacientes": []
+    "dniPacientes": [
+      "47553737H"
+    ]
   },
   {
     "idMedico": "00000004M",

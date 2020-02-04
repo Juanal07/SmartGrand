@@ -166,5 +166,13 @@
     "apellido": "Garcia",
     "tipoUsuario": "medico",
     "dni": "00000004M"
+  },
+  {
+    "usuario": "juan",
+    "password": "25d55ad283aa400af464c76d713c07ad",
+    "nombre": "juan",
+    "apellido": "perez",
+    "tipoUsuario": "paciente",
+    "dni": "47553737H"
   }
 ]
