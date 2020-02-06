@@ -75,12 +75,18 @@
     "idPaciente": "00000001P",
     "idClinico": "00000001M",
     "textoPaciente": "Hola doctor, me duele un brazo que puedo hacer",
-    "textoClinico": ""
+    "textoClinico": "cortate el brazo"
   },
   {
     "idPaciente": "00000001P",
     "idClinico": "00000001M",
     "textoPaciente": "Me duele afjk",
     "textoClinico": "tomese paracetamol"
+  },
+  {
+    "idPaciente": "00000001P",
+    "idClinico": "00000001M",
+    "textoPaciente": "hola",
+    "textoClinico": ""
   }
 ]
