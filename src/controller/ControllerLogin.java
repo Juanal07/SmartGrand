@@ -44,34 +44,38 @@ public class ControllerLogin {
 		List<Persona> lista = GsonGeneral.desserializarJsonAArray();
 		int cont = 0;
 		boolean rompebucle = true;
-		while (rompebucle) {
-			System.out.println(lista.get(cont));
-			if (cont == lista.size()) {
-				rompebucle = false;
-			}
-			if (usuario.equals(lista.get(cont).getUsuario()) && password.equals(lista.get(cont).getPassword())) {
-				String tUsu = lista.get(cont).getTipoUsuario();
-				// esta line es para cerrar la ventana anterior
-				Stage stage = (Stage) btnRegistrarse.getScene().getWindow();
-				stage.close();
-				switch (tUsu) {
-				case "paciente":
-					pacienteHome(lista.get(cont));
-					break;
-				case "medico":
-					medicoHome(lista.get(cont));
-					break;
-				case "cuidador":
-					cuidadorHome(lista.get(cont));
-					break;
-				default:
-					break;
+		try {
+
+			while (rompebucle) {
+				if (cont == lista.size()) {
+					rompebucle = false;
 				}
-				rompebucle = false;
-			} else {
-				lbError.setText("Error: Usuario o password INCORRECTO.");
+				if (usuario.equals(lista.get(cont).getUsuario()) && password.equals(lista.get(cont).getPassword())) {
+					String tUsu = lista.get(cont).getTipoUsuario();
+					// esta line es para cerrar la ventana anterior
+					Stage stage = (Stage) btnRegistrarse.getScene().getWindow();
+					stage.close();
+					switch (tUsu) {
+					case "paciente":
+						pacienteHome(lista.get(cont));
+						break;
+					case "medico":
+						medicoHome(lista.get(cont));
+						break;
+					case "cuidador":
+						cuidadorHome(lista.get(cont));
+						break;
+					default:
+						break;
+					}
+					rompebucle = false;
+				} else {
+					lbError.setText("Error: Usuario o password INCORRECTO.");
+				}
+				cont++;
 			}
-			cont++;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
