@@ -42,29 +42,36 @@ public class ControllerLogin {
 		String usuario = jfxtUsuario.getText();
 		String password = GsonGeneral.getMd5(jfxtPassword.getText());
 		List<Persona> lista = GsonGeneral.desserializarJsonAArray();
-		for (Persona p : lista) {
-			if (usuario.equals(p.getUsuario()) && password.equals(p.getPassword())) {
-				String tUsu = p.getTipoUsuario();
+		int cont = 0;
+		boolean rompebucle = true;
+		while (rompebucle) {
+			System.out.println(lista.get(cont));
+			if (cont == lista.size()) {
+				rompebucle = false;
+			}
+			if (usuario.equals(lista.get(cont).getUsuario()) && password.equals(lista.get(cont).getPassword())) {
+				String tUsu = lista.get(cont).getTipoUsuario();
 				// esta line es para cerrar la ventana anterior
 				Stage stage = (Stage) btnRegistrarse.getScene().getWindow();
 				stage.close();
 				switch (tUsu) {
 				case "paciente":
-					pacienteHome(p);
+					pacienteHome(lista.get(cont));
 					break;
 				case "medico":
-					medicoHome(p);
+					medicoHome(lista.get(cont));
 					break;
 				case "cuidador":
-					cuidadorHome(p);
+					cuidadorHome(lista.get(cont));
 					break;
 				default:
 					break;
 				}
-				break;
+				rompebucle = false;
 			} else {
 				lbError.setText("Error: Usuario o password INCORRECTO.");
 			}
+			cont++;
 		}
 	}
 
@@ -98,7 +105,7 @@ public class ControllerLogin {
 			String tituloVista2 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaMedico));
 			ControllerHomeMedico controlerMedicoHome = new ControllerHomeMedico();
-			loader.setController(controlerMedicoHome);			
+			loader.setController(controlerMedicoHome);
 			Parent root1 = loader.load();
 			controlerMedicoHome.writeText(p);
 			Stage stage2 = new Stage();
@@ -114,24 +121,25 @@ public class ControllerLogin {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void cuidadorHome(Persona p) {
 		try {
 			String vistaCuidador = "/View/VistaCuidador1.fxml";
-			String tituloVista3 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();		
+			String tituloVista3 = "Bienvenido: " + p.getNombre() + " " + p.getApellido();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaCuidador));
 			ControllerHomeCuidador vistaCuidadorPrincipalController = new ControllerHomeCuidador();
-			loader.setController(vistaCuidadorPrincipalController);	
+			loader.setController(vistaCuidadorPrincipalController);
 			Parent root2 = loader.load();
 			vistaCuidadorPrincipalController.writeText(p);
 			Stage stage2 = new Stage();
 			stage2.setMaximized(true);
-	        stage2.setTitle(tituloVista3);
-	        Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la vista	
+			stage2.setTitle(tituloVista3);
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la
+																									// vista
 			stage2.getIcons().add(icon);
-	        stage2.setScene(new Scene(root2));
-	        stage2.show();
-	        vistaCuidadorPrincipalController.cargarTableview(p);
+			stage2.setScene(new Scene(root2));
+			stage2.show();
+			vistaCuidadorPrincipalController.cargarTableview(p);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
