@@ -26,7 +26,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Cuidador;
-import model.GsonGeneral;
 import model.Medico;
 import model.Persona;
 public class ControllerHomeCuidador {
