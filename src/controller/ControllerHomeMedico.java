@@ -1,7 +1,5 @@
 package controller;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,21 +73,41 @@ public class ControllerHomeMedico {
 
 	public void leerPersonas(ObservableList<Persona> pacientesObservableList2, Persona p) {
 		ArrayList<String> listaMisPacientes;
-		listaMisPacientes = listaPersonas(p);
-		List<Persona> lista = GsonGeneral.desserializarJsonAArray();
-		int lenthArray = listaMisPacientes.size();
-		// recorremos personas
-		for (int i = 0; i < lista.size(); i++) {
-			int j = 0;
-			// recorremos mis pacientes
-			while (j < lenthArray) {
-				if (lista.get(i).getDni().equals(listaMisPacientes.get(j))) {
-					pacientesObservableList2.add(lista.get(i));
-					j = j + lenthArray;
+		listaMisPacientes = listaPersonas(p);// devuleve una lista con los ids de los pacientes
+		List<Persona> lista = GsonGeneral.desserializarJsonAArray();// lista con las personas
+		
+		//***********************************
+		boolean rompeBucle1 = false;
+		boolean rompeBucle2 = false;
+		int cont1 = 0;
+		
+		while(cont1 < lista.size() && !rompeBucle1) { // este while actua como for 
+			// hacer lo que querais jajaja 
+			int cont2 = 0;
+			while(cont2 < listaMisPacientes.size() && !rompeBucle2) {
+				if (lista.get(cont1).getDni().equals(listaMisPacientes.get(cont2))) {
+					lista.get(cont1).setPassword("");// para que no apareescan las contraseñas en la lista
+					pacientesObservableList2.add(lista.get(cont1));
+					cont2 = listaMisPacientes.size();
 				}
-				j++;
+				cont2++;
 			}
+			cont1++;
 		}
+	
+		// recorremos personas
+//		int lenthArray = listaMisPacientes.size();
+//		for (int i = 0; i < lista.size(); i++) {
+//			int j = 0;
+//			// recorremos mis pacientes
+//			while (j < lenthArray) {
+//				if (lista.get(i).getDni().equals(listaMisPacientes.get(j))) {
+//					pacientesObservableList2.add(lista.get(i));
+//					j = j + lenthArray;
+//				}
+//				j++;
+//			}
+//		}
 	}
 
 	public ArrayList<String> listaPersonas(Persona p) {
@@ -143,10 +161,11 @@ public class ControllerHomeMedico {
 	}
 
 	public void cargarListViewPacientes(Persona p) {
-
+		
 		lbOculto.setText(p.toString());
 		ObservableList<Persona> personasObservableList = FXCollections.observableArrayList();
-		leerPersonas(personasObservableList, p);
+		leerPersonas(personasObservableList, p);// encuentra los objetos de las personas y los mete en personasObservableList
+		
 		listaPacientesMedico.setItems(personasObservableList);
 
 		listaPacientesMedico.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Persona>() {

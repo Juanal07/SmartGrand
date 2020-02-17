@@ -47,7 +47,7 @@ public class ControllerLogin {
 		try {
 
 			while (rompebucle) {
-				if (cont == lista.size()) {
+				if (cont >= lista.size()) {
 					rompebucle = false;
 				}
 				if (usuario.equals(lista.get(cont).getUsuario()) && password.equals(lista.get(cont).getPassword())) {
