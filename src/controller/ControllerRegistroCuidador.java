@@ -19,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Cuidador;
-import model.GsonGeneral;
 import model.Medico;
 import model.Persona;
 import javafx.scene.control.Button;
@@ -179,7 +178,7 @@ public class ControllerRegistroCuidador {
 		if (password.matches("^[a-zA-Z0-9._-]{8,}$")) {
 			lbErrorPassword.setText("");
 		} else {
-			lbErrorPassword.setText("La contraseña debe contener al menos 8 caracteres");
+			lbErrorPassword.setText("La contraseï¿½a debe contener al menos 8 caracteres");
 			valido = false;
 		}
 		if (nombre.matches("^[a-zA-Z]{2,}$")) {

@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -16,6 +16,14 @@ import java.util.regex.Pattern;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import model.Cuidador;
+import model.Medico;
+import model.Persona;
+import model.Sensor1presion;
+import model.Sensor2puerta;
+import model.Sensor3caidas;
+import model.Tickets;
 
 public class GsonGeneral {
 	public static List<Persona> desserializarJsonAArray() {

@@ -28,8 +28,8 @@ public class Main extends Application {
 
 	private void mainWindow() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(this.getClass().getResource("/View/Login.fxml"));
-		loader.getClass().getResource("/View/Style.css");
+		loader.setLocation(this.getClass().getResource("/view/Login.fxml"));
+		loader.getClass().getResource("/view/Style.css");
 		ControllerLogin control = new ControllerLogin();
 		loader.setController(control);
 		loader.setRoot(content);
@@ -37,7 +37,7 @@ public class Main extends Application {
 		Scene scene = new Scene(root);
 		Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 		primaryStage.getIcons().add(icon);	
-		primaryStage.setMaximized(true);
+//		primaryStage.setMaximized(true);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Login");
 		primaryStage.show();

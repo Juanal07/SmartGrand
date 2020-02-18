@@ -23,7 +23,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.GsonGeneral;
 import model.Medico;
 import model.Persona;
 import model.Tickets;

@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
-import model.GsonGeneral;
 import model.Sensor3caidas;
 
 public class ControllerSensor3Caidas {
