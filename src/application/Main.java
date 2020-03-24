@@ -1,6 +1,7 @@
 package application;
 import java.io.IOException;
 
+import DataBase.Conexion;
 import controller.ControllerLogin;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -20,6 +21,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {		
 		this.primaryStage = primaryStage;
 		try {
+			Conexion conexion = new Conexion("SmartGrand.db");
+			conexion.crearDb(conexion);
 			mainWindow();
 		} catch (IOException e) {			
 			e.printStackTrace();
