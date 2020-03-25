@@ -1,6 +1,7 @@
 package DataBase;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
@@ -26,6 +27,29 @@ public class Conexion {
 		}
 		return true;
 	}
+	
+	// revisar el id para que se auto incremente YA SEA POR JAVA O POR SQL y investigar si llevas comillas el tipo DATE
+	public void istPersona(Conexion conexion2, int id, String nombre, String apellido, String usuario, String password, String dni, Date fecha) {
+		String insert = "INSERT INTO Personas(id, nombre, apellido, usuario, password, dni, fecha) "
+				+ 		"VALUES(" + id + ", '" + nombre + "', '" + apellido + "', '" + usuario + "', '" + password + "', '" + dni + "', " + fecha + ");";
+		conexion2.sentenciaSQL(insert);
+	}
+	
+	public void istMedico(Conexion conexion2, int id, String especialidad, int numColegiado ) {
+		String istMedico = "INSERT INTO Medico(id, especialidad, numColegiado) VALUES(" + id + ", '" + especialidad + "', " + numColegiado + ");";
+		conexion2.sentenciaSQL(istMedico);
+	}
+	
+	public void istPaciente(Conexion conexion2, int id, String localidad, int numSegSocial) {
+		String istPaciente = "INSERT INTO Medico(id, localidad, numSegSocial) VALUES(" + id + ", '" + localidad + "', " + numSegSocial + ");";
+		conexion2.sentenciaSQL(istPaciente);
+	}
+	
+	public void istCuidador(Conexion conexion2, int id, String especialidad) {
+		String istCuidador = "INSERT INTO Cuidador(id, especialidad) VALUES(" + id + ", '" + especialidad + "');";
+		conexion2.sentenciaSQL(istCuidador);
+	}
+	
 	// creamos todas las tablas
 	public void crearDb(Conexion conexion2) {
 		String tablaMedico = "CREATE TABLE IF NOT EXISTS Medico(" + 
