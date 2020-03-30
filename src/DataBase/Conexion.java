@@ -29,59 +29,59 @@ public class Conexion {
 	}
 	
 	// revisar el id para que se auto incremente YA SEA POR JAVA O POR SQL y investigar si llevas comillas el tipo DATE
-	public void istPersona(Conexion conexion2, int id, String nombre, String apellido, String usuario, String password, String dni, Date fecha) {
-		String insert = "INSERT INTO Personas(id, nombre, apellido, usuario, password, dni, fecha) "
-				+ 		"VALUES(" + id + ", '" + nombre + "', '" + apellido + "', '" + usuario + "', '" + password + "', '" + dni + "', " + fecha + ");";
+	public void istPersona(Conexion conexion2, String nombre, String apellido, String usuario, String password, String dni, Date fecha) {
+		String insert = "INSERT INTO Personas(nombre, apellido, usuario, password, dni, fecha) "
+				+ 		"VALUES('" + nombre + "', '" + apellido + "', '" + usuario + "', '" + password + "', '" + dni + "', " + fecha + ");";
 		conexion2.sentenciaSQL(insert);
 	}
 	
-	public void istMedico(Conexion conexion2, int id, String especialidad, int numColegiado ) {
-		String istMedico = "INSERT INTO Medico(id, especialidad, numColegiado) VALUES(" + id + ", '" + especialidad + "', " + numColegiado + ");";
+	public void istMedico(Conexion conexion2, String especialidad, int numColegiado ) {
+		String istMedico = "INSERT INTO Medico(especialidad, numColegiado) VALUES('" + especialidad + "', " + numColegiado + ");";
 		conexion2.sentenciaSQL(istMedico);
 	}
 	
-	public void istPaciente(Conexion conexion2, int id, String localidad, int numSegSocial) {
-		String istPaciente = "INSERT INTO Medico(id, localidad, numSegSocial) VALUES(" + id + ", '" + localidad + "', " + numSegSocial + ");";
+	public void istPaciente(Conexion conexion2, String localidad, int numSegSocial) {
+		String istPaciente = "INSERT INTO Medico(localidad, numSegSocial) VALUES('" + localidad + "', " + numSegSocial + ");";
 		conexion2.sentenciaSQL(istPaciente);
 	}
 	
-	public void istCuidador(Conexion conexion2, int id, String especialidad) {
-		String istCuidador = "INSERT INTO Cuidador(id, especialidad) VALUES(" + id + ", '" + especialidad + "');";
+	public void istCuidador(Conexion conexion2,String especialidad) {
+		String istCuidador = "INSERT INTO Cuidador(especialidad) VALUES('" + especialidad + "');";
 		conexion2.sentenciaSQL(istCuidador);
 	}
 	
 	// creamos todas las tablas
 	public void crearDb(Conexion conexion2) {
 		String tablaMedico = "CREATE TABLE IF NOT EXISTS Medico(" + 
-				"id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + 
+				"id_med INTEGER PRIMARY KEY NOT NULL, " + 
 				"especialidad TEXT not NULL, " + 
 				"numColegiado INTEGER not NULL" +
+				"FOREIGN key (id) REFERENCES Personas(id)"+
+				"FOREIGN key (id_cui) REFERENCES Cuidador(id)"+
 				");";
 		conexion2.sentenciaSQL(tablaMedico);
 		String tablaPaciente = "CREATE TABLE IF NOT EXISTS Paciente(" + 
-				"id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + 
+				"id_pac INTEGER PRIMARY KEY NOT NULL," + 
 				"localidad TEXT not NULL," + 
 				"numSegSocial INTEGER not NULL," + 
-				"FOREIGN key(id) REFERENCES Medico(id)"+
+				"FOREIGN key (id) REFERENCES Personas(id)"+
+				"FOREIGN key (id_cui) REFERENCES Cuidador(id)"+
 				");";
 		conexion2.sentenciaSQL(tablaPaciente);
 		String tablaCuidador = "CREATE TABLE IF NOT EXISTS Cuidador(" + 
-				"id INTEGER PRIMARY KEY AUTOINCREMENT," + 
+				"id_cui INTEGER PRIMARY KEY NOT NULL," + 
 				"especialidad TEXT not NULL" + 
+				"FOREIGN key (id) REFERENCES Personas(id)"+
 				");";
 		conexion2.sentenciaSQL(tablaCuidador);	
 		String tablaPersona  = "CREATE TABLE IF NOT EXISTS Personas(" + 
-				"id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
+				"id_per INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + 
 				"nombre TEXT not NULL, " + 
 				"apellido TEXT not NULL, " + 
 				"usuario TEXT not NULL, " + 
 				"password TEXT not null, " + 
 				"dni INTEGER NOT NULL, " + 
 				"fecha DATE NOT NULL, " + 
-				"FOREIGN key(id) REFERENCES Medico(id), " + 
-				"FOREIGN key (id) REFERENCES Cuidador(id), " + 
-				"FOREIGN key (id) REFERENCES Paciente(id), " + 
-				"FOREIGN key (id) REFERENCES SuperUsuario(id) " + 
 				");";
 		conexion2.sentenciaSQL(tablaPersona);
 	}
