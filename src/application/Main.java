@@ -1,4 +1,5 @@
 package application;
+
 import java.io.IOException;
 
 import DataBase.Conexion;
@@ -12,19 +13,20 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
-public class Main extends Application {	
+public class Main extends Application {
 	private Stage primaryStage;
 	@FXML
 	public AnchorPane content;
+
 	@Override
-	
-	public void start(Stage primaryStage) {		
+
+	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		try {
 			Conexion conexion = new Conexion("SmartGrand.db");
 			conexion.crearDb(conexion);
 			mainWindow();
-		} catch (IOException e) {			
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -39,8 +41,8 @@ public class Main extends Application {
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
 		Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
-		primaryStage.getIcons().add(icon);	
-//		primaryStage.setMaximized(true);
+		primaryStage.getIcons().add(icon);
+		// primaryStage.setMaximized(true);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Login");
 		primaryStage.show();
@@ -50,3 +52,5 @@ public class Main extends Application {
 		launch(args);
 	}
 }
+
+// prueba push vscode
