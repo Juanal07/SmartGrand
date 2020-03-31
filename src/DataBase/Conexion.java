@@ -82,9 +82,11 @@ public class Conexion {
 				"apellido TEXT not NULL, " + 
 				"usuario TEXT not NULL, " + 
 				"password TEXT not null, " + 
-				"dni INTEGER NOT NULL, " + 
+				"dni TEXT NOT NULL, " + 
 				"fecha DATE NOT NULL " + 
 				");";
 		conexion2.sentenciaSQL(tablaPersona);
+//		Date fecha = new Date(0);
+//		istPersona(this, "sebas", "quinayas", "PP", "123", "123", fecha);
 	}
 }
