@@ -55,23 +55,25 @@ public class Conexion {
 		String tablaMedico = "CREATE TABLE IF NOT EXISTS Medico(" + 
 				"id_med INTEGER PRIMARY KEY NOT NULL, " + 
 				"especialidad TEXT not NULL, " + 
-				"numColegiado INTEGER not NULL" +
-				"FOREIGN key (id) REFERENCES Personas(id)"+
-				"FOREIGN key (id_cui) REFERENCES Cuidador(id)"+
+				"numColegiado INTEGER not NULL," +
+				"id_cuidador INTEGER NOT NULL," +
+				"FOREIGN key (id_med) REFERENCES Personas(id_per),"+
+				"FOREIGN key (id_cuidador) REFERENCES Cuidador(id_cui)"+
 				");";
 		conexion2.sentenciaSQL(tablaMedico);
 		String tablaPaciente = "CREATE TABLE IF NOT EXISTS Paciente(" + 
 				"id_pac INTEGER PRIMARY KEY NOT NULL," + 
 				"localidad TEXT not NULL," + 
 				"numSegSocial INTEGER not NULL," + 
-				"FOREIGN key (id) REFERENCES Personas(id)"+
-				"FOREIGN key (id_cui) REFERENCES Cuidador(id)"+
+				"id_cuidador INTEGER NOT NULL," +
+				"FOREIGN key (id_pac) REFERENCES Personas(id_per),"+
+				"FOREIGN key (id_cuidador) REFERENCES Cuidador(id_cui)"+
 				");";
 		conexion2.sentenciaSQL(tablaPaciente);
 		String tablaCuidador = "CREATE TABLE IF NOT EXISTS Cuidador(" + 
 				"id_cui INTEGER PRIMARY KEY NOT NULL," + 
-				"especialidad TEXT not NULL" + 
-				"FOREIGN key (id) REFERENCES Personas(id)"+
+				"especialidad TEXT not NULL," + 
+				"FOREIGN key (id_cui) REFERENCES Personas(id_per)"+
 				");";
 		conexion2.sentenciaSQL(tablaCuidador);	
 		String tablaPersona  = "CREATE TABLE IF NOT EXISTS Personas(" + 
@@ -81,7 +83,7 @@ public class Conexion {
 				"usuario TEXT not NULL, " + 
 				"password TEXT not null, " + 
 				"dni INTEGER NOT NULL, " + 
-				"fecha DATE NOT NULL, " + 
+				"fecha DATE NOT NULL " + 
 				");";
 		conexion2.sentenciaSQL(tablaPersona);
 	}
