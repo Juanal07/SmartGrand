@@ -10,8 +10,11 @@ public class Conexion {
 	Connection conexion = null;
 	Statement stmt = null;
 
-	public Conexion(String path) {
-		BBDDName = path;
+//	public Conexion(String path) {
+//		BBDDName = path;
+//	}
+	public Conexion() {
+		BBDDName = "SmartGrand.db";
 	}
 	public boolean sentenciaSQL(String sql) {
 		try {
@@ -41,12 +44,12 @@ public class Conexion {
 	}
 	
 	public void istPaciente(Conexion conexion2, String localidad, int numSegSocial) {
-		String istPaciente = "INSERT INTO Medico(localidad, numSegSocial) VALUES('" + localidad + "', " + numSegSocial + ");";
+		String istPaciente = "INSERT INTO Paciente(localidad, numSegSocial) VALUES('" + localidad + "', " + numSegSocial + ");";
 		conexion2.sentenciaSQL(istPaciente);
 	}
 	
-	public void istCuidador(Conexion conexion2,String especialidad) {
-		String istCuidador = "INSERT INTO Cuidador(especialidad) VALUES('" + especialidad + "');";
+	public void istCuidador(Conexion conexion2,int id_cui, String especialidad) {
+		String istCuidador = "INSERT INTO Cuidador(especialidad) VALUES("+ id_cui +"'" + especialidad + "');";
 		conexion2.sentenciaSQL(istCuidador);
 	}
 	
@@ -86,7 +89,12 @@ public class Conexion {
 				"fecha DATE NOT NULL " + 
 				");";
 		conexion2.sentenciaSQL(tablaPersona);
+		
+		
 //		Date fecha = new Date(0);
 //		istPersona(this, "sebas", "quinayas", "PP", "123", "123", fecha);
+		istCuidador(conexion2, 1,"corazon");
+		istPaciente(this, "borox", 1234);
+		
 	}
 }

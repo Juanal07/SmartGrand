@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" styleClass="fondo" stylesheets="@Style.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" styleClass="fondo" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="20.0" layoutY="22.0" prefHeight="500.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -91,6 +92,21 @@
                      </VBox.margin>
                   </Label>
                   <JFXTextField fx:id="tfApellido" labelFloat="true" prefHeight="25.0" prefWidth="538.0" promptText="Apellidos">
+                     <VBox.margin>
+                        <Insets left="40.0" right="40.0" top="7.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXDatePicker fx:id="jfxDPEdad" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Edad">
+                     <VBox.margin>
+                        <Insets left="40.0" right="40.0" top="7.0" />
+                     </VBox.margin>
+                  </JFXDatePicker>
+                  <JFXTextField fx:id="tfNumSegSocial" labelFloat="true" promptText="Numero seguridad social">
+                     <VBox.margin>
+                        <Insets left="40.0" right="40.0" top="7.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextField fx:id="tfLocalidad" labelFloat="true" promptText="Localidad">
                      <VBox.margin>
                         <Insets left="40.0" right="40.0" top="7.0" />
                      </VBox.margin>

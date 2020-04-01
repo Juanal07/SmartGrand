@@ -1,13 +1,19 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
+import DataBase.Conexion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,6 +25,7 @@ import javafx.stage.Stage;
 import model.Cuidador;
 import model.Medico;
 import model.Persona;
+import model.PersonaNew;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -45,9 +52,16 @@ public class ControllerRegistroPaciente {
 	private Label lbErrorMedico;
 	@FXML
 	public TextField tfUsuario = new JFXTextField(), tfNombre = new JFXTextField(), tfApellido = new JFXTextField(),
-			tfDni = new JFXTextField();
+			tfDni = new JFXTextField(), tfNumSegSocial = new TextField(), tfLocalidad = new TextField();
 	@FXML
 	public PasswordField tfPassword = new PasswordField();
+	
+	@FXML
+	private JFXDatePicker jfxDPEdad = new JFXDatePicker();
+	
+	public JFXDatePicker getDatePicker() {
+	    return jfxDPEdad;
+	}
 	
 	@FXML
 	private ComboBox<String> cuidadoresDisponiblesBox;
@@ -72,6 +86,7 @@ public class ControllerRegistroPaciente {
 		medicosDisponiblesBox.setValue("Elige medico");
 		medicosDisponiblesBox.setItems(medicosDisponiblesList);
 	}
+
 	//devuelve los cuidadores disponibles
 	public ArrayList<Persona> listaCuidadoresDisponibles() {
 		ArrayList<String> listaCuidadoresDisponiblesDni = new ArrayList<String>();
@@ -163,7 +178,8 @@ public class ControllerRegistroPaciente {
 	}
 
 	@FXML
-	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {		
+	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {	
+		Conexion conexion = new Conexion();
 		
 		String usuario = tfUsuario.getText();
 		String password2 = tfPassword.getText();//password sin cifrar para hacer el validation
@@ -171,9 +187,21 @@ public class ControllerRegistroPaciente {
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
+		String numSocial = tfNumSegSocial.getText();
+		String localidad = tfLocalidad.getText();
+		//para coger la fecha de nacimiento
+		LocalDate fecha = jfxDPEdad.getValue();
+		System.out.println("fecha seleccionada: " + fecha);
+		Instant instant = Instant.from(fecha.atStartOfDay(ZoneId.of("Spain/Madrid")));
+		
+		//Instant instant = Instant.from(ocalDate.atStartOfDay(ZoneId.systemDefault()));
+		java.util.Date date = Date.from(instant);
+		
 		String tipoUsuario = "paciente";
 		String cuidadorE = cuidadoresDisponiblesBox.getValue();
 		String medicoE = medicosDisponiblesBox.getValue();
+		
+		//hacer lo de validar faltan 3 campos
 
 		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni, cuidadorE, medicoE);
 		
@@ -181,7 +209,12 @@ public class ControllerRegistroPaciente {
 			
 		escribirJsonCuidadores(dni);
 		escribirJsonMedicos(dni);
-
+		
+		//***********************nuevo***********
+		// 	public PersonaNew(String nombre, String apellido, String dni, String usuario, String password, Date fecha) {
+		
+	//	PersonaNew persona = new PersonaNew(nombre, apellido, dni, usuario, password, (Date) date);
+		//conexion.istPersona(conexion, nombre, apellido, tipoUsuario, password, dni, (Date) date);
 		Persona nuevo = new Persona(usuario, password, nombre, apellido, tipoUsuario, dni);
 		List<Persona> lista = GsonGeneral.desserializarJsonAArray(); // Creamos lista de personas con la info del json
 		lista.add(nuevo); // añadimos el nuevo usuario a la lista

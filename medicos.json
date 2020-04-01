@@ -21,11 +21,16 @@
   {
     "idMedico": "00000003M",
     "dniPacientes": [
-      "47553737H"
+      "47553737H",
+      "04649386M",
+      "04649386M",
+      "04649386M"
     ]
   },
   {
     "idMedico": "00000004M",
-    "dniPacientes": []
+    "dniPacientes": [
+      "04649386M"
+    ]
   }
 ]

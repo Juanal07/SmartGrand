@@ -23,7 +23,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		try {
-			Conexion conexion = new Conexion("SmartGrand.db");
+			Conexion conexion = new Conexion();
 			conexion.crearDb(conexion);
 			mainWindow();
 		} catch (IOException e) {
