@@ -1,10 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +22,6 @@ import javafx.stage.Stage;
 import model.Cuidador;
 import model.Medico;
 import model.Persona;
-import model.PersonaNew;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -55,23 +51,23 @@ public class ControllerRegistroPaciente {
 			tfDni = new JFXTextField(), tfNumSegSocial = new TextField(), tfLocalidad = new TextField();
 	@FXML
 	public PasswordField tfPassword = new PasswordField();
-	
+
 	@FXML
 	private JFXDatePicker jfxDPEdad = new JFXDatePicker();
-	
+
 	public JFXDatePicker getDatePicker() {
-	    return jfxDPEdad;
+		return jfxDPEdad;
 	}
-	
+
 	@FXML
 	private ComboBox<String> cuidadoresDisponiblesBox;
-	
+
 	ObservableList<String> cuidadoresDisponiblesList = FXCollections.observableArrayList();
 	@FXML
 	private ComboBox<String> medicosDisponiblesBox;
-	
+
 	ObservableList<String> medicosDisponiblesList = FXCollections.observableArrayList();
-	
+
 	@FXML
 	public void initialize() {
 		for (Persona p : listaCuidadoresDisponibles()) {
@@ -79,7 +75,7 @@ public class ControllerRegistroPaciente {
 		}
 		cuidadoresDisponiblesBox.setValue("Elige cuidador");
 		cuidadoresDisponiblesBox.setItems(cuidadoresDisponiblesList);
-		
+
 		for (Persona p : listaMedicosDisponibles()) {
 			medicosDisponiblesList.add(p.getDni() + ": " + p.getNombre() + " " + p.getApellido());
 		}
@@ -87,58 +83,60 @@ public class ControllerRegistroPaciente {
 		medicosDisponiblesBox.setItems(medicosDisponiblesList);
 	}
 
-	//devuelve los cuidadores disponibles
+	// devuelve los cuidadores disponibles
 	public ArrayList<Persona> listaCuidadoresDisponibles() {
 		ArrayList<String> listaCuidadoresDisponiblesDni = new ArrayList<String>();
 		List<Cuidador> listaCuidadorTotal = GsonGeneral.desserializarJsonAArrayCuidador();
 		for (Cuidador cuidador : listaCuidadorTotal) {
-			if (cuidador.getDniPacientes().size() < 4) { //si el cuidador tiene menos de 4 pacientes lo denominamos "disponible"
+			if (cuidador.getDniPacientes().size() < 4) { // si el cuidador tiene menos de 4 pacientes lo denominamos
+															// "disponible"
 				listaCuidadoresDisponiblesDni.add(cuidador.getIdCuidador());
-			}				
-		}	
+			}
+		}
 		ArrayList<Persona> listaCuidadoresDisponiblesPersona = new ArrayList<Persona>();
 		List<Persona> listaCuidadorTotalNombre = GsonGeneral.desserializarJsonAArray();
 		for (Persona p : listaCuidadorTotalNombre) {
 			int sizeArray = listaCuidadoresDisponiblesDni.size();
 			int i = 0;
-			while(i < sizeArray) {
+			while (i < sizeArray) {
 				if (p.getDni().equals(listaCuidadoresDisponiblesDni.get(i))) {
 					listaCuidadoresDisponiblesPersona.add(p);
 					i = i + sizeArray;
 				}
-				i++;	
-			}	
-		}		
-		return listaCuidadoresDisponiblesPersona; 
+				i++;
+			}
+		}
+		return listaCuidadoresDisponiblesPersona;
 	}
-	
-	//devuelve los medicos disponibles
+
+	// devuelve los medicos disponibles
 	public ArrayList<Persona> listaMedicosDisponibles() {
 		ArrayList<String> listaMedicosDisponibles = new ArrayList<String>();
 		List<Medico> listaMedicoTotal = GsonGeneral.desserializarJsonAArrayMedico();
 		for (Medico medico : listaMedicoTotal) {
-			if (medico.getDniPacientes().size() < 4) { //si el Medico tiene menos de 4 pacientes lo denominamos "disponible"
+			if (medico.getDniPacientes().size() < 4) { // si el Medico tiene menos de 4 pacientes lo denominamos
+														// "disponible"
 				listaMedicosDisponibles.add(medico.getIdMedico());
-			}				
-		}	
+			}
+		}
 		ArrayList<Persona> listaMedicosDisponiblesPersona = new ArrayList<Persona>();
 		List<Persona> listaMedicoTotalNombre = GsonGeneral.desserializarJsonAArray();
 		for (Persona p : listaMedicoTotalNombre) {
 			int sizeArray = listaMedicosDisponibles.size();
 			int i = 0;
-			while(i < sizeArray) {
+			while (i < sizeArray) {
 				if (p.getDni().equals(listaMedicosDisponibles.get(i))) {
 					listaMedicosDisponiblesPersona.add(p);
 					i = i + sizeArray;
 				}
-				i++;	
-			}	
-		}	
-		return listaMedicosDisponiblesPersona; //devuelve los dnis		
+				i++;
+			}
+		}
+		return listaMedicosDisponiblesPersona; // devuelve los dnis
 	}
-	
+
 	public void escribirJsonCuidadores(String dni) {
-		String SubCadena = cuidadoresDisponiblesBox.getValue().substring(0,9);
+		String SubCadena = cuidadoresDisponiblesBox.getValue().substring(0, 9);
 		List<Cuidador> listaC = GsonGeneral.desserializarJsonAArrayCuidador();
 		int sizeArray = listaC.size();
 		int i = 0;
@@ -148,17 +146,17 @@ public class ControllerRegistroPaciente {
 				i = i + sizeArray;
 			}
 			i++;
-		}	
-		Gson prettyGson2 = new GsonBuilder().setPrettyPrinting().create(); 
+		}
+		Gson prettyGson2 = new GsonBuilder().setPrettyPrinting().create();
 		String representacionBonita2 = prettyGson2.toJson(listaC);
 		String ruta2 = "cuidadores.json";
 		GsonGeneral.EscribirJson(representacionBonita2, ruta2);
-		
+
 	}
-	
+
 	public void escribirJsonMedicos(String dni) {
-		
-		String SubCadena3 = medicosDisponiblesBox.getValue().substring(0,9);
+
+		String SubCadena3 = medicosDisponiblesBox.getValue().substring(0, 9);
 		List<Medico> listaM = GsonGeneral.desserializarJsonAArrayMedico();
 		int sizeArray3 = listaM.size();
 		int j = 0;
@@ -168,74 +166,68 @@ public class ControllerRegistroPaciente {
 				j = j + sizeArray3;
 			}
 			j++;
-		}	
-		Gson prettyGson3 = new GsonBuilder().setPrettyPrinting().create(); 
+		}
+		Gson prettyGson3 = new GsonBuilder().setPrettyPrinting().create();
 		String representacionBonita3 = prettyGson3.toJson(listaM);
 		String ruta3 = "medicos.json";
-		GsonGeneral.EscribirJson(representacionBonita3, ruta3);	
-		
-		
+		GsonGeneral.EscribirJson(representacionBonita3, ruta3);
+
 	}
 
 	@FXML
-	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {	
+	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
 		Conexion conexion = new Conexion();
-		
+
 		String usuario = tfUsuario.getText();
-		String password2 = tfPassword.getText();//password sin cifrar para hacer el validation
+		String password2 = tfPassword.getText();// password sin cifrar para hacer el validation
 		String password = GsonGeneral.getMd5(tfPassword.getText());
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
 		String numSocial = tfNumSegSocial.getText();
 		String localidad = tfLocalidad.getText();
-		//para coger la fecha de nacimiento
 		LocalDate fecha = jfxDPEdad.getValue();
-		System.out.println("fecha seleccionada: " + fecha);
-		Instant instant = Instant.from(fecha.atStartOfDay(ZoneId.of("Spain/Madrid")));
-		
-		//Instant instant = Instant.from(ocalDate.atStartOfDay(ZoneId.systemDefault()));
-		java.util.Date date = Date.from(instant);
-		
 		String tipoUsuario = "paciente";
+		// hacer que coja el dni del cuidador ********************* IMPORTANTE
+		// **********************
 		String cuidadorE = cuidadoresDisponiblesBox.getValue();
 		String medicoE = medicosDisponiblesBox.getValue();
-		
-		//hacer lo de validar faltan 3 campos
+		// creamos una persona
+		conexion.istPersona(conexion, nombre, apellido, usuario, password, dni, fecha.toString());
+		// la insertamos en la tabla paciente
+		conexion.istPaciente(conexion, conexion.consultaPersona(dni).getId_per(), localidad,
+				Integer.parseInt(numSocial), conexion.consultaPersona(cuidadorE).getId_per());
 
+		// hacer lo de validar faltan 3 campos
 		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni, cuidadorE, medicoE);
-		
-		if(usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && valido) {
-			
-		escribirJsonCuidadores(dni);
-		escribirJsonMedicos(dni);
-		
-		//***********************nuevo***********
-		// 	public PersonaNew(String nombre, String apellido, String dni, String usuario, String password, Date fecha) {
-		
-	//	PersonaNew persona = new PersonaNew(nombre, apellido, dni, usuario, password, (Date) date);
-		//conexion.istPersona(conexion, nombre, apellido, tipoUsuario, password, dni, (Date) date);
-		Persona nuevo = new Persona(usuario, password, nombre, apellido, tipoUsuario, dni);
-		List<Persona> lista = GsonGeneral.desserializarJsonAArray(); // Creamos lista de personas con la info del json
-		lista.add(nuevo); // añadimos el nuevo usuario a la lista
-		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
-		String representacionBonita = prettyGson.toJson(lista);
-		String ruta = "usuarios.json";
-		GsonGeneral.EscribirJson(representacionBonita, ruta);
-		
-		
-		
-		Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
-		stage.close();
-		String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
-		String tituloVista = "Login";
-		ControllerLogin loginControler = new ControllerLogin();
-		crearVentana(vistaRegPac, tituloVista, loginControler);
-		// label indicando que se ha registrado con exito. en la ventana de iniciar
-		// sesion
-		System.out.println("Paciente registrado con exito");
-		System.out.println("Su cuidador: "+ cuidadoresDisponiblesBox.getValue());
-		System.out.println("Su medico: "+medicosDisponiblesBox.getValue());
+
+		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && valido) {
+
+			escribirJsonCuidadores(dni);
+			escribirJsonMedicos(dni);
+
+			// ***********************nuevo***********
+
+			Persona nuevo = new Persona(usuario, password, nombre, apellido, tipoUsuario, dni);
+			List<Persona> lista = GsonGeneral.desserializarJsonAArray(); // Creamos lista de personas con la info del
+																			// json
+			lista.add(nuevo); // añadimos el nuevo usuario a la lista
+			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
+			String representacionBonita = prettyGson.toJson(lista);
+			String ruta = "usuarios.json";
+			GsonGeneral.EscribirJson(representacionBonita, ruta);
+
+			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
+			stage.close();
+			String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
+			String tituloVista = "Login";
+			ControllerLogin loginControler = new ControllerLogin();
+			crearVentana(vistaRegPac, tituloVista, loginControler);
+			// label indicando que se ha registrado con exito. en la ventana de iniciar
+			// sesion
+			System.out.println("Paciente registrado con exito");
+			System.out.println("Su cuidador: " + cuidadoresDisponiblesBox.getValue());
+			System.out.println("Su medico: " + medicosDisponiblesBox.getValue());
 		}
 	}
 
@@ -273,32 +265,32 @@ public class ControllerRegistroPaciente {
 	public boolean validation(String usuario, String password, String nombre, String apellido, String tipoUsuario,
 			String dni, String cuidadorE, String medicoE) {
 		boolean valido = true;
-		
+
 		if ((dni.matches("\\d{8}[A-HJ-NP-TV-Z]"))) {
-			lbErrorDni.setText("");	
+			lbErrorDni.setText("");
 			if (!GsonGeneral.seRepiteDni(dni)) {
-				lbErrorDni.setText("");	
+				lbErrorDni.setText("");
 				if (GsonGeneral.validarNIF(dni)) {
-					lbErrorDni.setText("");	
-				}else {
+					lbErrorDni.setText("");
+				} else {
 					lbErrorDni.setText("El DNI no es real");
-					valido = false;		
+					valido = false;
 				}
-			}else {
+			} else {
 				lbErrorDni.setText("El DNI ya esta registrado");
-				valido = false;		
+				valido = false;
 			}
-			
-		}else {
+
+		} else {
 			lbErrorDni.setText("El DNI debe llevar 8 numeros y una letra mayuscula");
-			valido = false;		
-		}	
+			valido = false;
+		}
 
 		if (usuario.matches("^[a-zA-Z0-9._-]{3,}$")) {
 			lbErrorUsuario.setText("");
 			if (!GsonGeneral.seRepiteUsuario(usuario)) {
-				lbErrorUsuario.setText("");	
-			}else {
+				lbErrorUsuario.setText("");
+			} else {
 				lbErrorUsuario.setText("El Usuario ya esta registrado");
 				valido = false;
 			}
@@ -337,13 +329,6 @@ public class ControllerRegistroPaciente {
 			lbErrorMedico.setText("Error! Elige un medico.");
 			valido = false;
 		}
-		
-
-		
 		return valido;
 	}
-	
-	
-	
-	
 }

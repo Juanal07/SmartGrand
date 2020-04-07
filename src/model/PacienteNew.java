@@ -12,6 +12,10 @@ public class PacienteNew {
 		this.id_cuidador = id_cuidador;
 	}
 
+	public PacienteNew() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId_pac() {
 		return id_pac;
 	}

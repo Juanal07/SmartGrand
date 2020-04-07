@@ -1,13 +1,24 @@
 package model;
 
-import java.sql.Date;
-
 public class PersonaNew {
 	// el id_per no se pide porque es autoIncrement
-	private String nombre, apellido, dni, usuario, password;
-	private Date fecha;
+	private String nombre, apellido, dni, usuario, password, fecha;
+	private int id_per;
 
-	public PersonaNew(String nombre, String apellido, String dni, String usuario, String password, Date fecha) {
+	// para crear persona completa
+	public PersonaNew(int id_per, String nombre, String apellido, String dni, String usuario, String password,
+			String fecha) {
+		super();
+		this.id_per = id_per;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+		this.usuario = usuario;
+		this.password = password;
+		this.fecha = fecha;
+	}
+	// para insertar una persona en la tabla
+	public PersonaNew(String nombre, String apellido, String dni, String usuario, String password, String fecha) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -15,6 +26,19 @@ public class PersonaNew {
 		this.usuario = usuario;
 		this.password = password;
 		this.fecha = fecha;
+	}
+
+	public PersonaNew() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getId_per() {
+		return id_per;
+	}
+
+	public void setId_per(int id_per) {
+		this.id_per = id_per;
 	}
 
 	public String getNombre() {
@@ -57,11 +81,11 @@ public class PersonaNew {
 		this.password = password;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
