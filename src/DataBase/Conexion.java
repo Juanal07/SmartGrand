@@ -86,9 +86,6 @@ public class Conexion {
 
 		conexion2.sentenciaSQL(tablaPersona);
 
-//		Date fecha = new Date(0);
-//		istPersona(this, "sebas", "quinayas", "PP", "123", "123", fecha);
-//		istCuidador(conexion2, 1, "corazon");
 	}
 
 	// PARA CONSULTAR LA BASE DE DATOS QUE DEVUELVE COSAS
@@ -120,7 +117,7 @@ public class Conexion {
 				dni2 = rs.getString("dni");
 				fecha = rs.getString("fecha");
 			}
-			PersonaNew persona = new PersonaNew(nombre, apellido, dni2, usuario, password, fecha);
+			PersonaNew persona = new PersonaNew(id_per, nombre, apellido, dni2, usuario, password, fecha);
 			per = persona;
 			// destruyo todo consulta conexion y resultset
 			rs.close();

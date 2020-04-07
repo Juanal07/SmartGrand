@@ -1,17 +1,16 @@
 package controller;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
+import DataBase.Conexion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +18,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Cuidador;
-import model.Medico;
 import model.Persona;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -39,55 +37,68 @@ public class ControllerRegistroCuidador {
 	@FXML
 	private Label lbErrorApellido;
 	@FXML
-	private Label lbErrorDni;    
+	private Label lbErrorDni;
 	@FXML
-	public TextField tfUsuario = new JFXTextField(), tfNombre = new JFXTextField(), tfApellido = new JFXTextField(), tfDni = new JFXTextField();
+	private TextField tfUsuario = new JFXTextField(), tfNombre = new JFXTextField(), tfApellido = new JFXTextField(),
+			tfDni = new JFXTextField(), tfEspecialidad = new TextField();
 	@FXML
-	public PasswordField tfPassword = new PasswordField();
+	private PasswordField tfPassword = new PasswordField();
+	@FXML
+	private JFXDatePicker dpFechaNacimiento = new JFXDatePicker();
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
 		String usuario = tfUsuario.getText();
-		String password2 = tfPassword.getText();//password sin cifrar para hacer el validation
+		String password2 = tfPassword.getText();// password sin cifrar para hacer el validation
 		String password = GsonGeneral.getMd5(tfPassword.getText());
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
 		String tipoUsuario = "cuidador";
-
+		// ******************** NUEVO **************
+		String especialidad = tfEspecialidad.getText();
+		LocalDate fechaNacimiento = dpFechaNacimiento.getValue();
+		Conexion conexion = new Conexion();
+		conexion.istPersona(conexion, nombre, apellido, usuario, password2, dni, fechaNacimiento.toString());
+		conexion.istCuidador(conexion, conexion.consultaPersona(dni).getId_per(), especialidad);
+		// hacer validaciones
 		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni);
 
-		if(usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && valido) {
+		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && valido) {
 
-			Persona nuevo = new Persona (usuario, password, nombre, apellido, tipoUsuario, dni); //Creamos objeto persona con los datos introducidos
-			List<Persona> lista = GsonGeneral.desserializarJsonAArray(); //Creamos lista de personas con la info del json		
-			lista.add(nuevo); //añadimos el nuevo usuario a la lista
-			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); //Pasamos la lista a formato json
+			Persona nuevo = new Persona(usuario, password, nombre, apellido, tipoUsuario, dni); // Creamos objeto
+																								// persona con los datos
+																								// introducidos
+			List<Persona> lista = GsonGeneral.desserializarJsonAArray(); // Creamos lista de personas con la info del
+																			// json
+			lista.add(nuevo); // añadimos el nuevo usuario a la lista
+			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
 			String representacionBonita = prettyGson.toJson(lista);
 			String ruta = "usuarios.json";
-			GsonGeneral.EscribirJson(representacionBonita, ruta);		
+			GsonGeneral.EscribirJson(representacionBonita, ruta);
 
 			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
-			stage.close();		
+			stage.close();
 
 			String vistaRegPac = "/View/Login.fxml"; // creamos la nueva
 			String tituloVista = "Login";
 			ControllerLogin loginControler = new ControllerLogin();
 
 			crearVentana(vistaRegPac, tituloVista, loginControler);
-			//label indicando que se ha registrado con exito. en la ventana de iniciar sesion
+			// label indicando que se ha registrado con exito. en la ventana de iniciar
+			// sesion
 			System.out.println("Cuidador registrado con exito");
-			
-			incluirEnJsonCuidador(nuevo); //este metodo escribe en el json Cuidador para crear un cuidador nuevo sin pacientes a su cargo
-		}
 
+			incluirEnJsonCuidador(nuevo); // este metodo escribe en el json Cuidador para crear un cuidador nuevo sin
+											// pacientes a su cargo
+		}
 	}
-	
+
 	public void incluirEnJsonCuidador(Persona p) {
 		List<Cuidador> c = GsonGeneral.desserializarJsonAArrayCuidador();
 		ArrayList<String> pacientesVacios = new ArrayList<String>();
-		Cuidador nuevo = new Cuidador (p.getDni(), pacientesVacios);
-		c.add(nuevo);		
+		Cuidador nuevo = new Cuidador(p.getDni(), pacientesVacios);
+		c.add(nuevo);
 		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
 		String representacionBonita = prettyGson.toJson(c);
 		String ruta = "cuidadores.json";
@@ -139,35 +150,35 @@ public class ControllerRegistroCuidador {
 		}
 		return true;
 	}
-	
+
 	public boolean validation(String usuario, String password, String nombre, String apellido, String tipoUsuario,
 			String dni) {
 		boolean valido = true;
-		
+
 		if ((dni.matches("\\d{8}[A-HJ-NP-TV-Z]"))) {
-			lbErrorDni.setText("");	
+			lbErrorDni.setText("");
 			if (!GsonGeneral.seRepiteDni(dni)) {
-				lbErrorDni.setText("");	
-			}else {
+				lbErrorDni.setText("");
+			} else {
 				lbErrorDni.setText("El DNI ya esta registrado");
-				valido = false;		
+				valido = false;
 			}
 			if (GsonGeneral.validarNIF(dni)) {
-				lbErrorDni.setText("");	
-			}else {
+				lbErrorDni.setText("");
+			} else {
 				lbErrorDni.setText("El DNI no es real");
-				valido = false;		
+				valido = false;
 			}
-		}else {
+		} else {
 			lbErrorDni.setText("El DNI debe llevar 8 numeros y una letra mayuscula");
-			valido = false;		
-		}	
+			valido = false;
+		}
 
 		if (usuario.matches("^[a-zA-Z0-9._-]{3,}$")) {
 			lbErrorUsuario.setText("");
 			if (!GsonGeneral.seRepiteUsuario(usuario)) {
-				lbErrorUsuario.setText("");	
-			}else {
+				lbErrorUsuario.setText("");
+			} else {
 				lbErrorUsuario.setText("El Usuario ya esta registrado");
 				valido = false;
 			}
@@ -195,11 +206,7 @@ public class ControllerRegistroCuidador {
 			valido = false;
 		}
 
-		
-
-		
 		return valido;
 	}
 
-	
 }
