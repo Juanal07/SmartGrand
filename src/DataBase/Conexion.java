@@ -129,5 +129,4 @@ public class Conexion {
 		System.out.println("Consulta terminada");
 		return per;
 	}
-		
 }
