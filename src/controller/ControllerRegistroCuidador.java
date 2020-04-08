@@ -45,7 +45,7 @@ public class ControllerRegistroCuidador {
 	private PasswordField tfPassword = new PasswordField();
 	@FXML
 	private JFXDatePicker dpFechaNacimiento = new JFXDatePicker();
-
+ 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
 		String usuario = tfUsuario.getText();
