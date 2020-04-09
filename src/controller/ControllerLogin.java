@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Persona;
+import model.PersonaNew;
 
 public class ControllerLogin {
 	@FXML
@@ -40,7 +41,7 @@ public class ControllerLogin {
 
 		String usuario = jfxtUsuario.getText();
 		String password = GsonGeneral.getMd5(jfxtPassword.getText());
-		List<Persona> lista = GsonGeneral.desserializarJsonAArray();
+		List<PersonaNew> lista = GsonGeneral.desserializarJsonAArray();
 		int cont = 0;
 		boolean rompebucle = true;
 		try {
@@ -78,7 +79,7 @@ public class ControllerLogin {
 		}
 	}
 
-	public void pacienteHome(Persona p) {
+	public void pacienteHome(PersonaNew p) {
 		try {
 			String vistaPaciente = "/View/HomePaciente.fxml";
 			String tituloVista = "Bienvenido: " + p.getNombre() + " " + p.getApellido();

@@ -4,7 +4,9 @@ import com.jfoenix.controls.JFXScrollPane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import model.Persona;
+import model.PersonaNew;
 import model.Tickets;
+import model.TicketsNew;
 
 public class ControllerVistaTicketPaciente {
 	@FXML // fx:id="jfxScrollPaneMedico"
@@ -22,10 +24,10 @@ public class ControllerVistaTicketPaciente {
 	private Label lbOculto = new Label();
 	
 	// cargamos con lb ocultos los textos de paciente y clinico
-	public void writeText(Persona persona, Tickets tickets) {
+	public void writeText(PersonaNew persona, TicketsNew tickets) {
 		lbOculto.setText(persona.toString());
-		lbTextoPaciente.setText("PACIENTE: " + tickets.getTextoPaciente());
-		lbTextoMedico.setText("MEDICO: " + tickets.getTextoClinico());
+		lbTextoPaciente.setText("PACIENTE: " + tickets.getTexto_Paciente());
+		lbTextoMedico.setText("MEDICO: " + tickets.getTexto_Medico());
 		jfxScrollPanePaciente.setContent(lbTextoPaciente);
 		jfxScrollPaneMedico.setContent(lbTextoMedico);
 	}	

@@ -1,7 +1,6 @@
 package controller;
 
-import java.util.ArrayList;
-
+import java.util.Calendar;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -11,6 +10,7 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXScrollPane;
 import com.jfoenix.controls.JFXTextArea;
 
+import DataBase.Conexion;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -23,13 +23,14 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.Medico;
 import model.Persona;
+import model.PersonaNew;
 import model.Tickets;
+import model.TicketsNew;
 
-public class ControllerHomePaciente  {
+public class ControllerHomePaciente {
 	@FXML
-	private JFXListView<Tickets> lvTicketsPaciente = new JFXListView<Tickets>();
+	private JFXListView<TicketsNew> lvTicketsPaciente = new JFXListView<TicketsNew>();
 	@FXML
 	private JFXButton fxmBtnEnviarTicket = new JFXButton();
 	@FXML
@@ -40,36 +41,33 @@ public class ControllerHomePaciente  {
 	private Label lbError = new Label();
 	private Label lbOculto = new Label();
 	private Label lbOcultoObjetoYo = new Label();
+
 	@FXML
 	private ObservableList<String> ticketsObservableList;
 	@FXML
 	private JFXScrollPane scroll = new JFXScrollPane();
 	@FXML
 	private Label labelPaciente = new Label();
-	
+
 	public void vaciarTXError() {
 		lbError.setText("");
 	}
+
 	public void enviarMSM() {
+		Conexion conexion = new Conexion();
+
 		String textoPaciente = jfxTaPaciente.getText();
 		String dniPaciente = lbOculto.getText();
-		String dniMedico = "";
+		// averiguar el dni del medico
+		// coger el id de paciente y despues hacer una consulta en medicos para buscar a
+		// su medic0
+		int idPaciente = conexion.consultaPersona(dniPaciente).getId_per();
+		int idMedico = conexion.consultaMedico(idPaciente).getId_med();
 		if (!textoPaciente.equals("")) {
-			List<Medico> listaMedicoRelacion = GsonGeneral.desserializarJsonAArrayMedico();
-			for (Medico medico : listaMedicoRelacion) {
-				ArrayList<String> idPacientes = medico.getDniPacientes();
-				int sizeArray = idPacientes.size();
-				int i = 0;
-				while (i < sizeArray) {
-					if (dniPaciente.equals(idPacientes.get(i))) {
-						dniMedico = medico.getIdMedico();
-						i = i + sizeArray;
-					}
-					i++;
-				}
-			}
-			Tickets nuevo = new Tickets(dniPaciente, dniMedico, textoPaciente, "");
-			EnviarTicket(nuevo);
+			java.sql.Date fecha_paciente = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+			// TicketsNew nuevo = new TicketsNew(idPaciente, idMedico, textoPaciente, "",
+			// fecha_paciente, null);
+			conexion.istTicket(conexion, textoPaciente, fecha_paciente, "", null, idMedico, idPaciente);
 			jfxTaPaciente.setText("");
 			lbError.setWrapText(true);
 			lbError.setText("Ticket enviado con exito.");
@@ -81,46 +79,47 @@ public class ControllerHomePaciente  {
 
 	}
 
-	public void EnviarTicket(Tickets ticket) {
-		String ruta = "jsonTickets.json";
-		List<Tickets> tiquets = GsonGeneral.desserializarJsonAArrayTicket();
-		tiquets.add(ticket);
-		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-		String representacionBonita = prettyGson.toJson(tiquets);
-		GsonGeneral.EscribirJson(representacionBonita, ruta);
-	}
-
-	public void writeText(Persona p) {
+	public void writeText(PersonaNew p) {
 		lbOculto.setText(p.getDni());
 		lbOcultoObjetoYo.setText(p.toString());
-		labelPaciente.setText("Paciente: Bienvenido/a " + p.getNombre() +" \naqui puedes ver tu lista de tickets respondidos");
+		labelPaciente.setText(
+				"Paciente: Bienvenido/a " + p.getNombre() + " \naqui puedes ver tu lista de tickets respondidos");
 	}
 
-	
-	public void cargarListaTickets(Persona p) {
-		ObservableList<Tickets> ticketsObservableList = FXCollections.observableArrayList();
-		leerTickets(ticketsObservableList, p);
+	public void cargarListaTickets(PersonaNew p) {
+		Conexion conexion = new Conexion();
+		ObservableList<TicketsNew> ticketsObservableList = FXCollections.observableArrayList();
+		conexion.leerTickets(ticketsObservableList, p);
 		lvTicketsPaciente.setItems(ticketsObservableList);
-		lvTicketsPaciente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tickets>() {
-		
+		lvTicketsPaciente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TicketsNew>() {
+
 			@Override
-			public void changed(ObservableValue<? extends Tickets> observable, Tickets oldValue, Tickets newValue) {			
-				Tickets tickets = lvTicketsPaciente.getSelectionModel().getSelectedItem();
-				String[] prPaciente = lbOcultoObjetoYo.getText().split("\t");
-				String usu, pass, nom, apell, tpU, dni;
-				usu = prPaciente[0];
-				pass = prPaciente[1];
-				nom = prPaciente[2];
-				apell = prPaciente[3];
-				tpU = prPaciente[4];
-				dni = prPaciente[5];
-				Persona persona = new Persona(usu, pass, nom, apell, tpU, dni);
-				ventanaDatosTicket(persona, tickets);
+			public void changed(ObservableValue<? extends TicketsNew> observable, TicketsNew oldValue,
+					TicketsNew newValue) {
+				TicketsNew tickets = lvTicketsPaciente.getSelectionModel().getSelectedItem();
+				ventanaDatosTicket(conexion.consultaPersona(p.getDni()), tickets);
 			}
 		});
+//		.addListener(new ChangeListener<Tickets>() {
+//
+//			@Override
+//			public void changed(ObservableValue<? extends Tickets> observable, Tickets oldValue, Tickets newValue) {
+//				Tickets tickets = lvTicketsPaciente.getSelectionModel().getSelectedItem();
+//				String[] prPaciente = lbOcultoObjetoYo.getText().split("\t");
+//				String usu, pass, nom, apell, tpU, dni;
+//				usu = prPaciente[0];
+//				pass = prPaciente[1];
+//				nom = prPaciente[2];
+//				apell = prPaciente[3];
+//				tpU = prPaciente[4];
+//				dni = prPaciente[5];
+//				Persona persona = new Persona(usu, pass, nom, apell, tpU, dni);
+//				
+//			}
+//		});
 	}
-	
-	private void ventanaDatosTicket(Persona persona, Tickets tickets) {
+
+	private void ventanaDatosTicket(PersonaNew persona, TicketsNew tickets) {
 		String vistaDatosPaciente = "/View/TicketsCompletoPaciente.fxml";
 		String tituloVista = "Datos Ticket.";
 //		Stage stage = (Stage) jfxTaPaciente.getScene().getWindow();
@@ -133,29 +132,13 @@ public class ControllerHomePaciente  {
 			vistaTicketPaciente.writeText(persona, tickets);
 			Stage stage2 = new Stage();
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
-			stage2.getIcons().add(icon);	
+			stage2.getIcons().add(icon);
 			stage2.setMaximized(true);
 			stage2.setTitle(tituloVista);
 			stage2.setScene(new Scene(root));
 			stage2.show();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-	}
-
-	private void leerTickets(ObservableList<Tickets> ticketsObservableList2, Persona p) {
-		List<Tickets> tiquets = GsonGeneral.desserializarJsonAArrayTicket();
-		for (Tickets tickets : tiquets) {
-			if (tickets.getIdPaciente().equals(p.getDni())) {
-//				System.out.println(tickets.getIdPaciente()+"y"+p.getDni());
-
-				if (!tickets.getTextoClinico().equals("")) {
-
-					ticketsObservableList2.add(tickets);
-//					System.out.println("lo encontre...");
-//					System.out.println(tickets.getTextoPaciente());
-				}
-			}
 		}
 	}
 
@@ -180,7 +163,7 @@ public class ControllerHomePaciente  {
 			sendStage.setTitle(titulo);
 			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
-			sendStage.getIcons().add(icon);	
+			sendStage.getIcons().add(icon);
 			sendStage.setMaximized(true);
 			sendStage.setScene(scene);
 			sendStage.show();
