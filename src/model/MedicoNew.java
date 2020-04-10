@@ -2,20 +2,20 @@ package model;
 
 public class MedicoNew {
 
-	private int id_med, numColegiado, id_cuidador, id_paciente;
+	private int id_med, numColegiado;
 	private String especialidad;
+	private boolean verificado;
 
 	public MedicoNew() {
 		super();
 	}
 
-	public MedicoNew(int id_med, int numColegiado, int id_cuidador, int id_paciente, String especialidad) {
+	public MedicoNew(int id_med, int numColegiado, String especialidad, boolean verificado) {
 		super();
 		this.id_med = id_med;
 		this.numColegiado = numColegiado;
-		this.id_cuidador = id_cuidador;
-		this.id_paciente = id_paciente;
 		this.especialidad = especialidad;
+		this.verificado = verificado;
 	}
 
 	public int getId_med() {
@@ -34,28 +34,20 @@ public class MedicoNew {
 		this.numColegiado = numColegiado;
 	}
 
-	public int getId_cuidador() {
-		return id_cuidador;
-	}
-
-	public void setId_cuidador(int id_cuidador) {
-		this.id_cuidador = id_cuidador;
-	}
-
-	public int getId_paciente() {
-		return id_paciente;
-	}
-
-	public void setId_paciente(int id_paciente) {
-		this.id_paciente = id_paciente;
-	}
-
 	public String getEspecialidad() {
 		return especialidad;
 	}
 
 	public void setEspecialidad(String especialidad) {
 		this.especialidad = especialidad;
+	}
+
+	public boolean isVerificado() {
+		return verificado;
+	}
+
+	public void setVerificado(boolean verificado) {
+		this.verificado = verificado;
 	}
 
 }

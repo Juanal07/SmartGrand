@@ -228,8 +228,9 @@ public class Conexion {
 	}
 
 	public MedicoNew consultaMedico(int id_per) {
-		int id_med = 0, numColegiado = 0, id_cuidador = 0, id_paciente = 0;
+		int id_med = 0, numColegiado = 0;
 		String especialidad = null;
+		boolean verificado = false;
 		MedicoNew medicoNew = new MedicoNew();
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -239,16 +240,15 @@ public class Conexion {
 			stmt = conexion.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM Medico where id_paciente = " + id_per + ";");// conjunto de
 																											// resultados
-
 			while (rs.next()) {
 				// aqui colocar un objeto
 				id_med = rs.getInt("id_med");
-				numColegiado = rs.getInt("numColegiado");
-				id_cuidador = rs.getInt("id_cuidador");
-				id_paciente = rs.getInt("id_paciente");
 				especialidad = rs.getString("especialidad");
+				numColegiado = rs.getInt("numColegiado");
+				verificado = rs.getBoolean("verificado");
+				
 			}
-			MedicoNew new1 = new MedicoNew(id_med, numColegiado, id_cuidador, id_paciente, especialidad);
+			MedicoNew new1 = new MedicoNew(id_med, numColegiado, especialidad, verificado);
 			medicoNew = new1;
 			// destruyo todo consulta conexion y resultset
 			rs.close();
@@ -264,7 +264,7 @@ public class Conexion {
 	public void leerTickets(ObservableList<TicketsNew> ticketsObservableList, PersonaNew p) {
 		int id_tic, id_medico, id_paciente;
 		String texto_Paciente, texto_Medico;
-		Date techa_Paciente, techa_Medico;
+		Date fecha_Paciente, fecha_Medico;
 
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -283,10 +283,10 @@ public class Conexion {
 				id_paciente = rs.getInt("id_paciente");
 				texto_Medico = rs.getString("texto_Medico");
 				texto_Paciente = rs.getString("texto_Paciente");
-				techa_Paciente = rs.getDate("techa_Paciente");
-				techa_Medico = rs.getDate("techa_Medico");
+				fecha_Paciente = rs.getDate("Fecha_Paciente");
+				fecha_Medico = rs.getDate("Fecha_Medico");
 				TicketsNew ticketsNew = new TicketsNew(id_tic, id_medico, id_paciente, texto_Paciente, texto_Medico,
-						techa_Paciente, techa_Medico);
+						fecha_Paciente, fecha_Medico);
 				ticketsObservableList.add(ticketsNew);
 			}
 			// destruyo todo consulta conexion y resultset
@@ -297,6 +297,5 @@ public class Conexion {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 		}
 		System.out.println("Consulta terminada");
-
 	}
 }
