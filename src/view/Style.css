@@ -1,6 +1,7 @@
 /* PALETA DE COLORES: https://colorhunt.co/palette/142663
  * #ececec blanco roto
  * #9fd3c7 azulito
+ * #A2A9D3 azulito mas oscurito
  * #385170 azul oscuro
  * #142d4c casi negro
  */ 
@@ -26,6 +27,12 @@
 }
 .fondoMedicoPaciente{
 	-fx-background-color: #9fd3c7;
+}
+.colorRaro{
+	-fx-background-color: #A2A9D3;
+}
+.negro{
+	-fx-background-color: #000000;
 }
 .listViewMedico{
 	-fx-background-color: #385170;
