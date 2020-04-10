@@ -195,8 +195,9 @@ public class Conexion {
 	}
 
 	public PacienteNew consultaPaciente(int id_per) {
-		int id_pac = 0, numSegSocial = 0, id_cuidador = 0;
+		int id_pac = 0, numSegSocial = 0, id_cuidador = 0, id_medico = 0;
 		String localidad = null;
+		
 		PacienteNew p = new PacienteNew();
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -206,15 +207,15 @@ public class Conexion {
 			stmt = conexion.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM Paciente where id_pac = " + id_per + ";");// conjunto de
 																										// resultados
-
 			while (rs.next()) {
 				// aqui colocar un objeto
 				id_pac = rs.getInt("id_pac");
 				numSegSocial = rs.getInt("numSegSocial");
 				id_cuidador = rs.getInt("id_cuidador");
+				id_medico = rs.getInt("id_medico");
 				localidad = rs.getString("localidad");
 			}
-			PacienteNew paciente = new PacienteNew(id_pac, localidad, numSegSocial, id_cuidador);
+			PacienteNew paciente = new PacienteNew(id_pac, numSegSocial, id_cuidador, id_medico, localidad);
 			p = paciente;
 			// destruyo todo consulta conexion y resultset
 			rs.close();
