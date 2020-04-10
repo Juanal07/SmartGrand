@@ -45,29 +45,27 @@ public class Conexion {
 	// revisar el id para que se auto incremente YA SEA POR JAVA O POR SQL y
 	// investigar si llevas comillas el tipo DATE
 	public void istPersona(Conexion conexion2, String nombre, String apellido, String usuario, String password,
-			String dni, String fecha) {
+			String dni, String fecha, String tipo) {
 		String insert = "INSERT INTO Personas(nombre, apellido, usuario, password, dni, fecha) VALUES('" + nombre
-				+ "', '" + apellido + "', '" + usuario + "', '" + password + "', '" + dni + "', '" + fecha + "');";
+				+ "', '" + apellido + "', '" + usuario + "', '" + password + "', '" + dni + "', '" + fecha + "', '" + tipo + "');";
 		conexion2.sentenciaSQL(insert);
 	}
 
-	public void istMedico(Conexion conexion2, int id_med, String especialidad, int numColegiado, int id_cuidador,
-			int id_paciente) {
+	public void istMedico(Conexion conexion2, int id_med, String especialidad, int numColegiado, boolean verificado) {
 		String istMedico = "INSERT INTO Medico(id_med, especialidad, numColegiado, id_cuidador, id_paciente) VALUES('"
-				+ id_med + "', '" + especialidad + "', '" + numColegiado + "', '" + id_cuidador + "','" + id_paciente
-				+ "');";
+				+ id_med + "', '" + especialidad + "', '" + numColegiado + "', '" + verificado +"');";
 		conexion2.sentenciaSQL(istMedico);
 	}
 
-	public void istPaciente(Conexion conexion2, int id_pac, String localidad, int numSegSocial, int id_cuidador) {
+	public void istPaciente(Conexion conexion2, int id_pac, String localidad, int numSegSocial, int id_cuidador, int id_medico) {
 		String istPaciente = "INSERT INTO Paciente(id_pac, localidad, numSegSocial, id_cuidador) VALUES('" + id_pac
-				+ "', '" + localidad + "', '" + numSegSocial + "', '" + id_cuidador + "');";
+				+ "', '" + localidad + "', '" + numSegSocial + "', '" + id_cuidador + "', '" + id_medico + "');";
 		conexion2.sentenciaSQL(istPaciente);
 	}
 
-	public void istCuidador(Conexion conexion2, int id_cui, String especialidad) {
+	public void istCuidador(Conexion conexion2, int id_cui, String especialidad, int  id_medico) {
 		String istCuidador = "INSERT INTO Cuidador(id_cui, especialidad) VALUES('" + id_cui + "', '" + especialidad
-				+ "');";
+				+ "', '" + id_medico + "');";
 		conexion2.sentenciaSQL(istCuidador);
 	}
 
@@ -87,42 +85,68 @@ public class Conexion {
 
 	// creamos todas las tablas
 	public void crearDb(Conexion conexion2) {
-		String tablaMedico = "CREATE TABLE IF NOT EXISTS Medico(" + "id_med INTEGER PRIMARY KEY NOT NULL, "
-				+ "especialidad TEXT not NULL, " + "numColegiado INTEGER not NULL," + "id_cuidador INTEGER,"
-				+ "id_paciente INTEGER," + "FOREIGN key (id_med) REFERENCES Personas(id_per),"
-				+ "FOREIGN KEY (id_cuidador) REFERENCES Cuidador(id_cui),"
-				+ "FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)" + ");";
+		String tablaMedico = "CREATE TABLE IF NOT EXISTS Medico(" 
+				+ "id_med INTEGER PRIMARY KEY NOT NULL, "
+				+ "especialidad TEXT not NULL, " 
+				+ "numColegiado INTEGER not NULL,"
+				+ "verificado BOOLEAN," 
+				+ "FOREIGN key (id_med) REFERENCES Personas(id_per)" 
+				+ ");";
 		conexion2.sentenciaSQL(tablaMedico);
 
-		String tablaPaciente = "CREATE TABLE IF NOT EXISTS Paciente(" + "id_pac INTEGER PRIMARY KEY NOT NULL,"
-				+ "localidad TEXT not NULL," + "numSegSocial INTEGER not NULL," + "id_cuidador INTEGER,"
+		String tablaPaciente = "CREATE TABLE IF NOT EXISTS Paciente(" 
+				+ "id_pac INTEGER PRIMARY KEY NOT NULL,"
+				+ "localidad TEXT not NULL," 
+				+ "numSegSocial INTEGER not NULL," 
+				+ "id_cuidador INTEGER,"
+				+ "id_medico INTEGER,"
 				+ "FOREIGN key (id_pac) REFERENCES Personas(id_per),"
-				+ "FOREIGN key (id_cuidador) REFERENCES Cuidador(id_cui)" + ");";
+				+ "FOREIGN key (id_cuidador) REFERENCES Cuidador(id_cui)," 
+				+ "FOREIGN key (id_medico) REFERENCES Medico(id_med)"
+				+ ");";
 		conexion2.sentenciaSQL(tablaPaciente);
 
-		String tablaCuidador = "CREATE TABLE IF NOT EXISTS Cuidador(" + "id_cui INTEGER PRIMARY KEY NOT NULL,"
-				+ "especialidad TEXT not NULL," + "id_paciente INTEGER,"
+		String tablaCuidador = "CREATE TABLE IF NOT EXISTS Cuidador(" 
+				+ "id_cui INTEGER PRIMARY KEY NOT NULL,"
+				+ "especialidad TEXT not NULL," 
+				+ "id_medico INTEGER,"
 				+ "FOREIGN key (id_cui) REFERENCES Personas(id_per),"
-				+ "FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)" + ");";
+				+ "FOREIGN key (id_medico) REFERENCES Medico(id_med)"
+				+ ");";
 		conexion2.sentenciaSQL(tablaCuidador);
 
 		String tablaPersona = "CREATE TABLE IF NOT EXISTS Personas("
-				+ "id_per INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + "nombre TEXT not NULL, "
-				+ "apellido TEXT not NULL, " + "usuario TEXT not NULL, " + "password TEXT not null, "
-				+ "dni TEXT NOT NULL, " + "fecha TEXT NOT NULL " + ");";
+				+ "id_per INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " 
+				+ "nombre TEXT not NULL, "
+				+ "apellido TEXT not NULL, " 
+				+ "usuario TEXT not NULL, " 
+				+ "password TEXT not null, "
+				+ "dni TEXT NOT NULL, " 
+				+ "fecha TEXT NOT NULL, " 
+				+ "tipo TEXT NOT NULL"
+				+ ");";
 		conexion2.sentenciaSQL(tablaPersona);
 
 		String tablaTicket = "CREATE TABLE IF NOT EXISTS Ticket("
-				+ "id_tic INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + "Texto_Paciente TEXT not NULL, "
-				+ "Fecha_Paciente Date not NULL, " + "Texto_Medico TEXT not NULL, " + "Fecha_Medico Date not null, "
-				+ "id_medico INTEGER," + "id_paciente INTEGER," + "FOREIGN KEY (id_medico) REFERENCES Medico(id_med),"
+				+ "id_tic INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " 
+				+ "Texto_Paciente TEXT not NULL, "
+				+ "Fecha_Paciente Date not NULL, " 
+				+ "Texto_Medico TEXT not NULL, " 
+				+ "Fecha_Medico Date not null, "
+				+ "id_medico INTEGER," 
+				+ "id_paciente INTEGER," 
+				+ "FOREIGN KEY (id_medico) REFERENCES Medico(id_med),"
 				+ "FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)" + ");";
 		conexion2.sentenciaSQL(tablaTicket);
 
 		String tablaSensor = "CREATE TABLE IF NOT EXISTS Sensor("
-				+ "id_sen INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + "Ubicacion TEXT not NULL, "
-				+ "Tipo Date not NULL, " + "Dato INTEGER not NULL, " + "Fecha Date not null, "
-				+ "id_paciente INTEGER NOT NULL," + "FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)" + ");";
+				+ "id_sen INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " 
+				+ "Ubicacion TEXT not NULL, "
+				+ "Tipo Date not NULL, " 
+				+ "Dato INTEGER not NULL, " 
+				+ "Fecha Date not null, "
+				+ "id_paciente INTEGER NOT NULL," 
+				+ "FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)" + ");";
 		conexion2.sentenciaSQL(tablaSensor);
 
 	}
