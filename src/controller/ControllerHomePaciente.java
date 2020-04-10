@@ -1,10 +1,7 @@
 package controller;
 
 import java.util.Calendar;
-import java.util.List;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXScrollPane;
@@ -23,9 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.Persona;
 import model.PersonaNew;
-import model.Tickets;
 import model.TicketsNew;
 
 public class ControllerHomePaciente {
@@ -100,23 +95,6 @@ public class ControllerHomePaciente {
 				ventanaDatosTicket(conexion.consultaPersona(p.getDni()), tickets);
 			}
 		});
-//		.addListener(new ChangeListener<Tickets>() {
-//
-//			@Override
-//			public void changed(ObservableValue<? extends Tickets> observable, Tickets oldValue, Tickets newValue) {
-//				Tickets tickets = lvTicketsPaciente.getSelectionModel().getSelectedItem();
-//				String[] prPaciente = lbOcultoObjetoYo.getText().split("\t");
-//				String usu, pass, nom, apell, tpU, dni;
-//				usu = prPaciente[0];
-//				pass = prPaciente[1];
-//				nom = prPaciente[2];
-//				apell = prPaciente[3];
-//				tpU = prPaciente[4];
-//				dni = prPaciente[5];
-//				Persona persona = new Persona(usu, pass, nom, apell, tpU, dni);
-//				
-//			}
-//		});
 	}
 
 	private void ventanaDatosTicket(PersonaNew persona, TicketsNew tickets) {

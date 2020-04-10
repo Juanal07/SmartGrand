@@ -2,23 +2,13 @@ package model;
 
 public class PersonaNew {
 	// el id_per no se pide porque es autoIncrement
-	private String nombre, apellido, dni, usuario, password, fecha;
+
+	private String nombre, apellido, dni, usuario, password, fecha, tipo;
 	private int id_per;
 
-	// para crear persona completa
-	public PersonaNew(int id_per, String nombre, String apellido, String dni, String usuario, String password,
-			String fecha) {
-		super();
-		this.id_per = id_per;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dni = dni;
-		this.usuario = usuario;
-		this.password = password;
-		this.fecha = fecha;
-	}
 	// para insertar una persona en la tabla
-	public PersonaNew(String nombre, String apellido, String dni, String usuario, String password, String fecha) {
+	public PersonaNew(String nombre, String apellido, String dni, String usuario, String password, String fecha,
+			String tipo) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -26,6 +16,20 @@ public class PersonaNew {
 		this.usuario = usuario;
 		this.password = password;
 		this.fecha = fecha;
+		this.tipo = tipo;
+	}
+
+	public PersonaNew(String nombre, String apellido, String dni, String usuario, String password, String fecha,
+			String tipo, int id_per) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+		this.usuario = usuario;
+		this.password = password;
+		this.fecha = fecha;
+		this.tipo = tipo;
+		this.id_per = id_per;
 	}
 
 	public PersonaNew() {

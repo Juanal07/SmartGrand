@@ -1,19 +1,30 @@
 package model;
 
 public class PacienteNew {
-	private int id_pac, numSegSocial, id_cuidador;
+	private int id_pac, numSegSocial, id_cuidador, id_medico;
 	private String localidad;
 
-	public PacienteNew(int id_pac, String localidad, int numSegSocial, int id_cuidador) {
+	
+
+	public PacienteNew(int id_pac, int numSegSocial, int id_cuidador, int id_medico, String localidad) {
 		super();
 		this.id_pac = id_pac;
-		this.localidad = localidad;
 		this.numSegSocial = numSegSocial;
 		this.id_cuidador = id_cuidador;
+		this.id_medico = id_medico;
+		this.localidad = localidad;
 	}
 
 	public PacienteNew() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public int getId_medico() {
+		return id_medico;
+	}
+
+	public void setId_medico(int id_medico) {
+		this.id_medico = id_medico;
 	}
 
 	public int getId_pac() {

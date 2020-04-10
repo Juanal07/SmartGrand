@@ -161,6 +161,7 @@ public class Conexion {
 		String password = null;
 		String dni2 = null;
 		String fecha = null;
+		String tipo = null;
 		PersonaNew per = new PersonaNew();
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -180,8 +181,9 @@ public class Conexion {
 				password = rs.getString("password");
 				dni2 = rs.getString("dni");
 				fecha = rs.getString("fecha");
+				tipo = rs.getString("tipo");
 			}
-			PersonaNew persona = new PersonaNew(id_per, nombre, apellido, dni2, usuario, password, fecha);
+			PersonaNew persona = new PersonaNew(nombre, apellido, dni2, usuario, password, fecha, tipo, id_per);
 			per = persona;
 			// destruyo todo consulta conexion y resultset
 			rs.close();
