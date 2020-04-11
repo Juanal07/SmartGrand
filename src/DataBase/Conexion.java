@@ -400,4 +400,48 @@ public class Conexion {
 		
 		return usuarios;
 	}
+	
+
+	public PersonaNew consultaPersonaUsuario(String user) {
+		int id_per = 0;
+		String nombre = null;
+		String apellido = null;
+		String usuario = null;
+		String password = null;
+		String dni2 = null;
+		String fecha = null;
+		String tipo = null;
+		PersonaNew per = new PersonaNew();
+		try {
+			Class.forName("org.sqlite.JDBC");
+			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			conexion.setAutoCommit(false);
+
+			stmt = conexion.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Personas where usuario= '" + user + "';");// conjunto de
+																										// resultados
+
+			while (rs.next()) {
+				// aqui colocar un objeto
+				id_per = rs.getInt("id_per");
+				nombre = rs.getString("nombre");
+				apellido = rs.getString("apellido");
+				usuario = rs.getString("usuario");
+				password = rs.getString("password");
+				dni2 = rs.getString("dni");
+				fecha = rs.getString("fecha");
+				tipo = rs.getString("tipo");
+			}
+			PersonaNew persona = new PersonaNew(nombre, apellido, dni2, usuario, password, fecha, tipo, id_per);
+			per = persona;
+			// destruyo todo consulta conexion y resultset
+			rs.close();
+			stmt.close();
+			conexion.close();
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+		}
+		System.out.println("Consulta terminada");
+		return per;
+	}
 }

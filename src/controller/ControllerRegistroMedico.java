@@ -77,7 +77,7 @@ public class ControllerRegistroMedico {
 
 		Conexion conexion = new Conexion();
 		conexion.istPersona(conexion, nombre, apellido, usuario, passwordCifrada, dni, fecha.toString(), tipo);
-		conexion.istMedico(conexion, conexion.consultaPersona(dni).getId_per(), especialidad,
+		conexion.istMedico(conexion, conexion.consultaPersona("dni",dni).getId_per(), especialidad,
 				Integer.parseInt(numColegiado), false);
 
 //		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni);
@@ -120,7 +120,6 @@ public class ControllerRegistroMedico {
 			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
-			sendStage.setMaximized(true);
 			sendStage.setScene(scene);
 			sendStage.show();
 		} catch (Exception e) {

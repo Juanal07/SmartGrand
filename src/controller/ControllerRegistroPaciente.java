@@ -75,7 +75,7 @@ public class ControllerRegistroPaciente {
 
 		Conexion conexion = new Conexion();
 		conexion.istPersona(conexion, nombre, apellido, usuario, password, dni, fecha.toString(), tipo);
-		conexion.istPaciente(conexion, conexion.consultaPersona(dni).getId_per(), localidad,
+		conexion.istPaciente(conexion, conexion.consultaPersona("dni",dni).getId_per(), localidad,
 				Integer.parseInt(numSocial), 999999, 99999);
 
 		// hacer lo de validar faltan 3 campos
@@ -121,7 +121,6 @@ public class ControllerRegistroPaciente {
 			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
-			sendStage.setMaximized(true);
 			sendStage.setScene(scene);
 			sendStage.show();
 		} catch (Exception e) {

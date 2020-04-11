@@ -37,6 +37,10 @@ public class ControllerRegistroCuidador {
 	@FXML
 	private Label lbErrorDni;
 	@FXML
+	private Label lbErrorEspe;
+	@FXML
+	private Label lbErrorNac;
+	@FXML
 	private TextField tfUsuario = new JFXTextField(), tfNombre = new JFXTextField(), tfApellido = new JFXTextField(),
 			tfDni = new JFXTextField(), tfEspecialidad = new TextField();
 	@FXML
@@ -46,7 +50,7 @@ public class ControllerRegistroCuidador {
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
-		
+
 		String usuario = tfUsuario.getText();
 		String password = tfPassword.getText();// password sin cifrar para hacer el validation
 		String passwordCifrada = GsonGeneral.getMd5(tfPassword.getText());
@@ -56,17 +60,18 @@ public class ControllerRegistroCuidador {
 		LocalDate fechaNacimiento = dpFechaNacimiento.getValue();
 		String especialidad = tfEspecialidad.getText();
 		String tipo = "cuidador";
-		
+
 		System.out.println(GsonGeneral.seRepiteDnis(dni));
-		
-		boolean valido = validation(usuario, password, nombre, apellido, dni);
 
-		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != ""&& valido) {
-			
+		boolean valido = validation(usuario, password, nombre, apellido, dni, fechaNacimiento.toString(), especialidad);
+
+		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != ""
+				&& fechaNacimiento.toString() != "" && especialidad != "" && valido) {
+
 			Conexion conexion = new Conexion();
-			conexion.istPersona(conexion, nombre, apellido, usuario, passwordCifrada, dni, fechaNacimiento.toString(), tipo);
-			conexion.istCuidador(conexion, conexion.consultaPersona(dni).getId_per(), especialidad, 99999);
-
+			conexion.istPersona(conexion, nombre, apellido, usuario, passwordCifrada, dni, fechaNacimiento.toString(),
+					tipo);
+			conexion.istCuidador(conexion, conexion.consultaPersona("dni", dni).getId_per(), especialidad, 99999);
 
 			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
 			stage.close();
@@ -79,7 +84,7 @@ public class ControllerRegistroCuidador {
 			// label indicando que se ha registrado con exito. en la ventana de iniciar
 			// sesion
 			System.out.println("Cuidador registrado con exito");
-		}else {
+		} else {
 			System.out.println("no se pudo registrar");
 		}
 	}
@@ -107,7 +112,6 @@ public class ControllerRegistroCuidador {
 			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
-			sendStage.setMaximized(true);
 			sendStage.setScene(scene);
 			sendStage.show();
 		} catch (Exception e) {
@@ -115,7 +119,8 @@ public class ControllerRegistroCuidador {
 		}
 	}
 
-	public boolean validation(String usuario, String password, String nombre, String apellido, String dni) {
+	public boolean validation(String usuario, String password, String nombre, String apellido, String dni,
+			String fechaNac, String especialidad) {
 		boolean valido = true;
 
 		if ((dni.matches("\\d{8}[A-HJ-NP-TV-Z]"))) {
@@ -166,6 +171,20 @@ public class ControllerRegistroCuidador {
 			lbErrorApellido.setText("");
 		} else {
 			lbErrorApellido.setText("Tu apellido debe contener al menos 2 letras");
+			valido = false;
+		}
+
+		if (fechaNac.matches("^[a-zA-Z]{2,}$")) {
+			lbErrorNac.setText("");
+		} else {
+			lbErrorNac.setText("Tu fecha de nacimiento no es valida");
+			valido = false;
+		}
+
+		if (especialidad.matches("^[a-zA-Z]{2,}$")) {
+			lbErrorEspe.setText("");
+		} else {
+			lbErrorEspe.setText("Tu especialidad debe contener al menos 2 letras");
 			valido = false;
 		}
 

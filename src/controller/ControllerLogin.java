@@ -47,14 +47,7 @@ public class ControllerLogin {
 			Conexion conexion = new Conexion();
 			PersonaNew persona = conexion.consultaPersonaUsuario(usuario);
 
-			System.out.println(persona.getUsuario());
-			System.out.println(persona.getPassword());
-			System.out.println(password);
-			System.out.println(persona.getTipo());
-			
-			System.out.println(persona.getPassword() == password);
-
-			if (persona.getPassword().contentEquals(password)) {
+			if (!(usuario.equals("")) && (persona.getPassword().contentEquals(password))) {
 				System.out.println("password correcto");
 				String tUsu = persona.getTipo();
 
@@ -78,6 +71,7 @@ public class ControllerLogin {
 				}
 
 			} else {
+				System.out.println("passowrd incorrecto");
 				lbError.setText("Error: Usuario o password INCORRECTO.");
 			}
 		} catch (Exception e) {
@@ -184,7 +178,7 @@ public class ControllerLogin {
 			Stage sendStage = new Stage();
 			sendStage.setTitle(titulo);
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			Scene scene = new Scene(page, screenSize.width, screenSize.height);
+			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
 			sendStage.setScene(scene);

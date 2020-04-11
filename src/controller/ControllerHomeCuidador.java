@@ -71,13 +71,13 @@ public class ControllerHomeCuidador {
 		}
 	}
 	//dado un cuidador p obtengo un arrayList con los dnis de sus pacientes
-	public ArrayList<String> listaPacientes(Persona p) {
+	public ArrayList<String> listaPacientes(PersonaNew persona) {
 		ArrayList<String> idsPacientes = new ArrayList<String>();
 		List<Cuidador> listaCuidadorRelacion = GsonGeneral.desserializarJsonAArrayCuidador();
 		int sizeArray = listaCuidadorRelacion.size();
 		int i = 0;
 		while(i < sizeArray) {
-			if (p.getDni().equals(listaCuidadorRelacion.get(i).getIdCuidador())) {
+			if (persona.getDni().equals(listaCuidadorRelacion.get(i).getIdCuidador())) {
 				idsPacientes = listaCuidadorRelacion.get(i).getDniPacientes();
 				i = i + sizeArray;
 			}
@@ -107,7 +107,6 @@ public class ControllerHomeCuidador {
 			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // a�ade icono a la vista	
 			sendStage.getIcons().add(icon);
-			sendStage.setMaximized(true);
 			sendStage.setScene(scene);
 			sendStage.show();
 		} catch (Exception e) {
@@ -143,8 +142,7 @@ public class ControllerHomeCuidador {
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
 			sendStage.setTitle("Sensor Presion");
-			Scene scene = new Scene(page);
-			sendStage.setMaximized(true);			
+			Scene scene = new Scene(page);		
 			sendStage.setScene(scene);
 			sendStage.show();
 			controlBarChart.escibirDniPaciente(dniPaciente);

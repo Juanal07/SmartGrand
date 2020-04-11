@@ -76,7 +76,6 @@ public class ControllerRegistroContinuo {
 			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // a�ade icono a la vista	
 			sendStage.getIcons().add(icon);
-			sendStage.setMaximized(true);
 			sendStage.setScene(scene);
 			sendStage.show();
 		} catch (Exception e) {
