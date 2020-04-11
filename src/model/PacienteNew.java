@@ -4,8 +4,6 @@ public class PacienteNew {
 	private int id_pac, numSegSocial, id_cuidador, id_medico;
 	private String localidad;
 
-	
-
 	public PacienteNew(int id_pac, int numSegSocial, int id_cuidador, int id_medico, String localidad) {
 		super();
 		this.id_pac = id_pac;

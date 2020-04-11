@@ -92,7 +92,7 @@ public class PersonaNew {
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-	
+
 	public String getTipo() {
 		return tipo;
 	}

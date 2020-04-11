@@ -6,21 +6,21 @@ public class TicketsNew {
 
 	private int id_tic, id_medico, id_paciente;
 	private String texto_Paciente, texto_Medico;
-	private Date techa_Paciente, techa_Medico;
+	private Date fecha_Paciente, fecha_Medico;
 
 	public TicketsNew() {
 		super();
 	}
 
-	public TicketsNew(int id_medico, int id_paciente, String texto_Paciente, String texto_Medico, Date techa_Paciente,
-			Date techa_Medico) {
+	public TicketsNew(int id_medico, int id_paciente, String texto_Paciente, String texto_Medico, Date fecha_Paciente,
+			Date fecha_Medico) {
 		super();
 		this.id_medico = id_medico;
 		this.id_paciente = id_paciente;
 		this.texto_Paciente = texto_Paciente;
 		this.texto_Medico = texto_Medico;
-		this.techa_Paciente = techa_Paciente;
-		this.techa_Medico = techa_Medico;
+		this.fecha_Paciente = fecha_Paciente;
+		this.fecha_Medico = fecha_Medico;
 	}
 
 	public TicketsNew(int id_tic, int id_medico, int id_paciente, String texto_Paciente, String texto_Medico,
@@ -31,8 +31,8 @@ public class TicketsNew {
 		this.id_paciente = id_paciente;
 		this.texto_Paciente = texto_Paciente;
 		this.texto_Medico = texto_Medico;
-		this.techa_Paciente = fecha_Paciente;
-		this.techa_Medico = fecha_Medico;
+		this.fecha_Paciente = fecha_Paciente;
+		this.fecha_Medico = fecha_Medico;
 	}
 
 	public int getId_tic() {
@@ -71,24 +71,24 @@ public class TicketsNew {
 		return texto_Medico;
 	}
 
-	public void setTexto_Medico(String texto_Medico) {
-		this.texto_Medico = texto_Medico;
+	public void setTexto_Medico(String fexto_Medico) {
+		this.texto_Medico = fexto_Medico;
 	}
 
-	public Date getTecha_Paciente() {
-		return techa_Paciente;
+	public Date getFecha_Paciente() {
+		return fecha_Paciente;
 	}
 
-	public void setTecha_Paciente(Date techa_Paciente) {
-		this.techa_Paciente = techa_Paciente;
+	public void setFecha_Paciente(Date fecha_Paciente) {
+		this.fecha_Paciente = fecha_Paciente;
 	}
 
-	public Date getTecha_Medico() {
-		return techa_Medico;
+	public Date getFecha_Medico() {
+		return fecha_Medico;
 	}
 
-	public void setTecha_Medico(Date techa_Medico) {
-		this.techa_Medico = techa_Medico;
+	public void setFecha_Medico(Date fecha_Medico) {
+		this.fecha_Medico = fecha_Medico;
 	}
 
 }

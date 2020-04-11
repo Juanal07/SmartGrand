@@ -1,9 +1,8 @@
 package controller;
 
-import java.io.IOException;
-
 import com.jfoenix.controls.JFXButton;
 
+import DataBase.Conexion;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,9 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Persona;
+import model.PacienteNew;
+import model.PersonaNew;
 
 public class ControllerMedicoDatosPaciente {
 	@FXML
@@ -32,22 +31,26 @@ public class ControllerMedicoDatosPaciente {
 	private JFXButton btnSensor2 = new JFXButton();
 	@FXML
 	private JFXButton btnSensor3 = new JFXButton();
-	private Label lbOcultoPacienteMedico = new Label();
-	private Label lbOcultoYo = new Label();
+	private Label lbOcultoIdMedico = new Label();
 
-	public void writeText(Persona persona, Persona yo) {
-		lbOcultoYo.setText(yo.toString());
-		lbOcultoPacienteMedico.setText(persona.toString());
-		lbNombre.setText("Nombre: " + persona.getNombre());
-		lbApeliido.setText("Apellidos: " + persona.getApellido());
-		lbUsuario.setText("Usuario: " + persona.getUsuario());
-		lbDni.setText("Dni: " + persona.getDni());
+	public void writeText(PacienteNew paciente, String id_med) {
+		lbOcultoIdMedico.setText(id_med);
+		Conexion conexion = new Conexion();// id per
+		// datos del paciente
+		PersonaNew p = new PersonaNew();
+		p = conexion.consultaPersona("id_per", paciente.getId_pac());
+		lbNombre.setText("Nombre: " + p.getNombre());
+		lbApeliido.setText("Apellidos: " + p.getApellido());
+		lbUsuario.setText("Usuario: " + p.getUsuario());
+		lbDni.setText("Dni: " + p.getDni());
+		// agregar localidad, fecha de nacimiento y num SegSocial
 	}
+
 	public void enviarSensor3() {
 		String dniPaciente = lbDni.getText();
 		try {
 			ControllerSensor3Caidas controlBarChart = new ControllerSensor3Caidas();
-			FXMLLoader root2 =  new FXMLLoader();
+			FXMLLoader root2 = new FXMLLoader();
 			root2.setLocation(this.getClass().getResource("/View/Sensor3caidas.fxml"));
 			root2.setController(controlBarChart);
 			AnchorPane page = (AnchorPane) root2.load();
@@ -61,17 +64,16 @@ public class ControllerMedicoDatosPaciente {
 			sendStage.show();
 			controlBarChart.escibirDniPaciente(dniPaciente);
 			controlBarChart.cargarGrafica();
-		
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void enviarSensor2() {
 		String dniPaciente = lbDni.getText();
 		try {
 			ControllerSensor2Puerta controlBarChart = new ControllerSensor2Puerta();
-			FXMLLoader root2 =  new FXMLLoader();
+			FXMLLoader root2 = new FXMLLoader();
 			root2.setLocation(this.getClass().getResource("/View/Sensor2puerta.fxml"));
 			root2.setController(controlBarChart);
 			AnchorPane page = (AnchorPane) root2.load();
@@ -85,18 +87,17 @@ public class ControllerMedicoDatosPaciente {
 			sendStage.show();
 			controlBarChart.escibirDniPaciente(dniPaciente);
 			controlBarChart.cargarGrafica();
-		
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	
 	public void enviarSensor1() {
 		String dniPaciente = lbDni.getText();
 		try {
 			ControllerSensor1Presion controlBarChart = new ControllerSensor1Presion();
-			FXMLLoader root2 =  new FXMLLoader();
+			FXMLLoader root2 = new FXMLLoader();
 			root2.setLocation(this.getClass().getResource("/View/Sensor1Presion.fxml"));
 			root2.setController(controlBarChart);
 			AnchorPane page = (AnchorPane) root2.load();
@@ -110,22 +111,16 @@ public class ControllerMedicoDatosPaciente {
 			sendStage.show();
 			controlBarChart.escibirDniPaciente(dniPaciente);
 			controlBarChart.cargarGrafica();
-		
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void ventanaAtras() {
-		String usu, pass, nom, apell, tpU, dni;
-		String[] per = lbOcultoYo.getText().split("\t");
-		usu = per[0];
-		pass = per[1];
-		nom = per[2];
-		apell = per[3];
-		tpU = per[4];
-		dni = per[5];
-		Persona p = new Persona(usu, pass, nom, apell, tpU, dni);
+		Conexion conexion = new Conexion();
+		PersonaNew p = new PersonaNew();
+		p = conexion.consultaPersona("id_per", Integer.parseInt(lbOcultoIdMedico.getText()));
 		Stage stage = (Stage) lbNombre.getScene().getWindow();
 		stage.close();
 		try {
@@ -137,7 +132,7 @@ public class ControllerMedicoDatosPaciente {
 			Parent root1 = loader.load();
 			controlerMedicoHome.writeText(p);
 			Stage stage2 = new Stage();
-			stage2.setTitle(tituloVista2);			
+			stage2.setTitle(tituloVista2);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			stage2.getIcons().add(icon);
 			stage2.setMaximized(true);
@@ -149,7 +144,5 @@ public class ControllerMedicoDatosPaciente {
 			e.printStackTrace();
 		}
 	}
-
-
 
 }

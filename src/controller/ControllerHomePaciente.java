@@ -56,7 +56,7 @@ public class ControllerHomePaciente {
 		// averiguar el dni del medico
 		// coger el id de paciente y despues hacer una consulta en medicos para buscar a
 		// su medic0
-		int idPaciente = conexion.consultaPersona(dniPaciente).getId_per();
+		int idPaciente = conexion.consultaPersona("dni", dniPaciente).getId_per();
 		int idMedico = conexion.consultaMedico(idPaciente).getId_med();
 		if (!textoPaciente.equals("")) {
 			java.sql.Date fecha_paciente = new java.sql.Date(Calendar.getInstance().getTime().getTime());
@@ -84,7 +84,7 @@ public class ControllerHomePaciente {
 	public void cargarListaTickets(PersonaNew p) {
 		Conexion conexion = new Conexion();
 		ObservableList<TicketsNew> ticketsObservableList = FXCollections.observableArrayList();
-		conexion.leerTickets(ticketsObservableList, p);
+		conexion.leerTickets(ticketsObservableList, p, "id_paciente");
 		lvTicketsPaciente.setItems(ticketsObservableList);
 		lvTicketsPaciente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TicketsNew>() {
 
@@ -92,7 +92,7 @@ public class ControllerHomePaciente {
 			public void changed(ObservableValue<? extends TicketsNew> observable, TicketsNew oldValue,
 					TicketsNew newValue) {
 				TicketsNew tickets = lvTicketsPaciente.getSelectionModel().getSelectedItem();
-				ventanaDatosTicket(conexion.consultaPersona(p.getDni()), tickets);
+				ventanaDatosTicket(p, tickets);
 			}
 		});
 	}
