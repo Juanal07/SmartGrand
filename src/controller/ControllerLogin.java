@@ -41,19 +41,21 @@ public class ControllerLogin {
 
 	@FXML
 	public void iniciarSesion() {
-
-		String usuario = jfxtUsuario.getText();
-		String password = GsonGeneral.getMd5(jfxtPassword.getText());
-		Conexion conexion = new Conexion();
-		PersonaNew persona = conexion.consultaPersonaUsuario(usuario);
-
-		System.out.println(persona.getUsuario());
-		System.out.println(persona.getPassword());
-		System.out.println(password);
-		System.out.println(persona.getTipo());
-
 		try {
-			if (persona.getPassword() == password) {
+			String usuario = jfxtUsuario.getText();
+			String password = GsonGeneral.getMd5(jfxtPassword.getText());
+			Conexion conexion = new Conexion();
+			PersonaNew persona = conexion.consultaPersonaUsuario(usuario);
+
+			System.out.println(persona.getUsuario());
+			System.out.println(persona.getPassword());
+			System.out.println(password);
+			System.out.println(persona.getTipo());
+			
+			System.out.println(persona.getPassword() == password);
+
+			if (persona.getPassword().contentEquals(password)) {
+				System.out.println("password correcto");
 				String tUsu = persona.getTipo();
 
 				System.out.println(persona.getTipo());
@@ -104,7 +106,6 @@ public class ControllerLogin {
 			Parent root2 = loader.load();
 			controllerHomePaciente.writeText(p);
 			Stage stage2 = new Stage();
-			stage2.setMaximized(true);
 			stage2.setTitle(tituloVista);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			stage2.getIcons().add(icon);
@@ -128,7 +129,6 @@ public class ControllerLogin {
 			Parent root1 = loader.load();
 			controlerMedicoHome.writeText(persona);
 			Stage stage2 = new Stage();
-			stage2.setMaximized(true);
 			stage2.setTitle(tituloVista2);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			stage2.getIcons().add(icon);
@@ -149,16 +149,15 @@ public class ControllerLogin {
 			ControllerHomeCuidador vistaCuidadorPrincipalController = new ControllerHomeCuidador();
 			loader.setController(vistaCuidadorPrincipalController);
 			Parent root2 = loader.load();
-			vistaCuidadorPrincipalController.writeText(persona);
+//			vistaCuidadorPrincipalController.writeText(persona);
 			Stage stage2 = new Stage();
-			stage2.setMaximized(true);
 			stage2.setTitle(tituloVista3);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la
 																									// vista
 			stage2.getIcons().add(icon);
 			stage2.setScene(new Scene(root2));
 			stage2.show();
-			vistaCuidadorPrincipalController.cargarTableview(persona);
+//			vistaCuidadorPrincipalController.cargarTableview(persona);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -189,7 +188,6 @@ public class ControllerLogin {
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
 			sendStage.setScene(scene);
-			sendStage.setMaximized(true);
 			sendStage.show();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
