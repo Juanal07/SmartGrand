@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import DataBase.Conexion;
 import model.Cuidador;
 import model.Medico;
 import model.Persona;
@@ -155,13 +156,14 @@ public class GsonGeneral {
 		return (ArrayList<Sensor3caidas>) listaSensorCaidas;
 	}
 
-	public static boolean seRepiteDni (String dni) {
+	public static boolean seRepiteDnis (String dni) {
 		Boolean seRepite = false;
-		List<Persona> lista = desserializarJsonAArray();
+		Conexion conexion = new Conexion();
+		List<String> lista = conexion.listaDnis();
 		int sizeArray = lista.size();
 		int i = 0;
 		while(i < sizeArray) {
-			if (lista.get(i).getDni().equals(dni)) {
+			if (lista.get(i).equals(dni)) {
 				seRepite=true;
 				i = i + sizeArray;
 			}
@@ -169,13 +171,15 @@ public class GsonGeneral {
 		}
 		return seRepite;
 	}
+	
 	public static boolean seRepiteUsuario (String user) {
 		Boolean seRepite = false;
-		List<Persona> lista = desserializarJsonAArray();
+		Conexion conexion = new Conexion();
+		List<String> lista = conexion.listaUsuarios();
 		int sizeArray = lista.size();
 		int i = 0;
 		while(i < sizeArray) {
-			if (lista.get(i).getUsuario().equals(user)) {
+			if (lista.get(i).equals(user)) {
 				seRepite=true;
 				i = i + sizeArray;
 			}

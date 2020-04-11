@@ -17,9 +17,8 @@ public class Main extends Application {
 	private Stage primaryStage;
 	@FXML
 	public AnchorPane content;
-
 	@Override
-
+	
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		try {
@@ -42,7 +41,6 @@ public class Main extends Application {
 		Scene scene = new Scene(root);
 		Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 		primaryStage.getIcons().add(icon);
-		// primaryStage.setMaximized(true);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Login");
 		primaryStage.show();
@@ -52,5 +50,3 @@ public class Main extends Application {
 		launch(args);
 	}
 }
-
-// prueba push vscode

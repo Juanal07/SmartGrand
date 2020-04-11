@@ -21,6 +21,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Medico;
 import model.Persona;
+import model.PersonaNew;
 import model.Tickets;
 
 public class ControllerHomeMedico {
@@ -46,9 +47,9 @@ public class ControllerHomeMedico {
 		crearVentana(vistaRegContinuo, tituloVista, loginControler);
 	}
 	
-	public void writeText(Persona p) {
-		labelMedico.setText("Medico: Bienvenido/a " + p.getNombre());
-		lbOculto.setText(p.getDni());
+	public void writeText(PersonaNew persona) {
+		labelMedico.setText("Medico: Bienvenido/a " + persona.getNombre());
+		lbOculto.setText(persona.getDni());
 	}
 
 	private void crearVentana(String vista, String titulo, Object object) {
@@ -159,11 +160,11 @@ public class ControllerHomeMedico {
 		}}
 	}
 
-	public void cargarListViewPacientes(Persona p) {
+	public void cargarListViewPacientes(PersonaNew persona) {
 		
-		lbOculto.setText(p.toString());
+		lbOculto.setText(persona.toString());
 		ObservableList<Persona> personasObservableList = FXCollections.observableArrayList();
-		leerPersonas(personasObservableList, p);// encuentra los objetos de las personas y los mete en personasObservableList
+		leerPersonas(personasObservableList, persona);// encuentra los objetos de las personas y los mete en personasObservableList
 		
 		listaPacientesMedico.setItems(personasObservableList);
 
@@ -210,9 +211,9 @@ public class ControllerHomeMedico {
 		}
 	}
 
-	public void cargarListViewTickets(Persona p) {
+	public void cargarListViewTickets(PersonaNew persona) {
 		ObservableList<Tickets> ticketsObservableList = FXCollections.observableArrayList();
-		leerTickets2(ticketsObservableList, p);
+		leerTickets2(ticketsObservableList, persona);
 		listaTicketsSinResponder.setItems(ticketsObservableList);
 
 		listaTicketsSinResponder.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tickets>() {
@@ -220,7 +221,7 @@ public class ControllerHomeMedico {
 			@Override
 			public void changed(ObservableValue<? extends Tickets> observable, Tickets oldValue, Tickets newValue) {
 				Tickets ticket = listaTicketsSinResponder.getSelectionModel().getSelectedItem();
-				enviarVentana(ticket, p);
+				enviarVentana(ticket, persona);
 
 			}
 		});

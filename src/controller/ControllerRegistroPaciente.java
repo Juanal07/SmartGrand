@@ -60,123 +60,7 @@ public class ControllerRegistroPaciente {
 	}
 
 	@FXML
-	private ComboBox<String> cuidadoresDisponiblesBox;
-
-	ObservableList<String> cuidadoresDisponiblesList = FXCollections.observableArrayList();
-	@FXML
-	private ComboBox<String> medicosDisponiblesBox;
-
-	ObservableList<String> medicosDisponiblesList = FXCollections.observableArrayList();
-
-	@FXML
-	public void initialize() {
-		for (Persona p : listaCuidadoresDisponibles()) {
-			cuidadoresDisponiblesList.add(p.getDni() + ": " + p.getNombre() + " " + p.getApellido());
-		}
-		cuidadoresDisponiblesBox.setValue("Elige cuidador");
-		cuidadoresDisponiblesBox.setItems(cuidadoresDisponiblesList);
-
-		for (Persona p : listaMedicosDisponibles()) {
-			medicosDisponiblesList.add(p.getDni() + ": " + p.getNombre() + " " + p.getApellido());
-		}
-		medicosDisponiblesBox.setValue("Elige medico");
-		medicosDisponiblesBox.setItems(medicosDisponiblesList);
-	}
-
-	// devuelve los cuidadores disponibles
-	public ArrayList<Persona> listaCuidadoresDisponibles() {
-		ArrayList<String> listaCuidadoresDisponiblesDni = new ArrayList<String>();
-		List<Cuidador> listaCuidadorTotal = GsonGeneral.desserializarJsonAArrayCuidador();
-		for (Cuidador cuidador : listaCuidadorTotal) {
-			if (cuidador.getDniPacientes().size() < 4) { // si el cuidador tiene menos de 4 pacientes lo denominamos
-															// "disponible"
-				listaCuidadoresDisponiblesDni.add(cuidador.getIdCuidador());
-			}
-		}
-		ArrayList<Persona> listaCuidadoresDisponiblesPersona = new ArrayList<Persona>();
-		List<Persona> listaCuidadorTotalNombre = GsonGeneral.desserializarJsonAArray();
-		for (Persona p : listaCuidadorTotalNombre) {
-			int sizeArray = listaCuidadoresDisponiblesDni.size();
-			int i = 0;
-			while (i < sizeArray) {
-				if (p.getDni().equals(listaCuidadoresDisponiblesDni.get(i))) {
-					listaCuidadoresDisponiblesPersona.add(p);
-					i = i + sizeArray;
-				}
-				i++;
-			}
-		}
-		return listaCuidadoresDisponiblesPersona;
-	}
-
-	// devuelve los medicos disponibles
-	public ArrayList<Persona> listaMedicosDisponibles() {
-		ArrayList<String> listaMedicosDisponibles = new ArrayList<String>();
-		List<Medico> listaMedicoTotal = GsonGeneral.desserializarJsonAArrayMedico();
-		for (Medico medico : listaMedicoTotal) {
-			if (medico.getDniPacientes().size() < 4) { // si el Medico tiene menos de 4 pacientes lo denominamos
-														// "disponible"
-				listaMedicosDisponibles.add(medico.getIdMedico());
-			}
-		}
-		ArrayList<Persona> listaMedicosDisponiblesPersona = new ArrayList<Persona>();
-		List<Persona> listaMedicoTotalNombre = GsonGeneral.desserializarJsonAArray();
-		for (Persona p : listaMedicoTotalNombre) {
-			int sizeArray = listaMedicosDisponibles.size();
-			int i = 0;
-			while (i < sizeArray) {
-				if (p.getDni().equals(listaMedicosDisponibles.get(i))) {
-					listaMedicosDisponiblesPersona.add(p);
-					i = i + sizeArray;
-				}
-				i++;
-			}
-		}
-		return listaMedicosDisponiblesPersona; // devuelve los dnis
-	}
-
-	public void escribirJsonCuidadores(String dni) {
-		String SubCadena = cuidadoresDisponiblesBox.getValue().substring(0, 9);
-		List<Cuidador> listaC = GsonGeneral.desserializarJsonAArrayCuidador();
-		int sizeArray = listaC.size();
-		int i = 0;
-		while (i < sizeArray) {
-			if (SubCadena.equals(listaC.get(i).getIdCuidador())) {
-				listaC.get(i).getDniPacientes().add(dni);
-				i = i + sizeArray;
-			}
-			i++;
-		}
-		Gson prettyGson2 = new GsonBuilder().setPrettyPrinting().create();
-		String representacionBonita2 = prettyGson2.toJson(listaC);
-		String ruta2 = "cuidadores.json";
-		GsonGeneral.EscribirJson(representacionBonita2, ruta2);
-
-	}
-
-	public void escribirJsonMedicos(String dni) {
-
-		String SubCadena3 = medicosDisponiblesBox.getValue().substring(0, 9);
-		List<Medico> listaM = GsonGeneral.desserializarJsonAArrayMedico();
-		int sizeArray3 = listaM.size();
-		int j = 0;
-		while (j < sizeArray3) {
-			if (SubCadena3.equals(listaM.get(j).getIdMedico())) {
-				listaM.get(j).getDniPacientes().add(dni);
-				j = j + sizeArray3;
-			}
-			j++;
-		}
-		Gson prettyGson3 = new GsonBuilder().setPrettyPrinting().create();
-		String representacionBonita3 = prettyGson3.toJson(listaM);
-		String ruta3 = "medicos.json";
-		GsonGeneral.EscribirJson(representacionBonita3, ruta3);
-
-	}
-
-	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
-		Conexion conexion = new Conexion();
 
 		String usuario = tfUsuario.getText();
 		String password2 = tfPassword.getText();// password sin cifrar para hacer el validation
@@ -184,38 +68,22 @@ public class ControllerRegistroPaciente {
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
-		String numSocial = tfNumSegSocial.getText();
-		String localidad = tfLocalidad.getText();
 		LocalDate fecha = jfxDPEdad.getValue();
-		String tipoUsuario = "paciente";
-		// hacer que coja el dni del cuidador ********************* IMPORTANTE
-		// **********************
-		String cuidadorE = cuidadoresDisponiblesBox.getValue();
-		String medicoE = medicosDisponiblesBox.getValue();
-		// creamos una persona
-		conexion.istPersona(conexion, nombre, apellido, usuario, password, dni, fecha.toString());
-		// la insertamos en la tabla paciente
+		String localidad = tfLocalidad.getText();
+		String numSocial = tfNumSegSocial.getText();
+		String tipo = "paciente";
+
+		Conexion conexion = new Conexion();
+		conexion.istPersona(conexion, nombre, apellido, usuario, password, dni, fecha.toString(), tipo);
 		conexion.istPaciente(conexion, conexion.consultaPersona(dni).getId_per(), localidad,
-				Integer.parseInt(numSocial), conexion.consultaPersona(cuidadorE).getId_per());
+				Integer.parseInt(numSocial), 999999, 99999);
 
 		// hacer lo de validar faltan 3 campos
-		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni, cuidadorE, medicoE);
+//		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni);
 
-		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && valido) {
-
-			escribirJsonCuidadores(dni);
-			escribirJsonMedicos(dni);
+		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" /* && valido */) {
 
 			// ***********************nuevo***********
-
-			Persona nuevo = new Persona(usuario, password, nombre, apellido, tipoUsuario, dni);
-			List<Persona> lista = GsonGeneral.desserializarJsonAArray(); // Creamos lista de personas con la info del
-																			// json
-			lista.add(nuevo); // añadimos el nuevo usuario a la lista
-			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
-			String representacionBonita = prettyGson.toJson(lista);
-			String ruta = "usuarios.json";
-			GsonGeneral.EscribirJson(representacionBonita, ruta);
 
 			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
 			stage.close();
@@ -226,8 +94,7 @@ public class ControllerRegistroPaciente {
 			// label indicando que se ha registrado con exito. en la ventana de iniciar
 			// sesion
 			System.out.println("Paciente registrado con exito");
-			System.out.println("Su cuidador: " + cuidadoresDisponiblesBox.getValue());
-			System.out.println("Su medico: " + medicosDisponiblesBox.getValue());
+
 		}
 	}
 
@@ -262,25 +129,23 @@ public class ControllerRegistroPaciente {
 		}
 	}
 
-	public boolean validation(String usuario, String password, String nombre, String apellido, String tipoUsuario,
-			String dni, String cuidadorE, String medicoE) {
+	public boolean validation(String usuario, String password, String nombre, String apellido, String dni) {
 		boolean valido = true;
 
 		if ((dni.matches("\\d{8}[A-HJ-NP-TV-Z]"))) {
 			lbErrorDni.setText("");
-			if (!GsonGeneral.seRepiteDni(dni)) {
+			if (!GsonGeneral.seRepiteDnis(dni)) {
 				lbErrorDni.setText("");
-				if (GsonGeneral.validarNIF(dni)) {
-					lbErrorDni.setText("");
-				} else {
-					lbErrorDni.setText("El DNI no es real");
-					valido = false;
-				}
 			} else {
 				lbErrorDni.setText("El DNI ya esta registrado");
 				valido = false;
 			}
-
+			if (GsonGeneral.validarNIF(dni)) {
+				lbErrorDni.setText("");
+			} else {
+				lbErrorDni.setText("El DNI no es real");
+				valido = false;
+			}
 		} else {
 			lbErrorDni.setText("El DNI debe llevar 8 numeros y una letra mayuscula");
 			valido = false;
@@ -317,18 +182,7 @@ public class ControllerRegistroPaciente {
 			lbErrorApellido.setText("Tu apellido debe contener al menos 2 letras");
 			valido = false;
 		}
-		if (!cuidadorE.matches("Elige cuidador")) {
-			lbErrorCuidador.setText("");
-		} else {
-			lbErrorCuidador.setText("Error! Elige un cuidador.");
-			valido = false;
-		}
-		if (!medicoE.matches("Elige medico")) {
-			lbErrorMedico.setText("");
-		} else {
-			lbErrorMedico.setText("Error! Elige un medico.");
-			valido = false;
-		}
+
 		return valido;
 	}
 }

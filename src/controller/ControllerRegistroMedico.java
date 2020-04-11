@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDate;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,8 +17,10 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
+import DataBase.Conexion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,34 +50,39 @@ public class ControllerRegistroMedico {
 	private Label lbErrorDni;
 	@FXML
 	public TextField tfUsuario = new JFXTextField(), tfNombre = new JFXTextField(), tfApellido = new JFXTextField(),
-	tfDni = new JFXTextField();
+			tfDni = new JFXTextField(), tfEspecialidad = new JFXTextField(), tfNumColegiado = new JFXTextField();
 	@FXML
 	public PasswordField tfPassword = new PasswordField();
+
+	@FXML
+	private JFXDatePicker jfxDPEdad = new JFXDatePicker();
+
+	public JFXDatePicker getDatePicker() {
+		return jfxDPEdad;
+	}
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
 
 		String usuario = tfUsuario.getText();
-		String password2 = tfPassword.getText();//password sin cifrar para hacer el validation
-		String password = GsonGeneral.getMd5(tfPassword.getText());
+		String password = tfPassword.getText();// password sin cifrar para hacer el validation
+		String passwordCifrada = GsonGeneral.getMd5(tfPassword.getText());
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
-		String tipoUsuario = "medico";
+		LocalDate fecha = jfxDPEdad.getValue();
+		String especialidad = tfEspecialidad.getText();
+		String numColegiado = tfNumColegiado.getText();
+		String tipo = "medico";
 
-		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni);
+		Conexion conexion = new Conexion();
+		conexion.istPersona(conexion, nombre, apellido, usuario, passwordCifrada, dni, fecha.toString(), tipo);
+		conexion.istMedico(conexion, conexion.consultaPersona(dni).getId_per(), especialidad,
+				Integer.parseInt(numColegiado), false);
 
-		if(usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && valido) {
+//		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni);
 
-			Persona nuevo = new Persona(usuario, password, nombre, apellido, tipoUsuario, dni); // Creamos objeto persona
-			// con los datos
-			// introducidos
-			List<Persona> lista = GsonGeneral.desserializarJsonAArray(); // Creamos lista de personas con la info del json
-			lista.add(nuevo); // añadimos el nuevo usuario a la lista
-			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
-			String representacionBonita = prettyGson.toJson(lista);
-			String ruta = "usuarios.json";
-			GsonGeneral.EscribirJson(representacionBonita, ruta);
+		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" /* && valido */) {
 
 			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
 			stage.close();
@@ -85,19 +93,8 @@ public class ControllerRegistroMedico {
 			// label indicando que se ha registrado con exito. en la ventana de iniciar
 			// sesion
 			System.out.println("Medico registrado con exito");
-			incluirEnJsonMedico(nuevo);
+
 		}
-	}
-	
-	public void incluirEnJsonMedico(Persona p) {
-		List<Medico> m = GsonGeneral.desserializarJsonAArrayMedico();
-		ArrayList<String> pacientesVacios = new ArrayList<String>();
-		Medico nuevo = new Medico(p.getDni(), pacientesVacios);
-		m.add(nuevo);		
-		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
-		String representacionBonita = prettyGson.toJson(m);
-		String ruta = "medicos.json";
-		GsonGeneral.EscribirJson(representacionBonita, ruta);
 	}
 
 	@FXML
@@ -131,49 +128,33 @@ public class ControllerRegistroMedico {
 		}
 	}
 
-	public boolean esSoloLetras(String cadena) {
-		// cogemos la cadena y la comparamos con su valor ASCII
-		for (int i = 0; i < cadena.length(); i++) {
-			char caracter = cadena.toUpperCase().charAt(i);
-			int valorASCII = (int) caracter;
-			System.out.println("Letra: " + caracter + " -> Valor ascii: " + valorASCII);
-			if (valorASCII != 209 && (valorASCII < 65 || valorASCII > 90) && valorASCII != 193 && valorASCII != 201
-					&& valorASCII != 205 && valorASCII != 211 && valorASCII != 218) {
-				System.out.println("ERROR: se ha encontrado un caracter que no es letra.");
-				return false; // Se ha encontrado un caracter que no es letra
-			}
-		}
-		return true;
-	}
-	
-	public boolean validation(String usuario, String password, String nombre, String apellido, String tipoUsuario,
-			String dni) {
+	public boolean validation(String usuario, String password, String nombre, String apellido, String dni) {
 		boolean valido = true;
-		
+
 		if ((dni.matches("\\d{8}[A-HJ-NP-TV-Z]"))) {
-			lbErrorDni.setText("");	
-			if (!GsonGeneral.seRepiteDni(dni)) {
-				lbErrorDni.setText("");	
-			}else {
+			lbErrorDni.setText("");
+			if (!GsonGeneral.seRepiteDnis(dni)) {
+				lbErrorDni.setText("");
+			} else {
 				lbErrorDni.setText("El DNI ya esta registrado");
-				valido = false;		
+				valido = false;
 			}
 			if (GsonGeneral.validarNIF(dni)) {
-				lbErrorDni.setText("");	
-			}else {
+				lbErrorDni.setText("");
+			} else {
 				lbErrorDni.setText("El DNI no es real");
-				valido = false;		
+				valido = false;
 			}
-		}else {
+		} else {
 			lbErrorDni.setText("El DNI debe llevar 8 numeros y una letra mayuscula");
-			valido = false;		
-		}	
+			valido = false;
+		}
 
 		if (usuario.matches("^[a-zA-Z0-9._-]{3,}$")) {
 			lbErrorUsuario.setText("");
 			if (!GsonGeneral.seRepiteUsuario(usuario)) {
-				lbErrorUsuario.setText("");	
-			}else {
+				lbErrorUsuario.setText("");
+			} else {
 				lbErrorUsuario.setText("El Usuario ya esta registrado");
 				valido = false;
 			}
@@ -200,9 +181,7 @@ public class ControllerRegistroMedico {
 			lbErrorApellido.setText("Tu apellido debe contener al menos 2 letras");
 			valido = false;
 		}
-		
 
-		
 		return valido;
 	}
 

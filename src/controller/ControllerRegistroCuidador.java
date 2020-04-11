@@ -17,8 +17,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.Cuidador;
-import model.Persona;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -45,37 +43,30 @@ public class ControllerRegistroCuidador {
 	private PasswordField tfPassword = new PasswordField();
 	@FXML
 	private JFXDatePicker dpFechaNacimiento = new JFXDatePicker();
- 
+
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
+		
 		String usuario = tfUsuario.getText();
-		String password2 = tfPassword.getText();// password sin cifrar para hacer el validation
-		String password = GsonGeneral.getMd5(tfPassword.getText());
+		String password = tfPassword.getText();// password sin cifrar para hacer el validation
+		String passwordCifrada = GsonGeneral.getMd5(tfPassword.getText());
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
-		String tipoUsuario = "cuidador";
-		// ******************** NUEVO **************
-		String especialidad = tfEspecialidad.getText();
 		LocalDate fechaNacimiento = dpFechaNacimiento.getValue();
-		Conexion conexion = new Conexion();
-		conexion.istPersona(conexion, nombre, apellido, usuario, password2, dni, fechaNacimiento.toString());
-		conexion.istCuidador(conexion, conexion.consultaPersona(dni).getId_per(), especialidad);
-		// hacer validaciones
-		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni);
+		String especialidad = tfEspecialidad.getText();
+		String tipo = "cuidador";
+		
+		System.out.println(GsonGeneral.seRepiteDnis(dni));
+		
+		boolean valido = validation(usuario, password, nombre, apellido, dni);
 
-		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && valido) {
+		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != ""&& valido) {
+			
+			Conexion conexion = new Conexion();
+			conexion.istPersona(conexion, nombre, apellido, usuario, passwordCifrada, dni, fechaNacimiento.toString(), tipo);
+			conexion.istCuidador(conexion, conexion.consultaPersona(dni).getId_per(), especialidad, 99999);
 
-			Persona nuevo = new Persona(usuario, password, nombre, apellido, tipoUsuario, dni); // Creamos objeto
-																								// persona con los datos
-																								// introducidos
-			List<Persona> lista = GsonGeneral.desserializarJsonAArray(); // Creamos lista de personas con la info del
-																			// json
-			lista.add(nuevo); // añadimos el nuevo usuario a la lista
-			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
-			String representacionBonita = prettyGson.toJson(lista);
-			String ruta = "usuarios.json";
-			GsonGeneral.EscribirJson(representacionBonita, ruta);
 
 			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
 			stage.close();
@@ -88,21 +79,9 @@ public class ControllerRegistroCuidador {
 			// label indicando que se ha registrado con exito. en la ventana de iniciar
 			// sesion
 			System.out.println("Cuidador registrado con exito");
-
-			incluirEnJsonCuidador(nuevo); // este metodo escribe en el json Cuidador para crear un cuidador nuevo sin
-											// pacientes a su cargo
+		}else {
+			System.out.println("no se pudo registrar");
 		}
-	}
-
-	public void incluirEnJsonCuidador(Persona p) {
-		List<Cuidador> c = GsonGeneral.desserializarJsonAArrayCuidador();
-		ArrayList<String> pacientesVacios = new ArrayList<String>();
-		Cuidador nuevo = new Cuidador(p.getDni(), pacientesVacios);
-		c.add(nuevo);
-		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create(); // Pasamos la lista a formato json
-		String representacionBonita = prettyGson.toJson(c);
-		String ruta = "cuidadores.json";
-		GsonGeneral.EscribirJson(representacionBonita, ruta);
 	}
 
 	@FXML
@@ -136,28 +115,12 @@ public class ControllerRegistroCuidador {
 		}
 	}
 
-	public boolean esSoloLetras(String cadena) {
-		// cogemos la cadena y la comparamos con su valor ASCII
-		for (int i = 0; i < cadena.length(); i++) {
-			char caracter = cadena.toUpperCase().charAt(i);
-			int valorASCII = (int) caracter;
-			System.out.println("Letra: " + caracter + " -> Valor ascii: " + valorASCII);
-			if (valorASCII != 209 && (valorASCII < 65 || valorASCII > 90) && valorASCII != 193 && valorASCII != 201
-					&& valorASCII != 205 && valorASCII != 211 && valorASCII != 218) {
-				System.out.println("ERROR: se ha encontrado un caracter que no es letra.");
-				return false; // Se ha encontrado un caracter que no es letra
-			}
-		}
-		return true;
-	}
-
-	public boolean validation(String usuario, String password, String nombre, String apellido, String tipoUsuario,
-			String dni) {
+	public boolean validation(String usuario, String password, String nombre, String apellido, String dni) {
 		boolean valido = true;
 
 		if ((dni.matches("\\d{8}[A-HJ-NP-TV-Z]"))) {
 			lbErrorDni.setText("");
-			if (!GsonGeneral.seRepiteDni(dni)) {
+			if (!GsonGeneral.seRepiteDnis(dni)) {
 				lbErrorDni.setText("");
 			} else {
 				lbErrorDni.setText("El DNI ya esta registrado");

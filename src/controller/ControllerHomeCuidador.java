@@ -28,6 +28,7 @@ import javafx.stage.Stage;
 import model.Cuidador;
 import model.Medico;
 import model.Persona;
+import model.PersonaNew;
 public class ControllerHomeCuidador {
 	@FXML
 	private TableView<Persona> tablaPacientesCuidador;
@@ -46,14 +47,14 @@ public class ControllerHomeCuidador {
 	@FXML
 	private Label idCuidadorLabel = new Label();
 	
-	public void writeText(Persona p) {
-		idCuidadorLabel.setText("Cuidador: Bienvenido/a " + p.getNombre() + "\nelije uno de tus pacientes\n para ver su sensor de presion");
-		lbOculto.setText(p.getDni());
+	public void writeText(PersonaNew persona) {
+		idCuidadorLabel.setText("Cuidador: Bienvenido/a " + persona.getNombre() + "\nelije uno de tus pacientes\n para ver su sensor de presion");
+		lbOculto.setText(persona.getDni());
 	}
 	//dado un cuidador p ponemos en un observableList sus pacientes
-	public void leerPersonas(ObservableList<Persona> listaPersonas, Persona p) {
+	public void leerPersonas(ObservableList<Persona> listaPersonas, PersonaNew persona) {
 		ArrayList<String> listaMisPacientes;
-		listaMisPacientes = listaPacientes(p);
+		listaMisPacientes = listaPacientes(persona);
 		List<Persona> lista = GsonGeneral.desserializarJsonAArray();
 		int lenthArray = listaMisPacientes.size();
 		// recorremos personas
@@ -113,9 +114,9 @@ public class ControllerHomeCuidador {
 			System.out.println(e.getMessage());
 		}
 	}
-	public void cargarTableview (Persona p) {
+	public void cargarTableview (PersonaNew persona) {
 		ObservableList<Persona> listaPersonas = FXCollections.observableArrayList();
-		leerPersonas(listaPersonas, p);
+		leerPersonas(listaPersonas, persona);
 		tablaPacientesCuidador.setItems(listaPersonas);
 		colDNI.setCellValueFactory(new PropertyValueFactory<Persona, String>("dni"));
 		colNombre.setCellValueFactory(new PropertyValueFactory<Persona, String>("nombre"));
