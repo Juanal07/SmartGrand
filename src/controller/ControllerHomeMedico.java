@@ -99,17 +99,19 @@ public class ControllerHomeMedico {
 		}
 	}
 
-	private void leerTickets2(ObservableList<TicketsNew> ticketsObservableList2, PersonaNew p) {
+	private ObservableList<TicketsNew>  leerTickets2(ObservableList<TicketsNew> ticketsObservableList2, PersonaNew p) {
 		Conexion conexion = new Conexion();
-		conexion.leerTickets(ticketsObservableList2, p, "id_medico");// tenemos todos los tickets
-		// averiguar si tiene todos lo tickest vacios
-		ticketsObservableList2 = filtrarTicketsVacios(ticketsObservableList2);
+		conexion.leerTickets(ticketsObservableList2,"id_medico", p);// tenemos todos los tickets
+		for (TicketsNew ticketsNew : ticketsObservableList2) {
+			System.out.println(ticketsNew.getId_paciente());
+		}
+		return ticketsObservableList2 = filtrarTicketsVacios(ticketsObservableList2);
 	}
 
 	private ObservableList<TicketsNew> filtrarTicketsVacios(ObservableList<TicketsNew> ticketsObservableList2) {
 		ObservableList<TicketsNew> ticketsObservableList = FXCollections.observableArrayList();
 		for (TicketsNew ticketsNew : ticketsObservableList2) {
-			if (ticketsNew.getTexto_Medico().equals("")) {
+			if (ticketsNew.getTexto_Medico().equals(null)) {
 				ticketsObservableList.add(ticketsNew);
 			}
 		}

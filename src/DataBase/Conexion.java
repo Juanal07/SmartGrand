@@ -68,11 +68,9 @@ public class Conexion {
 		conexion2.sentenciaSQL(istCuidador);
 	}
 
-	public void istTicket(Conexion conexion2, String textoPaciente, Date fechaPaciente, String textoMedico,
-			Date fechaMedico, int id_medico, int id_paciente) {
-		String istTicket = "INSERT INTO Ticket(Texto_Paciente, Fecha_Paciente, Texto_Medico Fecha_Medico, id_medico, id_paciente) VALUES('"
-				+ textoPaciente + "', '" + fechaPaciente + "', '" + textoMedico + "', '" + fechaMedico + "', '"
-				+ id_medico + "', '" + id_paciente + "');";
+	public void istTicketPaciente(Conexion conexion2, String textoPaciente, Date fechaPaciente, int id_medico, int id_paciente) {
+		String istTicket = "INSERT INTO Ticket(Texto_Paciente, Fecha_Paciente, id_medico, id_paciente)"
+				+ " VALUES('" + textoPaciente + "', '" + fechaPaciente + "', " + id_medico + ", " + id_paciente + ");";
 		conexion2.sentenciaSQL(istTicket);
 	}
 
@@ -130,8 +128,8 @@ public class Conexion {
 				+ "id_tic INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " 
 				+ "Texto_Paciente TEXT not NULL, "
 				+ "Fecha_Paciente Date not NULL, " 
-				+ "Texto_Medico TEXT not NULL, " 
-				+ "Fecha_Medico Date not null, "
+				+ "Texto_Medico TEXT, " 
+				+ "Fecha_Medico Date, "
 				+ "id_medico INTEGER," 
 				+ "id_paciente INTEGER," 
 				+ "FOREIGN KEY (id_medico) REFERENCES Medico(id_med),"
@@ -200,7 +198,7 @@ public class Conexion {
 		return per;
 	}
 
-	public PacienteNew consultaPaciente(int id_per, String where) {
+	public PacienteNew consultaPaciente(String where, int id_per) {
 		int id_pac = 0, numSegSocial = 0, id_cuidador = 0, id_medico = 0;
 		String localidad = null;
 		
@@ -268,7 +266,8 @@ public class Conexion {
 		return medicoNew;
 	}
 
-	public void leerTickets(ObservableList<TicketsNew> ticketsObservableList, PersonaNew p, String pWhere) {
+	public void leerTickets(ObservableList<TicketsNew> ticketsObservableList, String pWhere, PersonaNew p) {
+		System.out.println("conexion leerTickets id: " +  p.getId_per());
 		int id_tic, id_medico, id_paciente;
 		String texto_Paciente, texto_Medico;
 		Date fecha_Paciente, fecha_Medico;
@@ -292,6 +291,7 @@ public class Conexion {
 				fecha_Medico = rs.getDate("Fecha_Medico");
 				TicketsNew ticketsNew = new TicketsNew(id_tic, id_medico, id_paciente, texto_Paciente, texto_Medico,
 						fecha_Paciente, fecha_Medico);
+				System.out.println(ticketsNew.getTexto_Paciente());
 				ticketsObservableList.add(ticketsNew);
 			}
 			// destruyo todo consulta conexion y resultset

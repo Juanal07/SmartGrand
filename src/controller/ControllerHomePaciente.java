@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.PacienteNew;
 import model.PersonaNew;
 import model.TicketsNew;
 
@@ -57,12 +58,13 @@ public class ControllerHomePaciente {
 		// coger el id de paciente y despues hacer una consulta en medicos para buscar a
 		// su medic0
 		int idPaciente = conexion.consultaPersona("dni", dniPaciente).getId_per();
-		int idMedico = conexion.consultaMedico(idPaciente).getId_med();
+		PacienteNew pa = new PacienteNew();
+		pa = conexion.consultaPaciente("id_pac",idPaciente);
 		if (!textoPaciente.equals("")) {
 			java.sql.Date fecha_paciente = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 			// TicketsNew nuevo = new TicketsNew(idPaciente, idMedico, textoPaciente, "",
 			// fecha_paciente, null);
-			conexion.istTicket(conexion, textoPaciente, fecha_paciente, "", null, idMedico, idPaciente);
+			conexion.istTicketPaciente(conexion, textoPaciente, fecha_paciente, pa.getId_medico(), idPaciente);
 			jfxTaPaciente.setText("");
 			lbError.setWrapText(true);
 			lbError.setText("Ticket enviado con exito.");
@@ -84,7 +86,7 @@ public class ControllerHomePaciente {
 	public void cargarListaTickets(PersonaNew p) {
 		Conexion conexion = new Conexion();
 		ObservableList<TicketsNew> ticketsObservableList = FXCollections.observableArrayList();
-		conexion.leerTickets(ticketsObservableList, p, "id_paciente");
+		conexion.leerTickets(ticketsObservableList,"id_paciente", p);
 		lvTicketsPaciente.setItems(ticketsObservableList);
 		lvTicketsPaciente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TicketsNew>() {
 
