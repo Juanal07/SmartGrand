@@ -47,7 +47,7 @@ public class ControllerLogin {
 			Conexion conexion = new Conexion();
 			PersonaNew persona = conexion.consultaPersonaUsuario(usuario);
 
-			if (!(usuario.equals("")) && (persona.getPassword().contentEquals(password))) {
+			if (!(usuario.equals("")) && (persona.getPassword().equals(password))) {
 				System.out.println("password correcto");
 				String tUsu = persona.getTipo();
 
