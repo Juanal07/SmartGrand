@@ -102,8 +102,9 @@ public class ControllerHomeMedico {
 	private ObservableList<TicketsNew>  leerTickets2(ObservableList<TicketsNew> ticketsObservableList2, PersonaNew p) {
 		Conexion conexion = new Conexion();
 		conexion.leerTickets(ticketsObservableList2,"id_medico", p.getId_per());// tenemos todos los tickets
+		System.out.println("*****	aqui no llega el error	****");
 		for (TicketsNew ticketsNew : ticketsObservableList2) {
-			System.out.println(ticketsNew.getId_paciente());
+			System.out.println(ticketsNew.getTexto_Paciente());
 		}
 		return ticketsObservableList2 = filtrarTicketsVacios(ticketsObservableList2);
 	}

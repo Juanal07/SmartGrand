@@ -24,7 +24,7 @@ import model.PersonaNew;
 import model.TicketsNew;
 
 public class ControllerHomePaciente {
-	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	@FXML
 	private JFXListView<TicketsNew> lvTicketsPaciente = new JFXListView<TicketsNew>();

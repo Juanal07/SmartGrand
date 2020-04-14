@@ -272,7 +272,6 @@ public class Conexion {
 		String texto_Paciente, texto_Medico;
 		Timestamp fecha_Paciente, fecha_Medico;
 		//Date fecha_Medico;
-
 		try {
 			Class.forName("org.sqlite.JDBC");
 			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
@@ -284,15 +283,14 @@ public class Conexion {
 			while (rs.next()) {
 				// aqui colocar un objeto
 				id_tic = rs.getInt("id_tic");
+				texto_Paciente = rs.getString("Texto_Paciente");
+				fecha_Paciente = rs.getTimestamp("Fecha_Paciente");//getDate("Fecha_Paciente");
+				texto_Medico = rs.getString("Texto_Medico");
+				fecha_Medico = rs.getTimestamp("Fecha_Medico");
 				id_medico = rs.getInt("id_medico");
 				id_paciente = rs.getInt("id_paciente");
-				texto_Medico = rs.getString("texto_Medico");
-				texto_Paciente = rs.getString("texto_Paciente");
-				fecha_Paciente = rs.getTimestamp("Fecha_Paciente");//getDate("Fecha_Paciente");
-				fecha_Medico = rs.getTimestamp("Fecha_Medico");
-				TicketsNew ticketsNew = new TicketsNew(id_tic, id_medico, id_paciente, texto_Paciente, texto_Medico,
-						fecha_Paciente, fecha_Medico);
-				System.out.println(ticketsNew.getTexto_Paciente());
+				TicketsNew ticketsNew = new TicketsNew(id_tic, texto_Paciente, fecha_Paciente, texto_Medico, fecha_Medico, id_medico, id_paciente);
+				System.out.println(1111111111);
 				ticketsObservableList.add(ticketsNew);
 			}
 			// destruyo todo consulta conexion y resultset
@@ -300,7 +298,7 @@ public class Conexion {
 			stmt.close();
 			conexion.close();
 		} catch (Exception e) {
-			System.out.println("ticket conexion");
+			System.out.println("ERROR: ticket conexion");
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 		}
 		System.out.println("Consulta terminada");

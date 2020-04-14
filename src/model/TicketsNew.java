@@ -24,16 +24,16 @@ public class TicketsNew {
 //		this.fecha_Medico = fecha_Medico;
 //	}
 
-	public TicketsNew(int id_tic, int id_medico, int id_paciente, String texto_Paciente, String texto_Medico,
-			Timestamp fecha_Paciente2, Timestamp fecha_Medico2) {
+	public TicketsNew(int id_tic, String texto_Paciente, Timestamp fecha_Paciente2, String texto_Medico,
+			Timestamp fecha_Medico2, int id_medico, int id_paciente) {
 		super();
 		this.id_tic = id_tic;
+		this.texto_Paciente = texto_Paciente;
+		this.fecha_Paciente = fecha_Paciente2;
+		this.texto_Medico = texto_Medico;
+		this.fecha_Medico = fecha_Medico2;
 		this.id_medico = id_medico;
 		this.id_paciente = id_paciente;
-		this.texto_Paciente = texto_Paciente;
-		this.texto_Medico = texto_Medico;
-		this.fecha_Paciente = fecha_Paciente2;
-		this.fecha_Medico = fecha_Medico2;
 	}
 
 	public int getId_tic() {
