@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,7 +69,7 @@ public class Conexion {
 		conexion2.sentenciaSQL(istCuidador);
 	}
 
-	public void istTicketPaciente(Conexion conexion2, String textoPaciente, Date fechaPaciente, int id_medico, int id_paciente) {
+	public void istTicketPaciente(Conexion conexion2, String textoPaciente, String fechaPaciente, int id_medico, int id_paciente) {
 		String istTicket = "INSERT INTO Ticket(Texto_Paciente, Fecha_Paciente, id_medico, id_paciente)"
 				+ " VALUES('" + textoPaciente + "', '" + fechaPaciente + "', " + id_medico + ", " + id_paciente + ");";
 		conexion2.sentenciaSQL(istTicket);
@@ -127,9 +128,9 @@ public class Conexion {
 		String tablaTicket = "CREATE TABLE IF NOT EXISTS Ticket("
 				+ "id_tic INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " 
 				+ "Texto_Paciente TEXT not NULL, "
-				+ "Fecha_Paciente Date not NULL, " 
+				+ "Fecha_Paciente Timestamp not NULL, " 
 				+ "Texto_Medico TEXT, " 
-				+ "Fecha_Medico Date, "
+				+ "Fecha_Medico Timestamp, "
 				+ "id_medico INTEGER," 
 				+ "id_paciente INTEGER," 
 				+ "FOREIGN KEY (id_medico) REFERENCES Medico(id_med),"
@@ -266,11 +267,11 @@ public class Conexion {
 		return medicoNew;
 	}
 
-	public void leerTickets(ObservableList<TicketsNew> ticketsObservableList, String pWhere, PersonaNew p) {
-		System.out.println("conexion leerTickets id: " +  p.getId_per());
+	public void leerTickets(ObservableList<TicketsNew> ticketsObservableList, String pWhere, int id) {
 		int id_tic, id_medico, id_paciente;
 		String texto_Paciente, texto_Medico;
-		Date fecha_Paciente, fecha_Medico;
+		Timestamp fecha_Paciente, fecha_Medico;
+		//Date fecha_Medico;
 
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -278,7 +279,7 @@ public class Conexion {
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM Ticket where " + pWhere + " = " + p.getId_per() + ";");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Ticket where " + pWhere + " = " + id + ";");
 
 			while (rs.next()) {
 				// aqui colocar un objeto
@@ -287,8 +288,8 @@ public class Conexion {
 				id_paciente = rs.getInt("id_paciente");
 				texto_Medico = rs.getString("texto_Medico");
 				texto_Paciente = rs.getString("texto_Paciente");
-				fecha_Paciente = rs.getDate("Fecha_Paciente");
-				fecha_Medico = rs.getDate("Fecha_Medico");
+				fecha_Paciente = rs.getTimestamp("Fecha_Paciente");//getDate("Fecha_Paciente");
+				fecha_Medico = rs.getTimestamp("Fecha_Medico");
 				TicketsNew ticketsNew = new TicketsNew(id_tic, id_medico, id_paciente, texto_Paciente, texto_Medico,
 						fecha_Paciente, fecha_Medico);
 				System.out.println(ticketsNew.getTexto_Paciente());
@@ -299,6 +300,7 @@ public class Conexion {
 			stmt.close();
 			conexion.close();
 		} catch (Exception e) {
+			System.out.println("ticket conexion");
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 		}
 		System.out.println("Consulta terminada");

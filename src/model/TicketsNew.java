@@ -1,38 +1,39 @@
 package model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class TicketsNew {
 
 	private int id_tic, id_medico, id_paciente;
 	private String texto_Paciente, texto_Medico;
-	private Date fecha_Paciente, fecha_Medico;
+	private Timestamp fecha_Paciente, fecha_Medico;
 
 	public TicketsNew() {
 		super();
 	}
 
-	public TicketsNew(int id_medico, int id_paciente, String texto_Paciente, String texto_Medico, Date fecha_Paciente,
-			Date fecha_Medico) {
-		super();
-		this.id_medico = id_medico;
-		this.id_paciente = id_paciente;
-		this.texto_Paciente = texto_Paciente;
-		this.texto_Medico = texto_Medico;
-		this.fecha_Paciente = fecha_Paciente;
-		this.fecha_Medico = fecha_Medico;
-	}
+//	public TicketsNew(int id_medico, int id_paciente, String texto_Paciente, String texto_Medico, Date fecha_Paciente,
+//			Date fecha_Medico) {
+//		super();
+//		this.id_medico = id_medico;
+//		this.id_paciente = id_paciente;
+//		this.texto_Paciente = texto_Paciente;
+//		this.texto_Medico = texto_Medico;
+//		this.fecha_Paciente = fecha_Paciente;
+//		this.fecha_Medico = fecha_Medico;
+//	}
 
 	public TicketsNew(int id_tic, int id_medico, int id_paciente, String texto_Paciente, String texto_Medico,
-			Date fecha_Paciente, Date fecha_Medico) {
+			Timestamp fecha_Paciente2, Timestamp fecha_Medico2) {
 		super();
 		this.id_tic = id_tic;
 		this.id_medico = id_medico;
 		this.id_paciente = id_paciente;
 		this.texto_Paciente = texto_Paciente;
 		this.texto_Medico = texto_Medico;
-		this.fecha_Paciente = fecha_Paciente;
-		this.fecha_Medico = fecha_Medico;
+		this.fecha_Paciente = fecha_Paciente2;
+		this.fecha_Medico = fecha_Medico2;
 	}
 
 	public int getId_tic() {
@@ -75,20 +76,36 @@ public class TicketsNew {
 		this.texto_Medico = fexto_Medico;
 	}
 
-	public Date getFecha_Paciente() {
+	public Timestamp getFecha_Paciente() {
 		return fecha_Paciente;
 	}
 
-	public void setFecha_Paciente(Date fecha_Paciente) {
+	public void setFecha_Paciente(Timestamp fecha_Paciente) {
 		this.fecha_Paciente = fecha_Paciente;
 	}
 
-	public Date getFecha_Medico() {
+	public Timestamp getFecha_Medico() {
 		return fecha_Medico;
 	}
 
-	public void setFecha_Medico(Date fecha_Medico) {
+	public void setFecha_Medico(Timestamp fecha_Medico) {
 		this.fecha_Medico = fecha_Medico;
 	}
+
+//	public Date getFecha_Paciente() {
+//		return fecha_Paciente;
+//	}
+//
+//	public void setFecha_Paciente(Date fecha_Paciente) {
+//		this.fecha_Paciente = fecha_Paciente;
+//	}
+//
+//	public Date getFecha_Medico() {
+//		return fecha_Medico;
+//	}
+//
+//	public void setFecha_Medico(Date fecha_Medico) {
+//		this.fecha_Medico = fecha_Medico;
+//	}
 
 }

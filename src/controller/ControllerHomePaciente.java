@@ -1,15 +1,14 @@
 package controller;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXScrollPane;
 import com.jfoenix.controls.JFXTextArea;
-
 import DataBase.Conexion;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,6 +24,8 @@ import model.PersonaNew;
 import model.TicketsNew;
 
 public class ControllerHomePaciente {
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
 	@FXML
 	private JFXListView<TicketsNew> lvTicketsPaciente = new JFXListView<TicketsNew>();
 	@FXML
@@ -35,7 +36,7 @@ public class ControllerHomePaciente {
 	private JFXTextArea jfxTaPaciente = new JFXTextArea();
 	@FXML
 	private Label lbError = new Label();
-	private Label lbOculto = new Label();
+	private Label lbOcultoIdPer = new Label();
 	private Label lbOcultoObjetoYo = new Label();
 
 	@FXML
@@ -53,18 +54,20 @@ public class ControllerHomePaciente {
 		Conexion conexion = new Conexion();
 
 		String textoPaciente = jfxTaPaciente.getText();
-		String dniPaciente = lbOculto.getText();
+		String IdPaciente = lbOcultoIdPer.getText();
 		// averiguar el dni del medico
 		// coger el id de paciente y despues hacer una consulta en medicos para buscar a
 		// su medic0
-		int idPaciente = conexion.consultaPersona("dni", dniPaciente).getId_per();
+		int idPaciente = conexion.consultaPersona("id_per", IdPaciente).getId_per();
 		PacienteNew pa = new PacienteNew();
 		pa = conexion.consultaPaciente("id_pac",idPaciente);
 		if (!textoPaciente.equals("")) {
+			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
 			java.sql.Date fecha_paciente = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-			// TicketsNew nuevo = new TicketsNew(idPaciente, idMedico, textoPaciente, "",
-			// fecha_paciente, null);
-			conexion.istTicketPaciente(conexion, textoPaciente, fecha_paciente, pa.getId_medico(), idPaciente);
+			System.out.println("yo paciente id: " + idPaciente +" id medico: " + pa.getId_medico());
+		
+			conexion.istTicketPaciente(conexion, textoPaciente, sdf.format(timestamp), pa.getId_medico(), idPaciente);
 			jfxTaPaciente.setText("");
 			lbError.setWrapText(true);
 			lbError.setText("Ticket enviado con exito.");
@@ -77,26 +80,29 @@ public class ControllerHomePaciente {
 	}
 
 	public void writeText(PersonaNew p) {
-		lbOculto.setText(p.getDni());
+		lbOcultoIdPer.setText(Integer.toString(p.getId_per()));
 		lbOcultoObjetoYo.setText(p.toString());
 		labelPaciente.setText(
 				"Paciente: Bienvenido/a " + p.getNombre() + " \naqui puedes ver tu lista de tickets respondidos");
 	}
-
+	// aqui esta el error
 	public void cargarListaTickets(PersonaNew p) {
 		Conexion conexion = new Conexion();
 		ObservableList<TicketsNew> ticketsObservableList = FXCollections.observableArrayList();
-		conexion.leerTickets(ticketsObservableList,"id_paciente", p);
-		lvTicketsPaciente.setItems(ticketsObservableList);
-		lvTicketsPaciente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TicketsNew>() {
-
-			@Override
-			public void changed(ObservableValue<? extends TicketsNew> observable, TicketsNew oldValue,
-					TicketsNew newValue) {
-				TicketsNew tickets = lvTicketsPaciente.getSelectionModel().getSelectedItem();
-				ventanaDatosTicket(p, tickets);
-			}
-		});
+		conexion.leerTickets(ticketsObservableList,"id_paciente", p.getId_per());
+		for (TicketsNew ticketsNew : ticketsObservableList) {
+			System.out.println("texto paciente: " + ticketsNew.getTexto_Paciente());
+		}
+//		lvTicketsPaciente.setItems(ticketsObservableList);
+//		lvTicketsPaciente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TicketsNew>() {
+//
+//			@Override
+//			public void changed(ObservableValue<? extends TicketsNew> observable, TicketsNew oldValue,
+//					TicketsNew newValue) {
+//				TicketsNew tickets = lvTicketsPaciente.getSelectionModel().getSelectedItem();
+//				ventanaDatosTicket(p, tickets);
+//			}
+//		});
 	}
 
 	private void ventanaDatosTicket(PersonaNew persona, TicketsNew tickets) {

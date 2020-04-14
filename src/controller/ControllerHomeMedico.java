@@ -101,7 +101,7 @@ public class ControllerHomeMedico {
 
 	private ObservableList<TicketsNew>  leerTickets2(ObservableList<TicketsNew> ticketsObservableList2, PersonaNew p) {
 		Conexion conexion = new Conexion();
-		conexion.leerTickets(ticketsObservableList2,"id_medico", p);// tenemos todos los tickets
+		conexion.leerTickets(ticketsObservableList2,"id_medico", p.getId_per());// tenemos todos los tickets
 		for (TicketsNew ticketsNew : ticketsObservableList2) {
 			System.out.println(ticketsNew.getId_paciente());
 		}
