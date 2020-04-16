@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.Desktop;
+import java.net.URI;
 import java.io.BufferedWriter;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -183,5 +185,13 @@ public class ControllerRegistroMedico {
 
 		return valido;
 	}
+	public void linkPulsado(ActionEvent event) {
+		try {
 
+			Desktop.getDesktop().browse(new URI("https://twitter.com/SmartGrandOffi1"));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
