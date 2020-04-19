@@ -8,110 +8,49 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" styleClass="fondo" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="fondo" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane layoutX="-1.0" prefHeight="500.0" prefWidth="611.0" styleClass="colorRaro" stylesheets="@Style.css">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="37.0" minHeight="0.0" prefHeight="1.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="409.0" minHeight="10.0" prefHeight="405.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="197.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="197.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <GridPane prefHeight="53.0" prefWidth="600.0" styleClass="colorRaro" stylesheets="@Style.css">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="57.0" prefWidth="607.0" text="Nuevo paciente" textAlignment="JUSTIFY">
-                     <font>
-                        <Font name="Calibri" size="34.0" />
-                     </font>
-                     <padding>
-                        <Insets top="15.0" />
-                     </padding>
-                  </Label>
-               </children>
-            </GridPane>
-            <GridPane styleClass="negro" stylesheets="@Style.css" GridPane.rowIndex="1">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
-            <GridPane styleClass="fondo" stylesheets="@Style.css" GridPane.rowIndex="2">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <AnchorPane prefHeight="404.0" prefWidth="570.0">
-                     <children>
-                        <Label fx:id="lbErrorCuidador" layoutX="466.0" layoutY="299.0" prefHeight="17.0" prefWidth="0.0" textFill="RED" />
-                        <Label fx:id="lbErrorMedico" layoutX="466.0" layoutY="323.0" prefHeight="17.0" prefWidth="0.0" textFill="RED" />
-                        <Label fx:id="lbErrorDni" layoutX="475.0" layoutY="89.0" prefHeight="17.0" prefWidth="0.0" textFill="RED" />
-                        <JFXTextField fx:id="tfDni" labelFloat="true" layoutX="14.0" layoutY="85.0" prefHeight="25.0" prefWidth="450.0" promptText="DNI" />
-                        <Label fx:id="lbErrorUsuario" layoutX="475.0" layoutY="18.0" prefHeight="17.0" prefWidth="0.0" textFill="RED" />
-                        <JFXTextField fx:id="tfUsuario" labelFloat="true" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="450.0" promptText="Usuario" />
-                        <Label fx:id="lbErrorPassword" layoutX="475.0" layoutY="54.0" prefHeight="17.0" prefWidth="0.0" textFill="RED" />
-                        <JFXPasswordField fx:id="tfPassword" labelFloat="true" layoutX="14.0" layoutY="50.0" prefHeight="25.0" prefWidth="450.0" promptText="Contraseña" />
-                        <Label fx:id="lbErrorNombre" layoutX="475.0" layoutY="123.0" prefHeight="17.0" prefWidth="0.0" textFill="RED" />
-                        <JFXTextField fx:id="tfNombre" labelFloat="true" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="450.0" promptText="Nombre" />
-                        <Label fx:id="lbErrorApellido" layoutX="475.0" layoutY="157.0" prefHeight="17.0" prefWidth="0.0" textFill="RED" />
-                        <JFXTextField fx:id="tfApellido" labelFloat="true" layoutX="14.0" layoutY="153.0" prefHeight="25.0" prefWidth="450.0" promptText="Apellidos" />
-                        <JFXDatePicker fx:id="jfxDPEdad" layoutX="14.0" layoutY="225.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="450.0" promptText="Fecha de Nacimiento" />
-                        <JFXTextField fx:id="tfNumSegSocial" labelFloat="true" layoutX="14.0" layoutY="262.0" prefHeight="25.0" prefWidth="450.0" promptText="Numero seguridad social" />
-                        <JFXTextField fx:id="tfLocalidad" labelFloat="true" layoutX="14.0" layoutY="190.0" prefHeight="25.0" prefWidth="450.0" promptText="Localidad" />
-                        <JFXButton fx:id="btnRegistrarse" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="299.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#pacienteRegistrado" prefHeight="47.0" prefWidth="172.0" styleClass="mainButton" stylesheets="@Style.css" text="Finalizar" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="btnAtras" alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="299.0" maxHeight="-Infinity" onAction="#atrasRegContinuo" prefHeight="47.0" prefWidth="172.0" styleClass="mainButton" stylesheets="@Style.css" text="Atras" textAlignment="JUSTIFY" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </GridPane>
-            <GridPane prefHeight="31.0" prefWidth="600.0" styleClass="negro" stylesheets="@Style.css" GridPane.rowIndex="3">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
-            <GridPane GridPane.rowIndex="4">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
-         </children>
-      </GridPane>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="311.0" layoutY="10.0" prefHeight="34.0" prefWidth="600.0" text="Registro paciente" textAlignment="JUSTIFY">
+         <font>
+            <Font name="Calibri" size="34.0" />
+         </font>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </Label>
+      <JFXTextField fx:id="tfUsuario" labelFloat="true" layoutX="134.0" layoutY="172.0" prefHeight="25.0" prefWidth="452.0" promptText="Usuario" />
+      <Label fx:id="lbErrorUsuario" layoutX="134.0" layoutY="213.0" prefHeight="17.0" prefWidth="452.0" textFill="RED" />
+      <JFXPasswordField fx:id="tfPassword" labelFloat="true" layoutX="134.0" layoutY="262.0" prefHeight="25.0" prefWidth="452.0" promptText="Contraseña" />
+      <Label fx:id="lbErrorPassword" layoutX="134.0" layoutY="303.0" prefHeight="17.0" prefWidth="452.0" textFill="RED" />
+      <JFXTextField fx:id="tfDni" labelFloat="true" layoutX="134.0" layoutY="340.0" prefHeight="25.0" prefWidth="452.0" promptText="DNI" />
+      <Label fx:id="lbErrorDni" layoutX="134.0" layoutY="380.0" prefHeight="17.0" prefWidth="452.0" textFill="RED" />
+      <JFXTextField fx:id="tfNombre" labelFloat="true" layoutX="134.0" layoutY="428.0" prefHeight="25.0" prefWidth="452.0" promptText="Nombre" />
+      <Label fx:id="lbErrorNombre" layoutX="134.0" layoutY="468.0" prefHeight="17.0" prefWidth="452.0" textFill="RED" />
+      <JFXTextField fx:id="tfApellido" labelFloat="true" layoutX="694.0" layoutY="171.0" prefHeight="25.0" prefWidth="452.0" promptText="Apellidos" />
+      <Label fx:id="lbErrorApellido" layoutX="694.0" layoutY="208.0" prefHeight="17.0" prefWidth="452.0" textFill="RED" />
+      <JFXTextField fx:id="tfLocalidad" labelFloat="true" layoutX="694.0" layoutY="259.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="452.0" promptText="Localidad" />
+      <Label fx:id="lbErrorLocalidad" layoutX="694.0" layoutY="304.0" prefHeight="17.0" prefWidth="452.0" textFill="RED" />
+      <JFXTextField fx:id="tfNumSegSocial" labelFloat="true" layoutX="694.0" layoutY="335.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="452.0" promptText="Numero de seguridad social" />
+      <Label fx:id="lbErrorSegSocial" layoutX="694.0" layoutY="377.0" prefHeight="17.0" prefWidth="452.0" textFill="RED" />
+      <JFXDatePicker fx:id="dpFechaNacimiento" layoutX="694.0" layoutY="427.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="452.0" promptText="Fecha de nacimiento." />
+      <Label fx:id="lbErrorNac" layoutX="694.0" layoutY="468.0" prefHeight="17.0" prefWidth="452.0" textFill="RED" />
+      <JFXButton fx:id="btnRegistrarse" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="782.0" layoutY="618.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#pacienteRegistrado" prefHeight="47.0" prefWidth="229.0" styleClass="mainButton" stylesheets="@Style.css" text="Finalizar" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnAtras" alignment="CENTER" contentDisplay="CENTER" layoutX="266.0" layoutY="618.0" maxHeight="-Infinity" onAction="#atrasRegContinuo" prefHeight="47.0" prefWidth="209.0" styleClass="mainButton" stylesheets="@Style.css" text="Atras" textAlignment="JUSTIFY" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>

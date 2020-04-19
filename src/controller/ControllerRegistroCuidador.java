@@ -127,17 +127,19 @@ public class ControllerRegistroCuidador {
 
 		if ((dni.matches("\\d{8}[A-HJ-NP-TV-Z]"))) {
 			lbErrorDni.setText("");
-			if (!GsonGeneral.seRepiteDnis(dni)) {
-				lbErrorDni.setText("");
-			} else {
-				lbErrorDni.setText("El DNI ya esta registrado");
-				valido = false;
-			}
 			if (GsonGeneral.validarNIF(dni)) {
 				lbErrorDni.setText("");
+				if (!GsonGeneral.seRepiteDnis(dni)) {
+					lbErrorDni.setText("");
+				} else {
+					System.out.println(GsonGeneral.seRepiteDnis(dni));
+					lbErrorDni.setText("El DNI ya esta registrado");
+					valido = false;
+				}
 			} else {
 				lbErrorDni.setText("El DNI no es real");
 				valido = false;
+
 			}
 		} else {
 			lbErrorDni.setText("El DNI debe llevar 8 numeros y una letra mayuscula");

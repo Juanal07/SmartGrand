@@ -43,47 +43,45 @@ public class ControllerRegistroPaciente {
 	@FXML
 	private Label lbErrorDni;
 	@FXML
-	private Label lbErrorCuidador;
+	private Label lbErrorLocalidad;
 	@FXML
-	private Label lbErrorMedico;
+	private Label lbErrorSegSocial;
+	@FXML
+	private Label lbErrorNac;
 	@FXML
 	public TextField tfUsuario = new JFXTextField(), tfNombre = new JFXTextField(), tfApellido = new JFXTextField(),
 			tfDni = new JFXTextField(), tfNumSegSocial = new TextField(), tfLocalidad = new TextField();
 	@FXML
 	public PasswordField tfPassword = new PasswordField();
 
-	@FXML
-	private JFXDatePicker jfxDPEdad = new JFXDatePicker();
 
-	public JFXDatePicker getDatePicker() {
-		return jfxDPEdad;
-	}
+	@FXML
+	private JFXDatePicker dpFechaNacimiento = new JFXDatePicker();
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
 
 		String usuario = tfUsuario.getText();
-		String password2 = tfPassword.getText();// password sin cifrar para hacer el validation
-		String password = GsonGeneral.getMd5(tfPassword.getText());
+		String password = tfPassword.getText();// password sin cifrar para hacer el validation
+		String passwordCifrada = GsonGeneral.getMd5(tfPassword.getText());
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
-		LocalDate fecha = jfxDPEdad.getValue();
+		LocalDate fechaNacimiento = dpFechaNacimiento.getValue();
 		String localidad = tfLocalidad.getText();
 		String numSocial = tfNumSegSocial.getText();
 		String tipo = "paciente";
 
-		Conexion conexion = new Conexion();
-		conexion.istPersona(conexion, nombre, apellido, usuario, password, dni, fecha.toString(), tipo);
-		conexion.istPaciente(conexion, conexion.consultaPersona("dni",dni).getId_per(), localidad,
-				Integer.parseInt(numSocial), 999999, 99999);
-
 		// hacer lo de validar faltan 3 campos
-//		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni);
+		boolean valido = validation(usuario, password, nombre, apellido, dni, fechaNacimiento, localidad, numSocial);
 
-		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" /* && valido */) {
+		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && valido) {
 
-			// ***********************nuevo***********
+			Conexion conexion = new Conexion();
+			conexion.istPersona(conexion, nombre, apellido, usuario, passwordCifrada, dni, fechaNacimiento.toString(),
+					tipo);
+			conexion.istPaciente(conexion, conexion.consultaPersona("dni", dni).getId_per(), localidad,
+					Integer.parseInt(numSocial), 999999, 99999);
 
 			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
 			stage.close();
@@ -128,23 +126,27 @@ public class ControllerRegistroPaciente {
 		}
 	}
 
-	public boolean validation(String usuario, String password, String nombre, String apellido, String dni) {
+	public boolean validation(String usuario, String password, String nombre, String apellido, String dni,
+			LocalDate fechaNac, String localidad, String numSegSocial) {
 		boolean valido = true;
 
 		if ((dni.matches("\\d{8}[A-HJ-NP-TV-Z]"))) {
 			lbErrorDni.setText("");
-			if (!GsonGeneral.seRepiteDnis(dni)) {
-				lbErrorDni.setText("");
-			} else {
-				lbErrorDni.setText("El DNI ya esta registrado");
-				valido = false;
-			}
 			if (GsonGeneral.validarNIF(dni)) {
 				lbErrorDni.setText("");
+				if (!GsonGeneral.seRepiteDnis(dni)) {
+					lbErrorDni.setText("");
+				} else {
+					System.out.println(GsonGeneral.seRepiteDnis(dni));
+					lbErrorDni.setText("El DNI ya esta registrado");
+					valido = false;
+				}
 			} else {
 				lbErrorDni.setText("El DNI no es real");
 				valido = false;
+
 			}
+
 		} else {
 			lbErrorDni.setText("El DNI debe llevar 8 numeros y una letra mayuscula");
 			valido = false;
@@ -165,7 +167,7 @@ public class ControllerRegistroPaciente {
 		if (password.matches("^[a-zA-Z0-9._-]{8,}$")) {
 			lbErrorPassword.setText("");
 		} else {
-			lbErrorPassword.setText("La contrase�a debe contener al menos 8 caracteres");
+			lbErrorPassword.setText("Tu password debe contener al menos 8 caracteres");
 			valido = false;
 		}
 		if (nombre.matches("^[a-zA-Z]{2,}$")) {
@@ -179,6 +181,28 @@ public class ControllerRegistroPaciente {
 			lbErrorApellido.setText("");
 		} else {
 			lbErrorApellido.setText("Tu apellido debe contener al menos 2 letras");
+			valido = false;
+		}
+
+		if ((fechaNac != null)
+				&& fechaNac.toString().matches("^((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$")) {
+			lbErrorNac.setText("");
+		} else {
+			lbErrorNac.setText("Tu fecha de nacimiento no es valida");
+			valido = false;
+		}
+
+		if (localidad.matches("^[a-zA-Z]{2,}$")) {
+			lbErrorLocalidad.setText("");
+		} else {
+			lbErrorLocalidad.setText("Tu especialidad debe contener al menos 2 letras");
+			valido = false;
+		}
+
+		if (numSegSocial.matches("^[a-zA-Z0-9._-]{8,}$")) {
+			lbErrorSegSocial.setText("");
+		} else {
+			lbErrorSegSocial.setText("Tu numero de seguridad social debe contener al menos 8 caracteres");
 			valido = false;
 		}
 

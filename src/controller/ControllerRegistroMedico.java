@@ -51,6 +51,12 @@ public class ControllerRegistroMedico {
 	@FXML
 	private Label lbErrorDni;
 	@FXML
+	private Label lbErrorColegiado;
+	@FXML
+	private Label lbErrorEspe;
+	@FXML
+	private Label lbErrorNac;
+	@FXML
 	public TextField tfUsuario = new JFXTextField(), tfNombre = new JFXTextField(), tfApellido = new JFXTextField(),
 			tfDni = new JFXTextField(), tfEspecialidad = new JFXTextField(), tfNumColegiado = new JFXTextField();
 	@FXML
@@ -59,9 +65,8 @@ public class ControllerRegistroMedico {
 	@FXML
 	private JFXDatePicker jfxDPEdad = new JFXDatePicker();
 
-	public JFXDatePicker getDatePicker() {
-		return jfxDPEdad;
-	}
+	@FXML
+	private JFXDatePicker dpFechaNacimiento = new JFXDatePicker();
 
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
@@ -72,19 +77,26 @@ public class ControllerRegistroMedico {
 		String nombre = tfNombre.getText();
 		String apellido = tfApellido.getText();
 		String dni = tfDni.getText();
-		LocalDate fecha = jfxDPEdad.getValue();
 		String especialidad = tfEspecialidad.getText();
 		String numColegiado = tfNumColegiado.getText();
+		LocalDate fechaNacimiento = dpFechaNacimiento.getValue();
 		String tipo = "medico";
 
-		Conexion conexion = new Conexion();
-		conexion.istPersona(conexion, nombre, apellido, usuario, passwordCifrada, dni, fecha.toString(), tipo);
-		conexion.istMedico(conexion, conexion.consultaPersona("dni",dni).getId_per(), especialidad,
-				Integer.parseInt(numColegiado), false);
+		System.out.println(GsonGeneral.seRepiteDnis(dni));
+		System.out.println(usuario + passwordCifrada + nombre + apellido + dni + especialidad + numColegiado);
+		System.out.println(fechaNacimiento == null);
 
-//		boolean valido = validation(usuario, password2, nombre, apellido, tipoUsuario, dni);
+		boolean valido = validation(usuario, password, nombre, apellido, dni, fechaNacimiento, especialidad,
+				numColegiado);
 
-		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" /* && valido */) {
+		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && fechaNacimiento != null
+				&& especialidad != "" && numColegiado != "" && valido) {
+
+			Conexion conexion = new Conexion();
+			conexion.istPersona(conexion, nombre, apellido, usuario, passwordCifrada, dni, fechaNacimiento.toString(),
+					tipo);
+			conexion.istMedico(conexion, conexion.consultaPersona("dni", dni).getId_per(), especialidad,
+					Integer.parseInt(numColegiado), false);
 
 			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
 			stage.close();
@@ -95,7 +107,8 @@ public class ControllerRegistroMedico {
 			// label indicando que se ha registrado con exito. en la ventana de iniciar
 			// sesion
 			System.out.println("Medico registrado con exito");
-
+		} else {
+			System.out.println("no se pudo registrar");
 		}
 	}
 
@@ -129,23 +142,27 @@ public class ControllerRegistroMedico {
 		}
 	}
 
-	public boolean validation(String usuario, String password, String nombre, String apellido, String dni) {
+	public boolean validation(String usuario, String password, String nombre, String apellido, String dni,
+			LocalDate fechaNac, String especialidad, String numColegiado) {
 		boolean valido = true;
 
 		if ((dni.matches("\\d{8}[A-HJ-NP-TV-Z]"))) {
 			lbErrorDni.setText("");
-			if (!GsonGeneral.seRepiteDnis(dni)) {
-				lbErrorDni.setText("");
-			} else {
-				lbErrorDni.setText("El DNI ya esta registrado");
-				valido = false;
-			}
 			if (GsonGeneral.validarNIF(dni)) {
 				lbErrorDni.setText("");
+				if (!GsonGeneral.seRepiteDnis(dni)) {
+					lbErrorDni.setText("");
+				} else {
+					System.out.println(GsonGeneral.seRepiteDnis(dni));
+					lbErrorDni.setText("El DNI ya esta registrado");
+					valido = false;
+				}
 			} else {
 				lbErrorDni.setText("El DNI no es real");
 				valido = false;
+
 			}
+
 		} else {
 			lbErrorDni.setText("El DNI debe llevar 8 numeros y una letra mayuscula");
 			valido = false;
@@ -166,7 +183,7 @@ public class ControllerRegistroMedico {
 		if (password.matches("^[a-zA-Z0-9._-]{8,}$")) {
 			lbErrorPassword.setText("");
 		} else {
-			lbErrorPassword.setText("La contrase�a debe contener al menos 8 caracteres");
+			lbErrorPassword.setText("Tu password debe contener al menos 8 caracteres");
 			valido = false;
 		}
 		if (nombre.matches("^[a-zA-Z]{2,}$")) {
@@ -183,15 +200,28 @@ public class ControllerRegistroMedico {
 			valido = false;
 		}
 
-		return valido;
-	}
-	public void linkPulsado(ActionEvent event) {
-		try {
-
-			Desktop.getDesktop().browse(new URI("https://twitter.com/SmartGrandOffi1"));
-
-		} catch (Exception e) {
-			e.printStackTrace();
+		if ((fechaNac != null)
+				&& fechaNac.toString().matches("^((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$")) {
+			lbErrorNac.setText("");
+		} else {
+			lbErrorNac.setText("Tu fecha de nacimiento no es valida");
+			valido = false;
 		}
+
+		if (especialidad.matches("^[a-zA-Z]{2,}$")) {
+			lbErrorEspe.setText("");
+		} else {
+			lbErrorEspe.setText("Tu especialidad debe contener al menos 2 letras");
+			valido = false;
+		}
+
+		if (numColegiado.matches("^[a-zA-Z0-9._-]{8,}$")) {
+			lbErrorColegiado.setText("");
+		} else {
+			lbErrorColegiado.setText("Tu numero de colegiado debe contener al menos 8 caracteres");
+			valido = false;
+		}
+
+		return valido;
 	}
 }
