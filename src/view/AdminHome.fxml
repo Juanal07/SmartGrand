@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="fondo" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="311.0" layoutY="10.0" prefHeight="34.0" prefWidth="600.0" text="Administrador" textAlignment="JUSTIFY">
+         <font>
+            <Font name="Calibri" size="34.0" />
+         </font>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </Label>
+      <JFXButton alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="182.0" layoutY="337.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="47.0" prefWidth="229.0" styleClass="mainButton" stylesheets="@Style.css" text="Verificar" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnAtras" alignment="CENTER" contentDisplay="CENTER" layoutX="507.0" layoutY="622.0" maxHeight="-Infinity" onAction="#atrasLogin" prefHeight="47.0" prefWidth="209.0" styleClass="mainButton" stylesheets="@Style.css" text="Atras" textAlignment="JUSTIFY" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="154.0" prefHeight="34.0" prefWidth="600.0" text="Elija un médico" textAlignment="JUSTIFY">
+         <font>
+            <Font name="Calibri" size="34.0" />
+         </font>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="641.0" layoutY="160.0" prefHeight="34.0" prefWidth="600.0" text="Elija un usuario" textAlignment="JUSTIFY">
+         <font>
+            <Font name="Calibri" size="34.0" />
+         </font>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </Label>
+      <JFXButton alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="826.0" layoutY="337.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="47.0" prefWidth="229.0" styleClass="mainButton" stylesheets="@Style.css" text="Eliminar" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

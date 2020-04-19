@@ -49,6 +49,9 @@ public class ControllerLogin {
 
 			if (!(usuario.equals("")) && (persona.getPassword().equals(password))) {
 				System.out.println("password correcto");
+				if (usuario.equals("admin")) {
+					adminHome();
+				}
 				String tUsu = persona.getTipo();
 
 				System.out.println(persona.getTipo());
@@ -85,6 +88,25 @@ public class ControllerLogin {
 
 			Desktop.getDesktop().browse(new URI("https://twitter.com/SmartGrandOffi1"));
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void adminHome() {
+		try {
+			String vistaCuidador = "/View/AdminHome.fxml";
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaCuidador));
+			ControllerAdmin vistaAdmin = new ControllerAdmin();
+			loader.setController(vistaAdmin);
+			Parent root2 = loader.load();
+			Stage stage2 = new Stage();
+			stage2.setTitle("Administrador");
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la
+																									// vista
+			stage2.getIcons().add(icon);
+			stage2.setScene(new Scene(root2));
+			stage2.show();
+//			vistaCuidadorPrincipalController.cargarTableview(persona);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

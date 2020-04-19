@@ -335,7 +335,6 @@ public class Conexion {
 
 			while (rs.next()) {
 				dni2 = rs.getString("dni");
-				System.out.println(dni2);
 				dnis.add(dni2);
 			}
 
