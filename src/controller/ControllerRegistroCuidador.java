@@ -62,11 +62,13 @@ public class ControllerRegistroCuidador {
 		String tipo = "cuidador";
 
 		System.out.println(GsonGeneral.seRepiteDnis(dni));
+		System.out.println(usuario + passwordCifrada + nombre + apellido + dni + especialidad);
+		System.out.println(fechaNacimiento == null);
 
-		boolean valido = validation(usuario, password, nombre, apellido, dni, fechaNacimiento.toString(), especialidad);
+		boolean valido = validation(usuario, password, nombre, apellido, dni, fechaNacimiento, especialidad);
 
-		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != ""
-				&& fechaNacimiento.toString() != "" && especialidad != "" && valido) {
+		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && fechaNacimiento != null
+				&& especialidad != "" && valido) {
 
 			Conexion conexion = new Conexion();
 			conexion.istPersona(conexion, nombre, apellido, usuario, passwordCifrada, dni, fechaNacimiento.toString(),
@@ -120,7 +122,7 @@ public class ControllerRegistroCuidador {
 	}
 
 	public boolean validation(String usuario, String password, String nombre, String apellido, String dni,
-			String fechaNac, String especialidad) {
+			LocalDate fechaNac, String especialidad) {
 		boolean valido = true;
 
 		if ((dni.matches("\\d{8}[A-HJ-NP-TV-Z]"))) {
@@ -157,7 +159,7 @@ public class ControllerRegistroCuidador {
 		if (password.matches("^[a-zA-Z0-9._-]{8,}$")) {
 			lbErrorPassword.setText("");
 		} else {
-			lbErrorPassword.setText("La contrase�a debe contener al menos 8 caracteres");
+			lbErrorPassword.setText("Tu password debe contener al menos 8 caracteres");
 			valido = false;
 		}
 		if (nombre.matches("^[a-zA-Z]{2,}$")) {
@@ -174,7 +176,8 @@ public class ControllerRegistroCuidador {
 			valido = false;
 		}
 
-		if (fechaNac.matches("^[a-zA-Z]{2,}$")) {
+		if ((fechaNac != null)
+				&& fechaNac.toString().matches("^((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$")) {
 			lbErrorNac.setText("");
 		} else {
 			lbErrorNac.setText("Tu fecha de nacimiento no es valida");
