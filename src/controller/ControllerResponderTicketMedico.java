@@ -1,5 +1,7 @@
 package controller;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXScrollPane;
@@ -16,6 +18,7 @@ import model.PersonaNew;
 import model.TicketsNew;
 
 public class ControllerResponderTicketMedico {
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	@FXML
 	private JFXTextArea txAreaMedico = new JFXTextArea();
 	@FXML
@@ -74,7 +77,8 @@ public class ControllerResponderTicketMedico {
 		} else {
 			String txtMedico = txAreaMedico.getText();
 			Conexion conexion = new Conexion();
-			conexion.respuestTicket(Integer.parseInt(lbIdTicket.getText()), lbFechaMedico.getText(), txtMedico);
+			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+			conexion.respuestTicket(conexion, Integer.parseInt(lbIdTicket.getText()), sdf.format(timestamp).toString(), txtMedico);
 		}
 	}
 

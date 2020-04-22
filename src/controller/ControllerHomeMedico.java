@@ -101,18 +101,14 @@ public class ControllerHomeMedico {
 
 	private ObservableList<TicketsNew>  leerTickets2(ObservableList<TicketsNew> ticketsObservableList2, PersonaNew p) {
 		Conexion conexion = new Conexion();
-		conexion.leerTickets(ticketsObservableList2,"id_medico", p.getId_per());// tenemos todos los tickets
-		System.out.println("*****	aqui no llega el error	****");
-		for (TicketsNew ticketsNew : ticketsObservableList2) {
-			System.out.println(ticketsNew.getTexto_Paciente());
-		}
-		return ticketsObservableList2 = filtrarTicketsVacios(ticketsObservableList2);
+		conexion.leerTickets(ticketsObservableList2,"id_medico", p.getId_per());// tenemos todos los tickets	
+		return ticketsObservableList2;
 	}
 
 	private ObservableList<TicketsNew> filtrarTicketsVacios(ObservableList<TicketsNew> ticketsObservableList2) {
 		ObservableList<TicketsNew> ticketsObservableList = FXCollections.observableArrayList();
 		for (TicketsNew ticketsNew : ticketsObservableList2) {
-			if (ticketsNew.getTexto_Medico().equals(null)) {
+			if (ticketsNew.getTexto_Medico() == null && ticketsNew.getFecha_Medico() == null) {
 				ticketsObservableList.add(ticketsNew);
 			}
 		}
@@ -164,8 +160,8 @@ public class ControllerHomeMedico {
 	public void cargarListViewTickets(PersonaNew p) {
 		ObservableList<TicketsNew> ticketsObservableList = FXCollections.observableArrayList();
 		leerTickets2(ticketsObservableList, p);
+		filtrarTicketsVacios(ticketsObservableList);
 		listaTicketsSinResponder.setItems(ticketsObservableList);
-
 		listaTicketsSinResponder.getSelectionModel().selectedItemProperty()
 				.addListener(new ChangeListener<TicketsNew>() {
 

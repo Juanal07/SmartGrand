@@ -24,7 +24,7 @@ import model.PersonaNew;
 import model.TicketsNew;
 
 public class ControllerHomePaciente {
-	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 	@FXML
 	private JFXListView<TicketsNew> lvTicketsPaciente = new JFXListView<TicketsNew>();
@@ -64,10 +64,10 @@ public class ControllerHomePaciente {
 		if (!textoPaciente.equals("")) {
 			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
-			java.sql.Date fecha_paciente = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-			System.out.println("yo paciente id: " + idPaciente +" id medico: " + pa.getId_medico());
+			//java.sql.Date fecha_paciente = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+			//System.out.println("yo paciente id: " + idPaciente +" id medico: " + pa.getId_medico() + "	fecha: " + sdf.format(timestamp));
 		
-			conexion.istTicketPaciente(conexion, textoPaciente, sdf.format(timestamp), pa.getId_medico(), idPaciente);
+			conexion.istTicketPaciente(conexion, textoPaciente, sdf.format(timestamp).toString(), pa.getId_medico(), idPaciente);
 			jfxTaPaciente.setText("");
 			lbError.setWrapText(true);
 			lbError.setText("Ticket enviado con exito.");
