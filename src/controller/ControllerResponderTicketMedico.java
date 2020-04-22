@@ -79,6 +79,7 @@ public class ControllerResponderTicketMedico {
 			Conexion conexion = new Conexion();
 			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 			conexion.respuestTicket(conexion, Integer.parseInt(lbIdTicket.getText()), sdf.format(timestamp).toString(), txtMedico);
+			ventanaHomeMedico();
 		}
 	}
 

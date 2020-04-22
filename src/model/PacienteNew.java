@@ -57,4 +57,10 @@ public class PacienteNew {
 		this.localidad = localidad;
 	}
 
+	@Override
+	public String toString() {
+		return "PacienteNew [id_pac=" + id_pac + ", numSegSocial=" + numSegSocial + ", id_cuidador=" + id_cuidador
+				+ ", id_medico=" + id_medico + ", localidad=" + localidad + "]";
+	}
+
 }
