@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -17,7 +18,7 @@
             <Insets top="15.0" />
          </padding>
       </Label>
-      <JFXButton alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="182.0" layoutY="337.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="47.0" prefWidth="229.0" styleClass="mainButton" stylesheets="@Style.css" text="Verificar" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+      <JFXButton fx:id="verificar" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="182.0" layoutY="320.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#medicoVerificado" prefHeight="47.0" prefWidth="229.0" styleClass="mainButton" stylesheets="@Style.css" text="Verificar" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font size="15.0" />
          </font>
@@ -33,7 +34,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="154.0" prefHeight="34.0" prefWidth="600.0" text="Elija un médico" textAlignment="JUSTIFY">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="160.0" prefHeight="34.0" prefWidth="600.0" text="Elija un médico" textAlignment="JUSTIFY">
          <font>
             <Font name="Calibri" size="34.0" />
          </font>
@@ -49,7 +50,7 @@
             <Insets top="15.0" />
          </padding>
       </Label>
-      <JFXButton alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="826.0" layoutY="337.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="47.0" prefWidth="229.0" styleClass="mainButton" stylesheets="@Style.css" text="Eliminar" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+      <JFXButton fx:id="eliminar" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="826.0" layoutY="337.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#usuarioEliminado" prefHeight="47.0" prefWidth="229.0" styleClass="mainButton" stylesheets="@Style.css" text="Eliminar" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font size="15.0" />
          </font>
@@ -57,5 +58,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <ComboBox fx:id="medicosBox" layoutX="183.0" layoutY="245.0" prefHeight="38.0" prefWidth="229.0" promptText="Elige medico" />
+      <ComboBox fx:id="personaBox" layoutX="827.0" layoutY="245.0" prefHeight="38.0" prefWidth="229.0" promptText="Elige usuario" />
    </children>
 </AnchorPane>
