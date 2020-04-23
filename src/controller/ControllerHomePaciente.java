@@ -9,6 +9,8 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXScrollPane;
 import com.jfoenix.controls.JFXTextArea;
 import DataBase.Conexion;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -90,19 +92,27 @@ public class ControllerHomePaciente {
 		Conexion conexion = new Conexion();
 		ObservableList<TicketsNew> ticketsObservableList = FXCollections.observableArrayList();
 		conexion.leerTickets(ticketsObservableList,"id_paciente", p.getId_per());
-		for (TicketsNew ticketsNew : ticketsObservableList) {
-			System.out.println("texto paciente: " + ticketsNew.getTexto_Paciente());
+		//ticketsObservableList = filtro(ticketsObservableList);
+		lvTicketsPaciente.setItems(ticketsObservableList);
+		lvTicketsPaciente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TicketsNew>() {
+
+			@Override
+			public void changed(ObservableValue<? extends TicketsNew> observable, TicketsNew oldValue,
+					TicketsNew newValue) {
+				TicketsNew tickets = lvTicketsPaciente.getSelectionModel().getSelectedItem();
+				ventanaDatosTicket(p, tickets);
+			}
+		});
+	}
+	// revisar
+	private ObservableList<TicketsNew> filtro(ObservableList<TicketsNew> ticketsObservableList) {
+		for (int i = 0; i < ticketsObservableList.size()-1; i++) {
+			System.out.println("texto paciente: " + ticketsObservableList.get(i));
+			if (ticketsObservableList.get(i).getTexto_Medico().equals("")) {
+				ticketsObservableList.remove(i);
+			}
 		}
-//		lvTicketsPaciente.setItems(ticketsObservableList);
-//		lvTicketsPaciente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TicketsNew>() {
-//
-//			@Override
-//			public void changed(ObservableValue<? extends TicketsNew> observable, TicketsNew oldValue,
-//					TicketsNew newValue) {
-//				TicketsNew tickets = lvTicketsPaciente.getSelectionModel().getSelectedItem();
-//				ventanaDatosTicket(p, tickets);
-//			}
-//		});
+		return ticketsObservableList;
 	}
 
 	private void ventanaDatosTicket(PersonaNew persona, TicketsNew tickets) {

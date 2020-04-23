@@ -101,19 +101,18 @@ public class ControllerHomeMedico {
 
 	private ObservableList<TicketsNew>  leerTickets2(ObservableList<TicketsNew> ticketsObservableList2, PersonaNew p) {
 		Conexion conexion = new Conexion();
-		conexion.leerTickets(ticketsObservableList2,"id_medico", p.getId_per());// tenemos todos los tickets	
-		System.out.println("metodo leerTickets2");
-		return filtrarTicketsVacios(ticketsObservableList2);
+		conexion.leerTickets(ticketsObservableList2,"id_medico", p.getId_per());// tenemos todos los tickets
+		System.out.println("*****	metodo	leerTickets2	****");
+		return ticketsObservableList2 = filtrarTicketsVacios(ticketsObservableList2);
 	}
-
+//revisar
 	private ObservableList<TicketsNew> filtrarTicketsVacios(ObservableList<TicketsNew> ticketsObservableList2) {
+		System.out.println("*****	metodo	filtrarTicketsVacios	****");
 		//ObservableList<TicketsNew> ticketsObservableList = FXCollections.observableArrayList();
-		System.out.println("metodo filtrarTicketsVacios");
-		for (TicketsNew ticketsNew : ticketsObservableList2) {
-			System.out.println(ticketsNew);
-			if (!ticketsNew.getTexto_Medico().equals("")) {
-				ticketsObservableList2.remove(ticketsNew);
-				//ticketsObservableList.add(ticketsNew);
+		for (int i = 0; i < ticketsObservableList2.size() - 1; i++) {
+			if (!ticketsObservableList2.get(i).getTexto_Medico().equals("")) {
+				System.out.println(ticketsObservableList2.get(i));
+				ticketsObservableList2.remove(i);
 			}
 		}
 		return ticketsObservableList2;
@@ -164,12 +163,8 @@ public class ControllerHomeMedico {
 	public void cargarListViewTickets(PersonaNew p) {
 		ObservableList<TicketsNew> ticketsObservableList = FXCollections.observableArrayList();
 		leerTickets2(ticketsObservableList, p);
-	
-		System.out.println("tickets vacios");
-		for (TicketsNew ticketsNew : ticketsObservableList) {
-			System.out.println(ticketsNew.getId_tic());
-		}
 		listaTicketsSinResponder.setItems(ticketsObservableList);
+
 		listaTicketsSinResponder.getSelectionModel().selectedItemProperty()
 				.addListener(new ChangeListener<TicketsNew>() {
 
