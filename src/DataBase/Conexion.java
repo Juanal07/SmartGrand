@@ -19,6 +19,9 @@ public class Conexion {
 	String BBDDName;
 	Connection conexion = null;
 	Statement stmt = null;
+	
+	static final String USER = "pr_smartgrant";
+    static final String PASS = "3SmartGrant";
 
 //	public Conexion(String path) {
 //		BBDDName = path;
@@ -29,8 +32,10 @@ public class Conexion {
 
 	public boolean sentenciaSQL(String sql) {
 		try {
-			Class.forName("org.sqlite.JDBC");// creamos la conexion
-			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);// abrir un fichero
+        	Class.forName("org.mariadb.jdbc.Driver");
+            System.out.println("Connecting to a selected database...");
+            conexion = DriverManager.getConnection(
+                    "jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			stmt = conexion.createStatement();// creamos una sentencia
 			stmt.executeUpdate(sql);// lanza sentencias que no devuelven nada
 			stmt.close();// cerrar la base de datos una ves finalizados
@@ -87,43 +92,51 @@ public class Conexion {
 	}
 
 	// creamos todas las tablas
-	public void crearDb(Conexion conexion2) {
-		String tablaMedico = "CREATE TABLE IF NOT EXISTS Medico(" + "id_med INTEGER PRIMARY KEY NOT NULL, "
-				+ "especialidad TEXT not NULL, " + "numColegiado INTEGER not NULL," + "verificado BOOLEAN,"
-				+ "FOREIGN key (id_med) REFERENCES Personas(id_per)" + ");";
-		conexion2.sentenciaSQL(tablaMedico);
-
-		String tablaPaciente = "CREATE TABLE IF NOT EXISTS Paciente(" + "id_pac INTEGER PRIMARY KEY NOT NULL,"
-				+ "localidad TEXT not NULL," + "numSegSocial INTEGER not NULL," + "id_cuidador INTEGER,"
-				+ "id_medico INTEGER," + "FOREIGN key (id_pac) REFERENCES Personas(id_per),"
-				+ "FOREIGN key (id_cuidador) REFERENCES Cuidador(id_cui),"
-				+ "FOREIGN key (id_medico) REFERENCES Medico(id_med)" + ");";
-		conexion2.sentenciaSQL(tablaPaciente);
-
-		String tablaCuidador = "CREATE TABLE IF NOT EXISTS Cuidador(" + "id_cui INTEGER PRIMARY KEY NOT NULL,"
-				+ "especialidad TEXT not NULL," + "id_medico INTEGER,"
-				+ "FOREIGN key (id_cui) REFERENCES Personas(id_per),"
-				+ "FOREIGN key (id_medico) REFERENCES Medico(id_med)" + ");";
-		conexion2.sentenciaSQL(tablaCuidador);
-
+	public void crearDb(Conexion conexion2) {		
 		String tablaPersona = "CREATE TABLE IF NOT EXISTS Personas("
-				+ "id_per INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + "nombre TEXT not NULL, "
-				+ "apellido TEXT not NULL, " + "usuario TEXT not NULL, " + "password TEXT not null, "
-				+ "dni TEXT NOT NULL, " + "fecha TEXT NOT NULL, " + "tipo TEXT NOT NULL" + ");";
+				+ "id_per INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " 
+				+ "nombre TEXT not NULL, "
+				+ "apellido TEXT not NULL, " 
+				+ "usuario TEXT not NULL, " 
+				+ "password TEXT not null, "
+				+ "dni TEXT NOT NULL, " 
+				+ "fecha TEXT NOT NULL, " 
+				+ "tipo TEXT NOT NULL" + ");";
 		conexion2.sentenciaSQL(tablaPersona);
-
-		String tablaTicket = "CREATE TABLE IF NOT EXISTS Ticket("
-				+ "id_tic INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + "Texto_Paciente TEXT not NULL, "
-				+ "Fecha_Paciente TEXT not NULL, " + "Texto_Medico TEXT, " + "Fecha_Medico TEXT, "
-				+ "id_medico INTEGER," + "id_paciente INTEGER," + "FOREIGN KEY (id_medico) REFERENCES Medico(id_med),"
-				+ "FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)" + ");";
-		conexion2.sentenciaSQL(tablaTicket);
-
-		String tablaSensor = "CREATE TABLE IF NOT EXISTS Sensor("
-				+ "id_sen INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + "Ubicacion TEXT not NULL, "
-				+ "Tipo Date not NULL, " + "Dato INTEGER not NULL, " + "Fecha TEXT not null, "
-				+ "id_paciente INTEGER NOT NULL," + "FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)" + ");";
-		conexion2.sentenciaSQL(tablaSensor);
+		
+//		String tablaMedico = "CREATE TABLE IF NOT EXISTS Medico(" 
+//				+ "id_med INTEGER PRIMARY KEY NOT NULL, "
+//				+ "especialidad TEXT not NULL, "
+//				+ "numColegiado INTEGER not NULL,"
+//				+ "verificado BOOLEAN,"
+//				+ "FOREIGN key (id_med) REFERENCES Personas(id_per)" + ");";
+//		conexion2.sentenciaSQL(tablaMedico);
+//
+//		String tablaPaciente = "CREATE TABLE IF NOT EXISTS Paciente(" + "id_pac INTEGER PRIMARY KEY NOT NULL,"
+//				+ "localidad TEXT not NULL," + "numSegSocial INTEGER not NULL," + "id_cuidador INTEGER,"
+//				+ "id_medico INTEGER," + "FOREIGN key (id_pac) REFERENCES Personas(id_per),"
+//				+ "FOREIGN key (id_cuidador) REFERENCES Cuidador(id_cui),"
+//				+ "FOREIGN key (id_medico) REFERENCES Medico(id_med)" + ");";
+//		conexion2.sentenciaSQL(tablaPaciente);
+//
+//		String tablaCuidador = "CREATE TABLE IF NOT EXISTS Cuidador(" + "id_cui INTEGER PRIMARY KEY NOT NULL,"
+//				+ "especialidad TEXT not NULL," + "id_medico INTEGER,"
+//				+ "FOREIGN key (id_cui) REFERENCES Personas(id_per),"
+//				+ "FOREIGN key (id_medico) REFERENCES Medico(id_med)" + ");";
+//		conexion2.sentenciaSQL(tablaCuidador);
+//
+//		String tablaTicket = "CREATE TABLE IF NOT EXISTS Ticket("
+//				+ "id_tic INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + "Texto_Paciente TEXT not NULL, "
+//				+ "Fecha_Paciente TEXT not NULL, " + "Texto_Medico TEXT, " + "Fecha_Medico TEXT, "
+//				+ "id_medico INTEGER," + "id_paciente INTEGER," + "FOREIGN KEY (id_medico) REFERENCES Medico(id_med),"
+//				+ "FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)" + ");";
+//		conexion2.sentenciaSQL(tablaTicket);
+//
+//		String tablaSensor = "CREATE TABLE IF NOT EXISTS Sensor("
+//				+ "id_sen INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + "Ubicacion TEXT not NULL, "
+//				+ "Tipo Date not NULL, " + "Dato INTEGER not NULL, " + "Fecha TEXT not null, "
+//				+ "id_paciente INTEGER NOT NULL," + "FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)" + ");";
+//		conexion2.sentenciaSQL(tablaSensor);
 
 	}
 
@@ -465,8 +478,8 @@ public class Conexion {
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
-			ResultSet rs = stmt.executeQuery("DELETE FROM Personas WHERE usuario = '" + user + "';");// conjunto de
-																										// resultados
+			
+			ResultSet rs = stmt.executeQuery("DELETE FROM Personas WHERE id_per = (SELECT id_per FROM Personas WHERE usuario = '"+user+"');");
 
 		
 			// destruyo todo consulta conexion y resultset
