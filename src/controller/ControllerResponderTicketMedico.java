@@ -61,7 +61,6 @@ public class ControllerResponderTicketMedico {
 			stage2.setTitle(tituloVista2);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			stage2.getIcons().add(icon);
-			stage2.setMaximized(true);
 			stage2.setScene(new Scene(root1));
 			stage2.show();
 			controlerMedicoHome.cargarListViewPacientes(p);
@@ -105,7 +104,6 @@ public class ControllerResponderTicketMedico {
 			Stage stage2 = new Stage();
 			stage2.setTitle(tituloVista2);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
-			stage2.setMaximized(true);
 			stage2.getIcons().add(icon);
 			stage2.setScene(new Scene(root1));
 			stage2.show();

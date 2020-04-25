@@ -61,7 +61,6 @@ public class ControllerHomeMedico {
 			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
-			sendStage.setMaximized(true);
 			sendStage.setScene(scene);
 			sendStage.show();
 		} catch (Exception e) {
@@ -90,7 +89,6 @@ public class ControllerHomeMedico {
 			Stage stage2 = new Stage();
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			stage2.getIcons().add(icon);
-			stage2.setMaximized(true);
 			stage2.setTitle(tituloVista);
 			stage2.setScene(new Scene(root2));
 			stage2.show();
@@ -151,7 +149,6 @@ public class ControllerHomeMedico {
 			Stage stage2 = new Stage();
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			stage2.getIcons().add(icon);
-			stage2.setMaximized(true);
 			stage2.setTitle(tituloVista);
 			stage2.setScene(new Scene(root));
 			stage2.show();

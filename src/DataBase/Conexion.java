@@ -49,30 +49,31 @@ public class Conexion {
 
 	// revisar el id para que se auto incremente YA SEA POR JAVA O POR SQL y
 	// investigar si llevas comillas el tipo DATE
-	public void istPersona(Conexion conexion, String nombre, String apellido, String usuario, String psw,
-			String dni, String fecha, String tipo) {
+	public void istPersona(Conexion conexion, String nombre, String apellido, String usuario, String psw, String dni,
+			String fecha, String tipo) {
 		String insert = "INSERT INTO Personas(nombre, apellido, usuario, psw, dni, fecha, tipo) VALUES('" + nombre
-				+ "', '" + apellido + "', '" + usuario + "', '" + psw + "', '" + dni + "', '" + fecha + "', '"
-				+ tipo + "');";
+				+ "', '" + apellido + "', '" + usuario + "', '" + psw + "', '" + dni + "', '" + fecha + "', '" + tipo
+				+ "');";
 		conexion.sentenciaSQL(insert);
 	}
 
 	public void istMedico(Conexion conexion2, int id_med, String especialidad, int numColegiado, boolean verificado) {
-		String istMedico = "INSERT INTO Medico(id_med, especialidad, numColegiado, verificado) VALUES('"
-				+ id_med + "', '" + especialidad + "', '" + numColegiado + "', " + verificado + ");";
+		String istMedico = "INSERT INTO Medico(id_med, especialidad, numColegiado, verificado) VALUES('" + id_med
+				+ "', '" + especialidad + "', '" + numColegiado + "', " + verificado + ");";
 		conexion2.sentenciaSQL(istMedico);
 	}
 
 	public void istPaciente(Conexion conexion2, int id_pac, String localidad, int numSegSocial, int id_cuidador,
 			int id_medico) {
-		String istPaciente = "INSERT INTO Paciente(id_pac, localidad, numSegSocial, id_cuidador, id_medico) VALUES('" + id_pac
-				+ "', '" + localidad + "', '" + numSegSocial + "', '" + id_cuidador + "', '" + id_medico + "');";
+		String istPaciente = "INSERT INTO Paciente(id_pac, localidad, numSegSocial, id_cuidador, id_medico) VALUES('"
+				+ id_pac + "', '" + localidad + "', '" + numSegSocial + "', '" + id_cuidador + "', '" + id_medico
+				+ "');";
 		conexion2.sentenciaSQL(istPaciente);
 	}
 
 	public void istCuidador(Conexion conexion2, int id_cui, String especialidad, int id_medico) {
-		String istCuidador = "INSERT INTO Cuidador(id_cui, especialidad, id_medico) VALUES('" + id_cui + "', '" + especialidad
-				+ "', '" + id_medico + "');";
+		String istCuidador = "INSERT INTO Cuidador(id_cui, especialidad, id_medico) VALUES('" + id_cui + "', '"
+				+ especialidad + "', '" + id_medico + "');";
 		conexion2.sentenciaSQL(istCuidador);
 	}
 
@@ -92,72 +93,43 @@ public class Conexion {
 
 	// creamos todas las tablas
 	public void crearDb(Conexion conexion2) {
-		String tablaPersona = "CREATE TABLE IF NOT EXISTS Personas(\r\n" + 
-				"id_per INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,  \r\n" + 
-				"nombre TEXT not NULL, \r\n" + 
-				"apellido TEXT not NULL,  \r\n" + 
-				"usuario TEXT not NULL,  \r\n" + 
-				"psw TEXT not null, \r\n" + 
-				"dni TEXT NOT NULL,  \r\n" + 
-				"fecha TEXT NOT NULL,  \r\n" + 
-				"tipo TEXT NOT NULL \r\n" + 
-				");";
+		String tablaPersona = "CREATE TABLE IF NOT EXISTS Personas(\r\n"
+				+ "id_per INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,  \r\n" + "nombre TEXT not NULL, \r\n"
+				+ "apellido TEXT not NULL,  \r\n" + "usuario TEXT not NULL,  \r\n" + "psw TEXT not null, \r\n"
+				+ "dni TEXT NOT NULL,  \r\n" + "fecha TEXT NOT NULL,  \r\n" + "tipo TEXT NOT NULL \r\n" + ");";
 		conexion2.sentenciaSQL(tablaPersona);
 
-		String tablaMedico = "CREATE TABLE IF NOT EXISTS Medico( \r\n" + 
-				"id_med INTEGER PRIMARY KEY NOT NULL, \r\n" + 
-				"especialidad TEXT not NULL, \r\n" + 
-				"numColegiado INTEGER not NULL,\r\n" + 
-				"verificado BOOLEAN,\r\n" + 
-				"FOREIGN key (id_med) REFERENCES Personas (id_per) \r\n" + 
-				");";
+		String tablaMedico = "CREATE TABLE IF NOT EXISTS Medico( \r\n" + "id_med INTEGER PRIMARY KEY NOT NULL, \r\n"
+				+ "especialidad TEXT not NULL, \r\n" + "numColegiado INTEGER not NULL,\r\n" + "verificado BOOLEAN,\r\n"
+				+ "FOREIGN key (id_med) REFERENCES Personas (id_per) \r\n" + ");";
 		conexion2.sentenciaSQL(tablaMedico);
-		
-		String tablaCuidador = "CREATE TABLE IF NOT EXISTS Cuidador( \r\n" + 
-				"id_cui INTEGER PRIMARY KEY NOT NULL,\r\n" + 
-				"especialidad TEXT not NULL, \r\n" + 
-				"id_medico INTEGER,\r\n" + 
-				"FOREIGN key (id_cui) REFERENCES Personas (id_per),\r\n" + 
-				"FOREIGN key (id_medico) REFERENCES Medico (id_med) \r\n" + 
-				");";
+
+		String tablaCuidador = "CREATE TABLE IF NOT EXISTS Cuidador( \r\n" + "id_cui INTEGER PRIMARY KEY NOT NULL,\r\n"
+				+ "especialidad TEXT not NULL, \r\n" + "id_medico INTEGER,\r\n"
+				+ "FOREIGN key (id_cui) REFERENCES Personas (id_per),\r\n"
+				+ "FOREIGN key (id_medico) REFERENCES Medico (id_med) \r\n" + ");";
 		conexion2.sentenciaSQL(tablaCuidador);
 
-		String tablaPaciente = "CREATE TABLE IF NOT EXISTS Paciente( \r\n" + 
-				"id_pac INTEGER PRIMARY KEY NOT NULL,\r\n" + 
-				"localidad TEXT not NULL, \r\n" + 
-				"numSegSocial INTEGER not NULL, \r\n" + 
-				"id_cuidador INTEGER,\r\n" + 
-				"id_medico INTEGER, \r\n" + 
-				"FOREIGN key (id_pac) REFERENCES Personas (id_per),\r\n" + 
-				"FOREIGN key (id_cuidador) REFERENCES Cuidador (id_cui),\r\n" + 
-				"FOREIGN key (id_medico) REFERENCES Medico (id_med) \r\n" + 
-				");";
+		String tablaPaciente = "CREATE TABLE IF NOT EXISTS Paciente( \r\n" + "id_pac INTEGER PRIMARY KEY NOT NULL,\r\n"
+				+ "localidad TEXT not NULL, \r\n" + "numSegSocial INTEGER not NULL, \r\n" + "id_cuidador INTEGER,\r\n"
+				+ "id_medico INTEGER, \r\n" + "FOREIGN key (id_pac) REFERENCES Personas (id_per),\r\n"
+				+ "FOREIGN key (id_cuidador) REFERENCES Cuidador (id_cui),\r\n"
+				+ "FOREIGN key (id_medico) REFERENCES Medico (id_med) \r\n" + ");";
 		conexion2.sentenciaSQL(tablaPaciente);
 
-		
-
-		String tablaTicket = "CREATE TABLE IF NOT EXISTS Ticket(\r\n" + 
-				"id_tic INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,  \r\n" + 
-				"Texto_Paciente TEXT not NULL, \r\n" + 
-				"Fecha_Paciente TEXT not NULL,  \r\n" + 
-				"Texto_Medico TEXT,  \r\n" + 
-				"Fecha_Medico TEXT, \r\n" + 
-				"id_medico INTEGER, \r\n" + 
-				"id_paciente INTEGER, \r\n" + 
-				"FOREIGN KEY (id_medico) REFERENCES Medico (id_med),\r\n" + 
-				"FOREIGN KEY (id_paciente) REFERENCES Paciente (id_pac) \r\n" + 
-				");";
+		String tablaTicket = "CREATE TABLE IF NOT EXISTS Ticket(\r\n"
+				+ "id_tic INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,  \r\n" + "Texto_Paciente TEXT not NULL, \r\n"
+				+ "Fecha_Paciente TEXT not NULL,  \r\n" + "Texto_Medico TEXT,  \r\n" + "Fecha_Medico TEXT, \r\n"
+				+ "id_medico INTEGER, \r\n" + "id_paciente INTEGER, \r\n"
+				+ "FOREIGN KEY (id_medico) REFERENCES Medico (id_med),\r\n"
+				+ "FOREIGN KEY (id_paciente) REFERENCES Paciente (id_pac) \r\n" + ");";
 		conexion2.sentenciaSQL(tablaTicket);
 
-		String tablaSensor = "CREATE TABLE IF NOT EXISTS Sensor(\r\n" + 
-				"id_sen INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,  \r\n" + 
-				"Ubicacion TEXT not NULL, \r\n" + 
-				"Tipo TEXT not NULL,  \r\n" + 
-				"Dato INTEGER not NULL,  \r\n" + 
-				"Fecha DATE not null, \r\n" + 
-				"id_paciente INTEGER NOT NULL, \r\n" + 
-				"FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)  \r\n" + 
-				");";
+		String tablaSensor = "CREATE TABLE IF NOT EXISTS Sensor(\r\n"
+				+ "id_sen INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,  \r\n" + "Ubicacion TEXT not NULL, \r\n"
+				+ "Tipo TEXT not NULL,  \r\n" + "Dato INTEGER not NULL,  \r\n" + "Fecha DATE not null, \r\n"
+				+ "id_paciente INTEGER NOT NULL, \r\n" + "FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)  \r\n"
+				+ ");";
 		conexion2.sentenciaSQL(tablaSensor);
 
 	}
@@ -498,19 +470,33 @@ public class Conexion {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
-
-
 			stmt = conexion.createStatement();
-
-			ResultSet rs = stmt
-					.executeQuery("DELETE FROM Paciente WHERE id_pac = (SELECT id_per FROM Personas WHERE usuario =  '"
-							+ user + "');");
+			
+			System.out.println(user);
+			System.out.println("DELETE FROM Paciente WHERE id_pac = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
+					+"DELETE FROM Medico WHERE id_med = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
+					+"DELETE FROM Cuidador WHERE id_cui = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
+					+"DELETE FROM Ticket WHERE id_paciente = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
+					+"DELETE FROM Personas WHERE id_per = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');");
+			ResultSet rs = stmt.executeQuery("DELETE FROM Paciente WHERE id_pac = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
+					+"DELETE FROM Medico WHERE id_med = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
+					+"DELETE FROM Cuidador WHERE id_cui = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
+					+"DELETE FROM Ticket WHERE id_paciente = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
+					+"DELETE FROM Personas WHERE id_per = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
+					
+					
+					
+					
+					);
+			
+			
 
 			// destruyo todo consulta conexion y resultset
 			rs.close();
 			stmt.close();
 			conexion.close();
 		} catch (Exception e) {
+			System.out.println("entra aquiiiiiiiiiiii");
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 		}
 		System.out.println("Consulta terminada");
@@ -536,6 +522,7 @@ public class Conexion {
 		System.out.println("Consulta terminada");
 
 	}
+
 	public List<PersonaNew> listaPacientesCuidador(int id) {
 		int id_per = 0;
 		String nombre = null;
@@ -553,18 +540,11 @@ public class Conexion {
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT \r\n" + 
-					"    personas.id_per,\r\n" + 
-					"    personas.nombre,\r\n" + 
-					"    personas.apellido,\r\n" + 
-					"    personas.usuario,\r\n" + 
-					"    personas.psw,\r\n" + 
-					"    personas.dni,\r\n" + 
-					"    personas.fecha,\r\n" + 
-					"    personas.tipo\r\n" + 
-					"FROM paciente\r\n" + 
-					"JOIN personas ON paciente.id_pac = personas.id_per\r\n" + 
-					"WHERE paciente.id_cuidador =  "+id+";");
+			ResultSet rs = stmt.executeQuery("SELECT \r\n" + "    personas.id_per,\r\n" + "    personas.nombre,\r\n"
+					+ "    personas.apellido,\r\n" + "    personas.usuario,\r\n" + "    personas.psw,\r\n"
+					+ "    personas.dni,\r\n" + "    personas.fecha,\r\n" + "    personas.tipo\r\n"
+					+ "FROM paciente\r\n" + "JOIN personas ON paciente.id_pac = personas.id_per\r\n"
+					+ "WHERE paciente.id_cuidador =  " + id + ";");
 
 			while (rs.next()) {
 				id_per = rs.getInt("id_per");
@@ -575,7 +555,7 @@ public class Conexion {
 				dni2 = rs.getString("dni");
 				fecha = rs.getString("fecha");
 				tipo = rs.getString("tipo");
-				
+
 				PersonaNew persona = new PersonaNew(nombre, apellido, dni2, usuario, psw, fecha, tipo, id_per);
 				usuarios.add(persona);
 			}

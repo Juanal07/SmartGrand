@@ -76,8 +76,10 @@ public class ControllerAdmin {
 
 	@FXML
 	public void usuarioEliminado(ActionEvent actionEvent) throws IOException {
+		System.out.println(personaBox.getValue());
+		String string = personaBox.getValue();
 		Conexion conexion3 = new Conexion();
-		conexion3.eliminarPersona(personaBox.getValue());
+		conexion3.eliminarPersona(string);
 		System.out.println("Se elimino con exito");
 		adminHome();
 		Stage stage = (Stage) eliminar.getScene().getWindow();
