@@ -49,10 +49,10 @@ public class Conexion {
 
 	// revisar el id para que se auto incremente YA SEA POR JAVA O POR SQL y
 	// investigar si llevas comillas el tipo DATE
-	public void istPersona(Conexion conexion2, String nombre, String apellido, String usuario, String password,
+	public void istPersona(Conexion conexion2, String nombre, String apellido, String usuario, String psw,
 			String dni, String fecha, String tipo) {
-		String insert = "INSERT INTO Personas(nombre, apellido, usuario, password, dni, fecha) VALUES('" + nombre
-				+ "', '" + apellido + "', '" + usuario + "', '" + password + "', '" + dni + "', '" + fecha + "', '"
+		String insert = "INSERT INTO Personas(nombre, apellido, usuario, psw, dni, fecha) VALUES('" + nombre
+				+ "', '" + apellido + "', '" + usuario + "', '" + psw + "', '" + dni + "', '" + fecha + "', '"
 				+ tipo + "');";
 		conexion2.sentenciaSQL(insert);
 	}
@@ -92,45 +92,73 @@ public class Conexion {
 
 	// creamos todas las tablas
 	public void crearDb(Conexion conexion2) {
-		String tablaPersona = "CREATE TABLE IF NOT EXISTS Personas("
-				+ "id_per INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + "nombre TEXT not NULL, "
-				+ "apellido TEXT not NULL, " + "usuario TEXT not NULL, " + "password TEXT not null, "
-				+ "dni TEXT NOT NULL, " + "fecha TEXT NOT NULL, " + "tipo TEXT NOT NULL" + ");";
+		String tablaPersona = "CREATE TABLE IF NOT EXISTS Personas(\r\n" + 
+				"id_per INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,  \r\n" + 
+				"nombre TEXT not NULL, \r\n" + 
+				"apellido TEXT not NULL,  \r\n" + 
+				"usuario TEXT not NULL,  \r\n" + 
+				"psw TEXT not null, \r\n" + 
+				"dni TEXT NOT NULL,  \r\n" + 
+				"fecha TEXT NOT NULL,  \r\n" + 
+				"tipo TEXT NOT NULL \r\n" + 
+				");";
 		conexion2.sentenciaSQL(tablaPersona);
 
-//		String tablaMedico = "CREATE TABLE IF NOT EXISTS Medico(" 
-//				+ "id_med INTEGER PRIMARY KEY NOT NULL, "
-//				+ "especialidad TEXT not NULL, "
-//				+ "numColegiado INTEGER not NULL,"
-//				+ "verificado BOOLEAN,"
-//				+ "FOREIGN key (id_med) REFERENCES Personas(id_per)" + ");";
-//		conexion2.sentenciaSQL(tablaMedico);
-//
-//		String tablaPaciente = "CREATE TABLE IF NOT EXISTS Paciente(" + "id_pac INTEGER PRIMARY KEY NOT NULL,"
-//				+ "localidad TEXT not NULL," + "numSegSocial INTEGER not NULL," + "id_cuidador INTEGER,"
-//				+ "id_medico INTEGER," + "FOREIGN key (id_pac) REFERENCES Personas(id_per),"
-//				+ "FOREIGN key (id_cuidador) REFERENCES Cuidador(id_cui),"
-//				+ "FOREIGN key (id_medico) REFERENCES Medico(id_med)" + ");";
-//		conexion2.sentenciaSQL(tablaPaciente);
-//
-//		String tablaCuidador = "CREATE TABLE IF NOT EXISTS Cuidador(" + "id_cui INTEGER PRIMARY KEY NOT NULL,"
-//				+ "especialidad TEXT not NULL," + "id_medico INTEGER,"
-//				+ "FOREIGN key (id_cui) REFERENCES Personas(id_per),"
-//				+ "FOREIGN key (id_medico) REFERENCES Medico(id_med)" + ");";
-//		conexion2.sentenciaSQL(tablaCuidador);
-//
-//		String tablaTicket = "CREATE TABLE IF NOT EXISTS Ticket("
-//				+ "id_tic INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + "Texto_Paciente TEXT not NULL, "
-//				+ "Fecha_Paciente TEXT not NULL, " + "Texto_Medico TEXT, " + "Fecha_Medico TEXT, "
-//				+ "id_medico INTEGER," + "id_paciente INTEGER," + "FOREIGN KEY (id_medico) REFERENCES Medico(id_med),"
-//				+ "FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)" + ");";
-//		conexion2.sentenciaSQL(tablaTicket);
-//
-//		String tablaSensor = "CREATE TABLE IF NOT EXISTS Sensor("
-//				+ "id_sen INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + "Ubicacion TEXT not NULL, "
-//				+ "Tipo Date not NULL, " + "Dato INTEGER not NULL, " + "Fecha TEXT not null, "
-//				+ "id_paciente INTEGER NOT NULL," + "FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)" + ");";
-//		conexion2.sentenciaSQL(tablaSensor);
+		String tablaMedico = "CREATE TABLE IF NOT EXISTS Medico( \r\n" + 
+				"id_med INTEGER PRIMARY KEY NOT NULL, \r\n" + 
+				"especialidad TEXT not NULL, \r\n" + 
+				"numColegiado INTEGER not NULL,\r\n" + 
+				"verificado BOOLEAN,\r\n" + 
+				"FOREIGN key (id_med) REFERENCES Personas (id_per) \r\n" + 
+				");";
+		conexion2.sentenciaSQL(tablaMedico);
+		
+		String tablaCuidador = "CREATE TABLE IF NOT EXISTS Cuidador( \r\n" + 
+				"id_cui INTEGER PRIMARY KEY NOT NULL,\r\n" + 
+				"especialidad TEXT not NULL, \r\n" + 
+				"id_medico INTEGER,\r\n" + 
+				"FOREIGN key (id_cui) REFERENCES Personas (id_per),\r\n" + 
+				"FOREIGN key (id_medico) REFERENCES Medico (id_med) \r\n" + 
+				");";
+		conexion2.sentenciaSQL(tablaCuidador);
+
+		String tablaPaciente = "CREATE TABLE IF NOT EXISTS Paciente( \r\n" + 
+				"id_pac INTEGER PRIMARY KEY NOT NULL,\r\n" + 
+				"localidad TEXT not NULL, \r\n" + 
+				"numSegSocial INTEGER not NULL, \r\n" + 
+				"id_cuidador INTEGER,\r\n" + 
+				"id_medico INTEGER, \r\n" + 
+				"FOREIGN key (id_pac) REFERENCES Personas (id_per),\r\n" + 
+				"FOREIGN key (id_cuidador) REFERENCES Cuidador (id_cui),\r\n" + 
+				"FOREIGN key (id_medico) REFERENCES Medico (id_med) \r\n" + 
+				");";
+		conexion2.sentenciaSQL(tablaPaciente);
+
+		
+
+		String tablaTicket = "CREATE TABLE IF NOT EXISTS Ticket(\r\n" + 
+				"id_tic INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,  \r\n" + 
+				"Texto_Paciente TEXT not NULL, \r\n" + 
+				"Fecha_Paciente TEXT not NULL,  \r\n" + 
+				"Texto_Medico TEXT,  \r\n" + 
+				"Fecha_Medico TEXT, \r\n" + 
+				"id_medico INTEGER, \r\n" + 
+				"id_paciente INTEGER, \r\n" + 
+				"FOREIGN KEY (id_medico) REFERENCES Medico (id_med),\r\n" + 
+				"FOREIGN KEY (id_paciente) REFERENCES Paciente (id_pac) \r\n" + 
+				");";
+		conexion2.sentenciaSQL(tablaTicket);
+
+		String tablaSensor = "CREATE TABLE IF NOT EXISTS Sensor(\r\n" + 
+				"id_sen INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,  \r\n" + 
+				"Ubicacion TEXT not NULL, \r\n" + 
+				"Tipo TEXT not NULL,  \r\n" + 
+				"Dato INTEGER not NULL,  \r\n" + 
+				"Fecha DATE not null, \r\n" + 
+				"id_paciente INTEGER NOT NULL, \r\n" + 
+				"FOREIGN KEY (id_paciente) REFERENCES Paciente(id_pac)  \r\n" + 
+				");";
+		conexion2.sentenciaSQL(tablaSensor);
 
 	}
 
@@ -141,14 +169,14 @@ public class Conexion {
 		String nombre = null;
 		String apellido = null;
 		String usuario = null;
-		String password = null;
+		String psw = null;
 		String dni2 = null;
 		String fecha = null;
 		String tipo = null;
 		PersonaNew per = new PersonaNew();
 		try {
-			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
@@ -167,12 +195,12 @@ public class Conexion {
 				nombre = rs.getString("nombre");
 				apellido = rs.getString("apellido");
 				usuario = rs.getString("usuario");
-				password = rs.getString("password");
+				psw = rs.getString("psw");
 				dni2 = rs.getString("dni");
 				fecha = rs.getString("fecha");
 				tipo = rs.getString("tipo");
 			}
-			PersonaNew persona = new PersonaNew(nombre, apellido, dni2, usuario, password, fecha, tipo, id_per);
+			PersonaNew persona = new PersonaNew(nombre, apellido, dni2, usuario, psw, fecha, tipo, id_per);
 			per = persona;
 			// destruyo todo consulta conexion y resultset
 			rs.close();
@@ -191,8 +219,8 @@ public class Conexion {
 
 		PacienteNew p = new PacienteNew();
 		try {
-			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
@@ -226,8 +254,8 @@ public class Conexion {
 		boolean verificado = false;
 		MedicoNew medicoNew = new MedicoNew();
 		try {
-			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
@@ -260,8 +288,8 @@ public class Conexion {
 		String fecha_Paciente, fecha_Medico;
 		// Date fecha_Medico;
 		try {
-			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
@@ -296,8 +324,8 @@ public class Conexion {
 		String localidad = null;
 
 		try {
-			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
@@ -334,8 +362,8 @@ public class Conexion {
 		String dni2 = null;
 		List<String> dnis = new ArrayList<String>();
 		try {
-			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
@@ -363,8 +391,8 @@ public class Conexion {
 		String user = null;
 		List<String> usuarios = new ArrayList<String>();
 		try {
-			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
@@ -394,8 +422,8 @@ public class Conexion {
 		String apellido = null;
 		List<String> medicos = new ArrayList<String>();
 		try {
-			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
@@ -427,14 +455,14 @@ public class Conexion {
 		String nombre = null;
 		String apellido = null;
 		String usuario = null;
-		String password = null;
+		String psw = null;
 		String dni2 = null;
 		String fecha = null;
 		String tipo = null;
 		PersonaNew per = new PersonaNew();
 		try {
-			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
@@ -447,12 +475,12 @@ public class Conexion {
 				nombre = rs.getString("nombre");
 				apellido = rs.getString("apellido");
 				usuario = rs.getString("usuario");
-				password = rs.getString("password");
+				psw = rs.getString("psw");
 				dni2 = rs.getString("dni");
 				fecha = rs.getString("fecha");
 				tipo = rs.getString("tipo");
 			}
-			PersonaNew persona = new PersonaNew(nombre, apellido, dni2, usuario, password, fecha, tipo, id_per);
+			PersonaNew persona = new PersonaNew(nombre, apellido, dni2, usuario, psw, fecha, tipo, id_per);
 			per = persona;
 			// destruyo todo consulta conexion y resultset
 			rs.close();
@@ -468,8 +496,8 @@ public class Conexion {
 	public void eliminarPersona(String user) {
 
 		try {
-			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
@@ -492,8 +520,8 @@ public class Conexion {
 	public void verificarMedico(int id) {
 
 		try {
-			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
@@ -514,7 +542,7 @@ public class Conexion {
 		String nombre = null;
 		String apellido = null;
 		String usuario = null;
-		String password = null;
+		String psw = null;
 		String dni2 = null;
 		String fecha = null;
 		String tipo = null;
@@ -522,8 +550,8 @@ public class Conexion {
 		String user = null;
 		List<PersonaNew> usuarios = new ArrayList<PersonaNew>();
 		try {
-			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
@@ -535,12 +563,12 @@ public class Conexion {
 				nombre = rs.getString("nombre");
 				apellido = rs.getString("apellido");
 				usuario = rs.getString("usuario");
-				password = rs.getString("password");
+				psw = rs.getString("psw");
 				dni2 = rs.getString("dni");
 				fecha = rs.getString("fecha");
 				tipo = rs.getString("tipo");
 				
-				PersonaNew persona = new PersonaNew(nombre, apellido, dni2, usuario, password, fecha, tipo, id_per);
+				PersonaNew persona = new PersonaNew(nombre, apellido, dni2, usuario, psw, fecha, tipo, id_per);
 				usuarios.add(persona);
 			}
 

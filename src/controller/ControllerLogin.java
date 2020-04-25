@@ -29,7 +29,7 @@ public class ControllerLogin {
 	@FXML
 	public TextField jfxtUsuario = new TextField();
 	@FXML
-	public PasswordField jfxtPassword = new PasswordField();
+	public PasswordField jfxtPassword  = new PasswordField();
 	@FXML
 	public Button btnIniciarSesion = new Button();
 	@FXML
@@ -43,12 +43,12 @@ public class ControllerLogin {
 	public void iniciarSesion() {
 		try {
 			String usuario = jfxtUsuario.getText();
-			String password = GsonGeneral.getMd5(jfxtPassword.getText());
+			String psw = GsonGeneral.getMd5(jfxtPassword.getText());
 			Conexion conexion = new Conexion();
 			PersonaNew persona = conexion.consultaPersonaUsuario(usuario);
 
-			if (!(usuario.equals("")) && (persona.getPassword().equals(password))) {
-				System.out.println("password correcto");
+			if (!(usuario.equals("")) && (persona.getpsw().equals(psw))) {
+				System.out.println("psw correcto");
 				if (usuario.equals("admin")) {
 					adminHome();
 				}
@@ -74,8 +74,8 @@ public class ControllerLogin {
 				}
 
 			} else {
-				System.out.println("passowrd incorrecto");
-				lbError.setText("Error: Usuario o password INCORRECTO.");
+				System.out.println("passoword incorrecto");
+				lbError.setText("Error: Usuario o psw INCORRECTO.");
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
