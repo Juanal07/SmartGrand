@@ -59,8 +59,14 @@ public class ControllerAdmin {
 
 	@FXML
 	public void medicoVerificado(ActionEvent actionEvent) throws IOException {
+		String string = medicosBox.getValue();
+		String[] parts = string.split("-");
+		String part1 = parts[0];
+		System.out.println(part1);
 		Conexion conexion = new Conexion();
-		conexion.verificarMedico(Integer.parseInt(medicosBox.getValue().substring(3, 5)));
+		int a = Integer.parseInt(part1);
+		conexion.verificarMedico(a);
+		System.out.println(part1);
 		System.out.println("Medico verificado");
 		adminHome();
 		Stage stage = (Stage) verificar.getScene().getWindow();

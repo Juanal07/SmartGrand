@@ -165,7 +165,7 @@ public class ControllerLogin {
 			ControllerHomeCuidador vistaCuidadorPrincipalController = new ControllerHomeCuidador();
 			loader.setController(vistaCuidadorPrincipalController);
 			Parent root2 = loader.load();
-//			vistaCuidadorPrincipalController.writeText(persona);
+			vistaCuidadorPrincipalController.writeText(persona);
 			Stage stage2 = new Stage();
 			stage2.setTitle(tituloVista3);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la
@@ -173,7 +173,7 @@ public class ControllerLogin {
 			stage2.getIcons().add(icon);
 			stage2.setScene(new Scene(root2));
 			stage2.show();
-//			vistaCuidadorPrincipalController.cargarTableview(persona);
+			vistaCuidadorPrincipalController.cargarTableview(persona);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

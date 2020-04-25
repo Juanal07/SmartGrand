@@ -27,7 +27,7 @@ public class Conexion {
 //		BBDDName = path;
 //	}
 	public Conexion() {
-		BBDDName = "SmartGrand.db";
+		BBDDName = "pr_smartgrant";
 	}
 
 	public boolean sentenciaSQL(String sql) {
@@ -49,29 +49,29 @@ public class Conexion {
 
 	// revisar el id para que se auto incremente YA SEA POR JAVA O POR SQL y
 	// investigar si llevas comillas el tipo DATE
-	public void istPersona(Conexion conexion2, String nombre, String apellido, String usuario, String psw,
+	public void istPersona(Conexion conexion, String nombre, String apellido, String usuario, String psw,
 			String dni, String fecha, String tipo) {
-		String insert = "INSERT INTO Personas(nombre, apellido, usuario, psw, dni, fecha) VALUES('" + nombre
+		String insert = "INSERT INTO Personas(nombre, apellido, usuario, psw, dni, fecha, tipo) VALUES('" + nombre
 				+ "', '" + apellido + "', '" + usuario + "', '" + psw + "', '" + dni + "', '" + fecha + "', '"
 				+ tipo + "');";
-		conexion2.sentenciaSQL(insert);
+		conexion.sentenciaSQL(insert);
 	}
 
 	public void istMedico(Conexion conexion2, int id_med, String especialidad, int numColegiado, boolean verificado) {
-		String istMedico = "INSERT INTO Medico(id_med, especialidad, numColegiado, id_cuidador, id_paciente) VALUES('"
-				+ id_med + "', '" + especialidad + "', '" + numColegiado + "', '" + verificado + "');";
+		String istMedico = "INSERT INTO Medico(id_med, especialidad, numColegiado, verificado) VALUES('"
+				+ id_med + "', '" + especialidad + "', '" + numColegiado + "', " + verificado + ");";
 		conexion2.sentenciaSQL(istMedico);
 	}
 
 	public void istPaciente(Conexion conexion2, int id_pac, String localidad, int numSegSocial, int id_cuidador,
 			int id_medico) {
-		String istPaciente = "INSERT INTO Paciente(id_pac, localidad, numSegSocial, id_cuidador) VALUES('" + id_pac
+		String istPaciente = "INSERT INTO Paciente(id_pac, localidad, numSegSocial, id_cuidador, id_medico) VALUES('" + id_pac
 				+ "', '" + localidad + "', '" + numSegSocial + "', '" + id_cuidador + "', '" + id_medico + "');";
 		conexion2.sentenciaSQL(istPaciente);
 	}
 
 	public void istCuidador(Conexion conexion2, int id_cui, String especialidad, int id_medico) {
-		String istCuidador = "INSERT INTO Cuidador(id_cui, especialidad) VALUES('" + id_cui + "', '" + especialidad
+		String istCuidador = "INSERT INTO Cuidador(id_cui, especialidad, id_medico) VALUES('" + id_cui + "', '" + especialidad
 				+ "', '" + id_medico + "');";
 		conexion2.sentenciaSQL(istCuidador);
 	}
@@ -435,7 +435,7 @@ public class Conexion {
 				nombre = rs.getString("nombre");
 				apellido = rs.getString("apellido");
 				numColegiado = rs.getInt("numColegiado");
-				medicos.add("ID: " + id_per + "-" + " " + nombre + " " + apellido + " " + numColegiado);
+				medicos.add(id_per + "-" + " " + nombre + " " + apellido + " " + numColegiado);
 			}
 
 			// destruyo todo consulta conexion y resultset
@@ -498,12 +498,12 @@ public class Conexion {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
-			conexion.setAutoCommit(false);
+
 
 			stmt = conexion.createStatement();
 
 			ResultSet rs = stmt
-					.executeQuery("DELETE FROM Personas WHERE id_per = (SELECT id_per FROM Personas WHERE usuario = '"
+					.executeQuery("DELETE FROM Paciente WHERE id_pac = (SELECT id_per FROM Personas WHERE usuario =  '"
 							+ user + "');");
 
 			// destruyo todo consulta conexion y resultset
@@ -522,11 +522,10 @@ public class Conexion {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
-			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
 
-			ResultSet rs = stmt.executeQuery("UPDATE medicos SET verificado = 1 WHERE id_med = '" + id + "');");
+			ResultSet rs = stmt.executeQuery("UPDATE medico SET verificado = 1 WHERE id_med = " + id);
 			// destruyo todo consulta conexion y resultset
 			rs.close();
 			stmt.close();
@@ -547,7 +546,6 @@ public class Conexion {
 		String fecha = null;
 		String tipo = null;
 
-		String user = null;
 		List<PersonaNew> usuarios = new ArrayList<PersonaNew>();
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -555,10 +553,20 @@ public class Conexion {
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM Personas WHERE id_cui = '"+id+"');");
+			ResultSet rs = stmt.executeQuery("SELECT \r\n" + 
+					"    personas.id_per,\r\n" + 
+					"    personas.nombre,\r\n" + 
+					"    personas.apellido,\r\n" + 
+					"    personas.usuario,\r\n" + 
+					"    personas.psw,\r\n" + 
+					"    personas.dni,\r\n" + 
+					"    personas.fecha,\r\n" + 
+					"    personas.tipo\r\n" + 
+					"FROM paciente\r\n" + 
+					"JOIN personas ON paciente.id_pac = personas.id_per\r\n" + 
+					"WHERE paciente.id_cuidador =  "+id+";");
 
 			while (rs.next()) {
-				user = rs.getString("usuario");
 				id_per = rs.getInt("id_per");
 				nombre = rs.getString("nombre");
 				apellido = rs.getString("apellido");

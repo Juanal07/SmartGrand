@@ -73,7 +73,7 @@ public class ControllerRegistroCuidador {
 			Conexion conexion = new Conexion();
 			conexion.istPersona(conexion, nombre, apellido, usuario, passwordCifrada, dni, fechaNacimiento.toString(),
 					tipo);
-			conexion.istCuidador(conexion, conexion.consultaPersona("dni", dni).getId_per(), especialidad, 99999);
+			conexion.istCuidador(conexion, conexion.consultaPersona("dni", dni).getId_per(), especialidad, 5);
 
 			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
 			stage.close();

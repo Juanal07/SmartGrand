@@ -121,6 +121,7 @@ public class ControllerHomeCuidador {
 		java.util.List<PersonaNew> lista = conexion.listaPacientesCuidador(persona.getId_per());
 
 		for (PersonaNew p : lista) {
+			System.out.println(p.getUsuario());
 			listaPersonas.add(p);
 		}
 		
@@ -129,9 +130,10 @@ public class ControllerHomeCuidador {
 		colDNI.setCellValueFactory(new PropertyValueFactory<PersonaNew, String>("dni"));
 		colNombre.setCellValueFactory(new PropertyValueFactory<PersonaNew, String>("nombre"));
 		colApellidos.setCellValueFactory(new PropertyValueFactory<PersonaNew, String>("apellido"));	
-//		tablaPacientesCuidador.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Persona>() {
+		
+//		tablaPacientesCuidador.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<PersonaNew>() {
 //			@Override
-//			public void changed(ObservableValue<? extends Persona> observable, Persona oldValue, Persona newValue) {
+//			public void changed(ObservableValue<? extends PersonaNew> observable, Persona oldValue, Persona newValue) {
 //				Persona persona = tablaPacientesCuidador.getSelectionModel().getSelectedItem();
 //				enviarSensor1(persona.getDni());
 //			
