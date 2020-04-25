@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import DataBase.Conexion;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -31,15 +32,15 @@ import model.Persona;
 import model.PersonaNew;
 public class ControllerHomeCuidador {
 	@FXML
-	private TableView<Persona> tablaPacientesCuidador;
+	private TableView<PersonaNew> tablaPacientesCuidador;
 	@FXML
-	private TableColumn<Persona, String> colDNI;
+	private TableColumn<PersonaNew, String> colDNI;
 	@FXML
-	private TableColumn<Persona, String> colNombre;
+	private TableColumn<PersonaNew, String> colNombre;
 	@FXML
-	private TableColumn<Persona, String> colApellidos;
+	private TableColumn<PersonaNew, String> colApellidos;
 	@FXML
-	private TableColumn<Persona, String> colTiposuario;
+	private TableColumn<PersonaNew, String> colTiposuario;
 	@FXML
 	private Label lbOculto = new Label();
 	@FXML
@@ -114,20 +115,28 @@ public class ControllerHomeCuidador {
 		}
 	}
 	public void cargarTableview (PersonaNew persona) {
-		ObservableList<Persona> listaPersonas = FXCollections.observableArrayList();
-		leerPersonas(listaPersonas, persona);
+		ObservableList<PersonaNew> listaPersonas = FXCollections.observableArrayList();
+
+		Conexion conexion = new Conexion();
+		java.util.List<PersonaNew> lista = conexion.listaPacientesCuidador(persona.getId_per());
+
+		for (PersonaNew p : lista) {
+			listaPersonas.add(p);
+		}
+		
+
 		tablaPacientesCuidador.setItems(listaPersonas);
-		colDNI.setCellValueFactory(new PropertyValueFactory<Persona, String>("dni"));
-		colNombre.setCellValueFactory(new PropertyValueFactory<Persona, String>("nombre"));
-		colApellidos.setCellValueFactory(new PropertyValueFactory<Persona, String>("apellido"));	
-		tablaPacientesCuidador.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Persona>() {
-			@Override
-			public void changed(ObservableValue<? extends Persona> observable, Persona oldValue, Persona newValue) {
-				Persona persona = tablaPacientesCuidador.getSelectionModel().getSelectedItem();
-				enviarSensor1(persona.getDni());
-			
-			}				
-		});	
+		colDNI.setCellValueFactory(new PropertyValueFactory<PersonaNew, String>("dni"));
+		colNombre.setCellValueFactory(new PropertyValueFactory<PersonaNew, String>("nombre"));
+		colApellidos.setCellValueFactory(new PropertyValueFactory<PersonaNew, String>("apellido"));	
+//		tablaPacientesCuidador.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Persona>() {
+//			@Override
+//			public void changed(ObservableValue<? extends Persona> observable, Persona oldValue, Persona newValue) {
+//				Persona persona = tablaPacientesCuidador.getSelectionModel().getSelectedItem();
+//				enviarSensor1(persona.getDni());
+//			
+//			}				
+//		});	
 	}
 
 	public void enviarSensor1(String dni) {

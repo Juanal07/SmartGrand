@@ -19,9 +19,9 @@ public class Conexion {
 	String BBDDName;
 	Connection conexion = null;
 	Statement stmt = null;
-	
+
 	static final String USER = "pr_smartgrant";
-    static final String PASS = "3SmartGrant";
+	static final String PASS = "3SmartGrant";
 
 //	public Conexion(String path) {
 //		BBDDName = path;
@@ -32,10 +32,9 @@ public class Conexion {
 
 	public boolean sentenciaSQL(String sql) {
 		try {
-        	Class.forName("org.mariadb.jdbc.Driver");
-            System.out.println("Connecting to a selected database...");
-            conexion = DriverManager.getConnection(
-                    "jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
+			Class.forName("org.mariadb.jdbc.Driver");
+			System.out.println("Connecting to a selected database...");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			stmt = conexion.createStatement();// creamos una sentencia
 			stmt.executeUpdate(sql);// lanza sentencias que no devuelven nada
 			stmt.close();// cerrar la base de datos una ves finalizados
@@ -92,18 +91,13 @@ public class Conexion {
 	}
 
 	// creamos todas las tablas
-	public void crearDb(Conexion conexion2) {		
+	public void crearDb(Conexion conexion2) {
 		String tablaPersona = "CREATE TABLE IF NOT EXISTS Personas("
-				+ "id_per INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " 
-				+ "nombre TEXT not NULL, "
-				+ "apellido TEXT not NULL, " 
-				+ "usuario TEXT not NULL, " 
-				+ "password TEXT not null, "
-				+ "dni TEXT NOT NULL, " 
-				+ "fecha TEXT NOT NULL, " 
-				+ "tipo TEXT NOT NULL" + ");";
+				+ "id_per INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + "nombre TEXT not NULL, "
+				+ "apellido TEXT not NULL, " + "usuario TEXT not NULL, " + "password TEXT not null, "
+				+ "dni TEXT NOT NULL, " + "fecha TEXT NOT NULL, " + "tipo TEXT NOT NULL" + ");";
 		conexion2.sentenciaSQL(tablaPersona);
-		
+
 //		String tablaMedico = "CREATE TABLE IF NOT EXISTS Medico(" 
 //				+ "id_med INTEGER PRIMARY KEY NOT NULL, "
 //				+ "especialidad TEXT not NULL, "
@@ -395,7 +389,7 @@ public class Conexion {
 
 	public List<String> listaMedicosNoVerificados() {
 
-		int id_per,numColegiado;
+		int id_per, numColegiado;
 		String nombre = null;
 		String apellido = null;
 		List<String> medicos = new ArrayList<String>();
@@ -409,11 +403,11 @@ public class Conexion {
 					"SELECT * FROM Personas JOIN Medico ON Medico.id_med = Personas.id_per  WHERE medico.verificado = 'false';");
 
 			while (rs.next()) {
-				id_per = rs.getInt("id_per");		
+				id_per = rs.getInt("id_per");
 				nombre = rs.getString("nombre");
 				apellido = rs.getString("apellido");
 				numColegiado = rs.getInt("numColegiado");
-				medicos.add("ID: "+id_per+"-" + " "+nombre+" "+apellido+" "+numColegiado);
+				medicos.add("ID: " + id_per + "-" + " " + nombre + " " + apellido + " " + numColegiado);
 			}
 
 			// destruyo todo consulta conexion y resultset
@@ -470,18 +464,20 @@ public class Conexion {
 		System.out.println("Consulta terminada");
 		return per;
 	}
-	public  void eliminarPersona(String user) {
-		
+
+	public void eliminarPersona(String user) {
+
 		try {
 			Class.forName("org.sqlite.JDBC");
 			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
-			
-			ResultSet rs = stmt.executeQuery("DELETE FROM Personas WHERE id_per = (SELECT id_per FROM Personas WHERE usuario = '"+user+"');");
 
-		
+			ResultSet rs = stmt
+					.executeQuery("DELETE FROM Personas WHERE id_per = (SELECT id_per FROM Personas WHERE usuario = '"
+							+ user + "');");
+
 			// destruyo todo consulta conexion y resultset
 			rs.close();
 			stmt.close();
@@ -490,6 +486,73 @@ public class Conexion {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 		}
 		System.out.println("Consulta terminada");
-		
+
+	}
+
+	public void verificarMedico(int id) {
+
+		try {
+			Class.forName("org.sqlite.JDBC");
+			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			conexion.setAutoCommit(false);
+
+			stmt = conexion.createStatement();
+
+			ResultSet rs = stmt.executeQuery("UPDATE medicos SET verificado = 1 WHERE id_med = '" + id + "');");
+			// destruyo todo consulta conexion y resultset
+			rs.close();
+			stmt.close();
+			conexion.close();
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+		}
+		System.out.println("Consulta terminada");
+
+	}
+	public List<PersonaNew> listaPacientesCuidador(int id) {
+		int id_per = 0;
+		String nombre = null;
+		String apellido = null;
+		String usuario = null;
+		String password = null;
+		String dni2 = null;
+		String fecha = null;
+		String tipo = null;
+
+		String user = null;
+		List<PersonaNew> usuarios = new ArrayList<PersonaNew>();
+		try {
+			Class.forName("org.sqlite.JDBC");
+			conexion = DriverManager.getConnection("jdbc:sqlite:" + BBDDName);
+			conexion.setAutoCommit(false);
+
+			stmt = conexion.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Personas WHERE id_cui = '"+id+"');");
+
+			while (rs.next()) {
+				user = rs.getString("usuario");
+				id_per = rs.getInt("id_per");
+				nombre = rs.getString("nombre");
+				apellido = rs.getString("apellido");
+				usuario = rs.getString("usuario");
+				password = rs.getString("password");
+				dni2 = rs.getString("dni");
+				fecha = rs.getString("fecha");
+				tipo = rs.getString("tipo");
+				
+				PersonaNew persona = new PersonaNew(nombre, apellido, dni2, usuario, password, fecha, tipo, id_per);
+				usuarios.add(persona);
+			}
+
+			// destruyo todo consulta conexion y resultset
+			rs.close();
+			stmt.close();
+			conexion.close();
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+		}
+		System.out.println("Consulta terminada");
+
+		return usuarios;
 	}
 }

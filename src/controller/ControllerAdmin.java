@@ -1,4 +1,5 @@
 package controller;
+
 import java.awt.List;
 import java.io.IOException;
 
@@ -8,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -19,53 +21,63 @@ import model.PersonaNew;
 public class ControllerAdmin {
 	@FXML
 	public Button btnAtras;
-	
+
 	@FXML
 	public Button verificar;
 	@FXML
 	public Button eliminar;
 	@FXML
 	private ComboBox<String> medicosBox;
-	
+
 	ObservableList<String> medicosNoVerificados = FXCollections.observableArrayList();
 	@FXML
 	private ComboBox<String> personaBox;
-	
+
 	ObservableList<String> personas = FXCollections.observableArrayList();
-	
+
 	@FXML
 	public void initialize() {
 		Conexion conexion = new Conexion();
 		java.util.List<String> lista = conexion.listaMedicosNoVerificados();
-		
+
 		for (String p : lista) {
 			medicosNoVerificados.add(p);
 		}
 		medicosBox.setValue("Elige medico");
 		medicosBox.setItems(medicosNoVerificados);
-		
+
 		Conexion conexion1 = new Conexion();
 		java.util.List<String> lista2 = conexion1.listaUsuarios();
-		
+
 		for (String a : lista2) {
 			personas.add(a);
 		}
 		personaBox.setValue("Elige usuario");
 		personaBox.setItems(personas);
-		
+
 	}
+
 	@FXML
 	public void medicoVerificado(ActionEvent actionEvent) throws IOException {
-		
-		
+		Conexion conexion = new Conexion();
+		conexion.verificarMedico(Integer.parseInt(medicosBox.getValue().substring(3, 5)));
+		System.out.println("Medico verificado");
+		adminHome();
+		Stage stage = (Stage) verificar.getScene().getWindow();
+		stage.close();
+
 	}
+
 	@FXML
 	public void usuarioEliminado(ActionEvent actionEvent) throws IOException {
 		Conexion conexion3 = new Conexion();
 		conexion3.eliminarPersona(personaBox.getValue());
-		System.out.println("se elimino con exito");
+		System.out.println("Se elimino con exito");
+		adminHome();
+		Stage stage = (Stage) eliminar.getScene().getWindow();
+		stage.close();
 	}
-	
+
 	@FXML
 	public void atrasLogin(ActionEvent actionEvent) {
 		// cerramos ventana
@@ -96,4 +108,25 @@ public class ControllerAdmin {
 			System.out.println(e.getMessage());
 		}
 	}
+
+	public void adminHome() {
+		try {
+			String vistaCuidador = "/View/AdminHome.fxml";
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(vistaCuidador));
+			ControllerAdmin vistaAdmin = new ControllerAdmin();
+			loader.setController(vistaAdmin);
+			Parent root2 = loader.load();
+			Stage stage2 = new Stage();
+			stage2.setTitle("Administrador");
+			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png")); // annade icono a la
+																									// vista
+			stage2.getIcons().add(icon);
+			stage2.setScene(new Scene(root2));
+			stage2.show();
+//			vistaCuidadorPrincipalController.cargarTableview(persona);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }
