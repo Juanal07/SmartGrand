@@ -49,9 +49,8 @@ public class ControllerMedicoDatosPaciente {
 	}
 
 	public void enviarSensor3() {
-		String dniPaciente = lbDni.getText();
 		try {
-			ControllerSensor3Caidas controlBarChart = new ControllerSensor3Caidas();
+			ControllerSensor3 controlBarChart = new ControllerSensor3();
 			FXMLLoader root2 = new FXMLLoader();
 			root2.setLocation(this.getClass().getResource("/View/Sensor3caidas.fxml"));
 			root2.setController(controlBarChart);
@@ -63,7 +62,7 @@ public class ControllerMedicoDatosPaciente {
 			sendStage.getIcons().add(icon);
 			sendStage.setScene(scene);
 			sendStage.show();
-			controlBarChart.escibirDniPaciente(dniPaciente);
+			controlBarChart.escibirDniPaciente(id_paciente.getText());
 			controlBarChart.cargarGrafica();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,9 +70,8 @@ public class ControllerMedicoDatosPaciente {
 	}
 
 	public void enviarSensor2() {
-		String dniPaciente = lbDni.getText();
 		try {
-			ControllerSensor2Puerta controlBarChart = new ControllerSensor2Puerta();
+			ControllerSensor2 controlBarChart = new ControllerSensor2();
 			FXMLLoader root2 = new FXMLLoader();
 			root2.setLocation(this.getClass().getResource("/View/Sensor2puerta.fxml"));
 			root2.setController(controlBarChart);
@@ -85,9 +83,8 @@ public class ControllerMedicoDatosPaciente {
 			sendStage.getIcons().add(icon);
 			sendStage.setScene(scene);
 			sendStage.show();
-			controlBarChart.escibirDniPaciente(dniPaciente);
+			controlBarChart.escibirDniPaciente(id_paciente.getText());
 			controlBarChart.cargarGrafica();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
