@@ -13,19 +13,16 @@ import javafx.collections.ObservableList;
 import model.MedicoNew;
 import model.PacienteNew;
 import model.PersonaNew;
+import model.Sensor1New;
 import model.TicketsNew;
 
 public class Conexion {
-	String BBDDName;
-	Connection conexion = null;
-	Statement stmt = null;
+	private String BBDDName;
+	private Connection conexion = null;
+	private Statement stmt = null;
+	private static final String USER = "pr_smartgrant";
+	private static final String PASS = "3SmartGrant";
 
-	static final String USER = "pr_smartgrant";
-	static final String PASS = "3SmartGrant";
-
-//	public Conexion(String path) {
-//		BBDDName = path;
-//	}
 	public Conexion() {
 		BBDDName = "pr_smartgrant";
 	}
@@ -439,8 +436,7 @@ public class Conexion {
 
 			stmt = conexion.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM Personas where usuario= '" + user + "';");// conjunto de
-																										// resultados
-
+																								// resultados
 			while (rs.next()) {
 				// aqui colocar un objeto
 				id_per = rs.getInt("id_per");
@@ -472,25 +468,12 @@ public class Conexion {
 			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			stmt = conexion.createStatement();
 			
-			System.out.println(user);
-			System.out.println("DELETE FROM Paciente WHERE id_pac = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
-					+"DELETE FROM Medico WHERE id_med = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
-					+"DELETE FROM Cuidador WHERE id_cui = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
-					+"DELETE FROM Ticket WHERE id_paciente = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
-					+"DELETE FROM Personas WHERE id_per = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');");
-			ResultSet rs = stmt.executeQuery("DELETE FROM Paciente WHERE id_pac = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
-					+"DELETE FROM Medico WHERE id_med = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
-					+"DELETE FROM Cuidador WHERE id_cui = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
-					+"DELETE FROM Ticket WHERE id_paciente = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
-					+"DELETE FROM Personas WHERE id_per = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');"
-					
-					
-					
-					
-					);
+			ResultSet rs = stmt.executeQuery("DELETE FROM Paciente WHERE id_pac = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');");	
+			rs = stmt.executeQuery("DELETE FROM Medico WHERE id_med = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');");
+			rs = stmt.executeQuery("DELETE FROM Cuidador WHERE id_cui = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');");
+			rs = stmt.executeQuery("DELETE FROM Ticket WHERE id_paciente = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');");
+			rs = stmt.executeQuery("DELETE FROM Personas WHERE id_per = (SELECT id_per FROM Personas WHERE usuario ='"+user+"');");
 			
-			
-
 			// destruyo todo consulta conexion y resultset
 			rs.close();
 			stmt.close();
@@ -570,5 +553,49 @@ public class Conexion {
 		System.out.println("Consulta terminada");
 
 		return usuarios;
+	}
+
+	public ArrayList<Sensor1New> cargarSensor(int id, String tipo) {
+		
+		int id_sen;
+		String Ubicacion;
+		String Tipo;
+		int Dato;
+		String Fecha;
+		int id_paciente;
+		
+		ArrayList<Sensor1New> datos = new ArrayList<Sensor1New>();
+		
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
+			conexion.setAutoCommit(false);
+
+			stmt = conexion.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM sensor WHERE id_paciente = "+ id+" AND Tipo = '"+tipo+"';");
+
+			while (rs.next()) {
+				id_sen = rs.getInt("id_sen");
+				Ubicacion = rs.getString("Ubicacion");
+				Tipo = rs.getString("Tipo");
+				Dato = rs.getInt("Dato");
+				Fecha = rs.getString("Fecha");
+				id_paciente = rs.getInt("id_paciente");
+
+				Sensor1New s = new Sensor1New(id_sen,Ubicacion,Tipo,Dato,Fecha,id_paciente);
+				
+				datos.add(s);
+			}
+
+			// destruyo todo consulta conexion y resultset
+			rs.close();
+			stmt.close();
+			conexion.close();
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+		}
+		System.out.println("Consulta terminada");
+
+		return datos;
 	}
 }

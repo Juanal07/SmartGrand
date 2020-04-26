@@ -32,8 +32,10 @@ public class ControllerMedicoDatosPaciente {
 	@FXML
 	private JFXButton btnSensor3 = new JFXButton();
 	private Label lbOcultoIdMedico = new Label();
+	private Label id_paciente = new Label();
 
 	public void writeText(PacienteNew paciente, String id_med) {
+		id_paciente.setText(Integer.toString(paciente.getId_pac()));
 		lbOcultoIdMedico.setText(id_med);
 		Conexion conexion = new Conexion();// id per
 		// datos del paciente
@@ -92,9 +94,8 @@ public class ControllerMedicoDatosPaciente {
 	}
 
 	public void enviarSensor1() {
-		String dniPaciente = lbDni.getText();
 		try {
-			ControllerSensor1Presion controlBarChart = new ControllerSensor1Presion();
+			ControllerSensor1 controlBarChart = new ControllerSensor1();
 			FXMLLoader root2 = new FXMLLoader();
 			root2.setLocation(this.getClass().getResource("/View/Sensor1Presion.fxml"));
 			root2.setController(controlBarChart);
@@ -106,7 +107,7 @@ public class ControllerMedicoDatosPaciente {
 			sendStage.getIcons().add(icon);
 			sendStage.setScene(scene);
 			sendStage.show();
-			controlBarChart.escibirDniPaciente(dniPaciente);
+			controlBarChart.escibirDniPaciente(id_paciente.getText());
 			controlBarChart.cargarGrafica();
 
 		} catch (Exception e) {

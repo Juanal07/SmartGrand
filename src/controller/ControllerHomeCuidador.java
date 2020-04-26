@@ -144,7 +144,7 @@ public class ControllerHomeCuidador {
 	public void enviarSensor1(String dni) {
 		String dniPaciente = dni;
 		try {
-			ControllerSensor1Presion controlBarChart = new ControllerSensor1Presion();
+			ControllerSensor1 controlBarChart = new ControllerSensor1();
 			FXMLLoader root2 =  new FXMLLoader();
 			root2.setLocation(this.getClass().getResource("/View/sensor1Presion.fxml"));
 			root2.setController(controlBarChart);
