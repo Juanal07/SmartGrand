@@ -263,7 +263,7 @@ public class Conexion {
 
 			stmt = conexion.createStatement();
 			// todos los tickets que coinsidan con su id y texto medico vacio
-			ResultSet rs = stmt.executeQuery("SELECT * FROM Ticket where " + pWhere + " = " + id + " AND Texto_Medico = '';");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Ticket where " + pWhere + " = " + id + " AND Texto_Medico is null;");
 
 			while (rs.next()) {
 				// aqui colocar un objeto
@@ -613,7 +613,7 @@ public class Conexion {
 
 			stmt = conexion.createStatement();
 			// todos los tickets que coinsidan con su id y texto medico sea distito de vacio
-			ResultSet rs = stmt.executeQuery("SELECT * FROM Ticket where " + pWhere + " = " + id + " AND Texto_Medico != '';");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Ticket where " + pWhere + " = " + id + " AND Texto_Medico is not null;");
 
 			while (rs.next()) {
 				// aqui colocar un objeto
