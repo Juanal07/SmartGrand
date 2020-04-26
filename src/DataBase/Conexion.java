@@ -60,10 +60,10 @@ public class Conexion {
 		conexion2.sentenciaSQL(istMedico);
 	}
 
-	public void istPaciente(Conexion conexion2, int id_pac, String localidad, int numSegSocial, int id_cuidador,
+	public void istPaciente(Conexion conexion2, int id_pac, String localidad, int numSegSocial,
 			int id_medico) {
 		String istPaciente = "INSERT INTO Paciente(id_pac, localidad, numSegSocial, id_cuidador, id_medico) VALUES('"
-				+ id_pac + "', '" + localidad + "', '" + numSegSocial + "', '" + id_cuidador + "', '" + id_medico
+				+ id_pac + "', '" + localidad + "', '" + numSegSocial + "',  null , '" + id_medico
 				+ "');";
 		conexion2.sentenciaSQL(istPaciente);
 	}
@@ -638,5 +638,80 @@ public class Conexion {
 		}
 		System.out.println("Consulta terminada");
 		
+	}
+	public int medicoMasLibre() {
+
+		int id_medico = 0;
+		
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
+			conexion.setAutoCommit(false);
+
+			stmt = conexion.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(
+					"SELECT\r\n" + 
+					"    COUNT(id_pac) AS totalPacientes,\r\n" + 
+					"    id_medico\r\n" + 
+					"FROM paciente\r\n" + 
+					"GROUP BY id_medico\r\n" + 
+					"HAVING COUNT(id_pac) = ( SELECT MIN(totalPacientes)\r\n" + 
+					"                                        FROM (SELECT\r\n" + 
+					"                                                COUNT(id_pac) AS totalPacientes,\r\n" + 
+					"                                                id_medico\r\n" + 
+					"                                                FROM paciente\r\n" + 
+					"                                                GROUP BY id_medico)Conteo_Pacientes)");
+
+			while (rs.next()) {
+				id_medico = rs.getInt("id_medico");
+			}
+			// destruyo todo consulta conexion y resultset
+			rs.close();
+			stmt.close();
+			conexion.close();
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+		}
+		System.out.println("Consulta terminada");
+		return id_medico;
+	}
+
+	public int medicoMasLibreCui() {
+		int id_medico = 0;
+		
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
+			conexion.setAutoCommit(false);
+
+			stmt = conexion.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(
+					"SELECT\r\n" + 
+					"    COUNT(id_cui) AS totalcuidadores,\r\n" + 
+					"    id_medico\r\n" + 
+					"FROM cuidador\r\n" + 
+					"GROUP BY id_medico\r\n" + 
+					"HAVING COUNT(id_cui) = ( SELECT MIN(totalcuidadores)\r\n" + 
+					"                                        FROM (SELECT\r\n" + 
+					"                                                COUNT(id_cui) AS totalcuidadores,\r\n" + 
+					"                                                id_medico\r\n" + 
+					"                                                FROM cuidador\r\n" + 
+					"                                                GROUP BY id_medico)Conteo_Cuidadores)");
+
+			while (rs.next()) {
+				id_medico = rs.getInt("id_medico");
+			}
+	
+			// destruyo todo consulta conexion y resultset
+			rs.close();
+			stmt.close();
+			conexion.close();
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+		}
+		System.out.println("Consulta terminada");
+		return id_medico;
 	}
 }

@@ -78,10 +78,12 @@ public class ControllerRegistroPaciente {
 		if (usuario != "" && password != "" && nombre != "" && apellido != "" && dni != "" && valido) {
 
 			Conexion conexion = new Conexion();
+			System.out.println("medico mas libre::"+conexion.medicoMasLibre());
 			conexion.istPersona(conexion, nombre, apellido, usuario, passwordCifrada, dni, fechaNacimiento.toString(),
 					tipo);
+			System.out.println(conexion.medicoMasLibre());
 			conexion.istPaciente(conexion, conexion.consultaPersona("dni", dni).getId_per(), localidad,
-					Integer.parseInt(numSocial), 999999, 99999);
+					Integer.parseInt(numSocial),conexion.medicoMasLibre());
 
 			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
 			stage.close();

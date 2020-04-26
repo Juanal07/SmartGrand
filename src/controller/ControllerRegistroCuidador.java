@@ -48,6 +48,7 @@ public class ControllerRegistroCuidador {
 	@FXML
 	private JFXDatePicker dpFechaNacimiento = new JFXDatePicker();
 
+	
 	@FXML
 	public void pacienteRegistrado(ActionEvent actionEvent) throws IOException {
 
@@ -60,7 +61,6 @@ public class ControllerRegistroCuidador {
 		LocalDate fechaNacimiento = dpFechaNacimiento.getValue();
 		String especialidad = tfEspecialidad.getText();
 		String tipo = "cuidador";
-
 		System.out.println(GsonGeneral.seRepiteDnis(dni));
 		System.out.println(usuario + passwordCifrada + nombre + apellido + dni + especialidad);
 		System.out.println(fechaNacimiento == null);
@@ -73,7 +73,7 @@ public class ControllerRegistroCuidador {
 			Conexion conexion = new Conexion();
 			conexion.istPersona(conexion, nombre, apellido, usuario, passwordCifrada, dni, fechaNacimiento.toString(),
 					tipo);
-			conexion.istCuidador(conexion, conexion.consultaPersona("dni", dni).getId_per(), especialidad, 5);
+			conexion.istCuidador(conexion, conexion.consultaPersona("dni", dni).getId_per(), especialidad, conexion.medicoMasLibreCui());
 
 			Stage stage = (Stage) btnRegistrarse.getScene().getWindow(); // cerramos ventana
 			stage.close();
