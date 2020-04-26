@@ -262,7 +262,8 @@ public class Conexion {
 			conexion.setAutoCommit(false);
 
 			stmt = conexion.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM Ticket where " + pWhere + " = " + id + ";");
+			// todos los tickets que coinsidan con su id y texto medico vacio
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Ticket where " + pWhere + " = " + id + " AND Texto_Medico = '';");
 
 			while (rs.next()) {
 				// aqui colocar un objeto
@@ -297,7 +298,7 @@ public class Conexion {
 			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
 			conexion.setAutoCommit(false);
 
-			stmt = conexion.createStatement();
+			stmt = conexion.createStatement();// devuelve todos lo pacientes del medico
 			ResultSet rs = stmt.executeQuery("SELECT * FROM Paciente where id_medico = " + id_per + ";");
 
 			while (rs.next()) {
@@ -314,6 +315,7 @@ public class Conexion {
 			stmt.close();
 			conexion.close();
 		} catch (Exception e) {
+			System.out.println("MTD consulta paciente.");
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 		}
 		System.out.println("Consulta terminada");
@@ -597,5 +599,44 @@ public class Conexion {
 		System.out.println("Consulta terminada");
 
 		return datos;
+	}
+
+	public void leerTicketsPaciente(ObservableList<TicketsNew> ticketsObservableList, String pWhere, int id) {
+		int id_tic, id_medico, id_paciente;
+		String texto_Paciente, texto_Medico;
+		String fecha_Paciente, fecha_Medico;
+		// Date fecha_Medico;
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			conexion = DriverManager.getConnection("jdbc:mariadb://2.139.176.212/pr_smartgrant", USER, PASS);
+			conexion.setAutoCommit(false);
+
+			stmt = conexion.createStatement();
+			// todos los tickets que coinsidan con su id y texto medico sea distito de vacio
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Ticket where " + pWhere + " = " + id + " AND Texto_Medico != '';");
+
+			while (rs.next()) {
+				// aqui colocar un objeto
+				id_tic = rs.getInt("id_tic");
+				texto_Paciente = rs.getString("Texto_Paciente");
+				fecha_Paciente = rs.getString("Fecha_Paciente");// getDate("Fecha_Paciente");
+				texto_Medico = rs.getString("Texto_Medico");
+				fecha_Medico = rs.getString("Fecha_Medico");
+				id_medico = rs.getInt("id_medico");
+				id_paciente = rs.getInt("id_paciente");
+				TicketsNew new1 = new TicketsNew(id_tic, id_medico, id_paciente, texto_Paciente, texto_Medico,
+						fecha_Paciente, fecha_Medico);
+				ticketsObservableList.add(new1);
+			}
+			// destruyo todo consulta conexion y resultset
+			rs.close();
+			stmt.close();
+			conexion.close();
+		} catch (Exception e) {
+			System.out.println("ERROR: ticket conexion");
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+		}
+		System.out.println("Consulta terminada");
+		
 	}
 }

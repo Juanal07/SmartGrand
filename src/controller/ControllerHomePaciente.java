@@ -91,7 +91,7 @@ public class ControllerHomePaciente {
 	public void cargarListaTickets(PersonaNew p) {
 		Conexion conexion = new Conexion();
 		ObservableList<TicketsNew> ticketsObservableList = FXCollections.observableArrayList();
-		conexion.leerTickets(ticketsObservableList,"id_paciente", p.getId_per());
+		conexion.leerTicketsPaciente(ticketsObservableList,"id_paciente", p.getId_per());
 		//ticketsObservableList = filtro(ticketsObservableList);
 		lvTicketsPaciente.setItems(ticketsObservableList);
 		lvTicketsPaciente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TicketsNew>() {

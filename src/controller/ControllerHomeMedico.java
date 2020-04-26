@@ -28,7 +28,7 @@ public class ControllerHomeMedico {
 	private JFXListView<TicketsNew> listaTicketsSinResponder = new JFXListView<TicketsNew>();
 	@FXML
 	private JFXButton btnCerrarSesion = new JFXButton();
-	private Label lbOculto = new Label();
+	private Label lbIdPerMedico = new Label();
 	@FXML
 	private Label labelMedico = new Label();
 
@@ -47,7 +47,7 @@ public class ControllerHomeMedico {
 	public void writeText(PersonaNew p) {
 		labelMedico.setText("Medico: Bienvenido/a " + p.getNombre());
 		// le pasamos el id del medico
-		lbOculto.setText(Integer.toString(p.getId_per()));
+		lbIdPerMedico.setText(Integer.toString(p.getId_per()));
 	}
 
 	private void crearVentana(String vista, String titulo, Object object) {
@@ -100,29 +100,18 @@ public class ControllerHomeMedico {
 	private ObservableList<TicketsNew>  leerTickets2(ObservableList<TicketsNew> ticketsObservableList2, PersonaNew p) {
 		Conexion conexion = new Conexion();
 		conexion.leerTickets(ticketsObservableList2,"id_medico", p.getId_per());// tenemos todos los tickets
-		System.out.println("*****	metodo	leerTickets2	****");
-		return ticketsObservableList2 = filtrarTicketsVacios(ticketsObservableList2);
-	}
-//revisar
-	private ObservableList<TicketsNew> filtrarTicketsVacios(ObservableList<TicketsNew> ticketsObservableList2) {
-		System.out.println("*****	metodo	filtrarTicketsVacios	****");
-		//ObservableList<TicketsNew> ticketsObservableList = FXCollections.observableArrayList();
-		for (int i = 0; i < ticketsObservableList2.size() - 1; i++) {
-			if (!ticketsObservableList2.get(i).getTexto_Medico().equals("")) {
-				System.out.println(ticketsObservableList2.get(i));
-				ticketsObservableList2.remove(i);
-			}
-		}
 		return ticketsObservableList2;
 	}
 
 	public void cargarListViewPacientes(PersonaNew p) {
 		// decidir si queremos colocar personas o pacientes
 		ObservableList<PacienteNew> pacientesObservableList = FXCollections.observableArrayList();
-		// ObservableList<PersonaNew> personasObservableList =
-		// FXCollections.observableArrayList();
 		leerPersonas(pacientesObservableList, p);// encuentra los objetos de las personas y los mete en
-													// personasObservableList
+		System.out.println("PRUEBA CARGAR LISTA PACIENTES");											// personasObservableList
+		// comprobar que todo sale correcto
+		for (PacienteNew pacienteNew : pacientesObservableList) {
+			System.out.println(pacienteNew.toString());
+		}
 		listaPacientesMedico.setItems(pacientesObservableList);
 		listaPacientesMedico.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<PacienteNew>() {
 
@@ -130,7 +119,7 @@ public class ControllerHomeMedico {
 			public void changed(ObservableValue<? extends PacienteNew> observable, PacienteNew oldValue,
 					PacienteNew newValue) {
 				PacienteNew paciente = listaPacientesMedico.getSelectionModel().getSelectedItem();
-				ventanaDatosPaciente(paciente, lbOculto.getText());
+				ventanaDatosPaciente(paciente, lbIdPerMedico.getText());
 			}
 		});
 	}
@@ -160,6 +149,10 @@ public class ControllerHomeMedico {
 	public void cargarListViewTickets(PersonaNew p) {
 		ObservableList<TicketsNew> ticketsObservableList = FXCollections.observableArrayList();
 		leerTickets2(ticketsObservableList, p);
+		System.out.println("PRUEBA CARGAR LIST TICKETS");
+		for (TicketsNew ticketsNew : ticketsObservableList) {
+			System.out.println(ticketsNew.toString());
+		}
 		listaTicketsSinResponder.setItems(ticketsObservableList);
 
 		listaTicketsSinResponder.getSelectionModel().selectedItemProperty()
