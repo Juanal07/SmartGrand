@@ -2,7 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 
-import DataBase.Conexion;
+import dataBase.Conexion;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -52,11 +52,11 @@ public class ControllerMedicoDatosPaciente {
 		try {
 			ControllerSensor3 controlBarChart = new ControllerSensor3();
 			FXMLLoader root2 = new FXMLLoader();
-			root2.setLocation(this.getClass().getResource("/View/Sensor3caidas.fxml"));
+			root2.setLocation(this.getClass().getResource("/View/Sensor3.fxml"));
 			root2.setController(controlBarChart);
 			AnchorPane page = (AnchorPane) root2.load();
 			Stage sendStage = new Stage();
-			sendStage.setTitle("Sensor Caidas");
+			sendStage.setTitle("Sensor 3");
 			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
@@ -73,11 +73,11 @@ public class ControllerMedicoDatosPaciente {
 		try {
 			ControllerSensor2 controlBarChart = new ControllerSensor2();
 			FXMLLoader root2 = new FXMLLoader();
-			root2.setLocation(this.getClass().getResource("/View/Sensor2puerta.fxml"));
+			root2.setLocation(this.getClass().getResource("/View/Sensor2.fxml"));
 			root2.setController(controlBarChart);
 			AnchorPane page = (AnchorPane) root2.load();
 			Stage sendStage = new Stage();
-			sendStage.setTitle("Sensor Puerta");
+			sendStage.setTitle("Sensor 2");
 			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
@@ -94,11 +94,11 @@ public class ControllerMedicoDatosPaciente {
 		try {
 			ControllerSensor1 controlBarChart = new ControllerSensor1();
 			FXMLLoader root2 = new FXMLLoader();
-			root2.setLocation(this.getClass().getResource("/View/Sensor1Presion.fxml"));
+			root2.setLocation(this.getClass().getResource("/View/Sensor1.fxml"));
 			root2.setController(controlBarChart);
 			AnchorPane page = (AnchorPane) root2.load();
 			Stage sendStage = new Stage();
-			sendStage.setTitle("Sensor Presion");
+			sendStage.setTitle("Sensor 1");
 			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);

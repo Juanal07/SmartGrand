@@ -10,7 +10,7 @@ import com.google.gson.GsonBuilder;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
-import DataBase.Conexion;
+import dataBase.Conexion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

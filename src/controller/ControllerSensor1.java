@@ -2,7 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 
-import DataBase.Conexion;
+import dataBase.Conexion;
 import javafx.fxml.FXML;
 
 import javafx.scene.chart.BarChart;

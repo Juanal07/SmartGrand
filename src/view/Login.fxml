@@ -124,7 +124,7 @@
                 <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="labelPregunta1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="¡Encuentranos!" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+                  <Label fx:id="labelPregunta1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="¡Encuentranos!" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -132,9 +132,13 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <Hyperlink fx:id="link" alignment="CENTER" contentDisplay="CENTER" onAction="#linkPulsado" prefHeight="23.0" prefWidth="88.0" text="TWITTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
+            <Hyperlink fx:id="link" alignment="CENTER" contentDisplay="CENTER" onAction="#linkPulsado" prefHeight="23.0" prefWidth="88.0" text="TWITTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="50.0" />
+               </GridPane.margin>
+            </Hyperlink>
          </children>
       </GridPane>
    </children>

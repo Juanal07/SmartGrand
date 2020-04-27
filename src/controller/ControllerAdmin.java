@@ -3,7 +3,7 @@ package controller;
 import java.awt.List;
 import java.io.IOException;
 
-import DataBase.Conexion;
+import dataBase.Conexion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

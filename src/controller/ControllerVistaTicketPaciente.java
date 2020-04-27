@@ -3,9 +3,7 @@ package controller;
 import com.jfoenix.controls.JFXScrollPane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import model.Persona;
 import model.PersonaNew;
-import model.Tickets;
 import model.TicketsNew;
 
 public class ControllerVistaTicketPaciente {

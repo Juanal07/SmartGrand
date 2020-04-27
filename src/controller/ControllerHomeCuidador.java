@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import DataBase.Conexion;
+import dataBase.Conexion;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -26,9 +26,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.Cuidador;
-import model.Medico;
-import model.Persona;
 import model.PersonaNew;
 public class ControllerHomeCuidador {
 	@FXML
@@ -50,42 +47,10 @@ public class ControllerHomeCuidador {
 	
 	public void writeText(PersonaNew persona) {
 		idCuidadorLabel.setText("Cuidador: Bienvenido/a " + persona.getNombre() + "\nelije uno de tus pacientes\n para ver su sensor de presion");
-		lbOculto.setText(persona.getDni());
+		lbOculto.setText(Integer.toString(persona.getId_per()));
+		
 	}
-	//dado un cuidador p ponemos en un observableList sus pacientes
-	public void leerPersonas(ObservableList<Persona> listaPersonas, PersonaNew persona) {
-		ArrayList<String> listaMisPacientes;
-		listaMisPacientes = listaPacientes(persona);
-		List<Persona> lista = GsonGeneral.desserializarJsonAArray();
-		int lenthArray = listaMisPacientes.size();
-		// recorremos personas
-		for (int i = 0; i < lista.size(); i++) {
-			int j = 0;
-			// recorremos mis pacientes
-			while (j < lenthArray) {
-				if (lista.get(i).getDni().equals(listaMisPacientes.get(j))) {
-					listaPersonas.add(lista.get(i));
-					j = j + lenthArray;
-				}
-				j++;
-			}
-		}
-	}
-	//dado un cuidador p obtengo un arrayList con los dnis de sus pacientes
-	public ArrayList<String> listaPacientes(PersonaNew persona) {
-		ArrayList<String> idsPacientes = new ArrayList<String>();
-		List<Cuidador> listaCuidadorRelacion = GsonGeneral.desserializarJsonAArrayCuidador();
-		int sizeArray = listaCuidadorRelacion.size();
-		int i = 0;
-		while(i < sizeArray) {
-			if (persona.getDni().equals(listaCuidadorRelacion.get(i).getIdCuidador())) {
-				idsPacientes = listaCuidadorRelacion.get(i).getDniPacientes();
-				i = i + sizeArray;
-			}
-			i++;	
-		}	
-		return idsPacientes;
-	}		
+		
 	@FXML
 	public void cerrarSesion(ActionEvent actionEvent) {
 		// cerramos ventana
@@ -131,34 +96,34 @@ public class ControllerHomeCuidador {
 		colNombre.setCellValueFactory(new PropertyValueFactory<PersonaNew, String>("nombre"));
 		colApellidos.setCellValueFactory(new PropertyValueFactory<PersonaNew, String>("apellido"));	
 		
-//		tablaPacientesCuidador.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<PersonaNew>() {
-//			@Override
-//			public void changed(ObservableValue<? extends PersonaNew> observable, Persona oldValue, Persona newValue) {
-//				Persona persona = tablaPacientesCuidador.getSelectionModel().getSelectedItem();
-//				enviarSensor1(persona.getDni());
-//			
-//			}				
-//		});	
+		tablaPacientesCuidador.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<PersonaNew>() {
+			@Override
+			public void changed(ObservableValue<? extends PersonaNew> observable, PersonaNew oldValue, PersonaNew newValue) {
+				PersonaNew persona = tablaPacientesCuidador.getSelectionModel().getSelectedItem();
+				enviarSensor1(persona.getId_per());
+			
+			}				
+		});	
 	}
 
-	public void enviarSensor1(String dni) {
-		String dniPaciente = dni;
+	public void enviarSensor1(int a) {
 		try {
 			ControllerSensor1 controlBarChart = new ControllerSensor1();
-			FXMLLoader root2 =  new FXMLLoader();
-			root2.setLocation(this.getClass().getResource("/View/sensor1Presion.fxml"));
+			FXMLLoader root2 = new FXMLLoader();
+			root2.setLocation(this.getClass().getResource("/View/Sensor1.fxml"));
 			root2.setController(controlBarChart);
 			AnchorPane page = (AnchorPane) root2.load();
 			Stage sendStage = new Stage();
+			sendStage.setTitle("Sensor 1");
+			Scene scene = new Scene(page);
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			sendStage.getIcons().add(icon);
-			sendStage.setTitle("Sensor Presion");
-			Scene scene = new Scene(page);		
 			sendStage.setScene(scene);
 			sendStage.show();
-			controlBarChart.escibirDniPaciente(dniPaciente);
+			controlBarChart.escibirDniPaciente(Integer.toString(a));
 			controlBarChart.cargarGrafica();
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

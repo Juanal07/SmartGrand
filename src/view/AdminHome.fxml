@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="fondo" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="311.0" layoutY="10.0" prefHeight="34.0" prefWidth="600.0" text="Administrador" textAlignment="JUSTIFY">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="311.0" layoutY="10.0" prefHeight="34.0" prefWidth="600.0" styleClass="primerTitulo" text="Administrador" textAlignment="JUSTIFY">
          <font>
             <Font name="Calibri" size="34.0" />
          </font>
@@ -18,7 +18,7 @@
             <Insets top="15.0" />
          </padding>
       </Label>
-      <JFXButton fx:id="verificar" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="182.0" layoutY="320.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#medicoVerificado" prefHeight="47.0" prefWidth="229.0" styleClass="mainButton" stylesheets="@Style.css" text="Verificar" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+      <JFXButton fx:id="verificar" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="197.0" layoutY="348.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#medicoVerificado" prefHeight="47.0" prefWidth="229.0" styleClass="mainButton" stylesheets="@Style.css" text="Verificar" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font size="15.0" />
          </font>
@@ -26,7 +26,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btnAtras" alignment="CENTER" contentDisplay="CENTER" layoutX="507.0" layoutY="622.0" maxHeight="-Infinity" onAction="#atrasLogin" prefHeight="47.0" prefWidth="209.0" styleClass="mainButton" stylesheets="@Style.css" text="Atras" textAlignment="JUSTIFY" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+      <JFXButton fx:id="btnAtras" alignment="CENTER" contentDisplay="CENTER" layoutX="507.0" layoutY="622.0" maxHeight="-Infinity" onAction="#atrasLogin" prefHeight="47.0" prefWidth="209.0" styleClass="mainButton" stylesheets="@Style.css" text="Atrás" textAlignment="JUSTIFY" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font size="15.0" />
          </font>
@@ -34,7 +34,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="160.0" prefHeight="34.0" prefWidth="600.0" text="Elija un médico" textAlignment="JUSTIFY">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="188.0" prefHeight="34.0" prefWidth="600.0" text="Elija un médico" textAlignment="JUSTIFY">
          <font>
             <Font name="Calibri" size="34.0" />
          </font>
@@ -42,7 +42,7 @@
             <Insets top="15.0" />
          </padding>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="641.0" layoutY="160.0" prefHeight="34.0" prefWidth="600.0" text="Elija un usuario" textAlignment="JUSTIFY">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="611.0" layoutY="188.0" prefHeight="34.0" prefWidth="600.0" text="Elija un usuario" textAlignment="JUSTIFY">
          <font>
             <Font name="Calibri" size="34.0" />
          </font>
@@ -50,7 +50,7 @@
             <Insets top="15.0" />
          </padding>
       </Label>
-      <JFXButton fx:id="eliminar" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="826.0" layoutY="337.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#usuarioEliminado" prefHeight="47.0" prefWidth="229.0" styleClass="mainButton" stylesheets="@Style.css" text="Eliminar" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+      <JFXButton fx:id="eliminar" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="797.0" layoutY="348.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#usuarioEliminado" prefHeight="47.0" prefWidth="229.0" styleClass="mainButton" stylesheets="@Style.css" text="Eliminar" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font size="15.0" />
          </font>
@@ -58,7 +58,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <ComboBox fx:id="medicosBox" layoutX="183.0" layoutY="245.0" prefHeight="38.0" prefWidth="229.0" promptText="Elige medico" />
-      <ComboBox fx:id="personaBox" layoutX="827.0" layoutY="245.0" prefHeight="38.0" prefWidth="229.0" promptText="Elige usuario" />
+      <ComboBox fx:id="medicosBox" layoutX="197.0" layoutY="273.0" prefHeight="38.0" prefWidth="229.0" promptText="Elige medico" />
+      <ComboBox fx:id="personaBox" layoutX="797.0" layoutY="273.0" prefHeight="38.0" prefWidth="229.0" promptText="Elige usuario" />
    </children>
 </AnchorPane>
