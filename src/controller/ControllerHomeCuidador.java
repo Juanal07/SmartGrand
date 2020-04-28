@@ -46,7 +46,7 @@ public class ControllerHomeCuidador {
 	private Label idCuidadorLabel = new Label();
 	
 	public void writeText(PersonaNew persona) {
-		idCuidadorLabel.setText("Cuidador: Bienvenido/a " + persona.getNombre() + "\nelije uno de tus pacientes\n para ver su sensor de presion");
+		idCuidadorLabel.setText("Cuidador: Bienvenido/a " + persona.getNombre() + "\nelije uno de tus pacientes\n para ver su sensor de temperatura");
 		lbOculto.setText(Integer.toString(persona.getId_per()));
 		
 	}
