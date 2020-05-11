@@ -3,13 +3,21 @@ package controller;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.net.URI;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import application.Main;
 import dataBase.*;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,10 +27,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.PersonaNew;
 
-public class ControllerLogin {
+public class ControllerLogin implements Initializable {
 	@FXML
 	public ImageView imgLogo;
 	@FXML
@@ -37,6 +48,16 @@ public class ControllerLogin {
 	public Label labelPregunta;
 	@FXML
 	public Label lbError = new Label();
+	@FXML
+	public WebView web;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		web.getEngine().load("https://twitter.com/elonmusk");
+
+
+	}
 
 	@FXML
 	public void iniciarSesion() {
@@ -216,5 +237,7 @@ public class ControllerLogin {
 			System.out.println("Si existe cadena");
 		}
 	}
+
+
 
 }
