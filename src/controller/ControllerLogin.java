@@ -50,13 +50,14 @@ public class ControllerLogin implements Initializable {
 	public Label lbError = new Label();
 	@FXML
 	public WebView web;
+	@FXML
+	public WebView web1;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		web.getEngine().load("https://twitter.com/elonmusk");
-
-
+		web1.getEngine().load("https://www.instagram.com/ueuropea/");
 	}
 
 	@FXML

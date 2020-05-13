@@ -8,6 +8,22 @@
  
 .default-color0.chart-bar { -fx-bar-fill: #9fd3c7 }
 
+.Imagen{
+	-fx-background: #142d4c;
+	-fx-background-image: url('logo2.png');
+	/*-fx-background-repeat: stretch;*/
+	/*-fx-background-position: top;*/
+	/*-fx-background-repeat: no-repeat;*/
+	/*-fx-background-size: auto;*/
+	-fx-background-size: cover;
+
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-color: #464646;
+
+}
+
 .tituloListasMedicoHome{	
 	-fx-font-size: 24pt;
 	-fx-text-fill: #142d4c;
