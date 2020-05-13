@@ -4,34 +4,51 @@
  * #A2A9D3 azulito mas oscurito
  * #385170 azul oscuro
  * #142d4c casi negro
- */ 
- 
+ */
+
+
+.titulo1{
+	-fx-font-size: 52pt;
+	-fx-text-fill: #142d4c;
+	-fx-effect: dropshadow(three-pass-box, #9fd3c7, 10, 0, 0, 0);
+}
+
+.titulo2{
+	-fx-font-size: 24pt;
+	-fx-text-fill: #142d4c;
+}
+
+.titulo3{
+	-fx-font-size: 15pt;
+	-fx-text-fill: #142d4c;
+}
+
+.titulo2blanco{
+	-fx-font-size: 24pt;
+	-fx-text-fill: #ececec;
+}
+
+.tituloCui{
+	-fx-font-size: 34pt;
+	-fx-text-fill: #9fd3c7;
+}
+
+
 .default-color0.chart-bar { -fx-bar-fill: #9fd3c7 }
 
 .Imagen{
 	-fx-background: #142d4c;
 	-fx-background-image: url('logo2.png');
-	/*-fx-background-repeat: stretch;*/
-	/*-fx-background-position: top;*/
-	/*-fx-background-repeat: no-repeat;*/
-	/*-fx-background-size: auto;*/
 	-fx-background-size: cover;
-
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-color: #464646;
-
 }
 
-.tituloListasMedicoHome{	
-	-fx-font-size: 24pt;
-	-fx-text-fill: #142d4c;
-}
-.tituloTiquetPaciente{	
-	-fx-font-size: 24pt;
-	-fx-text-fill: #ececec;
-}
+
+
+
 .lbErrorMedico{
 	-fx-font-size: 16pt;
 	-fx-text-fill: #000000;
@@ -45,7 +62,7 @@
 	-fx-background-color: #9fd3c7;
 }
 .colorRaro{
-	-fx-background-color: #A2A9D3;
+	-fx-background-color: #ececec;
 }
 .negro{
 	-fx-background-color: #000000;
@@ -86,10 +103,7 @@
 	-fx-font-size: 13pt; 
 	-fx-text-fill: #000000;
 }
-.titloCuidador{
-	-fx-font-size: 34pt;
-	-fx-text-fill: #9fd3c7;	
-}
+
 .btnCuidador:hover{
 	-fx-font-size: 16pt;
 	-fx-background-color: transparent;
@@ -205,20 +219,6 @@
 	-fx-border-radius: 5px;
 }
 
-.primerTitulo{	
-	-fx-font-size: 52pt;
-	-fx-text-fill: #142d4c;	
-}
-
-.segundoTitulo{	
-	-fx-font-size: 24pt;
-	-fx-text-fill: #142d4c;
-}
-
-.tercerTitulo{	
-	-fx-font-size: 15pt;
-	-fx-text-fill: #142d4c;
-}
 
 .caja{	
 	-fx-background-color: #ececec;

@@ -56,8 +56,8 @@ public class ControllerLogin implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		web.getEngine().load("https://twitter.com/elonmusk");
-		web1.getEngine().load("https://www.instagram.com/ueuropea/");
+		web.getEngine().load("https://www.instagram.com/ueuropea/");
+		web1.getEngine().load("https://mobile.twitter.com/UEuropea");
 	}
 
 	@FXML

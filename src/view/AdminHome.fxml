@@ -10,9 +10,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="fondo" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="311.0" layoutY="10.0" prefHeight="34.0" prefWidth="600.0" styleClass="primerTitulo" text="Administrador" textAlignment="JUSTIFY">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="340.0" layoutY="30.0" prefHeight="34.0" prefWidth="600.0" styleClass="titulo1" stylesheets="@Style.css" text="Administrador" textAlignment="JUSTIFY">
          <font>
-            <Font name="Calibri" size="34.0" />
+            <Font name="Calibri" size="96.0" />
          </font>
          <padding>
             <Insets top="15.0" />
@@ -26,7 +26,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btnAtras" alignment="CENTER" contentDisplay="CENTER" layoutX="507.0" layoutY="622.0" maxHeight="-Infinity" onAction="#atrasLogin" prefHeight="47.0" prefWidth="209.0" styleClass="mainButton" stylesheets="@Style.css" text="Atrás" textAlignment="JUSTIFY" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+      <JFXButton fx:id="btnAtras" alignment="CENTER" contentDisplay="CENTER" layoutX="507.0" layoutY="588.0" maxHeight="-Infinity" onAction="#atrasLogin" prefHeight="47.0" prefWidth="209.0" styleClass="mainButton" stylesheets="@Style.css" text="Atrás" textAlignment="JUSTIFY" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font size="15.0" />
          </font>
@@ -34,7 +34,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="188.0" prefHeight="34.0" prefWidth="600.0" text="Elija un médico" textAlignment="JUSTIFY">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="188.0" prefHeight="34.0" prefWidth="600.0" styleClass="segundoTitulo" stylesheets="@Style.css" text="Elija un médico" textAlignment="JUSTIFY">
          <font>
             <Font name="Calibri" size="34.0" />
          </font>
@@ -42,7 +42,7 @@
             <Insets top="15.0" />
          </padding>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="611.0" layoutY="188.0" prefHeight="34.0" prefWidth="600.0" text="Elija un usuario" textAlignment="JUSTIFY">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="611.0" layoutY="188.0" prefHeight="34.0" prefWidth="600.0" styleClass="titulo2" stylesheets="@Style.css" text="Elija un usuario" textAlignment="JUSTIFY">
          <font>
             <Font name="Calibri" size="34.0" />
          </font>

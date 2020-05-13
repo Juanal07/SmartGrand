@@ -13,46 +13,23 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" styleClass="fondoMedicoPaciente" stylesheets="@Style.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" styleClass="fondoMedicoPaciente" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane layoutX="265.0" layoutY="72.0" prefHeight="731.0" prefWidth="536.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="171.0" minHeight="10.0" prefHeight="128.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="316.0" minHeight="0.0" prefHeight="194.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="351.0" minHeight="10.0" prefHeight="351.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXScrollPane fx:id="jfxScrollPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnSpan="2" GridPane.rowSpan="2">
-               <GridPane.margin>
-                  <Insets left="30.0" right="30.0" top="20.0" />
-               </GridPane.margin>
-               <children>
-                  <Label fx:id="lbTextoPaciente" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lbMedicoPaciente" text="contenido de paciente" textAlignment="JUSTIFY">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </JFXScrollPane>
-            <JFXTextArea fx:id="txAreaMedico" focusColor="#142d4c" labelFloat="true" onMouseClicked="#vaciarLb" promptText="Escriba aqui." style="-fx-border-radius: 15; -fx-background-color: black;" unFocusColor="#142d4c" wrapText="true" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
-               <GridPane.margin>
-                  <Insets left="30.0" right="30.0" top="10.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor>
-            </JFXTextArea>
             <JFXButton fx:id="btnEnviar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#enviarRespuesta" styleClass="btnMedico" text="Enviar" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.rowSpan="2">
                <GridPane.margin>
                   <Insets bottom="20.0" left="15.0" right="30.0" />
@@ -64,7 +41,6 @@
                   <Glow />
                </effect>
             </JFXButton>
-            <Label fx:id="lbError" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lbErrorMedico" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <JFXButton fx:id="btnAtras" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#ventanaAtras" onMouseClicked="#enviarRespuesta" styleClass="btnMedico" text="Atras" GridPane.rowIndex="5" GridPane.rowSpan="2">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -76,6 +52,25 @@
                   <Insets bottom="20.0" left="15.0" right="30.0" />
                </GridPane.margin>
             </JFXButton>
+            <JFXTextArea fx:id="txAreaMedico" focusColor="#142d4c" labelFloat="true" onMouseClicked="#vaciarLb" promptText="Escriba aqui." style="-fx-border-radius: 15; -fx-background-color: black;" unFocusColor="#142d4c" wrapText="true" GridPane.columnSpan="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </JFXTextArea>
+            <JFXScrollPane fx:id="jfxScrollPane" prefHeight="800.0" prefWidth="800.0" styleClass="titulo2" stylesheets="@Style.css" GridPane.columnSpan="2" GridPane.rowSpan="2">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </JFXScrollPane>
+            <Label fx:id="lbError" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="348.0" prefWidth="724.0" styleClass="lbErrorMedico" wrapText="true" GridPane.rowIndex="4" />
+            <Label fx:id="lbTextoPaciente" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="76.0" prefWidth="740.0" styleClass="titulo2blanco" text="Mensaje del paciente:" textAlignment="JUSTIFY" GridPane.columnSpan="2">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
    </children>
