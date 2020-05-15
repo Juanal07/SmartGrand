@@ -23,7 +23,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane style="-fx-background-color: #142d4c;" GridPane.rowSpan="3">
+            <AnchorPane style="-fx-background-color: #242038;" GridPane.rowSpan="3">
                <children>
                   <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="421.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
@@ -37,7 +37,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXButton fx:id="btnPaciente" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#PacienteRegistro" style="-fx-background-color: #385170 #385170; -fx-background-radius: 15;" text="Paciente" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                        <JFXButton fx:id="btnPaciente" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#PacienteRegistro" style="-fx-background-color: #8D86C9; -fx-background-radius: 15;" text="Paciente" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.rowIndex="1">
                            <font>
                               <Font size="36.0" />
                            </font>
@@ -78,7 +78,7 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #385170;" GridPane.columnIndex="1" GridPane.rowSpan="3">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8D86C9;" GridPane.columnIndex="1" GridPane.rowSpan="3">
                <children>
                   <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
@@ -92,7 +92,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXButton fx:id="btnCuidador" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#CuidadorRegistro" style="-fx-background-color: #9fd3c7 #9fd3c7; -fx-background-radius: 15;" text="Cuidador" textFill="WHITE" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                        <JFXButton fx:id="btnCuidador" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#CuidadorRegistro" style="-fx-background-color: #CAC4CE; -fx-background-radius: 15;" text="Cuidador" textFill="WHITE" GridPane.columnSpan="3" GridPane.rowIndex="1">
                            <font>
                               <Font size="36.0" />
                            </font>
@@ -107,7 +107,7 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9fd3c7;" GridPane.columnIndex="2" GridPane.rowSpan="3">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CAC4CE;" GridPane.columnIndex="2" GridPane.rowSpan="3">
                <children>
                   <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
@@ -121,7 +121,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXButton fx:id="btnClinico" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#clinicoRegistro" style="-fx-background-color:#142d4c; -fx-background-radius: 15;" text="Clínico" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                        <JFXButton fx:id="btnClinico" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#clinicoRegistro" style="-fx-background-color: #242038; -fx-background-radius: 15;" text="Clínico" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.rowIndex="1">
                            <font>
                               <Font size="36.0" />
                            </font>

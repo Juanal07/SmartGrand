@@ -1,43 +1,43 @@
 /* PALETA DE COLORES: https://colorhunt.co/palette/142663
- * #ececec blanco roto
- * #9fd3c7 azulito
- * #A2A9D3 azulito mas oscurito
- * #385170 azul oscuro
- * #142d4c casi negro
+ * #F7ECE1 blanco roto
+ * #CAC4CE azulito
+ * #8D86C9 azulito mas oscurito
+ * #9067C6 azul oscuro
+ * #242038 casi negro
  */
 
 
 .titulo1{
 	-fx-font-size: 52pt;
-	-fx-text-fill: #142d4c;
-	-fx-effect: dropshadow(three-pass-box, #9fd3c7, 10, 0, 0, 0);
+	-fx-text-fill: #242038;
+	-fx-effect: dropshadow(three-pass-box, #CAC4CE, 10, 0, 0, 0);
 }
 
 .titulo2{
 	-fx-font-size: 24pt;
-	-fx-text-fill: #142d4c;
+	-fx-text-fill: #242038;
 }
 
 .titulo3{
 	-fx-font-size: 15pt;
-	-fx-text-fill: #142d4c;
+	-fx-text-fill: #242038;
 }
 
 .titulo2blanco{
 	-fx-font-size: 24pt;
-	-fx-text-fill: #ececec;
+	-fx-text-fill: #F7ECE1;
 }
 
 .tituloCui{
 	-fx-font-size: 34pt;
-	-fx-text-fill: #9fd3c7;
+	-fx-text-fill: #CAC4CE;
 }
 
 
-.default-color0.chart-bar { -fx-bar-fill: #9fd3c7 }
+.default-color0.chart-bar { -fx-bar-fill: #CAC4CE }
 
 .Imagen{
-	-fx-background: #142d4c;
+	-fx-background: #242038;
 	-fx-background-image: url('logo2.png');
 	-fx-background-size: cover;
 	background-position: center center;
@@ -54,21 +54,21 @@
 	-fx-text-fill: #000000;
 }
 .textAreaMedico{
-	-fx-background-color: #ececec;
+	-fx-background-color: #F7ECE1;
 	-fx-background-radius: 15px;
 	-fx-border-radius: 15px; 
 }
 .fondoMedicoPaciente{
-	-fx-background-color: #9fd3c7;
+	-fx-background-color: #CAC4CE;
 }
 .colorRaro{
-	-fx-background-color: #ececec;
+	-fx-background-color: #F7ECE1;
 }
 .negro{
 	-fx-background-color: #000000;
 }
 .listViewMedico{
-	-fx-background-color: #385170;
+	-fx-background-color: #9067C6;
 	-fx-background-radius: 15px;
 	-fx-border-radius: 15px; 
 }
@@ -79,27 +79,27 @@
 .btnMedico:hover{
 	-fx-font-size: 16pt;
 	-fx-background-color: transparent;
-	-fx-text-fill: #142d4c;
+	-fx-text-fill: #242038;
 	-fx-background-radius: 15px;
-	-fx-border-color: #142d4c;
+	-fx-border-color: #242038;
 	-fx-border-width: 1px;
 	-fx-border-style: solid;
 	-fx-border-radius: 15px;
 }
 .btnMedico{
 	-fx-font-size: 16pt;
-	-fx-background-color: #142d4c;
-	-fx-text-fill: #ececec;
+	-fx-background-color: #242038;
+	-fx-text-fill: #F7ECE1;
 	-fx-background-radius: 15px;
 }
 .fondoMedicoHome{
-	-fx-background-color: #9fd3c7;
+	-fx-background-color: #CAC4CE;
 }
 .tableView{
 	-fx-border-radius: 15px; 
 	-fx-background-radius: 15px;
-	-fx-border-color: #9fd3c7;
-	-fx-background-color: #ececec;
+	-fx-border-color: #CAC4CE;
+	-fx-background-color: #F7ECE1;
 	-fx-font-size: 13pt; 
 	-fx-text-fill: #000000;
 }
@@ -107,95 +107,95 @@
 .btnCuidador:hover{
 	-fx-font-size: 16pt;
 	-fx-background-color: transparent;
-	-fx-text-fill: #ececec;
+	-fx-text-fill: #F7ECE1;
 	-fx-background-radius: 15px;
-	-fx-border-color: #ececec;
+	-fx-border-color: #F7ECE1;
 	-fx-border-width: 1px;
 	-fx-border-style: solid;
 	-fx-border-radius: 15px;
 }
 .btnCuidador{
 	-fx-font-size: 16pt;
-	-fx-background-color: #9fd3c7;
-	-fx-text-fill: #142d4c;
+	-fx-background-color: #CAC4CE;
+	-fx-text-fill: #242038;
 	-fx-background-radius: 15px;
 }
 .fonfoCuidadorHome{
-	-fx-background-color: #385170;
+	-fx-background-color: #9067C6;
 }
 .fondoPacienteHome{
-	-fx-background-color: #142d4c;
+	-fx-background-color: #242038;
 }
 .lbErrorPaciente{
 	-fx-font-size: 16pt;
-	-fx-text-fill: #ececec;
+	-fx-text-fill: #F7ECE1;
 }
 .btnPaciente:hover{
 	-fx-font-size: 16pt;
 	-fx-background-color: transparent;
-	-fx-text-fill: #ececec;
+	-fx-text-fill: #F7ECE1;
 	-fx-background-radius: 15px;
-	-fx-border-color: #ececec;
+	-fx-border-color: #F7ECE1;
 	-fx-border-width: 1px;
 	-fx-border-style: solid;
 	-fx-border-radius: 15px;
 }
 .btnPaciente{
 	-fx-font-size: 16pt;
-	-fx-background-color: #385170;
-	-fx-text-fill: #ececec;
+	-fx-background-color: #9067C6;
+	-fx-text-fill: #F7ECE1;
 	-fx-background-radius: 15px;
 }
 .textAreaPaciente{
 	-fx-font-size: 16pt; 
-	-fx-background-color: #ececec;
+	-fx-background-color: #F7ECE1;
 	-fx-border-radius: 15px; 
 	-fx-background-radius: 15px;
 	-fx-text-fill: #ffffff;
 }
 .litaPacienteHome{
-	-fx-background-color: #9fd3c7;
+	-fx-background-color: #CAC4CE;
 	-fx-background-radius: 15px;
 	-fx-border-radius: 15px; 
-	-fx-text-fill: #ececec;
+	-fx-text-fill: #F7ECE1;
 }
 .loginFondo{
-	-fx-background-color: linear-gradient(#ececec, #9fd3c7, #385170, #142d4c);
+	-fx-background-color: linear-gradient(#F7ECE1, #CAC4CE, #9067C6, #242038);
 }
 
 .fondo{
-	-fx-background-color: #9FD3C7; /*azul*/
-	-fx-background-color: linear-gradient(#ececec, #9FD3C7);
+	-fx-background-color: #CAC4CE; /*azul*/
+	-fx-background-color: linear-gradient(#F7ECE1, #CAC4CE);
 }
 
 .retBtn{
 	-fx-font-family: System;
 	-fx-font-size: 15pt;
-	-fx-text-fill: #ececec;
+	-fx-text-fill: #F7ECE1;
 	-fx-font-weight: bold;
 }
 
 .retBtn:hover{
 	-fx-font-family: Systemf;
 	-fx-font-size: 15pt;
-	-fx-text-fill: #ececec;
+	-fx-text-fill: #F7ECE1;
 	-fx-font-weight: bold;
 	-fx-underline: true;
 }
 
 .loginButton{
 	-fx-font-size: 16pt;
-	-fx-background-color: #ececec;
-	-fx-text-fill: #142d4c;
+	-fx-background-color: #F7ECE1;
+	-fx-text-fill: #242038;
 	-fx-background-radius: 5px;
 }
 
 .loginButton:hover{
 	-fx-font-size: 16pt;
 	-fx-background-color: transparent;
-	-fx-text-fill: #ececec;
+	-fx-text-fill: #F7ECE1;
 	-fx-background-radius: 5px;
-	-fx-border-color: #ececec;
+	-fx-border-color: #F7ECE1;
 	-fx-border-width: 1px;
 	-fx-border-style: solid;
 	-fx-border-radius: 5px;
@@ -203,17 +203,17 @@
 
 .mainButton{
 	-fx-font-size: 16pt;
-	-fx-background-color: #385170;
-	-fx-text-fill: #9fd3c7;
+	-fx-background-color: #9067C6;
+	-fx-text-fill: #CAC4CE;
 	-fx-background-radius: 5px;
 }
 
 .mainButton:hover{
 	-fx-font-size: 16pt;
 	-fx-background-color: transparent;
-	-fx-text-fill: #142d4c;
+	-fx-text-fill: #242038;
 	-fx-background-radius: 5px;
-	-fx-border-color: #385170;
+	-fx-border-color: #9067C6;
 	-fx-border-width: 1px;
 	-fx-border-style: solid;
 	-fx-border-radius: 5px;
@@ -221,6 +221,6 @@
 
 
 .caja{	
-	-fx-background-color: #ececec;
-	-fx-text-fill: #142d4c;
+	-fx-background-color: #F7ECE1;
+	-fx-text-fill: #242038;
 }
