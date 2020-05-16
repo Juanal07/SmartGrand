@@ -90,7 +90,7 @@ public class ControllerHomeMedico {
 			Image icon = new Image(getClass().getResourceAsStream("/Image/logo sin fondo.png"));
 			stage2.getIcons().add(icon);
 			stage2.setTitle(tituloVista);
-			stage2.setScene(new Scene(root2));
+			stage2.setScene(new Scene(root2,1280,720));
 			stage2.show();
 		} catch (Exception e) {
 			e.printStackTrace();

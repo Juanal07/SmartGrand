@@ -17,22 +17,22 @@
 <AnchorPane fx:id="root2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="720.0" prefWidth="1280.0" styleClass="loginFondo" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="203.0" layoutY="57.0" prefHeight="214.0" prefWidth="209.0" styleClass="Imagen" stylesheets="@Style.css" />
-      <JFXTextField id="JfxtUsuario" fx:id="jfxtUsuario" focusColor="WHITE" labelFloat="true" layoutX="203.0" layoutY="291.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="209.0" promptText="Usuario" style="-fx-background-color: transparent;" unFocusColor="WHITE">
+      <JFXTextField id="JfxtUsuario" fx:id="jfxtUsuario" focusColor="WHITE" labelFloat="true" layoutX="192.0" layoutY="291.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="231.0" promptText="Usuario" style="-fx-background-color: transparent;" unFocusColor="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXPasswordField id="jfxtContraseña" fx:id="jfxtPassword" focusColor="WHITE" labelFloat="true" layoutX="203.0" layoutY="332.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="209.0" promptText="Contraseña" unFocusColor="WHITE">
+      <JFXPasswordField id="jfxtContraseña" fx:id="jfxtPassword" focusColor="WHITE" labelFloat="true" layoutX="192.0" layoutY="332.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="231.0" promptText="Contraseña" unFocusColor="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </JFXPasswordField>
-      <Label fx:id="lbError" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER" textFill="#c62a2a">
+      <Label fx:id="lbError" alignment="CENTER" contentDisplay="CENTER" layoutX="126.0" layoutY="384.0" prefHeight="25.0" prefWidth="363.0" textAlignment="CENTER" textFill="#c62a2a">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <JFXButton id="jfxtBtnIniciarSesion" fx:id="btnIniciarSesion" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="219.0" layoutY="403.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#iniciarSesion" prefHeight="47.0" prefWidth="177.0" styleClass="loginButton" text="Iniciar sesion" textAlignment="CENTER" textFill="WHITE">
+      <JFXButton id="jfxtBtnIniciarSesion" fx:id="btnIniciarSesion" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="219.0" layoutY="435.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#iniciarSesion" prefHeight="47.0" prefWidth="177.0" styleClass="loginButton" text="Iniciar sesion" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -40,7 +40,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label fx:id="labelPregunta" layoutX="126.0" layoutY="490.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="¿No tienes una cuenta?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label fx:id="labelPregunta" layoutX="126.0" layoutY="522.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="¿No tienes una cuenta?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="15.0" />
          </font>
@@ -48,7 +48,7 @@
             <Insets />
          </opaqueInsets>
       </Label>
-      <JFXButton id="jfxtBtnRegistrarse" fx:id="btnRegistrarse" alignment="CENTER" layoutX="326.0" layoutY="473.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#registroContinuo" prefHeight="56.0" prefWidth="187.0" styleClass="retBtn" text="Regístrate" textAlignment="CENTER" textFill="WHITE">
+      <JFXButton id="jfxtBtnRegistrarse" fx:id="btnRegistrarse" alignment="CENTER" layoutX="326.0" layoutY="505.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#registroContinuo" prefHeight="56.0" prefWidth="187.0" styleClass="retBtn" text="Regístrate" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
