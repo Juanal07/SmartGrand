@@ -57,7 +57,7 @@ public class ControllerLogin implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		web.getEngine().load("https://www.instagram.com/ueuropea/");
-		web1.getEngine().load("https://mobile.twitter.com/UEuropea");
+		web1.getEngine().load("https://mobile.twitter.com/SmartGrandOffi1");
 	}
 
 	@FXML

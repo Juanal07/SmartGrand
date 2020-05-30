@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -17,7 +18,8 @@
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="fondoMedicoPaciente" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <JFXButton fx:id="btnSensor1" alignment="CENTER" layoutX="14.0" layoutY="586.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enviarSensor1" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor1">
+      <Label contentDisplay="CENTER" layoutX="75.0" layoutY="174.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lbMedicoPaciente" text="Ficha de paciente" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" underline="true" />
+      <JFXButton fx:id="btnAtras" layoutX="67.0" layoutY="45.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#ventanaAtras" prefHeight="47.0" prefWidth="168.0" styleClass="btnMedico" stylesheets="@Style.css" text="Atras">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -25,31 +27,7 @@
             <Glow />
          </effect>
       </JFXButton>
-      <JFXButton fx:id="btnSensor2" layoutX="14.0" layoutY="646.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enviarSensor2" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor2">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <effect>
-            <Glow />
-         </effect>
-      </JFXButton>
-      <JFXButton fx:id="btnSensor3" layoutX="139.0" layoutY="623.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enviarSensor3" styleClass="btnMedico" stylesheets="@Style.css" text="Sensor3">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <effect>
-            <Glow />
-         </effect>
-      </JFXButton>
-      <JFXButton fx:id="btnAtras" layoutX="556.0" layoutY="646.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#ventanaAtras" prefHeight="47.0" prefWidth="168.0" styleClass="btnMedico" stylesheets="@Style.css" text="Atras">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <effect>
-            <Glow />
-         </effect>
-      </JFXButton>
-      <VBox layoutX="105.0" layoutY="153.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="324.0" prefWidth="264.0">
+      <VBox layoutX="64.0" layoutY="205.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="324.0" prefWidth="264.0">
          <children>
             <Label fx:id="lbNombre" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lbMedicoPaciente" text="Label" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
                <VBox.margin>
@@ -73,13 +51,13 @@
             </Label>
          </children>
       </VBox>
-      <TabPane layoutX="423.0" layoutY="66.0" prefHeight="536.0" prefWidth="796.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="422.0" layoutY="110.0" prefHeight="536.0" prefWidth="796.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Sensor 1">
+          <Tab text="Temepratura">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <LineChart prefHeight="501.0" prefWidth="796.0">
+                        <LineChart fx:id="chart1" layoutX="-7.0" layoutY="3.0" prefHeight="501.0" prefWidth="796.0">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
@@ -91,35 +69,34 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Sensor 2">
+          <Tab text="Puerta">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <PieChart layoutY="5.0" prefHeight="489.0" prefWidth="777.0" />
+                        <PieChart fx:id="chart2" layoutY="5.0" prefHeight="489.0" prefWidth="777.0" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Sensor 3">
+            <Tab text="Luz">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <LineChart prefHeight="506.0" prefWidth="784.0">
-                           <xAxis>
-                              <CategoryAxis side="BOTTOM" />
-                           </xAxis>
-                           <yAxis>
-                              <NumberAxis side="LEFT" />
-                           </yAxis>
-                        </LineChart>
+                        <AreaChart fx:id="chart3" layoutX="2.0" layoutY="-4.0" prefHeight="512.0" prefWidth="796.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </AreaChart>
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
         </tabs>
       </TabPane>
-      <Label contentDisplay="CENTER" layoutX="506.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lbMedicoPaciente" text="Elija una fecha para visualizar datos" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
-      <DatePicker layoutX="957.0" layoutY="17.0" />
-      <Label contentDisplay="CENTER" layoutX="89.0" layoutY="112.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lbMedicoPaciente" text="Ficha de paciente" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" underline="true" />
+      <Label contentDisplay="CENTER" layoutX="505.0" layoutY="58.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lbMedicoPaciente" text="Elija una fecha para visualizar datos" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+      <DatePicker layoutX="956.0" layoutY="61.0" />
    </children>
 </AnchorPane>
