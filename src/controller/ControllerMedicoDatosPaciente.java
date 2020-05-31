@@ -10,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.AreaChart;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -50,7 +47,7 @@ public class ControllerMedicoDatosPaciente implements Initializable {
 	LineChart<String, Number> chart1;
 
 	@FXML
-	PieChart chart2;
+	BarChart<String, Number> chart2;
 
 	@FXML
 	AreaChart<String, Number> chart3;
@@ -70,11 +67,17 @@ public class ControllerMedicoDatosPaciente implements Initializable {
 		}
 		chart1.getData().add(series3);
 
-		ObservableList<PieChart.Data> pieChartData =
-				FXCollections.observableArrayList(
-						new PieChart.Data("Abierta", 11),
-						new PieChart.Data("Cerrada", 89));
-		chart2.setData(pieChartData);
+		Conexion conexion2 = new Conexion();
+		ArrayList<Sensor1New> data4 = conexion2.cargarSensor(1,"puerta");
+
+		XYChart.Series<String, Number> series4 = new XYChart.Series<>();
+		series4.setName("Puerta");
+		for (int j = 0; j < data4.size(); j++) {
+			String fecha = data4.get(j).getFecha();
+			int valor = data4.get(j).getDato();
+			series4.getData().add(new XYChart.Data<>(fecha, valor));
+		}
+		chart2.getData().add(series4);
 
 
 		XYChart.Series series1 = new XYChart.Series();

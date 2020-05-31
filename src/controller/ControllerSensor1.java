@@ -25,22 +25,16 @@ public class ControllerSensor1 {
 //		String dniP = lbOculto.getText().substring(lbOculto.getText().indexOf(" ")+1, lbOculto.getText().length());
 		
 		XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
-		XYChart.Series<String, Number> minuteSeries = new XYChart.Series<String, Number>();
 		series.setName("numero de veces");
-		minuteSeries.setName("numero de horas");
 		
 		for (int i = 0; i < reposoData.size(); i++) {
 			
 			String fecha = reposoData.get(i).getFecha();
-			int valor = reposoData.get(i).getDato();			
-//			double descansos = reposoData.get(i).getSumIntervalos();
-			
-//			minuteSeries.getData().add(new XYChart.Data<String, Number>(fecha, descansos));
+			int valor = reposoData.get(i).getDato();
 			series.getData().add(new XYChart.Data<String, Number>(fecha, valor));
 
 		}
 		graf.getData().add(series);
-//		graf.getData().add(minuteSeries);
 		
 	}
 
